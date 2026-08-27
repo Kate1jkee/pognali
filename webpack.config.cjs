@@ -1,0 +1,38 @@
+const path = require('path');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+const isProd = process.env.NODE_ENV === 'production';
+const isDev = !isProd;
+
+module.exports = {
+  context: path.resolve(__dirname, 'source'),
+  mode: isProd ? 'production' : 'development',
+  entry: {
+    main: './js/main.js',
+    vendor: './js/vendor.js',
+  },
+  devtool: isDev ? 'source-map' : false,
+  output: {
+    filename: '[name].min.js',
+    path: path.resolve(__dirname, 'build/js'),
+  },
+  optimization: {
+    minimize: !isDev,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+        },
+      }
+    ],
+  },
+  plugins: [
+    new DuplicatePackageCheckerPlugin(),
+    new CircularDependencyPlugin()
+  ],
+};
