@@ -1,36 +1,118 @@
 mixin header(headerMods, currentUrl)
-  -
-    const headerLinks = [
-      {
-        href: "index.html",
-        text: "Главная"
-      },
-      {
-        href: "#",
-        text: "Страница 2"
-      },
-      {
-        href: "#",
-        text: "Страница 3"
-      },
-    ]
+  //-
+      const headerLinks = [
+        {
+          href: "index.html",
+          text: "Главная"
+        },
+        {
+          href: "#",
+          text: "Страница 2"
+        },
+        {
+          href: "#",
+          text: "Страница 3"
+        },
+      ]
 
-  header.header(class=headerMods)
-    .container
-      if(currentUrl === "index.html")
-        //- lighthouse снимает 10 баллов SEO за <a> без href
-        span.header__logo Логотип
-      else
-        a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
-      nav.main-nav
-        button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
-          +icon("icon-burger", 20, 20)
-        .main-nav__wrapper
+    header.header(class=headerMods)
+      .container
+        if(currentUrl === "index.html")
+          //- lighthouse снимает 10 баллов SEO за <a> без href
+          span.header__logo Логотип
+        else
+          a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
+        nav.main-nav
+          button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
+            +icon("icon-burger", 20, 20)
+          .main-nav__wrapper
+            ul.main-nav__list
+              each link in headerLinks
+                - const activeState = currentUrl === link.href
+                li.main-nav__item
+                  if(activeState)
+                    span.main-nav__link.is-active= link.text
+                  else
+                    a.main-nav__link(href=link.href)= link.text
+
+  header.header
+    div.header__top
+      div.header__container.container
+        span.header__logo
+          img.header__logo-image(
+            src="img/content/logo.svg"
+            width="100"
+            height="30"
+            alt=""
+          )
+          span.header__logo-text
+            | FindEdu
+        nav.header__main-nav.main-nav(
+          aria-label="Основная навигация"
+        )
           ul.main-nav__list
-            each link in headerLinks
-              - const activeState = currentUrl === link.href
-              li.main-nav__item
-                if(activeState)
-                  span.main-nav__link.is-active= link.text
-                else
-                  a.main-nav__link(href=link.href)= link.text
+            li.main-nav__item
+              a.main-nav__link(href="#")
+                | Главная
+
+            li.main-nav__item
+              a.main-nav__link(href="#")
+                | Курсы
+
+            li.main-nav__item
+              a.main-nav__link(href="#")
+                | Блог
+
+    div.header__bottom
+      div.header__container.container
+        nav.header__courses-nav.courses-nav(
+          aria-label="Направления обучения"
+        )
+          ul.courses-nav__list
+            li.courses-nav__item
+              a.courses-nav__link(href="#")
+                span.courses-nav__text
+                  | Дизайн
+                span.courses-nav__icon(
+                  aria-hidden="true"
+                )
+
+            li.courses-nav__item
+              a.courses-nav__link(href="#")
+                span.courses-nav__text
+                  | Программирование
+                span.courses-nav__icon(
+                  aria-hidden="true"
+                )
+
+            li.courses-nav__item
+              a.courses-nav__link(href="#")
+                span.courses-nav__text
+                  | Аналитика
+                span.courses-nav__icon(
+                  aria-hidden="true"
+                )
+
+            li.courses-nav__item
+              a.courses-nav__link(href="#")
+                span.courses-nav__text
+                  | Менеджмент
+                span.courses-nav__icon(
+                  aria-hidden="true"
+                )
+
+            li.courses-nav__item
+              a.courses-nav__link(href="#")
+                span.courses-nav__text
+                  | Маркетинг
+                span.courses-nav__icon(
+                  aria-hidden="true"
+                )
+
+            li.courses-nav__item
+              a.courses-nav__link(href="#")
+                span.courses-nav__text
+                  | Финансы
+                span.courses-nav__icon(
+                  aria-hidden="true"
+                )
