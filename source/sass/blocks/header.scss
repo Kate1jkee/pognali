@@ -1,10 +1,16 @@
 .header {
-  padding: 28px 0;
+  display: flex;
+  flex-direction: column;
 
   background-color: $color-neon-blue;
 
-  .container {
+  &__top {
     display: flex;
+    align-items: center;
+  }
+
+  &__main-nav {
+  margin-left: auto;
   }
 
   &__logo {
