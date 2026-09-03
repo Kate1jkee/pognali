@@ -1,0 +1,43 @@
+.advantage {
+  &__button {
+    display: grid;
+    grid-template-columns: 45px minmax(0, 1fr);
+    grid-template-areas:
+      "icon title"
+      "icon description";
+    align-items: start;
+    width: 100%;
+    padding: 0;
+
+    text-align: left;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    display: flex;
+    grid-area: icon;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+    background-color: #678cf8;
+  }
+
+  &__title {
+    grid-area: title;
+  }
+
+  &__description {
+    grid-area: description;
+  }
+
+  &__icon-svg {
+    display: block;
+  }
+}

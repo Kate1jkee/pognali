@@ -2,4 +2,24 @@
   &__container {
     display: flex;
   }
+
+  &__button {
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+
+    background-color: #678cf8;
+    border-radius: 50%;
+  }
+
+  &__button-svg {
+    display: block;
+  }
 }

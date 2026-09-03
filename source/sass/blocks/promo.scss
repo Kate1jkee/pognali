@@ -4,4 +4,9 @@
     display: flex;
     align-items: center;
   }
+
+  &__picture {
+    display: block;
+    flex-shrink: 0;
+  }
 }

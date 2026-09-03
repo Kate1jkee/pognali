@@ -19,90 +19,108 @@ block main
           p.hero__description
             | Изучение тем на вебинарах с преподавателями, личные консультации с наставником. После прохождения курса с наставником. После прохождения курса
           a.hero__button.btn(href="#")
-            | Сравнить курсы
+            span.hero__button-text
+              | Сравнить курсы
+            span.hero__button-icon
+              +icon("icon-courses", 19, 19).hero__button-svg
         div.hero__visual.visual
-          img.visual__image(
-            src=""
-            srcset=""
-            width="24"
-            height="24"
-            alt=""
-          )
+          +picture(
+            "content",
+            "title-picture",
+            "png",
+            578,
+            646,
+            ""
+          )(class="visual__picture")
           div.visual__rating.rating
-            div.rating__container
-              h3.rating__title
-                | UX/UI designer
-              p.rating__description
-                | UX/UI-дизайнер — одна из самых востребованных профессий 2020 года
-              span.rating__star
-            div.rating__wrapper
-              span.rating__salary
-              span.rating__employers
+            div.rating__content
+              div.rating__container
+                div.rating__heading
+                  h3.rating__title
+                    | UX/UI designer
+                  div.rating__stars(
+                    role="img"
+                    aria-label="Рейтинг: 5 из 5"
+                  )
+                    each star in [1, 2, 3, 4, 5]
+                      +icon("icon-star", 13, 13).rating__star
+                p.rating__description
+                  | UX/UI-дизайнер — одна из самых востребованных профессий 2020 года
+              div.rating__wrapper
+                span.rating__salary
+                  |120 000 рублей
+                span.rating__employers
+                  |1 561 компания
             ul.rating__list
               li.rating__item
                 a.rating__link(
                   href="#"
-                  aria-label="Перейти к курсам Нетология"
+                  aria-label="Перейти к курсам Skillbox"
                 )
-                  img.rating__image(
-                    src=""
-                    srcset=""
-                    width="24"
-                    height="24"
-                    alt="Нетология"
-                  )
+                  +picture(
+                    "content",
+                    "skillbox",
+                    "png",
+                    24,
+                    24,
+                    "Skillbox"
+                  )(class="rating__picture")
+                  span.rating__scale
+              li.rating__item
+                a.rating__link(
+                  href="#"
+                  aria-label="Перейти к курсам SkillFactory"
+                )
+                  +picture(
+                    "content",
+                    "skill-factory",
+                    "png",
+                    24,
+                    24,
+                    "SkillFactory"
+                  )(class="rating__picture")
+                  span.rating__scale
+              li.rating__item
+                a.rating__link(
+                  href="#"
+                  aria-label="Перейти к курсам GeekBrains"
+                )
+                  +picture(
+                    "content",
+                    "geek-brains",
+                    "png",
+                    24,
+                    24,
+                    "GeekBrains"
+                  )(class="rating__picture")
                   span.rating__scale
               li.rating__item
                 a.rating__link(
                   href="#"
                   aria-label="Перейти к курсам Нетология"
                 )
-                  img.rating__image(
-                    src=""
-                    srcset=""
-                    width="24"
-                    height="24"
-                    alt="Нетология"
-                  )
+                  +picture(
+                    "content",
+                    "netology",
+                    "png",
+                    24,
+                    24,
+                    "Нетология"
+                  )(class="rating__picture")
                   span.rating__scale
               li.rating__item
                 a.rating__link(
                   href="#"
                   aria-label="Перейти к курсам Нетология"
                 )
-                  img.rating__image(
-                    src=""
-                    srcset=""
-                    width="24"
-                    height="24"
-                    alt="Нетология"
-                  )
-                  span.rating__scale
-              li.rating__item
-                a.rating__link(
-                  href="#"
-                  aria-label="Перейти к курсам Нетология"
-                )
-                  img.rating__image(
-                    src=""
-                    srcset=""
-                    width="24"
-                    height="24"
-                    alt="Нетология"
-                  )
-                  span.rating__scale
-              li.rating__item
-                a.rating__link(
-                  href="#"
-                  aria-label="Перейти к курсам Нетология"
-                )
-                  img.rating__image(
-                    src=""
-                    srcset=""
-                    width="24"
-                    height="24"
-                    alt="Нетология"
-                  )
+                  +picture(
+                    "content",
+                    "skysmart",
+                    "png",
+                    24,
+                    24,
+                    "Skysmart"
+                  )(class="rating__picture")
                   span.rating__scale
     section.main__courses.courses
       div.courses__container.container
@@ -113,13 +131,14 @@ block main
             a.course__link(
               href="#"
             )
-              img.course__icon(
-                src=""
-                srcset=""
-                width="50"
-                height="50"
-                alt=""
-              )
+              +picture(
+                "content",
+                "design",
+                "png",
+                82,
+                79,
+                ""
+              )(class="course__icon")
               h3.course__title
                 | Дизайн
               ul.course__topics
@@ -147,13 +166,14 @@ block main
             a.course__link(
               href="#"
             )
-              img.course__icon(
-                src=""
-                srcset=""
-                width="50"
-                height="50"
-                alt=""
-              )
+              +picture(
+                "content",
+                "programming",
+                "png",
+                70,
+                58,
+                ""
+              )(class="course__icon")
               h3.course__title
                 | Программирование
               ul.course__topics
@@ -179,13 +199,14 @@ block main
             a.course__link(
               href="#"
             )
-              img.course__icon(
-                src=""
-                srcset=""
-                width="50"
-                height="50"
-                alt=""
-              )
+              +picture(
+                "content",
+                "management",
+                "png",
+                61,
+                64,
+                ""
+              )(class="course__icon")
               h3.course__title
                 | Менеджмент
               ul.course__topics
@@ -213,13 +234,14 @@ block main
             a.course__link(
               href="#"
             )
-              img.course__icon(
-                src=""
-                srcset=""
-                width="50"
-                height="50"
-                alt=""
-              )
+              +picture(
+                "content",
+                "analytics",
+                "png",
+                67,
+                64,
+                ""
+              )(class="course__icon")
               h3.course__title
                 | Аналитика
               ul.course__topics
@@ -245,13 +267,14 @@ block main
             a.course__link(
               href="#"
             )
-              img.course__icon(
-                src=""
-                srcset=""
-                width="50"
-                height="50"
-                alt=""
-              )
+              +picture(
+                "content",
+                "marketing",
+                "png",
+                79,
+                68,
+                ""
+              )(class="course__icon")
               h3.course__title
                 | Маркетинг
               ul.course__topics
@@ -279,13 +302,14 @@ block main
             a.course__link(
               href="#"
             )
-              img.course__icon(
-                src=""
-                srcset=""
-                width="50"
-                height="50"
-                alt=""
-              )
+              +picture(
+                "content",
+                "finance",
+                "png",
+                62,
+                67,
+                ""
+              )(class="course__icon")
               h3.course__title
                 | Финансы
               ul.course__topics
@@ -316,13 +340,14 @@ block main
             | Агрегируем курсы по самым актуальным темам для новичков и практикующих специалистов.
           div.promo__content
             div.promo__overview
-              img.promo__image(
-                src=""
-                srcset=""
-                width="24"
-                height="24"
-                alt=""
-              )
+              +picture(
+                "content",
+                "user",
+                "png",
+                277,
+                249,
+                ""
+              )(class="promo__picture")
               h3.promo__subtitle
                 | 300+ довольных пользователей
               p.promo__description
@@ -331,22 +356,37 @@ block main
               ul.advantages__list
                 li.advantages__item.advantage
                   button.advantage__button(type="button")
-                    span.advantage__title
+                    span.advantage__icon
+                      +icon(
+                        "icon-user",
+                        26,
+                        26
+                      ).advantage__icon-svg
+                    strong.advantage__title
                       | Довольные пользователи
                     span.advantage__description
                       | Изучение тем на вебинарах с преподавателями, наставником. После прохождения курса вы будете
-                    span.advantage__icon
                 li.advantages__item.advantage
                   button.advantage__button(type="button")
-                    span.advantage__title
+                    span.advantage__icon
+                      +icon(
+                        "icon-courses",
+                        19,
+                        19
+                      ).advantage__icon-svg
+                    strong.advantage__title
                       | Образовательные курсы
                     span.advantage__description
                       | Изучение тем на вебинарах с преподавателями, наставником. После прохождения курса вы будете
-                    span.advantage__icon
                 li.advantages__item.advantage
                   button.advantage__button(type="button")
-                    span.advantage__title
+                    span.advantage__icon
+                     +icon(
+                        "icon-mentor",
+                        14,
+                        21
+                      ).advantage__icon-svg
+                    strong.advantage__title
                       | Менторы из больших компаний
                     span.advantage__description
                       | Изучение тем на вебинарах с преподавателями, наставником. После прохождения курса вы будете
-                    span.advantage__icon
