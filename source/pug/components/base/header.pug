@@ -36,81 +36,85 @@ mixin header(headerMods, currentUrl)
                     a.main-nav__link(href=link.href)= link.text
 
   header.header
-    div.header__top.container
-      span.header__logo
-        img.header__logo-image(
-          src="img/content/logo.svg"
-          width="100"
-          height="30"
-          alt=""
-        )
-        span.header__logo-text
-          | FindEdu
-      nav.header__main-nav.main-nav(
-        aria-label="Основная навигация"
-      )
-        ul.main-nav__list
-          li.main-nav__item
-            a.main-nav__link(href="#")
-              | Главная
+    div.header__top
+      div.container
+        div.header__top-wrapper
+          span.header__logo
+            img(
+              src="img/content/logo.svg"
+              width="34"
+              height="39"
+              alt=""
+            )
+            span.header__logo-text
+              | FindEdu
+          nav.header__main-nav.main-nav(
+            aria-label="Основная навигация"
+          )
+            ul.main-nav__list
+              li.main-nav__item
+                a.main-nav__link(href="#")
+                  | Главная
 
-          li.main-nav__item
-            a.main-nav__link(href="#")
-              | Курсы
+              li.main-nav__item
+                a.main-nav__link(href="#")
+                  | Курсы
 
-          li.main-nav__item
-            a.main-nav__link(href="#")
-              | Блог
+              li.main-nav__item
+                a.main-nav__link(href="#")
+                  | Блог
 
-    div.header__bottom.container
-      nav.header__courses-nav.courses-nav(
-        aria-label="Направления обучения"
-      )
-        ul.courses-nav__list
-          li.courses-nav__item
-            a.courses-nav__link(href="#")
-              span.courses-nav__text
-                | Дизайн
-              span.courses-nav__icon(
-                aria-hidden="true"
-              )
+    div.header__bottom
+      div.container
+        div.header__bottom-wrapper
+          nav.header__courses-nav.courses-nav(
+            aria-label="Направления обучения"
+          )
+            ul.courses-nav__list
+              li.courses-nav__item
+                a.courses-nav__link(href="#")
+                  span.courses-nav__text
+                    | Дизайн
+                  span.courses-nav__icon(
+                    aria-hidden="true"
+                  )
 
-          li.courses-nav__item
-            a.courses-nav__link(href="#")
-              span.courses-nav__text
-                | Программирование
-              span.courses-nav__icon(
-                aria-hidden="true"
-              )
+              li.courses-nav__item
+                a.courses-nav__link(href="#")
+                  span.courses-nav__text
+                    | Программирование
+                  span.courses-nav__icon(
+                    aria-hidden="true"
+                  )
 
-          li.courses-nav__item
-            a.courses-nav__link(href="#")
-              span.courses-nav__text
-                | Аналитика
-              span.courses-nav__icon(
-                aria-hidden="true"
-              )
+              li.courses-nav__item
+                a.courses-nav__link(href="#")
+                  span.courses-nav__text
+                    | Аналитика
+                  span.courses-nav__icon(
+                    aria-hidden="true"
+                  )
 
-          li.courses-nav__item
-            a.courses-nav__link(href="#")
-              span.courses-nav__text
-                | Менеджмент
-              span.courses-nav__icon(
-                aria-hidden="true"
-              )
+              li.courses-nav__item
+                a.courses-nav__link(href="#")
+                  span.courses-nav__text
+                    | Менеджмент
+                  span.courses-nav__icon(
+                    aria-hidden="true"
+                  )
 
-          li.courses-nav__item
-            a.courses-nav__link(href="#")
-              span.courses-nav__text
-                | Маркетинг
-              span.courses-nav__icon(
-                aria-hidden="true"
-              )
+              li.courses-nav__item
+                a.courses-nav__link(href="#")
+                  span.courses-nav__text
+                    | Маркетинг
+                  span.courses-nav__icon(
+                    aria-hidden="true"
+                  )
 
-          li.courses-nav__item
-            a.courses-nav__link(href="#")
-              span.courses-nav__text
-                | Финансы
-              span.courses-nav__icon(
-                aria-hidden="true"
-              )
+              li.courses-nav__item
+                a.courses-nav__link(href="#")
+                  span.courses-nav__text
+                    | Финансы
+                  span.courses-nav__icon(
+                    aria-hidden="true"
+                  )

@@ -5,15 +5,46 @@
   background-color: $color-default-white;
 
   &__top {
+    padding-top: 38px;
+    padding-bottom: 41px;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  &__top-wrapper {
     display: flex;
     align-items: center;
   }
 
   &__main-nav {
-  margin-left: auto;
+    flex-grow: 1;
+    margin-left: 0;
   }
 
   &__logo {
-    color: $color-default-white;
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 398px;
+    align-items: center;
+    gap: 8px;
+
+    color: $color-denim;
+
+    img {
+      display: block;
+      width: 34px;
+      height: 39px;
+    }
+  }
+
+  &__logo-text {
+    font-size: 19px;
+    line-height: 23px;
+    font-weight: 600;
+  }
+
+  &__bottom {
+    padding-top: 38px;
+    padding-bottom: 41px;
   }
 }

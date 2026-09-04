@@ -6,13 +6,18 @@
       "icon title"
       "icon description";
     align-items: start;
+    column-gap: 20px;
+    row-gap: 8px;
     width: 100%;
-    padding: 0;
+    padding: 24px;
 
+    font-family: inherit;
     text-align: left;
+    color: $color-charcoal;
 
-    background-color: transparent;
+    background-color: $color-snow;
     border: none;
+    border-radius: 20px;
     cursor: pointer;
   }
 

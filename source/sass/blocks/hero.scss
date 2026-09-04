@@ -1,11 +1,21 @@
 .hero {
-  &__container {
-    display: flex;
+  &__wrapper {
+    position: relative;
+
+    min-height: 802px;
   }
 
   &__button {
     align-items: center;
+    justify-content: space-between;
     gap: 24px;
+    min-width: 306px;
+    padding-left: 60px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 46px;
+    border-radius: 20px;
+    text-decoration: none;
   }
 
   &__button-icon {
@@ -15,11 +25,46 @@
     width: 45px;
     height: 45px;
 
-    background-color: #678cf8;
+    background-color: $color-cornflower-blue;
     border-radius: 50%;
+
+    svg {
+      display: block;
+    }
   }
 
-  &__button-svg {
-    display: block;
+  &__content {
+    position: relative;
+    z-index: 2;
+
+    width: 737px;
+    padding-top: 165px;
+  }
+
+  &__visual {
+    position: absolute;
+    z-index: 1;
+    top: -32px;
+    right: 40px;
+  }
+
+  &__title {
+    max-width: 720px;
+    margin: 0 0 35px;
+
+    font-size: 50px;
+    line-height: 61px;
+    font-weight: 800;
+    color: #181515;
+  }
+
+  &__description {
+    max-width: 463px;
+    margin: 0 0 47px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    color: #9e9e9e;
   }
 }

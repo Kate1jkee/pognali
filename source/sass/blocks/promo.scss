@@ -1,12 +1,75 @@
 .promo {
+  margin-bottom: 123px;
+
+  &__wrapper {
+    padding: 64px;
+
+    background-color: $color-default-white;
+    border-radius: 32px;
+  }
+
+  &__title {
+    max-width: 900px;
+    margin: 0 auto 64px;
+
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+    text-align: center;
+    color: $color-nero;
+  }
   
   &__content {
     display: flex;
     align-items: center;
+    gap: 64px;
   }
 
-  &__picture {
-    display: block;
-    flex-shrink: 0;
+  &__overview {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  &__image {
+    max-width: 277px;
+    margin-bottom: 32px;
+
+    picture {
+      display: block;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__subtitle {
+    margin: 0 0 24px;
+
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    color: $color-royal-blue;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 24px;
+    color: $color-charcoal;
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 16px;
+    }
+  }
+
+  &__advantages {
+    flex: 1 1 0;
+    min-width: 0;
   }
 }

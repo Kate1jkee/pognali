@@ -1,0 +1,21 @@
+.visual {
+  width: 578px;
+
+  > picture {
+      display: block;
+
+      img {
+          display: block;
+          width: 100%;
+          height: auto;
+      }  
+  }
+
+  &__rating {
+    position: absolute;
+    top: 529px;
+    left: 72px;
+
+    width: 470px;
+  }
+}
