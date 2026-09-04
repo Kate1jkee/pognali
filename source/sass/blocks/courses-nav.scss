@@ -10,6 +10,29 @@
 
     list-style: none;
   }
+
+  &__item {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    column-gap: 20px;
+    min-width: 0;
+
+    &:not(:last-child)::after {
+      content: "";
+
+      flex: 0 0 1px;
+      height: 24px;
+      margin: 0 auto;
+
+      background-color: #eaeaea;
+    }
+
+    &:last-child {
+      flex: 0 1 auto;
+    }
+  }
+  
   &__link {
      font-weight: 500;
     font-size: 16px;

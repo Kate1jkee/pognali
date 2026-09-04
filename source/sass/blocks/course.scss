@@ -52,7 +52,16 @@
 
     margin: 0;
     padding: 0;
-
     list-style: none;
+  }
+
+  &__topic {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+    > svg {
+      flex-shrink: 0;
+    }
   }
 }

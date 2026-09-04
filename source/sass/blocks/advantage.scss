@@ -32,6 +32,10 @@
 
     border-radius: 50%;
     background-color: #678cf8;
+
+    svg {
+      display: block;
+    }
   }
 
   &__title {

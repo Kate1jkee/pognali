@@ -1,0 +1,36 @@
+mixin hero()
+  -
+    const ratingSchools = [
+      { image: "skillbox", name: "Skillbox" },
+      { image: "skill-factory", name: "SkillFactory" },
+      { image: "geek-brains", name: "GeekBrains" },
+      { image: "netology", name: "Нетология" },
+      { image: "skysmart", name: "Skysmart" }
+    ];
+
+  section.main__hero.hero
+    div.container
+      div.hero__wrapper
+        div.hero__content
+          h1.hero__title
+            | FindEdu - все для выбора новой профессии в одном месте
+          p.hero__description
+            | Изучение тем на вебинарах с преподавателями, личные консультации с наставником. После прохождения курса с наставником. После прохождения курса
+          +btn({ href: "#" })(class="hero__button")
+            span.hero__button-text
+              | Сравнить курсы
+            span.hero__button-icon
+              +icon("icon-courses", 19, 19)
+
+        div.hero__visual.visual
+          h2.visually-hidden
+            | Сравнение направления UX/UI designer в разных школах
+          +picture(
+            "content",
+            "title-picture",
+            "png",
+            578,
+            646,
+            ""
+          )
+          +rating(ratingSchools)(class="visual__rating")

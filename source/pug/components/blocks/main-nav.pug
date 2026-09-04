@@ -1,0 +1,15 @@
+mixin mainNav()
+  -
+    const mainNavLinks = [
+      { text: "Главная", href: "#" },
+      { text: "Курсы", href: "#" },
+      { text: "Блог", href: "#" }
+    ];
+
+  nav.main-nav(
+    aria-label="Основная навигация"
+  )&attributes(attributes)
+    ul.main-nav__list
+      each link in mainNavLinks
+        li.main-nav__item
+          a.main-nav__link(href=link.href)= link.text

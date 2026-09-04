@@ -1,0 +1,22 @@
+mixin coursesNav()
+  -
+    const coursesNavLinks = [
+      { text: "Дизайн", href: "#" },
+      { text: "Программирование", href: "#" },
+      { text: "Аналитика", href: "#" },
+      { text: "Менеджмент", href: "#" },
+      { text: "Маркетинг", href: "#" },
+      { text: "Финансы", href: "#" }
+    ];
+
+  nav.courses-nav(
+    aria-label="Направления обучения"
+  )&attributes(attributes)
+    ul.courses-nav__list
+      each link in coursesNavLinks
+        li.courses-nav__item
+          a.courses-nav__link(href=link.href)
+            span.courses-nav__text= link.text
+            span.courses-nav__icon(
+              aria-hidden="true"
+            )

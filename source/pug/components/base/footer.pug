@@ -1,4 +1,49 @@
 mixin footer(footerMods)
+  -
+    const footerCategories = [
+      { text: "Дизайн", href: "#" },
+      { text: "Программирование", href: "#" },
+      { text: "Маркетинг", href: "#" },
+      { text: "Менеджмент", href: "#" },
+      { text: "Аналитика", href: "#" }
+    ];
+
+  -
+    const footerDirections = [
+      { text: "Web-разработка", href: "#" },
+      { text: "Java-разработка", href: "#" },
+      { text: "Python-разработка", href: "#" },
+      { text: "SMM-продвижение", href: "#" },
+      { text: "Графический дизайн", href: "#" },
+      { text: "Дизайн интерьеров", href: "#" }
+    ];
+
+  -
+    const footerInfoLinks = [
+      { text: "О проекте", href: "#" },
+      { text: "Политика конфиденциальности", href: "#" },
+      { text: "Пользовательское соглашение", href: "#" }
+    ]; 
+
+  -
+    const footerGroups = [
+      {
+        title: "Категории",
+        id: "footer-categories-title",
+        links: footerCategories
+      },
+      {
+        title: "Популярные направления",
+        id: "footer-directions-title",
+        links: footerDirections
+      },
+      {
+        title: "Общая информация",
+        id: "footer-info-title",
+        links: footerInfoLinks
+      }
+    ];
+
   footer.footer(class=footerMods)
     div.container
       div.footer__wrapper
@@ -17,82 +62,14 @@ mixin footer(footerMods)
               | FindEdu
           p.footer__copyright
             | © FindEdu 2022.
-            br
-            | Все права защищены.
+            span.footer__rights
+              | Все права защищены.
 
-        nav.footer__nav(
-          aria-labelledby="footer-categories-title"
-        )
-          h2.footer__title#footer-categories-title
-            | Категории
+        each group in footerGroups
+          nav.footer__nav(aria-labelledby=group.id)
+            h2.footer__title(id=group.id)= group.title
 
-          ul.footer__list
-            li.footer__item
-              a.footer__link(href="#")
-                | Дизайн
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Программирование
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Маркетинг
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Менеджмент
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Аналитика
-
-        nav.footer__nav(
-          aria-labelledby="footer-directions-title"
-        )
-          h2.footer__title#footer-directions-title
-            | Популярные направления
-
-          ul.footer__list
-            li.footer__item
-              a.footer__link(href="#")
-                | Web-разработка
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Java-разработка
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Python-разработка
-
-            li.footer__item
-              a.footer__link(href="#")
-                | SMM-продвижение
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Графический дизайн
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Дизайн интерьеров
-
-        nav.footer__nav(
-          aria-labelledby="footer-info-title"
-        )
-          h2.footer__title#footer-info-title
-            | Общая информация
-
-          ul.footer__list
-            li.footer__item
-              a.footer__link(href="#")
-                | О проекте
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Политика конфиденциальности
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Пользовательское соглашение
+            ul.footer__list
+              each link in group.links
+                li.footer__item
+                  a.footer__link(href=link.href)= link.text

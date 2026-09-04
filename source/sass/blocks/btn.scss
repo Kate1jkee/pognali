@@ -1,7 +1,16 @@
 .btn {
   display: inline-flex;
   padding: 10px 20px;
-
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 306px;
+  padding-left: 60px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 46px;
+  border-radius: 20px;
+  text-decoration: none;
   color: $color-default-white;
 
   background-color: $color-royal-blue;

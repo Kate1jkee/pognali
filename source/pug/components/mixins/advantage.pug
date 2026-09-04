@@ -1,0 +1,11 @@
+mixin advantage(item)
+  li.advantage&attributes(attributes)
+    button.advantage__button(type="button")
+      span.advantage__icon
+        +icon(
+          item.icon,
+          item.width,
+          item.height
+        )
+      strong.advantage__title= item.title
+      span.advantage__description= item.description

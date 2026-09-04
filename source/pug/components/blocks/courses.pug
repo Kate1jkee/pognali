@@ -1,0 +1,126 @@
+mixin courses()
+  -
+    const courseDirections = [
+      {
+        title: "Дизайн",
+        image: "design",
+        width: 82,
+        height: 79,
+        href: "#",
+        topics: [
+          "Web-дизайн",
+          "Дизайн интерьеров",
+          "3D-моделирование",
+          "Motion-дизайн",
+          "Графический дизайн",
+          "3D-анимация",
+          "UX/UI дизайн",
+          "ArchiCAD",
+          "Геймдизайн",
+          "Adobe After Effects"
+        ]
+      },
+      {
+        title: "Программирование",
+        image: "programming",
+        width: 70,
+        height: 58,
+        href: "#",
+        topics: [
+          "Web-разработка",
+          "DevOps",
+          "JavaScript-разработка",
+          "ReactJS",
+          "Мобильная разработка",
+          "GIT",
+          "Системное администрирование",
+          "Верстка на HTML/CSS",
+          "Unity"
+        ]
+      },
+      {
+        title: "Менеджмент",
+        image: "management",
+        width: 61,
+        height: 64,
+        href: "#",
+        topics: [
+          "Product-менеджмент",
+          "Личностный рост",
+          "Управление разработкой и IT",
+          "AGILE",
+          "Бренд-менеджмент",
+          "Запуск стартапов",
+          "Финансовая аналитика",
+          "Бухгалтерия",
+          "Управление в SMM",
+          "IT-рекрутмент"
+        ]
+      },
+      {
+        title: "Аналитика",
+        image: "analytics",
+        width: 67,
+        height: 64,
+        href: "#",
+        topics: [
+          "Data Science",
+          "Продуктовая аналитика",
+          "Web-аналитика",
+          "Системная аналитика",
+          "Бизнес-аналитика",
+          "Аналитика на R",
+          "Работа с Excel и Google таблицами",
+          "Машинное обучение",
+          "Нейронные сети"
+        ]
+      },
+      {
+        title: "Маркетинг",
+        image: "marketing",
+        width: 79,
+        height: 68,
+        href: "#",
+        topics: [
+          "Web-аналитика",
+          "SMM-продвижение",
+          "Интернет-маркетинг",
+          "PR-менеджмент",
+          "SEO-продвижение",
+          "Копирайтинг",
+          "Контент-маркетинг",
+          "SERM и репутация",
+          "Маркетинговая аналитика",
+          "Google Ads"
+        ]
+      },
+      {
+        title: "Финансы",
+        image: "finance",
+        width: 62,
+        height: 67,
+        href: "#",
+        topics: [
+          "Web-аналитика",
+          "SMM-продвижение",
+          "Интернет-маркетинг",
+          "PR-менеджмент",
+          "SEO-продвижение",
+          "Копирайтинг",
+          "Контент-маркетинг",
+          "SERM и репутация",
+          "Маркетинговая аналитика",
+          "Google Ads"
+        ]
+      }
+    ];  
+
+  section.main__courses.courses
+    div.container
+      div.courses__wrapper
+        h2.courses__title
+          | Выбери направление
+
+        ul.courses__list
+          each direction in courseDirections
+            +course(direction)(class="courses__item")
