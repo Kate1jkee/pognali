@@ -3,6 +3,7 @@
     position: relative;
 
     min-height: 802px;
+    margin-bottom: 108px;
   }
 
   &__button-icon {
@@ -24,7 +25,8 @@
     position: relative;
     z-index: 2;
 
-    width: 737px;
+    width: 58%;
+    max-width: 737px;
     padding-top: 165px;
   }
 
@@ -32,11 +34,13 @@
     position: absolute;
     z-index: 1;
     top: -32px;
-    right: 40px;
+    right: -53px;
+    width: 46%;
+    max-width: 646px;
   }
 
   &__title {
-    max-width: 720px;
+    max-width: 737px;
     margin: 0 0 35px;
 
     font-size: 50px;

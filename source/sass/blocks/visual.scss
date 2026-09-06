@@ -1,5 +1,5 @@
 .visual {
-  width: 578px;
+  width: 100%;
 
   > picture {
       display: block;
@@ -12,10 +12,12 @@
   }
 
   &__rating {
-    position: absolute;
-    top: 529px;
-    left: 72px;
+    position: relative;
+    z-index: 1;
 
-    width: 470px;
+    width: 75.5%;
+    max-width: 488px;
+    margin-top: -25px;
+    margin-left: 53px;
   }
 }

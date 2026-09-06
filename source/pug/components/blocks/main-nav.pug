@@ -1,9 +1,9 @@
 mixin mainNav()
   -
     const mainNavLinks = [
-      { text: "Главная", href: "#" },
-      { text: "Курсы", href: "#" },
-      { text: "Блог", href: "#" }
+      { text: "Главная", href: "#", isActive: true },
+      { text: "Курсы", href: "#", isActive: false },
+      { text: "Блог", href: "#", isActive: false }
     ];
 
   nav.main-nav(
@@ -12,4 +12,8 @@ mixin mainNav()
     ul.main-nav__list
       each link in mainNavLinks
         li.main-nav__item
-          a.main-nav__link(href=link.href)= link.text
+          a.main-nav__link(
+            class=link.isActive ? "main-nav__link--active" : ""
+            href=link.href
+            aria-current=link.isActive ? "page" : false
+          )= link.text

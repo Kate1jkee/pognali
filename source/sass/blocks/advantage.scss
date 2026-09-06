@@ -1,52 +1,77 @@
 .advantage {
   &__button {
     display: grid;
-    grid-template-columns: 45px minmax(0, 1fr);
+    grid-template-columns: 60px minmax(0, 1fr);
     grid-template-areas:
       "icon title"
       "icon description";
     align-items: start;
-    column-gap: 20px;
-    row-gap: 8px;
+    column-gap: 23px;
+    row-gap: 4px;
     width: 100%;
-    padding: 24px;
+    min-height: 142px;
+    box-sizing: border-box;
+    padding: 22px 24px;
 
     font-family: inherit;
     text-align: left;
     color: $color-charcoal;
 
     background-color: $color-snow;
+    box-shadow: 0 3.11px 31.11px rgba(112, 144, 176, 0.02);
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     cursor: pointer;
   }
+
+  &--active &__button {
+    color: $color-default-white;
+    background-color: #486dd8;
+  }
+  
 
   &__icon {
     display: flex;
     grid-area: icon;
-    align-self: center;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
-
-    border-radius: 50%;
-    background-color: #678cf8;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #f8f7fc;
+    border: 1px solid #f0f0f0;
+    color: #655bd5;
 
     svg {
       display: block;
     }
   }
 
+  &--active &__icon {
+    background-color: #567ae4;
+    border-color: transparent;
+    color: $color-default-white;
+  }
+
   &__title {
     grid-area: title;
+
+    font-size: 25px;
+    line-height: 40px;
+    font-weight: 400;
   }
 
   &__description {
     grid-area: description;
+
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #747474;
   }
 
-  &__icon-svg {
-    display: block;
+  &--active &__description {
+    color: #97b2fe;
   }
 }

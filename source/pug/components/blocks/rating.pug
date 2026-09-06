@@ -32,4 +32,6 @@ mixin rating(schools)
             24,
             school.name
           )
-          span.rating__scale
+          span.rating__scale(
+            class=`rating__scale--${school.modifier}`
+          )

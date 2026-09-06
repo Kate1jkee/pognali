@@ -13,9 +13,10 @@ mixin course(direction)
         h3.course__title= direction.title
 
       ul.course__topics
-        each topic, index in direction.topics
+        each row in direction.topics
           li.course__topic
-            span.course__topic-text= topic
+            each topic, index in row
+              if index > 0
+                +icon("icon-separator", 16, 16)
 
-            if index < direction.topics.length - 1
-              +icon("icon-separator", 16, 16)
+              span.course__topic-text= topic

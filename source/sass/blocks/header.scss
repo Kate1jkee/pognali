@@ -16,22 +16,27 @@
   }
 
   &__main-nav {
-    flex-grow: 1;
+    flex-grow: 1; 
+    flex-shrink: 1; 
+    flex-basis: auto;
+    min-width: 0;
     margin-left: 0;
   }
 
   &__logo {
     display: flex;
     flex-grow: 0;
-    flex-shrink: 0;
+    flex-shrink: 1;
     flex-basis: 398px;
     align-items: center;
     gap: 8px;
+    min-width: 0;
 
     color: $color-denim;
 
     img {
       display: block;
+      flex-shrink: 0;
       width: 34px;
       height: 39px;
     }

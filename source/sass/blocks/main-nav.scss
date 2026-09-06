@@ -3,7 +3,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 172px;
+    justify-content: flex-start;
+    gap: clamp(32px, 9vw, 172px);
     margin: 0;
     padding: 0;
 
@@ -16,8 +17,8 @@
     line-height: 19px;
     color: $color-charcoal;
 
-    &.is-active {
-      opacity: 0.6;
+    &--active {
+      color: $color-denim;
     }
   }
 

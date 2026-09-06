@@ -2,36 +2,76 @@
   &__link {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    width: 100%;
+    min-height: 425px;
     padding: 32px;
-
+    box-sizing: border-box;
     color: #181515;
     text-decoration: none;
 
     background-color: $color-default-white;
-    border-radius: 24px;
+    border-radius: 56px;
+    transition:
+      color $trans-default,
+      background-color $trans-default;
 
+    @include hover-focus {
+      color: $color-default-white;
+      background-color: var(--course-hover-color);
+
+      .course__title,
+      .course__topic-text {
+        color: $color-default-white;
+      }
     }
+  }
   
+  &--design &__link {
+    --course-hover-color: #82b4ff;
+    padding: 55px 28px 89px 37px;
+  } 
+  
+  &--programming &__link {
+    --course-hover-color: #ff89ad;
+    padding: 55px 45px 95px 35px;
+  }
+
+  &--management &__link {
+    --course-hover-color: #ffccbd;
+    padding: 55px 20px 94px 27px;
+  }
+
+  &--analytics &__link {
+    --course-hover-color: #ec5381;
+    padding: 55px 16px 94px 35px;
+  }
+
+  &--marketing &__link {
+    --course-hover-color: #ffab6d;
+    padding: 55px 25px 94px 29px;
+  }
+
+  &--finance &__link {
+    --course-hover-color: #6cb7f2;
+    padding: 55px 25px 94px 29px;
+  }
+
   &__heading {
     display: flex;
     align-items: center;
+    min-height: 55px; 
     gap: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 75px;
 
     > picture {
       display: flex;
-      flex: 0 0 82px;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
-      width: 82px;
-      height: 82px;
 
       img {
         display: block;
-        max-width: 100%;
-        max-height: 100%;
-
+        max-width: none;
         object-fit: contain;
       }
     }
@@ -40,28 +80,54 @@
   &__title {
     margin: 0;
 
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 25px;
+    line-height: 31px;
     font-weight: 600;
+    color: #2f2828;
+    transition: color $trans-default;
   }
 
   &__topics {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 16px;
+    gap: 2px 16px;
 
     margin: 0;
     padding: 0;
     list-style: none;
+
+    mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 20%,
+    rgba(0, 0, 0, 0.7) 55%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 20%,
+    rgba(0, 0, 0, 0.7) 55%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
   }
 
   &__topic {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-
+  color: #6b6b6b;
+  transition: color $trans-default;
     > svg {
       flex-shrink: 0;
     }
+  }
+
+  &__topic-text {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    color: inherit;
   }
 }
