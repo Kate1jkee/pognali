@@ -29,16 +29,19 @@ mixin footer(footerMods)
     const footerGroups = [
       {
         title: "Категории",
+        modifier: "categories",
         id: "footer-categories-title",
         links: footerCategories
       },
       {
         title: "Популярные направления",
+        modifier: "directions",
         id: "footer-directions-title",
         links: footerDirections
       },
       {
         title: "Общая информация",
+        modifier: "info",
         id: "footer-info-title",
         links: footerInfoLinks
       }
@@ -66,7 +69,10 @@ mixin footer(footerMods)
               | Все права защищены.
 
         each group in footerGroups
-          nav.footer__nav(aria-labelledby=group.id)
+          nav.footer__nav(
+            class=`footer__nav--${group.modifier}`
+            aria-labelledby=group.id
+          )
             h2.footer__title(id=group.id)= group.title
 
             ul.footer__list

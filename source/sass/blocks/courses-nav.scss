@@ -63,4 +63,46 @@
   &__dropdown[hidden] {
     display: none;
   }
+
+  @include vp-1023 {
+    
+  }
+
+  @include vp-767 {
+    &__list {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__item {
+      flex: none;
+      width: 100%;
+      min-height: 58px;
+
+      border-bottom: 1px solid #eaeaea;
+
+      &::after {
+        display: none;
+      }
+
+      &:last-child {
+        flex: none;
+        border-bottom: 0;
+      }
+    }
+
+    &__link {
+      justify-content: space-between;
+      width: 100%;
+      min-height: 58px;
+      padding: 0 20px;
+
+      text-align: left;
+    }
+
+    &__icon {
+      width: 6px;
+      height: 6px;
+    }
+  }
 }

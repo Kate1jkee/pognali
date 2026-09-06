@@ -1,13 +1,27 @@
-mixin courses() 
-
+mixin courses()
   section.main__courses.courses
     div.container
       div.courses__wrapper
         h2.courses__title
           | Выбери направление
 
-        ul.courses__list
-          each direction in courseDirections
+        ul.courses__list#courses-slider
+          each direction, index in courseDirections
             +course(direction)(
-              class=`courses__item course--${direction.modifier}`
+              class=`courses__item course--${direction.modifier}${index === 0 ? " course--active" : ""}`
             )
+
+        div.courses__controls
+          button.courses__control.courses__control--prev(
+            type="button"
+            aria-label="Показать предыдущую карточку"
+            aria-controls="courses-slider"
+          )
+            +icon("icon-back", 7, 12)
+
+          button.courses__control.courses__control--next(
+            type="button"
+            aria-label="Показать следующую карточку"
+            aria-controls="courses-slider"
+          )
+            +icon("icon-back", 7, 12)

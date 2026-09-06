@@ -65,4 +65,94 @@
     min-width: 0;
     min-height: 425px;
   }
+
+  &__controls {
+    display: none;
+  }
+
+  @include vp-1023 {
+    padding-bottom: 100px;
+
+    &__title {
+      margin-bottom: 40px;
+
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 20px;
+    }
+
+    &__item {
+      flex: 0 1 calc((100% - 20px) / 2);
+      min-width: 0;
+      min-height: 425px;
+    }
+  }
+
+  @include vp-767 {
+    padding-bottom: 80px;
+
+    &__title {
+      margin-bottom: 28px;
+
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    &__list {
+      display: block;
+
+      margin: 0;
+      padding: 0;
+    }
+
+    &__item {
+      display: none;
+      width: 280px;
+      min-height: 425px;
+      margin: 0 auto;
+    }
+
+    .course--active {
+      display: list-item;
+    }
+
+    &__controls {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      margin-top: 28px;
+    }
+
+    &__control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+
+      color: #181515;
+
+      background-color: #f8f7fc;
+      border: 1px solid #eeeeee;
+      border-radius: 50%;
+      cursor: pointer;
+
+      @include hover-focus {
+        color: $color-default-white;
+        background-color: #486dd8;
+        border-color: #486dd8;
+      }
+    }
+
+    &__control--next svg {
+      transform: rotate(180deg);
+    }
+  }
 }

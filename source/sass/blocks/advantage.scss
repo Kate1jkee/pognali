@@ -74,4 +74,29 @@
   &--active &__description {
     color: #97b2fe;
   }
+
+  @include vp-1023 {
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      min-height: 60px;
+      height: 60px;
+      padding: 0;
+
+      background-color: transparent;
+      border-radius: 20px;
+      box-shadow: none;
+    }
+
+    &--active &__button {
+      background-color: transparent;
+    }
+
+    &__title,
+    &__description {
+      display: none;
+    }
+  }
 }

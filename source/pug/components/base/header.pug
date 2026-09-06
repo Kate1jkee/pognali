@@ -36,7 +36,9 @@ mixin header(headerMods, currentUrl)
               | FindEdu
           +mainNav()(class="header__main-nav")
 
-    div.header__bottom
+    div.header__bottom(
+      id="courses-menu"
+    )
       div.container
         div.header__bottom-wrapper
           +coursesNav()(class="header__courses-nav")

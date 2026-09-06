@@ -77,4 +77,131 @@
     flex: 0 1 630px;
     min-width: 0;
   }
+
+  &__controls {
+    display: none;
+  }
+
+  @include vp-1023 {
+    margin-bottom: 100px;
+
+    &__wrapper {
+      min-height: 0;
+      padding: 48px;
+
+      border-radius: 48px;
+    }
+
+    &__title {
+      max-width: 720px;
+      margin-bottom: 40px;
+
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    &__content {
+      align-items: center;
+      gap: 32px;
+    }
+
+    &__overview {
+      flex: 1 1 auto;
+      max-width: 520px;
+
+      > picture {
+        margin-bottom: 40px;
+      }
+    }
+
+    &__subtitle {
+      margin: 0 0 20px;
+
+      font-size: 26px;
+      line-height: 32px;
+    }
+
+    &__description {
+      max-width: 400px;
+      margin-left: 0;
+
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    &__advantages {
+      flex: 0 0 60px;
+    }
+  }
+
+  @include vp-767 {
+    margin-bottom: 64px;
+
+    &__wrapper {
+      min-height: 0;
+      padding: 0;
+
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    &__title {
+      max-width: 280px;
+      margin: 0 auto 28px;
+
+      font-size: 20px;
+      line-height: 24px;
+      text-align: left;
+    }
+
+    &__content {
+      display: block;
+    }
+
+    &__overview {
+      width: 280px;
+      min-height: 439px;
+      margin: 0 auto;
+      padding: 0 16px 32px;
+      box-sizing: border-box;
+
+      background-color: #f8f7fc;
+      border: 1px solid #eeeeee;
+      border-radius: 34px;
+      box-shadow: 0 4px 20px rgba(134, 134, 134, 0.06);
+    }
+
+    &__advantages {
+      display: none;
+    }
+
+    &__controls {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      margin-top: 28px;
+    }
+
+    &__control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+
+      color: #181515;
+      background-color: #f8f7fc;
+      border: 1px solid #eeeeee;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    &__control--next {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
