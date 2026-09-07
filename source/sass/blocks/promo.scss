@@ -1,6 +1,7 @@
 .promo {
   margin-bottom: 123px;
-
+  position: relative;
+  z-index: 1;
   &__wrapper {
     width: 100%;
     min-height: 935px;
@@ -10,7 +11,7 @@
     background-color: $color-default-white;
     border-radius: 72px;
     box-shadow: 0 4px 20px rgba(134, 134, 134, 0.01);
-    }
+  }
 
   &__title {
     width: 100%;
@@ -23,7 +24,7 @@
     text-align: center;
     color: #302828;
   }
-  
+
   &__content {
     display: flex;
     align-items: flex-end;
@@ -34,6 +35,11 @@
     display: none;
     flex: 0 1 424px;
     min-width: 0;
+    display: none;
+
+    &.is-active {
+      display: block;
+    }
 
     > picture {
       display: block;
@@ -47,10 +53,6 @@
         height: auto;
       }
     }
-  }
-
-  &__overview--active {
-    display: block;
   }
 
   &__subtitle {
@@ -79,6 +81,10 @@
   }
 
   &__controls {
+    display: none;
+  }
+
+  &__slider {
     display: none;
   }
 
@@ -136,6 +142,7 @@
 
   @include vp-767 {
     margin-bottom: 64px;
+    padding-top: 36px;
 
     &__wrapper {
       min-height: 0;
@@ -148,7 +155,7 @@
 
     &__title {
       max-width: 280px;
-      margin: 0 auto 28px;
+      margin: 0 auto 56px;
 
       font-size: 20px;
       line-height: 24px;
@@ -156,20 +163,65 @@
     }
 
     &__content {
+      display: none;
+    }
+
+    &__slider {
       display: block;
     }
 
+    &__slide {
+      width: fit-content;
+    }
+
     &__overview {
-      width: 280px;
+      width: 100%;
+      max-width: 280px;
       min-height: 439px;
-      margin: 0 auto;
       padding: 0 16px 32px;
+      display: block;
       box-sizing: border-box;
 
       background-color: #f8f7fc;
       border: 1px solid #eeeeee;
       border-radius: 34px;
       box-shadow: 0 4px 20px rgba(134, 134, 134, 0.06);
+      overflow: visible;
+
+      > picture {
+        position: relative;
+        z-index: 1;
+
+        display: block;
+        width: calc(100% + 32px);
+        max-width: none;
+        margin: -36px 0 24px -16px;
+        overflow: visible;
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+
+          transform: translateY(-55px);
+        }
+      }
+    }
+
+    &__subtitle {
+      max-width: none;
+      margin: 0 0 16px;
+
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &__description {
+      max-width: none;
+      margin: 0;
+
+      font-size: 13px;
+      line-height: 20px;
     }
 
     &__advantages {
@@ -179,7 +231,7 @@
     &__controls {
       display: flex;
       justify-content: center;
-      gap: 36px;
+      gap: 16px;
       margin-top: 28px;
     }
 
@@ -187,15 +239,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
+
+      width: 40px;
+      height: 40px;
       padding: 0;
 
       color: #181515;
+
       background-color: #f8f7fc;
       border: 1px solid #eeeeee;
       border-radius: 50%;
       cursor: pointer;
+
+      @include hover-focus {
+        color: $color-default-white;
+
+        background-color: #486dd8;
+        border-color: #486dd8;
+      }
     }
 
     &__control--next {

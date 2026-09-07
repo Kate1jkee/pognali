@@ -1,10 +1,4 @@
 mixin mainNav()
-  -
-    const mainNavLinks = [
-      { text: "Главная", href: "#", isActive: true },
-      { text: "Курсы", href: "#", isActive: false },
-      { text: "Блог", href: "#", isActive: false }
-    ];
 
   nav.main-nav(
     aria-label="Основная навигация"
@@ -18,6 +12,7 @@ mixin mainNav()
       aria-label="Открыть меню"
       aria-expanded="false"
       aria-controls="courses-menu"
+      data-menu-toggle
     )
       +icon("icon-burger", 22, 12).main-nav__toggle-icon.main-nav__toggle-icon--burger
       +icon("icon-close", 24, 24).main-nav__toggle-icon.main-nav__toggle-icon--close
@@ -25,8 +20,9 @@ mixin mainNav()
     ul.main-nav__list
       each link in mainNavLinks
         li.main-nav__item
-          a.main-nav__link(
-            class=link.isActive ? "main-nav__link--active" : ""
-            href=link.href
-            aria-current=link.isActive ? "page" : false
-          )= link.text
+          - const isActive = link.href === currentUrl
+            a.main-nav__link(
+              class=isActive ? "main-nav__link--active" : ""
+              href=link.href
+              aria-current=isActive ? "page" : false
+            )= link.text

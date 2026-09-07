@@ -4,6 +4,7 @@
     flex-direction: column;
     width: 100%;
     min-height: 425px;
+    height: 100%;
     padding: 32px;
     box-sizing: border-box;
     color: #181515;
@@ -20,17 +21,17 @@
       background-color: var(--course-hover-color);
 
       .course__title,
-      .course__topic-text {
+      .course__topic {
         color: $color-default-white;
       }
     }
   }
-  
+
   &--design &__link {
     --course-hover-color: #82b4ff;
     padding: 55px 28px 89px 37px;
-  } 
-  
+  }
+
   &--programming &__link {
     --course-hover-color: #ff89ad;
     padding: 55px 45px 95px 35px;
@@ -59,7 +60,7 @@
   &__heading {
     display: flex;
     align-items: center;
-    min-height: 55px; 
+    min-height: 55px;
     gap: 16px;
     margin-bottom: 75px;
 
@@ -97,28 +98,28 @@
     list-style: none;
 
     mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 20%,
-    rgba(0, 0, 0, 0.7) 55%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
+      to bottom,
+      #000 0%,
+      #000 20%,
+      rgba(0, 0, 0, 0.7) 55%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
 
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 20%,
-    rgba(0, 0, 0, 0.7) 55%,
-    rgba(0, 0, 0, 0.15) 100%
-  );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 20%,
+      rgba(0, 0, 0, 0.7) 55%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
   }
 
   &__topic {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: #6b6b6b;
-  transition: color $trans-default;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #6b6b6b;
+    transition: color $trans-default;
     > svg {
       flex-shrink: 0;
     }
@@ -129,5 +130,77 @@
     font-size: 17px;
     line-height: 27px;
     color: inherit;
+  }
+
+  @include vp-1023 {
+    &__link {
+      color: $color-default-white;
+
+      background-color: var(--course-hover-color);
+
+      .course__title,
+      .course__topic {
+        color: $color-default-white;
+      }
+    }
+  }
+
+  @include vp-767 {
+    &__link {
+      min-height: 280px;
+
+      border-radius: 35px;
+    }
+
+    &--design &__link,
+    &--programming &__link,
+    &--management &__link,
+    &--analytics &__link,
+    &--marketing &__link,
+    &--finance &__link {
+      padding: 28px 16px 24px;
+    }
+
+    &__heading {
+      min-height: 40px;
+      gap: 12px;
+      margin-bottom: 28px;
+
+      > picture {
+        width: 40px;
+        height: 40px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+
+          object-fit: contain;
+        }
+      }
+    }
+
+    &__title {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &__topics {
+      gap: 0 8px;
+    }
+
+    &__topic {
+      gap: 6px;
+
+      > svg {
+        width: 10px;
+        height: 10px;
+      }
+    }
+
+    &__topic-text {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 }

@@ -11,17 +11,24 @@ mixin courses()
               class=`courses__item course--${direction.modifier}${index === 0 ? " course--active" : ""}`
             )
 
-        div.courses__controls
-          button.courses__control.courses__control--prev(
-            type="button"
-            aria-label="Показать предыдущую карточку"
-            aria-controls="courses-slider"
-          )
-            +icon("icon-back", 7, 12)
+    .swiper.courses__slider
+      .swiper-wrapper
+        each direction in courseDirections
+          .swiper-slide.courses__slide
+            +course(direction)(
+              class=`courses__item course--${direction.modifier}`
+            )
+      div.courses__controls
+        button.courses__control.courses__control--prev(
+          type="button"
+          aria-label="Показать предыдущую карточку"
+          aria-controls="courses-slider"
+        )
+          +icon("icon-back", 7, 12)
 
-          button.courses__control.courses__control--next(
-            type="button"
-            aria-label="Показать следующую карточку"
-            aria-controls="courses-slider"
-          )
-            +icon("icon-back", 7, 12)
+        button.courses__control.courses__control--next(
+          type="button"
+          aria-label="Показать следующую карточку"
+          aria-controls="courses-slider"
+        )
+          +icon("icon-back", 7, 12)

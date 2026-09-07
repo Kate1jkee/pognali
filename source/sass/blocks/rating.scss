@@ -20,12 +20,12 @@
   }
 
   &__container {
+    flex: 1 1 auto;
     min-width: 0;
   }
 
   &__wrapper {
     display: flex;
-    flex-shrink: 0;
     flex-direction: column;
     align-items: flex-end;
     font-weight: 600;
@@ -152,6 +152,7 @@
   }
 
   &__stars {
+    color: #fecd1e;
     display: flex;
     gap: 2px;
 

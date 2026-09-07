@@ -23,13 +23,7 @@
     border-radius: 30px;
     cursor: pointer;
   }
-
-  &--active &__button {
-    color: $color-default-white;
-    background-color: #486dd8;
-  }
   
-
   &__icon {
     display: flex;
     grid-area: icon;
@@ -46,12 +40,6 @@
     svg {
       display: block;
     }
-  }
-
-  &--active &__icon {
-    background-color: #567ae4;
-    border-color: transparent;
-    color: $color-default-white;
   }
 
   &__title {
@@ -71,7 +59,19 @@
     color: #747474;
   }
 
-  &--active &__description {
+  &.is-active &__button {
+    color: $color-default-white;
+    background-color: #486dd8;
+  }
+
+  &.is-active &__icon {
+    color: $color-default-white;
+
+    background-color: #567ae4;
+    border-color: transparent;
+  }
+
+  &.is-active &__description {
     color: #97b2fe;
   }
 
@@ -90,7 +90,7 @@
       box-shadow: none;
     }
 
-    &--active &__button {
+    &.is-active &__button {
       background-color: transparent;
     }
 

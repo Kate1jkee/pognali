@@ -1,4 +1,6 @@
 .courses-nav {
+  position: relative;
+
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -12,6 +14,8 @@
   }
 
   &__item {
+    position: relative;
+
     display: flex;
     flex: 1 1 auto;
     align-items: center;
@@ -31,44 +35,142 @@
     &:last-child {
       flex: 0 1 auto;
     }
+
+    &.is-open {
+      .courses-nav__link {
+        color: #486dd8;
+      }
+
+      .courses-nav__icon {
+        transform: rotate(180deg);
+      }
+    }
   }
-  
+
   &__link {
     display: inline-flex;
     align-items: center;
     gap: 25px;
     padding: 0;
 
-    font-family: inherit;
-    font-weight: 500;
+    font-family: $ff-main;
     font-size: 16px;
     line-height: 19px;
+    font-weight: 500;
     color: #bababa;
 
     appearance: none;
     background-color: transparent;
     border: 0;
     cursor: pointer;
+
+    transition: color $trans-default;
+
+    @include hover-focus {
+      color: #486dd8;
+    }
   }
 
   &__icon {
     flex-shrink: 0;
+
     width: 10px;
     height: 10px;
 
     background-color: currentColor;
     clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+    transition: transform $trans-default;
+  }
+
+  &__dropdown {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 16px);
+    left: 0;
+
+    width: 240px;
+    padding: 8px 0;
+
+    background-color: $color-default-white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  &__item:nth-last-child(-n + 2) &__dropdown {
+    right: 0;
+    left: auto;
   }
 
   &__dropdown[hidden] {
     display: none;
   }
 
+  &__dropdown-list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__dropdown-item {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    &::marker {
+      content: "";
+    }
+  }
+
+  &__dropdown-link {
+    display: block;
+    width: 100%;
+    padding: 10px 18px;
+
+    font-family: $ff-main;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #454545;
+    text-decoration: none;
+
+    transition:
+      color $trans-default,
+      background-color $trans-default;
+
+    @include hover-focus {
+      color: $color-default-white;
+      background-color: #486dd8;
+    }
+  }
+
   @include vp-1023 {
-    
+    &__item:not(:last-child)::after {
+      height: 16px;
+    }
+
+    &__icon {
+      display: none;
+    }
+
+    &__dropdown {
+      top: calc(100% + 12px);
+
+      width: 210px;
+    }
+
+    &__dropdown-link {
+      padding: 8px 14px;
+
+      font-size: 13px;
+      line-height: 17px;
+    }
   }
 
   @include vp-767 {
+    padding-bottom: 54px;
     &__list {
       flex-direction: column;
       align-items: stretch;
@@ -76,6 +178,9 @@
 
     &__item {
       flex: none;
+      flex-direction: column;
+      align-items: stretch;
+
       width: 100%;
       min-height: 58px;
 
@@ -87,22 +192,113 @@
 
       &:last-child {
         flex: none;
-        border-bottom: 0;
       }
     }
 
     &__link {
       justify-content: space-between;
+      flex-shrink: 0;
+
       width: 100%;
       min-height: 58px;
       padding: 0 20px;
 
+      font-size: 14px;
+      line-height: 17px;
+      font-weight: 500;
       text-align: left;
+      color: #bababa;
+
+      @include hover-focus {
+        color: #486dd8;
+      }
     }
 
     &__icon {
+      display: block;
+
       width: 6px;
       height: 6px;
+    }
+
+    &__dropdown {
+      position: static;
+
+      width: 100%;
+      padding: 0;
+
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    &__item:nth-last-child(-n + 2) &__dropdown {
+      right: auto;
+      left: auto;
+    }
+
+    &__dropdown[hidden] {
+      display: none;
+    }
+
+    &__dropdown-list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+
+      width: 100%;
+      margin: 0;
+      padding: 0 20px 24px;
+
+      list-style: none;
+    }
+
+    &__dropdown-item {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+
+      &::marker {
+        content: "";
+      }
+    }
+
+    &__dropdown-link {
+      display: block;
+      width: fit-content;
+      padding: 0;
+
+      font-size: 10px;
+      line-height: 15px;
+      font-weight: 400;
+      color: #454545;
+
+      @include hover-focus {
+        color: $color-denim;
+        background-color: transparent;
+      }
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      z-index: 5;
+      bottom: -2px;
+      left: 50%;
+
+      display: block;
+      width: 47px;
+      height: 5px;
+      margin: 0;
+
+      background-color: #949494;
+      border-radius: 2.5px;
+
+      transform: translateX(-50%);
     }
   }
 }

@@ -1,6 +1,9 @@
 mixin advantage(item)
   li.advantage&attributes(attributes)
-    button.advantage__button(type="button")
+    button.advantage__button(
+      type="button"
+      data-promo-button
+    )
       span.advantage__icon
         +icon(
           item.icon,

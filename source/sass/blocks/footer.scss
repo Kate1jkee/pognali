@@ -4,19 +4,21 @@
   box-sizing: border-box;
 
   color: $color-default-white;
+
   background-color: #222222;
 
   &__wrapper {
     display: grid;
     grid-template-columns:
-      324px  // 226px колонка + 98px отступ
-      251px  // 156px колонка + 95px отступ
-      400px  // 257px колонка + 143px отступ
-      minmax(0, 303px);
+      minmax(0, 324fr)
+      minmax(0, 251fr)
+      minmax(0, 400fr)
+      minmax(0, 303fr);
     align-items: start;
   }
 
-  &__info {
+  &__info,
+  &__nav {
     min-width: 0;
   }
 
@@ -28,8 +30,15 @@
 
     color: $color-default-white;
 
+    transition: opacity $trans-default;
+
+    @include hover-focus {
+      opacity: 0.8;
+    }
+
     img {
       display: block;
+      flex-shrink: 0;
       width: 35px;
       height: 41px;
 
@@ -43,22 +52,18 @@
     font-weight: 600;
     color: $color-default-white;
   }
-  
+
   &__copyright {
     margin: 0 0 0 7px;
-    
-    font-weight: 500;
+
     font-size: 20px;
     line-height: 32px;
-    color: #6B6B6B;
+    font-weight: 500;
+    color: #6b6b6b;
   }
 
   &__rights {
     display: block;
-  }
-
-  &__nav {
-    min-width: 0;
   }
 
   &__title {
@@ -68,6 +73,7 @@
     line-height: 24px;
     font-weight: 500;
     color: #fafafa;
+    overflow-wrap: anywhere;
   }
 
   &__list {
@@ -88,6 +94,12 @@
     color: #6b6b6b;
     text-decoration: none;
     overflow-wrap: anywhere;
+
+    transition: opacity $trans-default;
+
+    @include hover-focus {
+      opacity: 0.8;
+    }
   }
 
   @include vp-1023 {
@@ -98,10 +110,6 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: 64px;
       row-gap: 64px;
-    }
-
-    &__info {
-      min-width: 0;
     }
 
     &__logo {

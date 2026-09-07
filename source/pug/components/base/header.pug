@@ -21,7 +21,10 @@ mixin header(headerMods, currentUrl)
                     else
                       a.main-nav__link(href=link.href)= link.text
 
-  header.header
+  header.header(
+    class=headerMods
+    data-header
+  )
     div.header__top
       div.container
         div.header__top-wrapper

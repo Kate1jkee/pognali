@@ -1,34 +1,31 @@
 mixin coursesNav()
-  -
-    const coursesNavOrder = [
-      "design",
-      "programming",
-      "analytics",
-      "management",
-      "marketing",
-      "finance"
-    ];
   nav.courses-nav(
     aria-label="Направления обучения"
+    data-courses-nav
   )&attributes(attributes)
+
     ul.courses-nav__list
-      each modifier in coursesNavOrder
-        - const direction = courseDirections.find((item) => item.modifier === modifier)
-        li.courses-nav__item
+      each direction in coursesNavDirections
+        li.courses-nav__item(
+          class=`courses-nav__item--${direction.modifier}`
+        )
           button.courses-nav__link.btn-reset(
+            id=`${direction.id}-button`
             type="button"
             aria-expanded="false"
-            aria-controls=`courses-dropdown-${direction.modifier}`
+            aria-controls=direction.id
+            data-courses-nav-button
           )
             span.courses-nav__text= direction.title
             span.courses-nav__icon(aria-hidden="true")
 
           div.courses-nav__dropdown(
-            id=`courses-dropdown-${direction.modifier}`
+            id=direction.id
+            aria-labelledby=`${direction.id}-button`
+            data-courses-nav-dropdown
             hidden
           )
             ul.courses-nav__dropdown-list
-              each row in direction.topics
-                each topic in row
-                  li.courses-nav__dropdown-item
-                    a.courses-nav__dropdown-link(href="#")= topic
+              each course in direction.courses
+                li.courses-nav__dropdown-item
+                  a.courses-nav__dropdown-link(href="#")= course
