@@ -5,8 +5,8 @@
   background-color: $color-default-white;
 
   &__top {
-    padding-top: 38px;
-    padding-bottom: 41px;
+    padding-top: 41px;
+    padding-bottom: 38px;
 
     border-bottom: 1px solid #eaeaea;
   }
@@ -42,6 +42,7 @@
 
       width: 34px;
       height: 39px;
+      transform: translateY(-3px);
     }
   }
 
@@ -60,8 +61,8 @@
   }
 
   &__bottom {
-    padding-top: 38px;
-    padding-bottom: 41px;
+    padding-top: 46px;
+    padding-bottom: 47px;
   }
 
   @include vp-1279 {
@@ -92,19 +93,23 @@
       align-items: center;
 
       min-height: 64px;
+      transform: translateY(-5px);
+      padding-right: 2px;
+      padding-left: 4px;
+    
     }
 
     &__logo {
-      flex: 0 0 16px;
+      flex: 0 0 23px;
       align-self: center;
 
-      width: 16px;
+      width: 23px;
       max-width: none;
       gap: 0;
 
       img {
-        width: 16px;
-        height: 22px;
+        width: 23px;
+        height: 27px;
       }
     }
 

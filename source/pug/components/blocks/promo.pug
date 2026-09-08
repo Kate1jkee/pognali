@@ -8,6 +8,7 @@ mixin promo()
         div.promo__content
           each card in promoCards
             +promoOverview(card)(
+              class=`promo__overview--${card.modifier}`
               data-promo-card
             )
 
@@ -23,7 +24,9 @@ mixin promo()
       div.swiper-wrapper
         each card in promoCards
           div.swiper-slide.promo__slide
-            +promoOverview(card)
+            +promoOverview(card)(
+              class=`promo__overview--${card.modifier}`
+            )
 
       div.promo__controls
         button.promo__control.promo__control--prev(

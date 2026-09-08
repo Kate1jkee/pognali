@@ -2,10 +2,11 @@
   margin-bottom: 123px;
   position: relative;
   z-index: 1;
+  
   &__wrapper {
     width: 100%;
-    min-height: 935px;
-    padding: 64px;
+    min-height: 915px;
+    padding: 85px 65px 45px;
     box-sizing: border-box;
 
     background-color: $color-default-white;
@@ -29,6 +30,8 @@
     display: flex;
     align-items: flex-end;
     gap: 51px;
+
+    transform: translateY(-47px);
   }
 
   &__overview {
@@ -158,10 +161,11 @@
 
     &__title {
       max-width: 280px;
-      margin: 0 auto 56px;
+      margin: 0 auto 35px;
 
-      font-size: 20px;
-      line-height: 24px;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 25px;
       text-align: left;
     }
 
@@ -171,13 +175,24 @@
 
     &__slider {
       display: block;
-       margin-top: -55px;
-      padding-top: 55px;
+       margin-top: -75px;
+      padding-top: 75px;
     }
 
     &__slide {
       width: fit-content;
+      transition: transform $trans-default;
     }
+
+    &__slide.swiper-slide-prev,
+    &__slide.swiper-slide-next {
+      transform: translateY(14px);
+    }
+
+    &__slide.swiper-slide-active {
+      transform: translateY(0);
+    }
+  
 
     &__overview {
       display: block;
@@ -185,13 +200,21 @@
       width: 100%;
       max-width: 280px;
       min-height: 439px;
-      padding: 0 16px 32px;
+      padding: 0 16px 12px;
 
       background-color: #f8f7fc;
       border: 1px solid #eeeeee;
       border-radius: 34px;
       box-shadow: 0 4px 20px rgba(134, 134, 134, 0.06);
       overflow: visible;
+
+      > picture,
+      > .promo__subtitle,
+      > .promo__description {
+        position: relative;
+        z-index: 1;
+        transform: translateY(-20px);
+      }
 
       > picture {
         position: relative;
@@ -200,7 +223,7 @@
         display: block;
         width: calc(100% + 32px);
         max-width: none;
-        margin: 0 0 -31px -16px;
+        margin: 20px 0 -45px -16px;
         overflow: visible;
 
         img {
@@ -208,8 +231,15 @@
           width: 100%;
           height: auto;
 
-          transform: translateY(-55px);
+          transform: translateY(-75px);
         }
+      }
+    }
+
+    &__overview--courses,
+    &__overview--mentors {
+      > picture img {
+        transform: translateY(-50px);
       }
     }
 
@@ -217,16 +247,18 @@
       max-width: none;
       margin: 0 0 16px;
 
-      font-size: 16px;
-      line-height: 20px;
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 22px;
     }
 
     &__description {
       max-width: none;
       margin: 0;
 
-      font-size: 13px;
-      line-height: 20px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
     }
 
     &__advantages {
@@ -236,7 +268,7 @@
     &__controls {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 40px;
       margin-top: 28px;
     }
 
@@ -245,20 +277,26 @@
       align-items: center;
       justify-content: center;
 
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       padding: 0;
 
       color: #181515;
 
       background-color: #f8f7fc;
-      border: 1px solid #eeeeee;
+      border: 1px solid #efefef;
       border-radius: 50%;
       cursor: pointer;
+
       transition:
         color $trans-default,
         background-color $trans-default,
         border-color $trans-default;
+
+      svg {
+        width: 8px;
+        height: 14px;
+      }
 
       @include hover-focus {
         color: $color-default-white;

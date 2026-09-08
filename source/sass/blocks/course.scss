@@ -148,7 +148,9 @@
   @include vp-767 {
     &__link {
       min-height: 280px;
-
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
       border-radius: 35px;
     }
 
@@ -164,16 +166,20 @@
     &__heading {
       min-height: 40px;
       gap: 12px;
-      margin-bottom: 28px;
+      margin-bottom: 38px;
+      padding-top: 10px;
 
       > picture {
         width: 40px;
         height: 40px;
+        overflow: visible;
 
         img {
-          width: 100%;
-          height: 100%;
-          max-width: 100%;
+          width: 38px;
+          height: 37px;
+          max-width: none;
+          transform: scale(1.2);
+          transform-origin: center;
 
           object-fit: contain;
         }
@@ -181,26 +187,72 @@
     }
 
     &__title {
-      font-size: 16px;
-      line-height: 20px;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 22px;
     }
 
-    &__topics {
-      gap: 0 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+  }
+
+  &__topics {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+  }
+
+  &__topic {
+    display: flex;
+    flex: 0 0 22px;
+    align-items: center;
+    gap: 6px;
+
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+
+    > svg {
+      flex-shrink: 0;
+      width: 10px;
+      height: 10px;
     }
 
-    &__topic {
-      gap: 6px;
+    mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      #000 75%,
+      transparent 100%
+    );
 
-      > svg {
-        width: 10px;
-        height: 10px;
-      }
-    }
+    -webkit-mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      #000 75%,
+      transparent 100%
+    );
+  }
 
-    &__topic-text {
-      font-size: 12px;
-      line-height: 18px;
-    }
+  &__topic-text {
+    flex-shrink: 0;
+
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    white-space: nowrap;
   }
 }
+  
+
