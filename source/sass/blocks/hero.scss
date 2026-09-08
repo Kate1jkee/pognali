@@ -123,7 +123,7 @@
 
     &__content {
       width: 100%;
-      max-width: 650px;
+      max-width: none;
       padding-top: 80px;
     }
 
@@ -139,7 +139,8 @@
     }
 
     &__title {
-      max-width: 650px;
+      width: 100%;
+      max-width: none;
       margin-bottom: 32px;
 
       font-size: 40px;
@@ -147,6 +148,8 @@
     }
 
     &__description {
+      width: 100%;
+      max-width: none;
       margin-bottom: 36px;
     }
 
@@ -226,7 +229,7 @@
     
     &__title {
       width: 100%;
-      max-width: 281px;
+      max-width: none;
       margin: 0 0 34px;
 
       font-size: 28px;

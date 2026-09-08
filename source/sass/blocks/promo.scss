@@ -61,6 +61,17 @@
     }
   }
 
+  &__overview--courses,
+  &__overview--mentors {
+    > picture {
+      margin-bottom: 71px;
+
+      img {
+        transform: translateY(30px);
+      }
+    }
+  }
+
   &__subtitle {
     max-width: 381px;
     margin: 0 0 24px 23px;
@@ -92,6 +103,12 @@
 
   &__slider {
     display: none;
+  }
+
+  @include vp-1279 {
+    &__content {
+      transform: none;
+    }
   }
 
   @include vp-1023 {
@@ -160,7 +177,8 @@
     }
 
     &__title {
-      max-width: 280px;
+      width: 100%;
+      max-width: none;
       margin: 0 auto 35px;
 
       font-weight: 700;
