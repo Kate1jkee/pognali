@@ -22,6 +22,10 @@
     border: none;
     border-radius: 30px;
     cursor: pointer;
+    transition:
+      color $trans-default,
+      background-color $trans-default,
+      box-shadow $trans-default;
   }
   
   &__icon {
@@ -36,6 +40,10 @@
     background-color: #f8f7fc;
     border: 1px solid #f0f0f0;
     color: #655bd5;
+    transition:
+      color $trans-default,
+      background-color $trans-default,
+      border-color $trans-default;
 
     svg {
       display: block;
@@ -57,6 +65,25 @@
     line-height: 26px;
     font-weight: 400;
     color: #747474;
+    transition: color $trans-default;
+  }
+
+  &:not(.is-active) &__button {
+    @include hover-focus {
+      background-color: #dde6ff;
+      box-shadow: 0 4px 24px rgba(72, 109, 216, 0.12);
+
+      .advantage__icon {
+        color: #486dd8;
+
+        background-color: #eef3ff;
+        border-color: transparent;
+      }
+
+      .advantage__description {
+        color: #747474;
+      }
+    }
   }
 
   &.is-active &__button {
@@ -89,6 +116,21 @@
       border-radius: 20px;
       box-shadow: none;
     }
+
+    
+    &:not(.is-active) &__button {
+      @include hover-focus {
+        background-color: transparent;
+        box-shadow: none;
+
+        .advantage__icon {
+          color: #486dd8;
+
+          background-color: #dde6ff;
+        }
+      }
+    }
+    
 
     &.is-active &__button {
       background-color: transparent;

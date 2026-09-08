@@ -1,0 +1,15 @@
+mixin promoOverview(card)
+  div.promo__overview(
+    class=card.isActive ? "is-active" : null
+  )&attributes(attributes)
+    +picture(
+      "content",
+      card.image,
+      "png",
+      card.width,
+      card.height,
+      ""
+    )
+
+    h3.promo__subtitle= card.title
+    p.promo__description= card.description

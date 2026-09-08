@@ -76,7 +76,7 @@
     display: none;
   }
 
-  .courses__slide {
+  &__slide {
     width: fit-content;
   }
 
@@ -128,12 +128,11 @@
       border: 1px solid #eeeeee;
       border-radius: 50%;
       cursor: pointer;
+      transition:
+        color $trans-default,
+        background-color $trans-default,
+        border-color $trans-default; 
 
-      button {
-        border: none;
-        background: transparent;
-        outline: none;
-      }
 
       @include hover-focus {
         color: $color-default-white;

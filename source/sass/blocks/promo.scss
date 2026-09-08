@@ -35,7 +35,6 @@
     display: none;
     flex: 0 1 424px;
     min-width: 0;
-    display: none;
 
     &.is-active {
       display: block;
@@ -45,18 +44,22 @@
       display: block;
       width: 100%;
       max-width: 424px;
+      aspect-ratio: 1 / 1;
       margin-bottom: 71px;
 
       img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
+
+        object-fit: contain;
+        object-position: center bottom;
       }
     }
   }
 
   &__subtitle {
-    max-width: 326px;
+    max-width: 381px;
     margin: 0 0 24px 23px;
 
     font-size: 30px;
@@ -168,6 +171,8 @@
 
     &__slider {
       display: block;
+       margin-top: -55px;
+      padding-top: 55px;
     }
 
     &__slide {
@@ -175,12 +180,12 @@
     }
 
     &__overview {
+      display: block;
+      box-sizing: border-box;
       width: 100%;
       max-width: 280px;
       min-height: 439px;
       padding: 0 16px 32px;
-      display: block;
-      box-sizing: border-box;
 
       background-color: #f8f7fc;
       border: 1px solid #eeeeee;
@@ -195,7 +200,7 @@
         display: block;
         width: calc(100% + 32px);
         max-width: none;
-        margin: -36px 0 24px -16px;
+        margin: 0 0 -31px -16px;
         overflow: visible;
 
         img {
@@ -250,6 +255,10 @@
       border: 1px solid #eeeeee;
       border-radius: 50%;
       cursor: pointer;
+      transition:
+        color $trans-default,
+        background-color $trans-default,
+        border-color $trans-default;
 
       @include hover-focus {
         color: $color-default-white;

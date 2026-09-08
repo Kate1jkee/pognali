@@ -1,5 +1,4 @@
-mixin mainNav()
-
+mixin mainNav(currentUrl)
   nav.main-nav(
     aria-label="Основная навигация"
   )&attributes(attributes)
@@ -7,7 +6,7 @@ mixin mainNav()
     span.main-nav__mobile-title
       | Курсы
 
-    button.main-nav__toggle(
+    button.main-nav__toggle.btn-reset(
       type="button"
       aria-label="Открыть меню"
       aria-expanded="false"
@@ -19,10 +18,14 @@ mixin mainNav()
 
     ul.main-nav__list
       each link in mainNavLinks
+        - const activeState = currentUrl === link.href
+
         li.main-nav__item
-          - const isActive = link.href === currentUrl
+          if activeState
+            span.main-nav__link.main-nav__link--active.is-active(
+              aria-current="page"
+            )= link.text
+          else
             a.main-nav__link(
-              class=isActive ? "main-nav__link--active" : ""
               href=link.href
-              aria-current=isActive ? "page" : false
             )= link.text

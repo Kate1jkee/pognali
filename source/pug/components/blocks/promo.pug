@@ -1,5 +1,4 @@
 mixin promo()
-
   section.main__promo.promo(data-promo)
     div.container
       div.promo__wrapper
@@ -8,21 +7,9 @@ mixin promo()
 
         div.promo__content
           each card in promoCards
-            div.promo__overview(
-              class=card.isActive ? "is-active" : null
+            +promoOverview(card)(
               data-promo-card
             )
-              +picture(
-                "content",
-                card.image,
-                "png",
-                card.width,
-                card.height,
-                ""
-              )
-
-              h3.promo__subtitle= card.title
-              p.promo__description= card.description
 
           div.promo__advantages.advantages
             ul.advantages__list
@@ -32,33 +19,19 @@ mixin promo()
                   data-promo-item
                 )
 
-    .swiper.promo__slider
-      .swiper-wrapper
+    div.swiper.promo__slider
+      div.swiper-wrapper
         each card in promoCards
-          .swiper-slide.promo__slide
-            div.promo__overview(
-              class=card.isActive ? "is-active" : null
-              data-promo-card
-            )
-              +picture(
-                "content",
-                card.image,
-                "png",
-                card.width,
-                card.height,
-                ""
-              )
+          div.swiper-slide.promo__slide
+            +promoOverview(card)
 
-              h3.promo__subtitle= card.title
-              p.promo__description= card.description
-
-      div.promo__controls    
-        button.promo__control.promo__control--prev(   
+      div.promo__controls
+        button.promo__control.promo__control--prev(
           type="button"
           aria-label="Показать предыдущую карточку"
         )
           +icon("icon-back", 7, 12)
-      
+
         button.promo__control.promo__control--next(
           type="button"
           aria-label="Показать следующую карточку"

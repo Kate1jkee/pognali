@@ -1,8 +1,8 @@
-import { mobileVhFix } from "./utils/mobile-vh-fix.js";
+import {mobileVhFix} from './utils/mobile-vh-fix.js';
 
 // ---------------------------------
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener('DOMContentLoaded', () => {
   // Utils
   // ---------------------------------
 
@@ -11,29 +11,29 @@ window.addEventListener("DOMContentLoaded", () => {
   // Mobile menu
   // ---------------------------------
 
-  const headers = document.querySelectorAll("[data-header]");
+  const headers = document.querySelectorAll('[data-header]');
 
   headers.forEach((header) => {
-    const toggle = header.querySelector("[data-menu-toggle]");
+    const toggle = header.querySelector('[data-menu-toggle]');
 
     if (!toggle) {
       return;
     }
 
     const closeMenu = () => {
-      header.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Открыть меню");
+      header.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Открыть меню');
     };
 
     const openMenu = () => {
-      header.classList.add("is-open");
-      toggle.setAttribute("aria-expanded", "true");
-      toggle.setAttribute("aria-label", "Закрыть меню");
+      header.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Закрыть меню');
     };
 
-    toggle.addEventListener("click", () => {
-      const isOpened = header.classList.contains("is-open");
+    toggle.addEventListener('click', () => {
+      const isOpened = header.classList.contains('is-open');
 
       if (isOpened) {
         closeMenu();
@@ -42,29 +42,34 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && header.classList.contains("is-open")) {
+    document.addEventListener('keydown', (event) => {
+      if (
+        event.key === 'Escape' &&
+        header.classList.contains('is-open')
+      ) {
         closeMenu();
         toggle.focus();
       }
     });
   });
+
   // Promo
   // ---------------------------------
 
-  const promoBlocks = document.querySelectorAll("[data-promo]");
+  const promoBlocks = document.querySelectorAll('[data-promo]');
+  const desktopBreakpoint = window.matchMedia('(min-width: 768px)');
 
   promoBlocks.forEach((promo) => {
-    const cards = promo.querySelectorAll("[data-promo-card]");
-    const items = promo.querySelectorAll("[data-promo-item]");
-    const buttons = promo.querySelectorAll("[data-promo-button]");
+    const cards = promo.querySelectorAll('[data-promo-card]');
+    const items = promo.querySelectorAll('[data-promo-item]');
+    const buttons = promo.querySelectorAll('[data-promo-button]');
 
     if (!cards.length || !buttons.length) {
       return;
     }
 
     let activeIndex = [...cards].findIndex((card) =>
-      card.classList.contains("is-active"),
+      card.classList.contains('is-active')
     );
 
     if (activeIndex < 0) {
@@ -75,23 +80,33 @@ window.addEventListener("DOMContentLoaded", () => {
       activeIndex = (index + cards.length) % cards.length;
 
       cards.forEach((card, cardIndex) => {
-        card.classList.toggle("is-active", cardIndex === activeIndex);
+        card.classList.toggle(
+            'is-active',
+            cardIndex === activeIndex
+        );
       });
 
       items.forEach((item, itemIndex) => {
-        item.classList.toggle("is-active", itemIndex === activeIndex);
+        item.classList.toggle(
+            'is-active',
+            itemIndex === activeIndex
+        );
       });
 
       buttons.forEach((button, buttonIndex) => {
         button.setAttribute(
-          "aria-pressed",
-          buttonIndex === activeIndex ? "true" : "false",
+            'aria-pressed',
+            buttonIndex === activeIndex ? 'true' : 'false'
         );
       });
     };
 
     buttons.forEach((button, index) => {
-      button.addEventListener("click", () => {
+      button.addEventListener('click', () => {
+        if (!desktopBreakpoint.matches) {
+          return;
+        }
+
         showCard(index);
       });
     });
@@ -102,85 +117,141 @@ window.addEventListener("DOMContentLoaded", () => {
   // Courses navigation
   // ---------------------------------
 
-  const coursesNavBlocks = document.querySelectorAll("[data-courses-nav]");
+  const coursesNavBlocks =
+    document.querySelectorAll('[data-courses-nav]');
 
   coursesNavBlocks.forEach((coursesNav) => {
-    const buttons = coursesNav.querySelectorAll("[data-courses-nav-button]");
+    const buttons =
+      coursesNav.querySelectorAll('[data-courses-nav-button]');
+
+    const hoverBreakpoint = window.matchMedia(
+        '(min-width: 768px) and (hover: hover)'
+    );
+
+    let pinnedButton = null;
 
     const closeDropdown = (button) => {
-      const dropdownId = button.getAttribute("aria-controls");
+      const dropdownId = button.getAttribute('aria-controls');
       const dropdown = document.getElementById(dropdownId);
-      const item = button.closest(".courses-nav__item");
+      const item = button.closest('.courses-nav__item');
 
       if (!dropdown) {
         return;
       }
 
-      button.setAttribute("aria-expanded", "false");
+      button.setAttribute('aria-expanded', 'false');
       dropdown.hidden = true;
 
       if (item) {
-        item.classList.remove("is-open");
+        item.classList.remove('is-open');
       }
     };
 
+    const closeAllDropdowns = (exceptButton = null) => {
+      buttons.forEach((button) => {
+        if (button !== exceptButton) {
+          closeDropdown(button);
+        }
+      });
+    };
+
     const openDropdown = (button) => {
-      const dropdownId = button.getAttribute("aria-controls");
+      const dropdownId = button.getAttribute('aria-controls');
       const dropdown = document.getElementById(dropdownId);
-      const item = button.closest(".courses-nav__item");
+      const item = button.closest('.courses-nav__item');
 
       if (!dropdown) {
         return;
       }
 
-      buttons.forEach((currentButton) => {
-        if (currentButton !== button) {
-          closeDropdown(currentButton);
-        }
-      });
+      closeAllDropdowns(button);
 
-      button.setAttribute("aria-expanded", "true");
+      button.setAttribute('aria-expanded', 'true');
       dropdown.hidden = false;
 
       if (item) {
-        item.classList.add("is-open");
+        item.classList.add('is-open');
       }
     };
 
     buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const isOpened = button.getAttribute("aria-expanded") === "true";
-
-        if (isOpened) {
+      button.addEventListener('click', () => {
+        if (pinnedButton === button) {
           closeDropdown(button);
-        } else {
-          openDropdown(button);
+          pinnedButton = null;
+
+          return;
         }
+
+        openDropdown(button);
+        pinnedButton = button;
       });
     });
 
-    document.addEventListener("click", (event) => {
-      if (!coursesNav.contains(event.target)) {
-        buttons.forEach((button) => {
-          closeDropdown(button);
-        });
-      }
-    });
+    buttons.forEach((button) => {
+      const item = button.closest('.courses-nav__item');
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape") {
+      if (!item) {
         return;
       }
 
-      buttons.forEach((button) => {
-        if (button.getAttribute("aria-expanded") === "true") {
+      let closeTimer = null;
+
+      item.addEventListener('mouseenter', () => {
+        if (!hoverBreakpoint.matches || pinnedButton) {
+          return;
+        }
+
+        clearTimeout(closeTimer);
+        openDropdown(button);
+      });
+
+      item.addEventListener('mouseleave', () => {
+        if (!hoverBreakpoint.matches || pinnedButton) {
+          return;
+        }
+
+        closeTimer = setTimeout(() => {
           closeDropdown(button);
-          button.focus();
+        }, 150);
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (coursesNav.contains(event.target)) {
+        return;
+      }
+
+      closeAllDropdowns();
+      pinnedButton = null;
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') {
+        return;
+      }
+
+      let openedButton = null;
+
+      buttons.forEach((button) => {
+        if (button.getAttribute('aria-expanded') === 'true') {
+          openedButton = button;
+          closeDropdown(button);
         }
       });
+
+      pinnedButton = null;
+
+      if (openedButton) {
+        openedButton.focus();
+      }
     });
   });
 
+  // Courses slider
+  // ---------------------------------
+
+  // eslint-disable-next-line no-unused-vars
   const coursesSlider = new window.Swiper('.courses__slider', {
     loop: true,
     slidesPerView: 'auto',
@@ -191,6 +262,11 @@ window.addEventListener("DOMContentLoaded", () => {
       nextEl: '.courses__control--next',
     },
   });
+
+  // Promo slider
+  // ---------------------------------
+
+  // eslint-disable-next-line no-unused-vars
   const promoSlider = new window.Swiper('.promo__slider', {
     loop: true,
     slidesPerView: 'auto',
@@ -202,7 +278,6 @@ window.addEventListener("DOMContentLoaded", () => {
     },
   });
 });
-
 // ---------------------------------
 
 // ❗❗❗ обязательно установите плагины eslint, stylelint, editorconfig в редактор кода.
