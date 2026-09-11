@@ -22,12 +22,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const closeMenu = () => {
       header.classList.remove('is-open');
+      document.body.classList.remove('scroll-lock');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Открыть меню');
     };
 
     const openMenu = () => {
       header.classList.add('is-open');
+      document.body.classList.remove('scroll-lock');
       toggle.setAttribute('aria-expanded', 'true');
       toggle.setAttribute('aria-label', 'Закрыть меню');
     };
@@ -39,6 +41,18 @@ window.addEventListener('DOMContentLoaded', () => {
         closeMenu();
       } else {
         openMenu();
+      }
+    });
+
+    const menu = header.querySelector('#courses-menu');
+
+    document.addEventListener('click', (event) => {
+      const isOpened = header.classList.contains('is-open');
+      const isMenuClick = menu && menu.contains(event.target);
+      const isToggleClick = toggle.contains(event.target);
+
+      if (isOpened && !isMenuClick && !isToggleClick) {
+        closeMenu();
       }
     });
 

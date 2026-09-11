@@ -79,7 +79,7 @@
     background-color: transparent;
 
     &__top {
-      min-height: 64px;
+      min-height: 61px;
       padding: 0;
 
       background-color: transparent;
@@ -92,10 +92,10 @@
       display: flex;
       align-items: center;
 
-      min-height: 64px;
       transform: translateY(-5px);
       padding-right: 2px;
       padding-left: 4px;
+      padding-top: 11px;
     
     }
 
@@ -110,6 +110,7 @@
       img {
         width: 23px;
         height: 27px;
+        transform: translateY(-2px);
       }
     }
 
@@ -133,7 +134,7 @@
       padding: 0;
 
       background-color: #fafafa;
-      border-radius: 0 0 24px 24px;
+      border-radius: 0 0 30px 30px;
       overflow: visible;
 
       > .container {

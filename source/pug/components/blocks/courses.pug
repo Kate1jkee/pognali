@@ -5,7 +5,7 @@ mixin courses()
         h2.courses__title
           | Выбери направление
 
-        ul.courses__list#courses-slider
+        div.courses__list#courses-slider
           each direction, index in courseDirections
             +course(direction)(
               class=`courses__item course--${direction.modifier}${index === 0 ? " course--active" : ""}`

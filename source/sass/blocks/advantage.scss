@@ -104,41 +104,43 @@
 
   @include vp-1023 {
     &__button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      min-height: 60px;
-      height: 60px;
-      padding: 0;
+      grid-template-columns: 44px minmax(0, 1fr);
+      grid-template-areas:
+        "icon title"
+        "icon description";
+      column-gap: 14px;
+      row-gap: 2px;
+      width: 100%;
+      min-height: 96px;
+      padding: 14px 16px;
 
-      background-color: transparent;
       border-radius: 20px;
-      box-shadow: none;
     }
 
-    
-    &:not(.is-active) &__button {
-      @include hover-focus {
-        background-color: transparent;
-        box-shadow: none;
+    &__icon {
+      width: 44px;
+      height: 44px;
 
-        .advantage__icon {
-          color: #486dd8;
+      border-radius: 14px;
 
-          background-color: #dde6ff;
-        }
+      svg {
+        width: 14px;
+        height: 21px;
       }
     }
-    
 
-    &.is-active &__button {
-      background-color: transparent;
+    &__title {
+      display: block;
+
+      font-size: 18px;
+      line-height: 24px;
     }
 
-    &__title,
     &__description {
-      display: none;
+      display: block;
+
+      font-size: 12px;
+      line-height: 16px;
     }
   }
 }

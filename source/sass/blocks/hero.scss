@@ -189,16 +189,16 @@
     &::before {
       position: absolute;
       z-index: -1;
-      top: -64px;
+      top: -16px;
       right: 0;
-      bottom: 0;
+      bottom: -180px;
       left: 0;
 
       display: block;
 
       background:
         radial-gradient(
-          ellipse at 10% 25%,
+          ellipse at 10% 45%,
           rgba(255, 224, 126, 0.55) 0%,
           transparent 55%
         ),
@@ -208,7 +208,7 @@
           transparent 55%
         ),
         radial-gradient(
-          ellipse at 90% 30%,
+          ellipse at 90% 55%,
           rgba(227, 173, 255, 0.5) 0%,
           transparent 55%
         ),
@@ -250,7 +250,7 @@
     }
 
     &__content {
-      padding-top: 50px;
+      padding-top: 55px;
     }
 
     &__wrapper {

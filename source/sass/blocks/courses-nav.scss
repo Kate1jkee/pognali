@@ -180,10 +180,13 @@
   }
 
   @include vp-767 {
-    padding-bottom: 54px;
+    padding-bottom: 47px;
     &__list {
       flex-direction: column;
       align-items: stretch;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
     }
 
     &__item {
@@ -192,7 +195,7 @@
       align-items: stretch;
 
       width: 100%;
-      min-height: 58px;
+      min-height: 63px;
 
       border-bottom: 1px solid #eaeaea;
 
@@ -202,6 +205,11 @@
 
       &:last-child {
         flex: none;
+      }
+
+      &:first-child {
+        padding-top: 27px;
+        padding-bottom: 4px;
       }
     }
 
@@ -229,6 +237,7 @@
 
       width: 6px;
       height: 6px;
+      transform: translateY(2px);
     }
 
     &__dropdown {

@@ -135,7 +135,7 @@
     }
 
     &__overview {
-      flex: 1 1 auto;
+      flex: 1 1 0;
       max-width: 520px;
 
       > picture {
@@ -159,12 +159,13 @@
     }
 
     &__advantages {
-      flex: 0 0 60px;
+      flex: 1 1 0;
+      min-width: 0;
     }
   }
 
   @include vp-767 {
-    margin-bottom: 64px;
+    margin-bottom: 59px;
     padding-top: 36px;
 
     &__wrapper {
