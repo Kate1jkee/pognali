@@ -114,6 +114,10 @@
       }
     }
 
+    &.is-open .header__logo img {
+      transform: translateY(5px);
+    }
+
     &__logo-text {
       display: none;
     }

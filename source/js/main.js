@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const openMenu = () => {
       header.classList.add('is-open');
-      document.body.classList.remove('scroll-lock');
+      document.body.classList.add('scroll-lock');
       toggle.setAttribute('aria-expanded', 'true');
       toggle.setAttribute('aria-label', 'Закрыть меню');
     };
