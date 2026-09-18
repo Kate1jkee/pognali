@@ -1,0 +1,21 @@
+mixin winners-block()
+  section.winners-block
+    .container
+      .winners-block__wrapper
+        .winners-block__content
+          h2.winners-block__title
+            | Узнайте, кто уже победил
+
+          a.winners-block__button.btn(href="winners.html")
+            | Итоги розыгрыша
+
+        picture.winners-block__visual
+          source(
+            media="(max-width: 767px)"
+            srcset="img/content/prize-cup-mobile.png 1x, img/content/prize-cup-mobile@2x.png 2x"
+          )
+          img.winners-block__image(
+            src="img/content/prize-cup-desktop.png"
+            srcset="img/content/prize-cup-desktop@2x.png 2x"
+            alt=""
+          )

@@ -1,0 +1,32 @@
+mixin participation-form(idPrefix)
+  form.participation-form(
+    action="#"
+    method="get"
+    data-participation-form
+  )
+    .participation-form__agreement
+      input.participation-form__checkbox(
+        type="checkbox"
+        id=`${idPrefix}-agreement`
+        name="agreement"
+        value="accepted"
+        required
+        data-participation-checkbox
+      )
+
+      .participation-form__text
+        label.participation-form__label(
+          for=`${idPrefix}-agreement`
+        ) Я согласен с
+
+        |
+        a.participation-form__link(href="#")
+          | условиями акции
+
+    button.participation-form__button.btn(
+      type="submit"
+      disabled
+      data-participation-button
+    )
+      span.participation-form__button-text
+        | Принять участие

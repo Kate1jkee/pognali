@@ -1,34 +1,28 @@
 mixin footer(footerMods)
-
   footer.footer(class=footerMods)
-    div.container
-      div.footer__wrapper
-        div.footer__info
-          a.footer__logo(
-            href="index.html"
-            aria-label="Перейти на главную страницу"
+    .container
+      .footer__wrapper
+        .footer__info
+          img.footer__logo(
+            src="img/svg/x5-logo.svg"
+            width="20"
+            height="15"
+            alt="X5"
           )
-            img(
-              src="img/content/logo.svg"
-              width="35"
-              height="41"
-              alt="FindEdu"
-            )
-            span.footer__logo-text
-              | FindEdu
-          p.footer__copyright
-            | © FindEdu 2022.
-            span.footer__rights
-              | Все права защищены.
 
-        each group in footerGroups
-          nav.footer__nav(
-            class=`footer__nav--${group.modifier}`
-            aria-labelledby=group.id
-          )
-            h2.footer__title(id=group.id)= group.title
+          p.footer__copyright 
+            | © 2021 2023 ООО «Корпоративный центр ИКС 5»
 
-            ul.footer__list
-              each link in group.links
-                li.footer__item
-                  a.footer__link(href=link.href)= link.text
+        nav.footer__nav(aria-label="Документы")
+          ul.footer__list
+            li.footer__item
+              a.footer__link(href="#")
+                | Политика конфиденциальности
+
+            li.footer__item
+              a.footer__link(href="#")
+                | Пользовательское соглашение
+
+            li.footer__item
+              a.footer__link(href="#")
+                | Правила акции

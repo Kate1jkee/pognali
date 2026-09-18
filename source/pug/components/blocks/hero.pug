@@ -1,30 +1,19 @@
 mixin hero()
-
-  section.main__hero.hero
-    div.container
-      div.hero__wrapper
-        div.hero__content
+  section.hero
+    .container
+      .hero__wrapper
+        .hero__content
           h1.hero__title
-            span FindEdu - все для
-            span выбора новой профессии
-            span в одном месте
-          p.hero__description
-            | Изучение тем на вебинарах с преподавателями, личные консультации с наставником. После прохождения курса с наставником. После прохождения курса
-          +btn({ href: "#" })(class="hero__button")
-            span.hero__button-text
-              | Сравнить курсы
-            span.hero__button-icon
-              +icon("icon-courses", 19, 19)
+            | Чем дольше — тем больше!
 
-        div.hero__visual.visual
-          h2.visually-hidden
-            | Сравнение направления UX/UI designer в разных школах
-          +picture(
-            "content",
-            "title-picture",
-            "png",
-            646,
-            578,
-            ""
+          p.hero__description
+            | Мы считаем каждый день вместе! Проверьте, сколько вы с «Пакетом», выигрывайте баллы «X5 Клуба» и ценные призы от Ситилинк.
+
+          +participation-form("hero")
+
+        .hero__visual
+          img.hero__image(
+            src="img/content/hero-image.png"
+            srcset="img/content/hero-image@2x.png 2x"
+            alt=""
           )
-          +rating(ratingSchools)(class="visual__rating")

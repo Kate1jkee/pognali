@@ -1,42 +1,18 @@
 mixin promo()
-  section.main__promo.promo(data-promo)
-    div.container
-      div.promo__wrapper
-        h2.promo__title
-          | Агрегируем курсы по самым актуальным темам для новичков и практикующих специалистов.
+  section.promo
+    .container
+      .promo__wrapper
+        .promo__visual
+          img.promo__image(
+            src="img/content/promo-image.png"
+            srcset="img/content/promo-image@2x.png 2x"
+            alt=""
+          )
 
-        div.promo__content
-          each card in promoCards
-            +promoOverview(card)(
-              class=`promo__overview--${card.modifier}`
-              data-promo-card
-            )
+        .promo__content
+          h2.promo__title Участвовать просто
 
-          div.promo__advantages.advantages
-            ul.advantages__list
-              each item in advantages
-                +advantage(item)(
-                  class=item.isActive ? "is-active" : null
-                  data-promo-item
-                )
-
-    div.swiper.promo__slider
-      div.swiper-wrapper
-        each card in promoCards
-          div.swiper-slide.promo__slide
-            +promoOverview(card)(
-              class=`promo__overview--${card.modifier}`
-            )
-
-      div.promo__controls
-        button.promo__control.promo__control--prev(
-          type="button"
-          aria-label="Показать предыдущую карточку"
-        )
-          +icon("icon-back", 7, 12)
-
-        button.promo__control.promo__control--next(
-          type="button"
-          aria-label="Показать следующую карточку"
-        )
-          +icon("icon-back", 7, 12)
+          p.promo__description
+            | Каждый пользователь «Пакета» может принять участие в акции.
+            | Авторизуйтесь в сервисе, узнайте свой уровень и следите
+            | за регулярными розыгрышами: каждую среду и раз в квартал.

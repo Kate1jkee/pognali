@@ -1,0 +1,14 @@
+mixin monthly-draw()
+  section.monthly-draw
+    .container
+      h2.monthly-draw__title Разыгрываем в сентябре
+
+      ul.monthly-draw__list
+        li.monthly-draw__item
+          +prize-card("От 3 до 6 месяцев")
+
+        li.monthly-draw__item
+          +prize-card("Больше 6 месяцев")
+
+      .monthly-draw__participation
+        +participation-form("monthly")

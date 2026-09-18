@@ -1,0 +1,14 @@
+mixin weekly-draw()
+  section.weekly-draw
+    .container
+      h2.weekly-draw__title Разыгрываем каждую среду
+
+      ul.weekly-draw__list
+        li.weekly-draw__item
+          +prize-card("Меньше 3 месяцев")
+
+        li.weekly-draw__item
+          +prize-card("От 3 до 6 месяцев")
+
+        li.weekly-draw__item
+          +prize-card("Больше 6 месяцев")

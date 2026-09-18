@@ -1,41 +1,22 @@
 mixin header(headerMods, currentUrl)
-  header.header(
-    class=headerMods
-    data-header
-  )
-    div.header__top
-      div.container
-        div.header__top-wrapper
-
-          if currentUrl === "index.html"
-            span.header__logo
-              img(
-                src="img/content/logo.svg"
-                width="34"
-                height="39"
-                alt=""
-              )
-              span.header__logo-text
-                | FindEdu
-          else
-            a.header__logo(
-              href="index.html"
-              aria-label="Перейти на главную страницу"
-            )
-              img(
-                src="img/content/logo.svg"
-                width="34"
-                height="39"
-                alt=""
-              )
-              span.header__logo-text
-                | FindEdu
-
-          +mainNav(currentUrl)(class="header__main-nav")
-
-    div.header__bottom(
-      id="courses-menu"
-    )
-      div.container
-        div.header__bottom-wrapper
-          +coursesNav()(class="header__courses-nav")
+  header.header(class=headerMods)
+    .container
+      if currentUrl === "index.html"
+        span.header__logo
+          img.header__logo-image(
+            src="img/svg/color-logo.svg"
+            width="162"
+            height="28"
+            alt="Пакет"
+          )
+      else
+        a.header__logo(
+          href="index.html"
+          aria-label="Пакет — на главную"
+        )
+          img.header__logo-image(
+            src="img/svg/color-logo.svg"
+            width="162"
+            height="28"
+            alt="Пакет"
+          )

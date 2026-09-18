@@ -1,0 +1,50 @@
+mixin winners-hero()
+  section.winners-hero
+    .container
+      .winners-hero__wrapper
+        .winners-hero__content
+          h1.winners-hero__title Победители акции
+
+          form.winners-hero__search(
+            action="#"
+            method="get"
+            data-winners-search
+          )
+            label.winners-hero__label(for="winner-phone")
+              | Последние 4 цифры номера телефона
+
+            .winners-hero__field
+              input.winners-hero__input(
+                type="text"
+                id="winner-phone"
+                name="phone"
+                inputmode="numeric"
+                pattern="[0-9]{4}"
+                maxlength="4"
+                required
+                aria-describedby="winner-phone-error"
+                data-winners-input
+              )
+
+              button.winners-hero__button(
+                type="submit"
+                aria-label="Найти победителя"
+              )
+                img(
+                  src="img/svg/search-icon.svg"
+                  alt=""
+                )
+
+            p.winners-hero__error(
+              id="winner-phone-error"
+              aria-live="polite"
+              data-winners-error
+              hidden
+            ) Номер не найден
+
+        .winners-hero__visual
+          img.winners-hero__image(
+            src="img/content/hero-image.png"
+            srcset="img/content/hero-image@2x.png 2x"
+            alt=""
+          )
