@@ -1,3 +1,21 @@
-mixin prize-card(title)
-  .prize-card
-    h3.prize-card__title= title
+mixin prize-card(card)
+  .prize-card(class=`prize-card--${card.theme}`)
+    .prize-card__header
+      img.prize-card__logo(
+        src=`img/svg/${card.logo}.svg`
+        alt=card.logoAlt
+      )
+
+      if card.count
+        span.prize-card__count= card.count
+
+    h4.prize-card__title= card.title
+
+    p.prize-card__description= card.text
+
+    if card.image
+      img.prize-card__image(
+        src=`img/content/${card.image}.png`
+        srcset=`img/content/${card.image}@2x.png 2x`
+        alt=""
+      )

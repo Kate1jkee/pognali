@@ -1,0 +1,8 @@
+mixin prize-group(group)
+  .prize-group
+    h3.prize-group__title= group.title
+
+    ul.prize-group__list
+      each card in group.prizes
+        li.prize-group__item
+          +prize-card(card)

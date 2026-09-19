@@ -1,0 +1,13 @@
+mixin draw(options)
+  section.draw(class=`draw--${options.type}`)
+    .container
+      h2.draw__title= options.title
+
+      ul.draw__list
+        each group in options.groups
+          li.draw__item
+            +prize-group(group)
+
+      if options.hasParticipation
+        .draw__participation
+          +participation-form(options.type)

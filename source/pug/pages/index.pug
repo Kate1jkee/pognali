@@ -14,6 +14,16 @@ block main
   main.main
     +hero()
     +promo()
-    +weekly-draw()
-    +monthly-draw()
+    +draw({
+      type: "weekly",
+      title: "Разыгрываем каждую среду",
+      groups: weeklyPrizeGroups
+    })
+
+    +draw({
+      type: "monthly",
+      title: "Разыгрываем в сентябре",
+      groups: monthlyPrizeGroups,
+      hasParticipation: true
+    })
     +winners-block()
