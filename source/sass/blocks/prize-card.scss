@@ -1,47 +1,184 @@
 .prize-card {
-    &--limeade {
-        background-color: $color-limeade;
+    display: flex;
+    flex-direction: column;
+    width: 156px;
+    min-height: 204px;
+    padding: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 5px;
+
+        &--citilink {
+            gap: 12px;
+        }
     }
+
+    &__logo {
+        display: block;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        height: 24px;
+        border-radius: 4px;
+        background-color: $color-default-white;
+        object-fit: contain;
+    
+
+        &--citilink-logo {
+            width: 104px;
+            padding: 4px;
+        }
+
+        &--x5-logo {
+            width: 28px;
+            padding: 4px;
+        }
+    }
+
+    &__count {
+        font-size: 16px;
+        line-height: 126%;
+        font-weight: 700;
+    }
+
+    &__title {
+        margin-bottom: 5px;
+    }
+
+    &__image {
+        display: block;
+        margin-top: auto;
+    }
+
+    &__info {
+        display: block;
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+    }
+
+    &--conifer {
+        background-image: linear-gradient(
+            to bottom,
+            $color-conifer 0%,
+            $color-default-white 100%
+        );
+    }
+
+    &--conifer &__count {
+        color: $color-limeade;
+    }
+
     &--mint-tulip {
-        background-color: $color-mint-tulip;
+        background-image: linear-gradient(
+            to bottom,
+            $color-mint-tulip 0%,
+            $color-default-white 100%
+        );
     }
     &--fog {
-        background-color: $color-fog;  
+        background-image: linear-gradient(
+            to bottom,
+            $color-fog 0%,
+            $color-default-white 100%
+        );
     }
     &--pale-slate {
-        background-color: $color-pale-slate; 
+        background-image: linear-gradient(
+            to bottom,
+            $color-pale-slate 0%,
+            $color-default-white 100%
+        );
     }
     &--quartz {
-        background-color: $color-quartz;
+        background-image: linear-gradient(
+            to bottom,
+            $color-quartz 0%,
+            $color-default-white 100%
+        );
     }
     &--almond {
-        background-color: $color-almond;
+        background-image: linear-gradient(
+            to bottom,
+            $color-almond 0%,
+            $color-default-white 100%
+        );
     }
     &--dairy-cream {
-        background-color: $color-dairy-cream;
+        background-image: linear-gradient(
+            to bottom,
+            $color-dairy-cream 0%,
+            $color-default-white 100%
+        );
     }
     &--lavender-blue {
-        background-color: $color-lavender-blue;
+        background-image: linear-gradient(
+            to bottom,
+            $color-lavender-blue 0%,
+            $color-default-white 100%
+        );
     }
     &--classic-rose {
-        background-color: $color-classic-rose;
+        background-image: linear-gradient(
+            to bottom,
+            $color-classic-rose 0%,
+            $color-default-white 100%
+        );
     }
     &--mint-tulip {
-        background-color: $color-mint-tulip;
+        background-image: linear-gradient(
+            to bottom,
+            $color-mint-tulip 0%,
+            $color-default-white 100%
+        );
     }
     &--pale-prim {
-        background-color: $color-pale-prim;
+        background-image: linear-gradient(
+            to bottom,
+            $color-pale-prim 0%,
+            $color-default-white 100%
+        );
     }
-    &--pelorous {
-        background-color: $color-pelorous;
+    &--pale-turquoise {
+        background-image: linear-gradient(
+            to bottom,
+            $color-pale-turquoise 0%,
+            $color-default-white 100%
+        );
     }
-    &--picton-blue {
-        background-color: $color-picton-blue;
+
+    &--pale-turquoise &__count {
+        color: $color-pelorous;
     }
+
+    &--columbia-blue{
+        background-image: linear-gradient(
+            to bottom,
+            $color-columbia-blue 0%,
+            $color-default-white 100%
+        );
+    }
+
+    &--columbia-blue &__count {
+        color: $color-picton-blue;
+    }
+
     &--biloba-flower {
-        background-color: $color-biloba-flower;
+        background-image: linear-gradient(
+            to bottom,
+            $color-biloba-flower 0%,
+            $color-default-white 100%
+        );
     }
     &--apricot {
-       background-color: $color-apricot; 
+        background-image: linear-gradient(
+            to bottom,
+            $color-apricot 0%,
+            $color-default-white 100%
+        );
     }
 }

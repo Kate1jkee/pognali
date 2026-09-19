@@ -12,27 +12,27 @@ h2,
 h3,
 h4 {
   font-weight: 700;
+  letter-spacing: -2%;
 }
 
 h1 {
   font-size: 64px;
   line-height: 70px;
-  letter-spacing: -0.02em;
   color: $color-dodger-blue;
 }
 
 h2 {
   font-size: 48px;
-  line-height: 100px;
+  line-height: 100%;
 }
 
 h3 {
   font-size: 32px;
-  line-height: 120px;
+  line-height: 120%;
 }
 
 h4 {
   font-size: 16px;
-  line-height: 126px;
+  line-height: 126%;
 }
 

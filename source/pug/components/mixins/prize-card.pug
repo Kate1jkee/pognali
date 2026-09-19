@@ -1,10 +1,22 @@
 mixin prize-card(card)
   .prize-card(class=`prize-card--${card.theme}`)
-    .prize-card__header
+    .prize-card__header(
+      class=card.logo === "citilink-logo" ? "prize-card__header--citilink" : null
+    )
       img.prize-card__logo(
+        class=`prize-card__logo--${card.logo}`
         src=`img/svg/${card.logo}.svg`
         alt=card.logoAlt
       )
+
+      if card.logo === "citilink-logo"
+        img.prize-card__info(
+          src="img/svg/info-icon.svg"
+          width="24"
+          height="24"
+          alt=""
+          aria-hidden="true"
+        )
 
       if card.count
         span.prize-card__count= card.count

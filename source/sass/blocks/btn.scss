@@ -1,20 +1,22 @@
 .btn {
   display: inline-flex;
-  padding: 10px 20px;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
   width: fit-content;
   max-width: 100%;
-  padding-left: 60px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-right: 46px;
-  border-radius: 20px;
+  padding-left: 90px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 90px;
+  border-radius: 12px;
   text-decoration: none;
-  color: $color-default-white;
 
-  background-color: $color-royal-blue;
+  color: $color-dodger-blue;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 110%;
+  letter-spacing: -2%;
+  
+  background-color: $color-hawkes-blue;
   border: none;
   cursor: pointer;
 

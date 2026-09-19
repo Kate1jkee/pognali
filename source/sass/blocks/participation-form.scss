@@ -1,0 +1,48 @@
+.participation-form {
+
+    &__agreement {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__checkbox {
+    appearance: none;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin: 0 0 4px;
+    padding: 4px;
+    border: 1px solid $color-dodger-blue;
+    border-radius: 50%;
+    background-color: transparent;
+    background-clip: content-box;
+    cursor: pointer;
+
+    &:checked {
+      background-color: $color-dodger-blue;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-dodger-blue;
+      outline-offset: 3px;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 135%;
+    letter-spacing: -2%;
+    color: $color-dodger-blue;
+    margin-bottom: 16px;
+  }
+
+  &__label {
+    cursor: pointer;
+  }
+
+  &__link {
+    color: inherit;
+  }
+
+}
