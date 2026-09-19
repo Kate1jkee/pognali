@@ -1,5 +1,5 @@
 mixin prize-group(group)
-  .prize-group
+  .prize-group(class=`prize-group--${group.type}`)
     h3.prize-group__title= group.title
 
     ul.prize-group__list

@@ -1,10 +1,15 @@
 .footer {
   margin-bottom: 164px;
-}
 
-.footer__wrapper {
-  display: flex;
-  background-color: $color-default-white;
-  padding: 32px;
-  padding-bottom: 40px;
+
+  &__wrapper {
+    display: flex;
+    background-color: $color-default-white;
+    padding: 32px;
+    padding-bottom: 40px;
+  }
+
+  &__copyright {
+    font-size: 14px;
+  }
 }

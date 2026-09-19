@@ -1,3 +1,12 @@
-.hero__wrapper {
-    display: flex;
+.hero {
+        
+    &__wrapper {
+        display: flex;
+    }
+
+    &__description {
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: -1%;
+    }
 }

@@ -4,12 +4,14 @@
     const weeklyPrizeGroups = [
         {
         title: "Меньше 3 месяцев",
+        type: "under-three",
         prizes: [
             getPrize("points-under-three")
         ]
         },
         {
         title: "От 3 до 6 месяцев",
+        type: "three-to-six",
         prizes: [
             getPrize("kettle"),
             getPrize("points-three-to-six")
@@ -17,6 +19,7 @@
         },
         {
         title: "Больше 6 месяцев",
+        type: "over-six",
         prizes: [
             getPrize("music-speaker"),
             getPrize("points-over-six")
@@ -27,6 +30,7 @@
     const monthlyPrizeGroups = [
       {
         title: "От 3 до 6 месяцев",
+        type: "three-to-six",
         prizes: [
           getPrize("tv"),
           getPrize("points-three-to-six")
@@ -34,6 +38,7 @@
       },
       {
         title: "Больше 6 месяцев",
+        type: "over-six",
         prizes: [
           getPrize("quarterly-vacuum"),
           getPrize("points-over-six")

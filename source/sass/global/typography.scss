@@ -1,0 +1,38 @@
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  color: $color-nero;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 64px;
+  line-height: 70px;
+  letter-spacing: -0.02em;
+  color: $color-dodger-blue;
+}
+
+h2 {
+  font-size: 48px;
+  line-height: 100px;
+}
+
+h3 {
+  font-size: 32px;
+  line-height: 120px;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 126px;
+}
+

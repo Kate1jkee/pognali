@@ -1,11 +1,23 @@
 .prize-group {
     background-color: $color-default-white;  
-}
 
-.prize-group__list {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    &--under-three &__title {
+        color: $color-viking;
+    }
+
+    &--three-to-six &__title {
+        color: $color-picton-blue;
+    }
+
+    &--over-six &__title {
+        color: $color-cornflower-blue;
+    }
+
+    &__list {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
 }

@@ -1,11 +1,11 @@
 .draw {
     margin-bottom: 50px;
-}
 
-.draw__list {
-    display: flex;
-    gap: 38px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    &__list {
+        display: flex;
+        gap: 38px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
 }
