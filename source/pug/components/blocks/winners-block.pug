@@ -2,9 +2,19 @@ mixin winners-block()
   section.winners-block
     .container
       .winners-block__wrapper
+        img.winners-block__background(
+          src="img/content/gradient-winners.png"
+          srcset="img/content/gradient-winners@2x.png 2x"
+          width="633"
+          height="316"
+          alt=""
+          aria-hidden="true"
+        )
         .winners-block__content
           h2.winners-block__title
-            | Узнайте, кто уже победил
+            | Узнайте,
+            br
+            | кто уже победил
 
           a.winners-block__button.btn(href="winners.html")
             | Итоги розыгрыша

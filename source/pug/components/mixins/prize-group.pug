@@ -1,6 +1,10 @@
 mixin prize-group(group)
   .prize-group(class=`prize-group--${group.type}`)
-    h3.prize-group__title= group.title
+    h3.prize-group__title
+      each line, index in group.titleLines
+        if index > 0
+          br
+        = line
 
     ul.prize-group__list
       each card in group.prizes

@@ -1,5 +1,13 @@
 mixin hero()
   section.hero
+    img.hero__background(
+      src="img/content/gradient-desktop.png"
+      srcset="img/content/gradient-desktop@2x.png 2x"
+      width="1440"
+      height="655"
+      alt=""
+      aria-hidden="true"
+    )
     .container
       .hero__wrapper
         .hero__content
@@ -13,7 +21,9 @@ mixin hero()
 
         .hero__visual
           img.hero__image(
-            src="img/content/hero-image.png"
-            srcset="img/content/hero-image@2x.png 2x"
+            src="img/content/hero-image-desktop.png"
+            srcset="img/content/hero-image-desktop@2x.png 2x"
+            width="654"
+            height="649"
             alt=""
           )

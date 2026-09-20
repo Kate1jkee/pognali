@@ -23,11 +23,16 @@ mixin prize-card(card)
 
     h4.prize-card__title= card.title
 
-    p.prize-card__description= card.text
+    p.prize-card__description
+      each line, index in card.textLines
+        if index > 0
+          br
+        = line
 
     if card.image
-      img.prize-card__image(
-        src=`img/content/${card.image}.png`
-        srcset=`img/content/${card.image}@2x.png 2x`
-        alt=""
-      )
+      .prize-card__visual
+        img.prize-card__image(
+          src=`img/content/${card.image}.png`
+          srcset=`img/content/${card.image}@2x.png 2x`
+          alt=""
+        )

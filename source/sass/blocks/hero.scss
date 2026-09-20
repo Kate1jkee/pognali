@@ -1,4 +1,6 @@
 .hero {
+    position: relative;
+    isolation: isolate;
         
     &__wrapper {
         display: flex;
@@ -8,5 +10,31 @@
         font-size: 24px;
         line-height: 32px;
         letter-spacing: -1%;
+    }
+
+    &__background {
+        position: absolute;
+        top: -121px;
+        left: 50%;
+        z-index: -1;
+        transform: translateX(-50%);
+
+        width: 1440px;
+        max-width: 100%;
+        height: auto;
+        pointer-events: none;
+    }
+
+    &__visual {
+        flex-shrink: 0;
+        transform: translate($container-padding-desktop, -121px);
+    }
+
+    &__title {
+        margin-bottom: 40px;
+    }
+
+    &__description {
+        margin-bottom: 40px;
     }
 }

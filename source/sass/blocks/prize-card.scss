@@ -49,9 +49,20 @@
         margin-bottom: 5px;
     }
 
+    &__visual {
+        position: relative;
+        min-height: 102px;
+        margin: auto -10px -10px;
+    }
+
     &__image {
+        position: absolute;
+        right: 0;
+        bottom: 0;
         display: block;
-        margin-top: auto;
+        width: auto;
+        max-width: none;
+        height: auto;
     }
 
     &__info {

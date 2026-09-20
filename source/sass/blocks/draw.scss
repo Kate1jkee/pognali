@@ -3,6 +3,7 @@
 
     &__list {
         display: flex;
+        flex-wrap: wrap;
         align-items: stretch;
         gap: 38px;
         list-style: none;
@@ -17,5 +18,10 @@
 
     &__title {
         margin-bottom: 35px;
+    }
+
+    &__participation {
+        display: flex;
+        justify-content: center;
     }
 }
