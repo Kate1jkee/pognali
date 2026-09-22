@@ -3,8 +3,8 @@ mixin prize-group(group)
     h3.prize-group__title
       each line, index in group.titleLines
         if index > 0
-          br
-        = line
+          = " "
+        span= line
 
     ul.prize-group__list
       each card in group.prizes

@@ -2,13 +2,18 @@ mixin header(headerMods, currentUrl)
   header.header(class=headerMods)
     .container
       if currentUrl === "index.html"
-        span.header__logo
+        picture
+          source(
+            media="(max-width: 1023px)"
+            srcset="img/svg/plain-logo.svg"
+          )
           img.header__logo-image(
             src="img/svg/color-logo.svg"
             width="162"
             height="28"
             alt="Пакет"
           )
+          
       else
         a.header__logo(
           href="index.html"

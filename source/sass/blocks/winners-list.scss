@@ -1,0 +1,81 @@
+.winners-list {
+  margin-bottom: 50px;
+
+  &__result {
+    padding: 32px;
+    border-radius: 40px;
+    background-color: $color-default-white;
+  }
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+
+  &__week,
+  &__dates {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $color-nobel;
+  }
+
+  &__dates {
+    text-align: right;
+  }
+
+  &__scroll {
+    // Шапка таблицы + 13 строк победителей.
+    max-height: calc(44px + 13 * 47px);
+    overflow: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 24px;
+    line-height: 29px;
+    color: $color-default-black;
+
+    th,
+    td {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      padding: 0 24px 14px 0;
+      border-bottom: 1px solid $color-pale-slate;
+      background-color: $color-default-white;
+      font-weight: 700;
+    }
+
+    td {
+      padding: 9px 24px 9px 0;
+    }
+
+    th:first-child,
+    td:first-child {
+      width: 180px;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 210px;
+      white-space: nowrap;
+    }
+
+    th:last-child,
+    td:last-child {
+      padding-right: 0;
+    }
+  }
+}

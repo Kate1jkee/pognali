@@ -32,6 +32,10 @@ body {
   height: 100%;
 
   background-color: $color-alice-blue;
+
+  @include vp-1023 {
+    background-color: $color-default-white;
+  }
 }
 
 a {

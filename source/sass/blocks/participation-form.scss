@@ -1,6 +1,7 @@
 .participation-form {
+  margin: 0 auto;
 
-    &__agreement {
+  &__agreement {
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -43,6 +44,14 @@
 
   &__link {
     color: inherit;
+  }
+
+  @include vp-1023 {
+      
+  }
+
+  @include vp-767 {
+  
   }
 
 }

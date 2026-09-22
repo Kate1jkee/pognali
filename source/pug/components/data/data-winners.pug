@@ -1,0 +1,82 @@
+-
+  const mockWinners = [
+    { name: "Анна", phone: "7XXXXXX8474" },
+    { name: "Михаил", phone: "7XXXXXX8433" },
+    { name: "Екатерина", phone: "7XXXXXX8573" },
+    { name: "Александр", phone: "7XXXXXX8483" },
+    { name: "Мария", phone: "7XXXXXX9473" },
+    { name: "Дмитрий", phone: "7XXXXXX2473" },
+    { name: "Ольга", phone: "7XXXXXX8573" },
+    { name: "Сергей", phone: "7XXXXXX1473" },
+    { name: "Наталья", phone: "7XXXXXX8443" },
+    { name: "Андрей", phone: "7XXXXXX8473" },
+    { name: "Елена", phone: "7XXXXXX8343" },
+    { name: "Алексей", phone: "7XXXXXX2373" },
+    { name: "Татьяна", phone: "7XXXXXX6773" },
+    { name: "Иван", phone: "7XXXXXX3673" },
+    { name: "Ирина", phone: "7XXXXXX8456" },
+    { name: "Павел", phone: "7XXXXXX8438" },
+    { name: "Светлана", phone: "7XXXXXX8274" },
+    { name: "Максим", phone: "7XXXXXX8427" },
+    { name: "Юлия", phone: "7XXXXXX8179" },
+    { name: "Артём", phone: "7XXXXXX3894" }
+  ];
+
+  const winnersDraws = [
+    {
+      id: "weekly-01",
+      type: "weekly",
+      label: "02.08.23 — первый розыгрыш",
+      week: 1,
+      dateFrom: "02.08.23",
+      dateTo: "09.08.23"
+    },
+    {
+      id: "weekly-02",
+      type: "weekly",
+      label: "09.08.23 — второй розыгрыш",
+      week: 2,
+      dateFrom: "09.08.23",
+      dateTo: "16.08.23"
+    },
+    {
+      id: "weekly-03",
+      type: "weekly",
+      label: "16.08.23 — третий розыгрыш",
+      week: 3,
+      dateFrom: "16.08.23",
+      dateTo: "23.08.23"
+    },
+    {
+      id: "weekly-04",
+      type: "weekly",
+      label: "23.08.23 — четвёртый розыгрыш",
+      week: 4,
+      dateFrom: "23.08.23",
+      dateTo: "30.08.23"
+    },
+    {
+      id: "weekly-05",
+      type: "weekly",
+      label: "30.08.23 — пятый розыгрыш",
+      week: 5,
+      dateFrom: "30.08.23",
+      dateTo: "07.09.23"
+    },
+    {
+      id: "weekly-06",
+      type: "weekly",
+      label: "07.09.23 — шестой розыгрыш",
+      week: 6,
+      dateFrom: "07.09.23",
+      dateTo: "14.09.23"
+    }
+  ].map((draw) => ({
+    ...draw,
+    winners: mockWinners.map((winner, index) => ({
+      id: `${draw.id}-winner-${index + 1}`,
+      name: "Вия",
+      phone: winner.phone,
+      prize: "Сертификат на покупки в «Пятёрочке»"
+    }))
+  }));

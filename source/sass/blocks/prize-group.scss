@@ -29,4 +29,39 @@
     &__title {
         margin-bottom: 24px;
     }
+
+    &__title span {
+        display: block;
+    }
+
+    @include vp-1023 {
+        width: 100%;
+        padding: 8px 24px 20px;
+        border-radius: 20px;
+
+        background-color: $color-default-white;
+        background-image: linear-gradient(
+        to bottom,
+        $color-alice-blue 0%,
+        rgba(255, 255, 255, 0) 100%
+        );
+
+        &__title {
+            margin-bottom: 16px;
+        }
+
+        &__title span {
+            display: inline;
+        }
+
+        &__list {
+            gap: 16px;
+            margin-top: 0;
+        }
+    }
+
+    @include vp-767 {
+    
+    }
+
 }

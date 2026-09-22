@@ -1,4 +1,24 @@
 .header {
     padding-top: 53px;
     padding-bottom: 40px;
+    position: relative;
+    z-index: 1;
+
+    @include vp-1023 {
+        padding-top: 20px;
+        margin: 0 auto;
+
+        &__logo-image {
+            width: 162px;
+            height: 28px;
+            object-fit: contain;
+        }
+    }
+
+    @include vp-767 {
+        &__logo-image {
+            width: 116px;
+            height: 20px;
+        }
+    }
 }

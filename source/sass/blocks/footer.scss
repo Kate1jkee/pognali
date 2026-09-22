@@ -42,4 +42,48 @@
     display: flex;
     align-items: end;
   }
+
+  @include vp-1023 {
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+
+    &__wrapper {
+      display: block;
+      padding: 0 0 32px;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    &__info {
+      display: none;
+    }
+
+    &__nav {
+      display: block;
+    }
+
+    &__list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+
+    &__item {
+      &:last-child {
+        order: -1;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+    }
+  }
+
+  @include vp-767 {
+    &__link {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
 }
