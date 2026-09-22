@@ -1,0 +1,46 @@
+.winners-hero {
+    position: relative;
+    isolation: isolate;
+    margin-bottom: 84px;
+    overflow-x: clip;
+    overflow-y: visible;
+
+    &__wrapper {
+        position: relative;
+        display: flex;
+    }
+
+    &__background {
+        position: absolute;
+        top: -121px;
+        z-index: -1;
+        left: calc(50% + 50px);
+        transform: translateX(-50%);
+
+        width: 1440px;
+        max-width: 100%;
+        height: auto;
+        pointer-events: none;
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 540px;
+    }
+
+    &__visual {
+        position: absolute;
+        top: -121px;
+        right: -70px;
+        width: 654px;
+
+        transform: none;
+        pointer-events: none;
+    }
+
+    &__title {
+        margin-bottom: 45px;
+    }
+}

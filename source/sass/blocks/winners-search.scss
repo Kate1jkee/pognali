@@ -1,0 +1,82 @@
+.winners-search {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+    max-width: 540px;
+    padding: 32px;
+
+    background-color: $color-default-white;
+    border-radius: 40px;
+
+    &__label {
+        font-size: 32px;
+        line-height: 120%;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    &__description {
+        color: $color-nobel;
+        font-size: 16px;
+        line-height: 135%;
+        letter-spacing: -0.02em;
+    }
+
+    &__field {
+        display: flex;
+        align-items: center;
+        min-height: 80px;
+
+        background-color: $color-alice-blue;
+        border-radius: 20px;
+
+        &:focus-within {
+            outline: 2px solid $color-cornflower-blue;
+            outline-offset: 2px;
+        }
+    }
+
+    &__input {
+        flex: 1;
+        min-width: 0;
+        width: 100%;
+        padding: 20px 24px;
+
+        font-family: inherit;
+        font-size: 24px;
+        line-height: 32px;
+        color: $color-nero;
+
+        background-color: transparent;
+        border: 0;
+        outline: none;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        width: 80px;
+        align-self: stretch;
+        padding: 0;
+
+        background-color: transparent;
+        border: 0;
+        border-radius: 20px;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: 2px solid $color-cornflower-blue;
+            outline-offset: -4px;
+        }
+    }
+
+    &__icon {
+        width: 30px;
+        height: 30px;
+    }
+}
