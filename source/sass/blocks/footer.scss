@@ -27,6 +27,12 @@
 
   &__logo {
     margin-bottom: 84px;
+
+    img {
+        width: 56px;
+        height: 40px;
+        object-fit: contain;
+    }
   }
 
   &__list {

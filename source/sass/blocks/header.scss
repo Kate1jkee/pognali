@@ -8,7 +8,7 @@
         padding-top: 20px;
         margin: 0 auto;
 
-        &__logo-image {
+        &__logo img {
             width: 162px;
             height: 28px;
             object-fit: contain;
@@ -16,7 +16,7 @@
     }
 
     @include vp-767 {
-        &__logo-image {
+        &__logo img {
             width: 116px;
             height: 20px;
         }

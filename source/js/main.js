@@ -4,6 +4,11 @@ import {initWinnersList} from './modules/winners-list.js';
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-participation-link]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+    });
+  });
   // Utils
   // ---------------------------------
 

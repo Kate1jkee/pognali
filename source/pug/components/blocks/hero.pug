@@ -1,16 +1,5 @@
 mixin hero()
   section.hero
-    picture
-      source(
-        media="(max-width: 1023px)"
-        srcset="img/content/gradient-mobile.png 1x, img/content/gradient-mobile@2x.png 2x"
-      )
-      img.hero__background(
-        src="img/content/gradient-desktop.png"
-        srcset="img/content/gradient-desktop@2x.png 2x"
-        alt=""
-        aria-hidden="true"
-      )
     .container
       .hero__wrapper
         .hero__content
@@ -23,13 +12,27 @@ mixin hero()
           +participation-form("hero")
 
         .hero__visual
-          picture
-            source(
-              media="(max-width: 1023px)"
-              srcset="img/content/hero-image-mobile.png 1x, img/content/hero-image-mobile@2x.png 2x"
-            )
-            img.hero__image(
-              src="img/content/hero-image-desktop.png"
-              srcset="img/content/hero-image-desktop@2x.png 2x"
-              alt=""
-            )
+          .hero__background
+            picture
+              source(
+                media="(max-width: 1023px)"
+                srcset="img/content/gradient-mobile.png 1x, img/content/gradient-mobile@2x.png 2x"
+              )
+              img(
+                src="img/content/gradient-desktop.png"
+                srcset="img/content/gradient-desktop@2x.png 2x"
+                alt=""
+                aria-hidden="true"
+              )
+
+          .hero__image
+            picture
+              source(
+                media="(max-width: 1023px)"
+                srcset="img/content/hero-image-mobile.png 1x, img/content/hero-image-mobile@2x.png 2x"
+              )
+              img(
+                src="img/content/hero-image-desktop.png"
+                srcset="img/content/hero-image-desktop@2x.png 2x"
+                alt=""
+              )

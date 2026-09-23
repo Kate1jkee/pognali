@@ -5,6 +5,7 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    cursor: pointer;
   }
 
   &__checkbox {
@@ -36,10 +37,6 @@
     letter-spacing: -0.02em;
     color: $color-dodger-blue;
     margin-bottom: 16px;
-  }
-
-  &__label {
-    cursor: pointer;
   }
 
   &__link {

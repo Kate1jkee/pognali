@@ -43,4 +43,10 @@
     &__title {
         margin-bottom: 45px;
     }
+
+    &__background img,
+    &__visual img {
+        width: 100%;
+        height: auto;
+    }
 }

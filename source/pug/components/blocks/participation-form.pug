@@ -1,10 +1,12 @@
 mixin participation-form(idPrefix)
   form.participation-form(
     action="#"
-    method="get"
+    method="post"
     data-participation-form
   )
-    .participation-form__agreement
+    label.participation-form__agreement(
+      for=`${idPrefix}-agreement`
+    )
       input.participation-form__checkbox(
         type="checkbox"
         id=`${idPrefix}-agreement`
@@ -14,15 +16,13 @@ mixin participation-form(idPrefix)
         data-participation-checkbox
       )
 
-      .participation-form__text
-        label.participation-form__label(
-          for=`${idPrefix}-agreement`
-        ) Я согласен на 
-
-        |
-        a.participation-form__link(href="#")
-          | участие в акции
-
+      span.participation-form__text
+        | Я согласен на#{' '}
+        a.participation-form__link(
+          href="#"
+          data-participation-link
+        ) участие в акции
+        
     button.participation-form__button.btn(
       type="submit"
       data-participation-button

@@ -3,20 +3,21 @@ mixin prize-card(card)
     .prize-card__header(
       class=card.logo === "citilink-logo" ? "prize-card__header--citilink" : null
     )
-      img.prize-card__logo(
-        class=`prize-card__logo--${card.logo}`
-        src=`img/svg/${card.logo}.svg`
-        alt=card.logoAlt
-      )
+      .prize-card__logo(class=`prize-card__logo--${card.logo}`)
+        img(
+          src=`img/svg/${card.logo}.svg`
+          alt=card.logoAlt
+        )
 
       if card.logo === "citilink-logo"
-        img.prize-card__info(
-          src="img/svg/info-icon.svg"
-          width="24"
-          height="24"
-          alt=""
-          aria-hidden="true"
-        )
+        .prize-card__info
+          img(
+            src="img/svg/info-icon.svg"
+            width="24"
+            height="24"
+            alt=""
+            aria-hidden="true"
+          )
 
       if card.count
         span.prize-card__count= card.count
@@ -31,7 +32,7 @@ mixin prize-card(card)
 
     if card.image
       .prize-card__visual
-        img.prize-card__image(
+        img(
           src=`img/content/${card.image}.png`
           srcset=`img/content/${card.image}@2x.png 2x`
           alt=""
