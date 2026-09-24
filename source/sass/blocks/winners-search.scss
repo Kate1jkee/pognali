@@ -10,11 +10,18 @@
     background-color: $color-default-white;
     border-radius: 40px;
 
-    &__label {
+    &__title {
+        margin: 0;
         font-size: 32px;
         line-height: 120%;
         font-weight: 700;
         letter-spacing: -0.02em;
+    }
+
+    &__label {
+        display: flex;
+        flex: 1;
+        min-width: 0;
     }
 
     &__description {

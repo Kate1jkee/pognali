@@ -19,9 +19,14 @@ mixin header(headerMods, currentUrl)
           href="index.html"
           aria-label="Пакет — на главную"
         )
-          img(
-            src="img/svg/color-logo.svg"
-            width="162"
-            height="28"
-            alt="Пакет"
-          )
+          picture
+            source(
+              media="(max-width: 1023px)"
+              srcset="img/svg/plain-logo.svg"
+            )
+            img(
+              src="img/svg/color-logo.svg"
+              width="162"
+              height="28"
+              alt="Пакет"
+            )

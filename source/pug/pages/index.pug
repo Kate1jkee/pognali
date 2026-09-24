@@ -12,7 +12,11 @@ block variables
 
 block main
   main.main
-    +hero()
+    +hero("Чем дольше — тем больше!")
+      p.hero__description
+        | Мы считаем каждый день вместе! Проверьте, сколько вы с «Пакетом», выигрывайте баллы «X5 Клуба» и ценные призы от Ситилинк.
+
+      +participation-form("hero")
     +promo()
     +draw({
       type: "weekly",

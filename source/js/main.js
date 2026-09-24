@@ -1,19 +1,14 @@
 import {mobileVhFix} from './utils/mobile-vh-fix.js';
 import {initWinnersList} from './modules/winners-list.js';
+import {initParticipationForms} from './modules/participation-form.js';
 
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-participation-link]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-    });
-  });
-  // Utils
-  // ---------------------------------
 
   mobileVhFix();
   initWinnersList();
+  initParticipationForms();
 
 
   // Courses slider

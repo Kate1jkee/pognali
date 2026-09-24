@@ -2,23 +2,27 @@ mixin winners-search()
   form.winners-search(
     action="#"
     method="get"
+    aria-labelledby="winner-search-title"
     data-winners-search
   )
-    label.winners-search__label(for="winner-phone")
+    h2.winners-search__title(id="winner-search-title")
       | Поиск по номеру телефона
 
     .winners-search__field
-      input.winners-search__input(
-        type="text"
-        id="winner-phone"
-        name="phone"
-        inputmode="numeric"
-        pattern="[0-9]{4}"
-        maxlength="4"
-        required
-        aria-describedby="winner-phone-hint winner-phone-error"
-        data-winners-input
-      )
+      label.winners-search__label(for="winner-phone")
+        span.visually-hidden Номер телефона
+
+        input.winners-search__input(
+          type="text"
+          id="winner-phone"
+          name="phone"
+          inputmode="numeric"
+          pattern="[0-9]{4}"
+          maxlength="4"
+          required
+          aria-describedby="winner-phone-hint winner-phone-error"
+          data-winners-input
+        )
 
       button.winners-search__button(
         type="submit"

@@ -43,11 +43,17 @@
         z-index: -1;
 
         width: 1440px;
+        aspect-ratio: 1440 / 655;
+
+        background-image: url("../img/content/gradient-desktop.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+
         pointer-events: none;
 
-        img {
-            width: 100%;
-            height: auto;
+        @include retina {
+            background-image: url("../img/content/gradient-desktop@2x.png");
         }
     }
 
@@ -94,11 +100,19 @@
             margin-inline: -$container-padding-tablet;
             transform: none;
         }
+        
         &__background {
             top: -121px;
             left: 50%;
             width: calc(100% + 2 * #{$container-padding-tablet});
+            aspect-ratio: 375 / 480;
             transform: translateX(-50%);
+
+            background-image: url("../img/content/gradient-mobile.png");
+
+            @include retina {
+                background-image: url("../img/content/gradient-mobile@2x.png");
+            }
         }
 
         &__image {
@@ -113,6 +127,10 @@
         .participation-form {
             order: 3;
         }
+
+        .winners-search {
+            order: 3;
+        }
     }
 
     @include vp-767 {
@@ -123,7 +141,7 @@
 
         &__background {
             top: -80px;
-            width: calc(100% + 2 * #{$container-padding-tablet});
+            width: calc(100% + 2 * #{$container-padding-mobile});
         }
 
         &__image {

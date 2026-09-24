@@ -1,29 +1,14 @@
-mixin hero()
-  section.hero
+mixin hero(title, modifier)
+  section.hero(class=modifier ? `hero--${modifier}` : null)
     .container
       .hero__wrapper
         .hero__content
-          h1.hero__title
-            | Чем дольше — тем больше!
+          h1.hero__title= title
 
-          p.hero__description
-            | Мы считаем каждый день вместе! Проверьте, сколько вы с «Пакетом», выигрывайте баллы «X5 Клуба» и ценные призы от Ситилинк.
-
-          +participation-form("hero")
+          block
 
         .hero__visual
-          .hero__background
-            picture
-              source(
-                media="(max-width: 1023px)"
-                srcset="img/content/gradient-mobile.png 1x, img/content/gradient-mobile@2x.png 2x"
-              )
-              img(
-                src="img/content/gradient-desktop.png"
-                srcset="img/content/gradient-desktop@2x.png 2x"
-                alt=""
-                aria-hidden="true"
-              )
+          .hero__background(aria-hidden="true")
 
           .hero__image
             picture
