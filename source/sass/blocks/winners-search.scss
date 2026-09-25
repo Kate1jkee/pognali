@@ -1,14 +1,16 @@
 .winners-search {
+  width: 100%;
+  max-width: 540px;
+  padding: 32px;
+
+  background-color: $color-default-white;
+  border-radius: 40px;
+
+  > form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    width: 100%;
-    max-width: 540px;
-    padding: 32px;
-
-    background-color: $color-default-white;
-    border-radius: 40px;
+  }
 
     &__title {
         margin: 0;
@@ -40,12 +42,12 @@
         border-radius: 20px;
 
         &:focus-within {
-            outline: 2px solid $color-cornflower-blue;
+            outline: 2px solid $color-prize-blue;
             outline-offset: 2px;
         }
     }
 
-    &__input {
+    &__label input {
         flex: 1;
         min-width: 0;
         width: 100%;
@@ -95,11 +97,11 @@
         color: $color-international-orange;
     }
 
-    &.is-found &__input {
+    &.is-found &__label input {
         color: $color-dodger-blue;
     }
 
-    &.is-invalid &__input {
+    &.is-invalid &__label input {
         color: $color-international-orange;
     }
 

@@ -14,7 +14,7 @@
     }
 
     &--over-six &__title {
-        color: $color-cornflower-blue;
+        color: $color-prize-blue;
     }
 
     &__list {
@@ -55,8 +55,14 @@
         }
 
         &__list {
+            min-width: 0;
             gap: 16px;
             margin-top: 0;
+        }
+
+        &__item {
+            flex: 0 1 156px;
+            min-width: 0;
         }
     }
 

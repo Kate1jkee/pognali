@@ -12,6 +12,7 @@ const initParticipationForms = () => {
 
     const updateButton = () => {
       button.disabled = !checkbox.checked;
+      button.classList.remove('is-pressed');
     };
 
     updateButton();
@@ -20,9 +21,20 @@ const initParticipationForms = () => {
 
     if (link) {
       link.addEventListener('click', (event) => {
+        // Ссылка-пустышка: не переходим и не переключаем чекбокс.
         event.preventDefault();
       });
     }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!checkbox.checked) {
+        return;
+      }
+
+      button.classList.add('is-pressed');
+    });
   });
 };
 

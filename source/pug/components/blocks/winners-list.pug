@@ -1,4 +1,8 @@
 mixin winners-list()
+  - const weeklyGroup = winnersGroups.find((group) => group.type === 'week')
+  - const monthlyGroup = winnersGroups.find((group) => group.type === 'month')
+  - const weeklyDraws = weeklyGroup.draws
+
   section.winners-list
     .container
       h2.winners-list__title Список победителей
@@ -8,13 +12,13 @@ mixin winners-list()
           type="button"
           data-winners-type="weekly"
           aria-pressed="true"
-        ) Еженедельные
+        )= weeklyGroup.title
 
         button.winners-list__type.btn(
           type="button"
           data-winners-type="monthly"
           aria-pressed="false"
-        ) Розыгрыш в сентябре
+        )= monthlyGroup.title
 
       .winners-list__filter
         button.winners-list__toggle.btn(
@@ -23,14 +27,14 @@ mixin winners-list()
           aria-controls="winners-dates"
           data-winners-toggle
         )
-          span(data-winners-selected)= winnersDraws[0].label
+          span(data-winners-selected)= weeklyDraws[0].label
 
         ul.winners-list__options(
           id="winners-dates"
           data-winners-options
           hidden
         )
-          each draw, index in winnersDraws
+          each draw, index in weeklyDraws
             li.winners-list__option
               button.winners-list__date(
                 type="button"
@@ -39,33 +43,43 @@ mixin winners-list()
               )= draw.label
 
       .winners-list__results
-        each draw, index in winnersDraws
+        each draw, index in weeklyDraws
           .winners-list__result(
             data-winners-result=draw.id
+            data-winners-group="weekly"
             hidden=index !== 0
           )
             .winners-list__heading
-              h3.winners-list__week(id=`${draw.id}-title`)
-                = `${draw.week} неделя`
+              h3.winners-list__week(id=`${draw.id}-title`)= draw.title
 
               p.winners-list__dates
                 = `${draw.dateFrom} — ${draw.dateTo}`
 
-            .winners-list__scroll
-              table.winners-list__table(
-                aria-labelledby=`${draw.id}-title`
-              )
-                thead
-                  tr
-                    th(scope="col") Имя
-                    th(scope="col") Телефон
-                    th(scope="col") Приз
+            +winners-table(draw.winners, `${draw.id}-title`)
 
-                tbody
-                  each winner in draw.winners
-                    tr.winners-list__row(
-                      data-winner-phone=winner.phone
-                    )
-                      td= winner.name
-                      td= winner.phone
-                      td= winner.prize
+        .winners-list__result(
+          data-winners-result="monthly"
+          data-winners-group="monthly"
+          hidden
+        )
+          .winners-list__heading
+            h3.winners-list__week(id="monthly-title")= monthlyGroup.title
+
+          +winners-table(monthlyGroup.winners, "monthly-title")
+
+
+mixin winners-table(winners, titleId)
+  .winners-list__scroll
+    table.winners-list__table(aria-labelledby=titleId)
+      thead
+        tr
+          th(scope="col") Имя
+          th(scope="col") Телефон
+          th(scope="col") Приз
+
+      tbody
+        each winner in winners
+          tr.winners-list__row(data-winner-phone=winner.phone)
+            td= winner.name
+            td= winner.phone
+            td= winner.prize

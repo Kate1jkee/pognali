@@ -19,6 +19,23 @@
   &__link {
     font-size: 16px;
     line-height: 22px;
+    color: $color-fiord;
+    transition: color $trans-default;
+
+    @include hover-focus {
+      color: $color-nobel;
+    }
+
+    @include focus {
+      outline: 2px solid currentColor;
+      outline-offset: 3px;
+    }
+
+    &:active,
+    &:hover:active,
+    &.focus-visible:active {
+      color: $color-nero;
+    }
   }
 
   &__copyright {

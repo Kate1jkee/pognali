@@ -232,4 +232,45 @@
     &--lavender-blue &__visual {
         height: 168px;
     }
+
+    @include vp-1023 {
+        width: 100%;
+        min-width: 0;
+
+        &__header {
+            gap: 8px;
+            min-width: 0;
+        }
+
+        &__logo--citilink-logo {
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        &__count {
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        &__title,
+        &__description {
+            overflow-wrap: anywhere;
+        }
+
+        &__visual {
+            max-width: 100%;
+        }
+    }
+
+    @include vp-374 {
+        padding-bottom: 10px;
+
+        &__visual {
+            position: static;
+            align-self: flex-end;
+            flex-shrink: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    }
 }

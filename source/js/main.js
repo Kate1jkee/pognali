@@ -1,6 +1,8 @@
 import {mobileVhFix} from './utils/mobile-vh-fix.js';
 import {initWinnersList} from './modules/winners-list.js';
 import {initParticipationForms} from './modules/participation-form.js';
+import {initPrizesSliders} from './modules/prizes-slider.js';
+import {initScrollReveal} from './modules/scroll-reveal.js';
 
 // ---------------------------------
 
@@ -9,37 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
   mobileVhFix();
   initWinnersList();
   initParticipationForms();
+  initPrizesSliders();
+  initScrollReveal();
 
-
-  // Courses slider
-  // ---------------------------------
-
-  // eslint-disable-next-line no-unused-vars
-  const coursesSlider = new window.Swiper('.courses__slider', {
-    loop: true,
-    slidesPerView: 'auto',
-    centeredSlides: true,
-    spaceBetween: 12,
-    navigation: {
-      prevEl: '.courses__control--prev',
-      nextEl: '.courses__control--next',
-    },
-  });
-
-  // Promo slider
-  // ---------------------------------
-
-  // eslint-disable-next-line no-unused-vars
-  const promoSlider = new window.Swiper('.promo__slider', {
-    loop: true,
-    slidesPerView: 'auto',
-    centeredSlides: true,
-    spaceBetween: 12,
-    navigation: {
-      prevEl: '.promo__control--prev',
-      nextEl: '.promo__control--next',
-    },
-  });
 });
 // ---------------------------------
 

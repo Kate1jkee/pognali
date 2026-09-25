@@ -1,12 +1,15 @@
 mixin draw(options)
   section.draw(class=`draw--${options.type}`)
     .container
-      h2.draw__title= options.title
+      div(data-reveal)
+        h2.draw__title(data-reveal-target="text")= options.title
 
-      ul.draw__list
-        each group in options.groups
-          li.draw__item
-            +prize-group(group)
+      .draw__slider(data-prizes-slider data-reveal)
+        ul.draw__list
+          each group in options.groups
+            li.draw__item
+              .draw__group(data-reveal-target="scale")
+                +prize-group(group)
 
       if options.hasParticipation
         .draw__participation

@@ -1,21 +1,46 @@
 const initWinnersList = () => {
   const toggle = document.querySelector('[data-winners-toggle]');
+  const options = document.querySelector('[data-winners-options]');
+  const form = document.querySelector('[data-winners-search]');
 
-  if (!toggle) {
+  // Проверяем родителей до поиска элементов внутри них.
+  if (!toggle || !options || !form) {
     return;
   }
 
-  const options = document.querySelector('[data-winners-options]');
+  const searchWrapper = form.closest('[data-winners-search-wrapper]');
+
   const selected = toggle.querySelector('[data-winners-selected]');
   const buttons = options.querySelectorAll('[data-winners-date]');
   const results = document.querySelectorAll('[data-winners-result]');
+  const typeButtons = document.querySelectorAll('[data-winners-type]');
+  const filter = toggle.closest('.winners-list__filter');
 
-  const form = document.querySelector('[data-winners-search]');
   const input = form.querySelector('[data-winners-input]');
   const error = form.querySelector('[data-winners-error]');
   const hint = form.querySelector('#winner-phone-hint');
 
+  // Проверяем обязательные внутренние элементы.
+  if (
+    !searchWrapper
+    || !selected
+    || !filter
+    || !input
+    || !error
+    || !hint
+    || !buttons.length
+    || !results.length
+  ) {
+    return;
+  }
+
+  const selectedWeek = Array.from(buttons).find((button) => {
+    return button.getAttribute('aria-pressed') === 'true';
+  }) || buttons[0];
+
   let searchValue = '';
+  let activeType = 'weekly';
+  let activeWeekId = selectedWeek.dataset.winnersDate;
 
   // Показываем собственные сообщения вместо браузерной валидации.
   form.noValidate = true;
@@ -23,7 +48,7 @@ const initWinnersList = () => {
   const setError = (message = '') => {
     const isInvalid = Boolean(message);
 
-    form.classList.toggle('is-invalid', isInvalid);
+    searchWrapper.classList.toggle('is-invalid', isInvalid);
     input.setAttribute('aria-invalid', String(isInvalid));
 
     error.textContent = message;
@@ -54,7 +79,7 @@ const initWinnersList = () => {
       }
     });
 
-    form.classList.toggle(
+    searchWrapper.classList.toggle(
         'is-found',
         Boolean(searchValue) && matches > 0
     );
@@ -73,6 +98,38 @@ const initWinnersList = () => {
     toggle.setAttribute('aria-expanded', 'false');
   };
 
+  const showResults = () => {
+    results.forEach((result) => {
+      const isCurrentGroup = result.dataset.winnersGroup === activeType;
+      const isCurrentDraw = activeType === 'monthly'
+        || result.dataset.winnersResult === activeWeekId;
+
+      result.hidden = !(isCurrentGroup && isCurrentDraw);
+    });
+
+    filter.hidden = activeType === 'monthly';
+
+    typeButtons.forEach((button) => {
+      const isActive = button.dataset.winnersType === activeType;
+
+      button.setAttribute('aria-pressed', String(isActive));
+      button.classList.toggle('is-active', isActive);
+    });
+
+    closeOptions();
+    filterWinners();
+  };
+
+  // Переключение вида розыгрыша.
+  typeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeType = button.dataset.winnersType;
+      showResults();
+    });
+  });
+
+  showResults();
+
   // Открытие и закрытие списка дат.
   toggle.addEventListener('click', () => {
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
@@ -81,10 +138,10 @@ const initWinnersList = () => {
     toggle.setAttribute('aria-expanded', String(!isOpen));
   });
 
-  // Выбор розыгрыша.
+  // Выбор недели.
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
-      const drawId = button.dataset.winnersDate;
+      activeWeekId = button.dataset.winnersDate;
 
       selected.textContent = button.textContent;
 
@@ -92,12 +149,7 @@ const initWinnersList = () => {
         item.setAttribute('aria-pressed', String(item === button));
       });
 
-      results.forEach((result) => {
-        result.hidden = result.dataset.winnersResult !== drawId;
-      });
-
-      filterWinners();
-      closeOptions();
+      showResults();
       toggle.focus();
     });
   });

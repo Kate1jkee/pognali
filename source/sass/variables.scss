@@ -11,13 +11,13 @@ $color-transparent:                 rgba(255, 255, 255, 0);
 // для нейминга цветов используем https://www.htmlcsscolor.com/hex/334482
 
 $color-alice-blue:                  #ecf6ff;
-$color-dodger-blue:                 #0088fe;
-$color-nero:                        #252525;
-$color-fiord:                       #535b62;
+$color-nero:                        #252525; // pressed-links
+$color-fiord:                       #535b62; // default-links
+$color-nobel:                       #989898; // hover-links
 $color-viking:                      #48abd3;
 $color-picton-blue:                 #4891d3; //
 $color-columbia-blue:               #b6e3fd; //
-$color-cornflower-blue:             #498ae9;
+$color-prize-blue:                  #498ae9;
 $color-limeade:                     #5faf2c; //
 $color-conifer:                     #a6f663; //
 $color-mint-tulip:                  #c6ebdd;
@@ -33,9 +33,15 @@ $color-pelorous:                    #2ca7af; //
 $color-pale-turquoise:              #a6f4ff; //
 $color-biloba-flower:               #b97bea;
 $color-apricot:                     #fec9b2;
-$color-hawkes-blue:                 #d7e5fc;
-$color-nobel:                       #989898;
 $color-international-orange:        #ff5200;
+$color-hawkes-blue:                 #d7e5fc; // default-button-background
+$color-dodger-blue:                 #0088fe; // default-button-color
+$color-cornflower-blue:             #5b80ff; // hover-button-background-1
+$color-maya-blue:                   #7ac5ff; // hover-button-background-2
+$color-neon-blue:                   #363de8; // pressed-button-background-1
+$color-summer-sky:                  #359ff1; // pressed-button-background-2
+$color-heather:                     #bac1c7; // block-button-color
+$color-snow:                        #fcfcfc; // block-button-background
 
 
 // Gradient
