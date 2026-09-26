@@ -42,6 +42,12 @@ mixin winners-list()
                 aria-pressed=index === 0 ? "true" : "false"
               )= draw.label
 
+
+      dialog.winners-list__dialog(
+        aria-label="Выберите розыгрыш"
+        data-winners-dialog
+      )
+
       .winners-list__results
         each draw, index in weeklyDraws
           .winners-list__result(

@@ -1,8 +1,91 @@
 .winners-list {
   margin-bottom: 50px;
+
+  &__title {
+    margin-bottom: 35px;
+  }
+
+  &__types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  &__type {
+    position: relative;
+    isolation: isolate;
+
+    justify-content: center;
+    min-width: 540px;
+    padding: 32px;
+
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -0.02em;
+    color: $color-prize-blue;
+
+    background-color: $color-default-white;
+    border-radius: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      border-radius: inherit;
+      pointer-events: none;
+
+      background: linear-gradient(
+        90deg,
+        $color-pattens-blue 0%,
+        $color-default-white 100%
+      );
+
+      opacity: 0;
+      transition: opacity $trans-default;
+    }
+
+    @include hover-focus {
+      opacity: 1;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    @include focus {
+      outline: 2px solid $color-prize-blue;
+      outline-offset: 3px;
+    }
+
+    &:active,
+    &[aria-pressed="true"] {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__toggle {
+    justify-content: center;
+    min-width: 417px;
+    padding: 30px;
+
+    font-size: 24px;
+    line-height: 29px;
+    color: $color-default-white;
+
+    background-color: $color-prize-blue;
+    border-radius: 20px;
+  }
+
   &__filter {
     position: relative;
     z-index: 2;
+
     width: fit-content;
     max-width: 100%;
     margin: 0 auto 50px;
@@ -25,11 +108,37 @@
     padding: 20px 10px;
     list-style: none;
 
-    background-color: $color-alice-blue;
-    border-radius: 16px;
+    background-color: $color-background-toggle;
+    border-radius: 20px;
 
     &[hidden] {
       display: none;
+    }
+  }
+
+  &__dialog {
+    position: fixed;
+    inset: auto;
+    top: var(--dialog-top, 16px);
+    left: var(--dialog-left, 50%);
+    transform: translateX(-50%);
+
+    width: 307px;
+    max-width: calc(100vw - 32px);
+    max-height: var(--dialog-max-height, calc(100vh - 32px));
+    max-height: var(--dialog-max-height, calc(100dvh - 32px));
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 20px;
+
+    background-color: $color-default-white;
+    overflow: auto;
+    overscroll-behavior: contain;
+
+    &::backdrop {
+      background-color: rgba($color-default-black, 0.2);
     }
   }
 
@@ -47,7 +156,7 @@
 
     background-color: transparent;
     border: 0;
-    border-radius: 8px;
+    border-radius: 20px;
     cursor: pointer;
 
     transition:
@@ -59,12 +168,17 @@
       background-color: $color-dodger-blue;
     }
 
-    &:focus-visible {
+    @include focus {
       outline: 2px solid $color-dodger-blue;
       outline-offset: -2px;
     }
+
+    &:active,
+    &[aria-pressed="true"] {
+      color: $color-default-white;
+      background-color: $color-dodger-blue;
+    }
   }
- 
 
   &__result {
     padding: 32px;
@@ -83,6 +197,7 @@
   &__week,
   &__dates {
     margin: 0;
+
     font-size: 32px;
     font-weight: 700;
     line-height: 1.2;
@@ -94,7 +209,6 @@
   }
 
   &__scroll {
-    // Шапка таблицы + 13 строк победителей.
     max-height: calc(44px + 13 * 47px);
     overflow: auto;
   }
@@ -103,6 +217,7 @@
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+
     font-size: 24px;
     line-height: 29px;
     color: $color-default-black;
@@ -117,7 +232,9 @@
       position: sticky;
       top: 0;
       z-index: 1;
+
       padding: 0 24px 14px 0;
+
       border-bottom: 1px solid $color-pale-slate;
       background-color: $color-default-white;
       font-weight: 700;
@@ -148,4 +265,105 @@
   &__result[hidden] {
     display: none;
   }
+
+  @include vp-767 {
+    &__type {
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+
+      font-size: 18px;
+      line-height: 110%;
+
+      background-color: $color-background-toggle;
+      border-radius: 12px;
+      box-shadow: inset 0 0 0 2px transparent;
+
+      transition:
+        background-color $trans-default,
+        box-shadow $trans-default;
+
+      &::before {
+        display: none;
+      }
+
+      &:active,
+      &[aria-pressed="true"] {
+        background-color: transparent;
+        box-shadow: inset 0 0 0 2px $color-prize-blue;
+      }
+    }
+
+    &__toggle {
+      padding: 15px;
+
+      font-size: 16px;
+      line-height: 126%;
+      border-radius: 12px;
+    }
+
+    &__type,
+    &__toggle {
+      width: 325px;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    &__filter {
+      width: 325px;
+      max-width: 100%;
+    }
+
+    &__dialog &__options {
+      position: static;
+      transform: none;
+
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+      max-height: none;
+
+      margin: 0;
+      padding: 20px 10px;
+
+      background-color: $color-default-white;
+    }
+
+    &__dialog &__date {
+      padding: 10px 20px;
+    }
+
+    &__week {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    &__dates {
+      font-size: 18px;
+      line-height: 110%;
+    }
+
+    &__table th {
+      font-size: 18px;
+      line-height: 110%;
+    }
+
+    &__table td {
+      font-size: 16px;
+      line-height: 135%;
+    }
+
+    &__result {
+      padding: 0;
+    }
+
+    &__date {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}
+
+body:has([data-winners-dialog][open]) {
+  overflow: hidden;
 }

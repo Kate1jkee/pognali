@@ -109,4 +109,14 @@
         outline: 2px solid $color-international-orange;
         outline-offset: 2px;
     }
+
+    @include vp-1023 {
+        margin: 0 auto;
+    }
+
+    @include vp-767 {
+        &__title {
+            font-size: 24px;
+        }
+    }
 }

@@ -3,28 +3,37 @@ const initWinnersList = () => {
   const options = document.querySelector('[data-winners-options]');
   const form = document.querySelector('[data-winners-search]');
 
-  // Проверяем родителей до поиска элементов внутри них.
   if (!toggle || !options || !form) {
     return;
   }
 
-  const searchWrapper = form.closest('[data-winners-search-wrapper]');
+  const dialog = document.querySelector('[data-winners-dialog]');
+  const optionsParent = options.parentElement;
+  const mobileBreakpoint = window.matchMedia('(max-width: 767px)');
 
+  if (!dialog || !optionsParent) {
+    return;
+  }
+
+  const searchWrapper = form.closest('[data-winners-search-wrapper]');
   const selected = toggle.querySelector('[data-winners-selected]');
   const buttons = options.querySelectorAll('[data-winners-date]');
   const results = document.querySelectorAll('[data-winners-result]');
   const typeButtons = document.querySelectorAll('[data-winners-type]');
+  const weeklyButton = document.querySelector(
+      '[data-winners-type="weekly"]'
+  );
   const filter = toggle.closest('.winners-list__filter');
 
   const input = form.querySelector('[data-winners-input]');
   const error = form.querySelector('[data-winners-error]');
   const hint = form.querySelector('#winner-phone-hint');
 
-  // Проверяем обязательные внутренние элементы.
   if (
     !searchWrapper
     || !selected
     || !filter
+    || !weeklyButton
     || !input
     || !error
     || !hint
@@ -42,7 +51,6 @@ const initWinnersList = () => {
   let activeType = 'weekly';
   let activeWeekId = selectedWeek.dataset.winnersDate;
 
-  // Показываем собственные сообщения вместо браузерной валидации.
   form.noValidate = true;
 
   const setError = (message = '') => {
@@ -93,9 +101,63 @@ const initWinnersList = () => {
     }
   };
 
+  // Размещаем мобильный список над кнопкой «Еженедельные».
+  const positionDialog = () => {
+    if (!dialog.open) {
+      return;
+    }
+
+    const buttonRect = weeklyButton.getBoundingClientRect();
+    const viewportHeight = document.documentElement.clientHeight;
+    const viewportWidth = document.documentElement.clientWidth;
+
+    const gap = 12;
+    const edge = 16;
+
+    const availableAbove = Math.min(
+        buttonRect.top - gap,
+        viewportHeight - edge
+    ) - edge;
+
+    // Если сверху мало места, показываем окно по центру.
+    const fitsAbove = availableAbove >= 80;
+    const maxHeight = fitsAbove
+      ? availableAbove
+      : Math.max(0, viewportHeight - edge * 2);
+
+    dialog.style.setProperty('--dialog-max-height', `${maxHeight}px`);
+
+    const dialogRect = dialog.getBoundingClientRect();
+
+    const top = fitsAbove
+      ? Math.min(buttonRect.top - gap, viewportHeight - edge)
+        - dialogRect.height
+      : Math.max(edge, (viewportHeight - dialogRect.height) / 2);
+
+    const halfWidth = dialogRect.width / 2;
+    const center = buttonRect.left + buttonRect.width / 2;
+
+    const left = Math.max(
+        edge + halfWidth,
+        Math.min(center, viewportWidth - edge - halfWidth)
+    );
+
+    dialog.style.setProperty('--dialog-top', `${top}px`);
+    dialog.style.setProperty('--dialog-left', `${left}px`);
+  };
+
   const closeOptions = () => {
     options.hidden = true;
     toggle.setAttribute('aria-expanded', 'false');
+
+    if (dialog.open) {
+      dialog.close();
+    }
+
+    // Возвращаем список для десктопной выпадашки.
+    if (options.parentElement !== optionsParent) {
+      optionsParent.append(options);
+    }
   };
 
   const showResults = () => {
@@ -134,15 +196,53 @@ const initWinnersList = () => {
   toggle.addEventListener('click', () => {
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
 
-    options.hidden = isOpen;
-    toggle.setAttribute('aria-expanded', String(!isOpen));
+    if (isOpen) {
+      closeOptions();
+      return;
+    }
+
+    options.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+
+    if (mobileBreakpoint.matches) {
+      dialog.append(options);
+      dialog.showModal();
+      positionDialog();
+
+      const currentButton = options.querySelector(
+          '[aria-pressed="true"]'
+      );
+
+      if (currentButton) {
+        currentButton.focus({preventScroll: true});
+      }
+    }
   });
+
+  // Escape в мобильном диалоге.
+  dialog.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    closeOptions();
+    toggle.focus({preventScroll: true});
+  });
+
+  // Закрываем список при смене мобильной и десктопной версии.
+  mobileBreakpoint.addListener(() => {
+    const wasOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+    closeOptions();
+
+    if (wasOpen) {
+      toggle.focus({preventScroll: true});
+    }
+  });
+
+  window.addEventListener('resize', positionDialog);
 
   // Выбор недели.
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       activeWeekId = button.dataset.winnersDate;
-
       selected.textContent = button.textContent;
 
       buttons.forEach((item) => {
@@ -150,7 +250,7 @@ const initWinnersList = () => {
       });
 
       showResults();
-      toggle.focus();
+      toggle.focus({preventScroll: true});
     });
   });
 
@@ -158,7 +258,6 @@ const initWinnersList = () => {
   input.addEventListener('input', () => {
     input.value = input.value.replace(/\D/g, '').slice(0, 4);
 
-    // При редактировании возвращаем список и убираем ошибку.
     searchValue = '';
     filterWinners();
   });
@@ -176,21 +275,35 @@ const initWinnersList = () => {
     filterWinners();
   });
 
-  // Закрытие списка дат при клике снаружи.
+  // Закрытие по клику снаружи, включая затемнение.
   document.addEventListener('click', (event) => {
+    if (toggle.getAttribute('aria-expanded') !== 'true') {
+      return;
+    }
+
     if (
       !toggle.contains(event.target)
       && !options.contains(event.target)
     ) {
+      const wasModal = dialog.open;
+
       closeOptions();
+
+      if (wasModal) {
+        toggle.focus({preventScroll: true});
+      }
     }
   });
 
-  // Закрытие списка дат клавишей Escape.
+  // Escape для десктопной выпадашки.
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !options.hidden) {
+    if (
+      event.key === 'Escape'
+      && !dialog.open
+      && !options.hidden
+    ) {
       closeOptions();
-      toggle.focus();
+      toggle.focus({preventScroll: true});
     }
   });
 };
