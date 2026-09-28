@@ -104,9 +104,17 @@
   }
 
   @include vp-767 {
+    &__list {
+      column-gap: 8px;
+    }
+
     &__link {
       font-size: 14px;
-      line-height: 20px;
+      line-height: 110%;
+    }
+
+    &__wrapper {
+      padding-bottom: 25px;
     }
   }
 }

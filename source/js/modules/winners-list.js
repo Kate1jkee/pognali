@@ -28,6 +28,8 @@ const initWinnersList = () => {
   const input = form.querySelector('[data-winners-input]');
   const error = form.querySelector('[data-winners-error]');
   const hint = form.querySelector('#winner-phone-hint');
+  const submitButton = form.querySelector('[data-winners-submit]');
+  const clearButton = form.querySelector('[data-winners-clear]');
 
   if (
     !searchWrapper
@@ -53,6 +55,7 @@ const initWinnersList = () => {
 
   form.noValidate = true;
 
+  // Показываем или скрываем сообщение об ошибке.
   const setError = (message = '') => {
     const isInvalid = Boolean(message);
 
@@ -64,6 +67,51 @@ const initWinnersList = () => {
     hint.hidden = isInvalid;
   };
 
+  const updateTableHeight = () => {
+    const activeResult = Array.from(results).find((result) => {
+      return !result.hidden;
+    });
+
+    if (!activeResult) {
+      return;
+    }
+
+    const scroll = activeResult.querySelector('.winners-list__scroll');
+    const table = activeResult.querySelector('.winners-list__table');
+
+    if (!scroll || !table) {
+      return;
+    }
+
+    const visibleRows = Array.from(
+        table.querySelectorAll('[data-winner-phone]')
+    ).filter((row) => {
+      return !row.hidden;
+    });
+
+    // При небольшом количестве результатов высота определяется контентом.
+    if (visibleRows.length <= 13) {
+      scroll.style.removeProperty('--winners-scroll-height');
+      return;
+    }
+
+    const tableRect = table.getBoundingClientRect();
+    const lastVisibleRowRect = visibleRows[12].getBoundingClientRect();
+
+    // Учитываем горизонтальную полосу прокрутки, если она появилась.
+    const scrollbarHeight = scroll.offsetHeight - scroll.clientHeight;
+
+    const height = lastVisibleRowRect.bottom
+      - tableRect.top
+      + scrollbarHeight;
+
+    scroll.style.setProperty(
+        '--winners-scroll-height',
+        `${height}px`
+    );
+  };
+
+  // Фильтруем победителей выбранного розыгрыша.
   const filterWinners = () => {
     const activeResult = Array.from(results).find((result) => {
       return !result.hidden;
@@ -99,6 +147,31 @@ const initWinnersList = () => {
     if (scroll) {
       scroll.scrollTop = 0;
     }
+
+    updateTableHeight();
+  };
+
+  // Показываем крестик только после выполненного поиска.
+  const updateSearchControls = () => {
+    const isSearched = Boolean(searchValue);
+
+    if (submitButton) {
+      submitButton.hidden = isSearched;
+    }
+
+    if (clearButton) {
+      clearButton.hidden = !isSearched;
+    }
+  };
+
+  // При редактировании снимаем фильтр и возвращаем лупу.
+  const updateSearch = () => {
+    input.value = input.value.replace(/\D/g, '').slice(0, 4);
+
+    searchValue = '';
+
+    updateSearchControls();
+    filterWinners();
   };
 
   // Размещаем мобильный список над кнопкой «Еженедельные».
@@ -111,7 +184,7 @@ const initWinnersList = () => {
     const viewportHeight = document.documentElement.clientHeight;
     const viewportWidth = document.documentElement.clientWidth;
 
-    const gap = 12;
+    const gap = 24;
     const edge = 16;
 
     const availableAbove = Math.min(
@@ -154,12 +227,13 @@ const initWinnersList = () => {
       dialog.close();
     }
 
-    // Возвращаем список для десктопной выпадашки.
+    // Возвращаем список в исходную обёртку.
     if (options.parentElement !== optionsParent) {
       optionsParent.append(options);
     }
   };
 
+  // Показываем выбранный вид розыгрыша и нужную неделю.
   const showResults = () => {
     results.forEach((result) => {
       const isCurrentGroup = result.dataset.winnersGroup === activeType;
@@ -182,15 +256,32 @@ const initWinnersList = () => {
     filterWinners();
   };
 
-  // Переключение вида розыгрыша.
+  // При смене вида розыгрыша сбрасываем выбранную неделю.
   typeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      activeType = button.dataset.winnersType;
+      const nextType = button.dataset.winnersType;
+
+      if (nextType === activeType) {
+        return;
+      }
+
+      activeType = nextType;
+
+      const firstDraw = buttons[0];
+
+      activeWeekId = firstDraw.dataset.winnersDate;
+      selected.textContent = firstDraw.textContent;
+
+      buttons.forEach((item) => {
+        item.setAttribute(
+            'aria-pressed',
+            String(item === firstDraw)
+        );
+      });
+
       showResults();
     });
   });
-
-  showResults();
 
   // Открытие и закрытие списка дат.
   toggle.addEventListener('click', () => {
@@ -254,13 +345,8 @@ const initWinnersList = () => {
     });
   });
 
-  // Оставляем только четыре цифры.
-  input.addEventListener('input', () => {
-    input.value = input.value.replace(/\D/g, '').slice(0, 4);
-
-    searchValue = '';
-    filterWinners();
-  });
+  // При вводе сбрасываем прежний поиск, но не прокручиваем страницу.
+  input.addEventListener('input', updateSearch);
 
   // Поиск по нажатию на лупу или Enter.
   form.addEventListener('submit', (event) => {
@@ -272,8 +358,50 @@ const initWinnersList = () => {
     }
 
     searchValue = input.value;
+
     filterWinners();
+    updateSearchControls();
+
+    const activeResult = Array.from(results).find((result) => {
+      return !result.hidden;
+    });
+
+    if (!activeResult) {
+      return;
+    }
+
+    const foundWinner = activeResult.querySelector(
+        '[data-winner-phone]:not([hidden])'
+    );
+
+    // Если номер не найден, остаёмся у поля поиска.
+    if (!foundWinner) {
+      return;
+    }
+
+    const reducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    const top = activeResult.getBoundingClientRect().top
+      + window.scrollY
+      - 24;
+
+    window.scrollTo({
+      top: Math.max(0, top),
+      behavior: reducedMotion ? 'instant' : 'smooth',
+    });
   });
+
+  // Очистка поля и сброс фильтрации.
+  if (clearButton) {
+    clearButton.addEventListener('click', () => {
+      input.value = '';
+
+      updateSearch();
+      input.focus({preventScroll: true});
+    });
+  }
 
   // Закрытие по клику снаружи, включая затемнение.
   document.addEventListener('click', (event) => {
@@ -306,6 +434,19 @@ const initWinnersList = () => {
       toggle.focus({preventScroll: true});
     }
   });
+
+  // Начальное состояние списка и поискового поля.
+  showResults();
+  updateSearch();
+
+  window.addEventListener('resize', updateTableHeight);
+
+  // После загрузки шрифта высота строк тоже может измениться.
+  if (document.fonts) {
+    document.fonts.ready.then(() => {
+      updateTableHeight();
+    });
+  }
 };
 
 export {initWinnersList};

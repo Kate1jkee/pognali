@@ -7,7 +7,7 @@
   &__wrapper {
     position: relative;
     isolation: isolate;
-    min-height: 649px;
+    min-height: 629px;
   }
 
   &--winners &__wrapper {
@@ -19,6 +19,7 @@
     width: 100%;
     max-width: 456px;
     padding-bottom: 105px;
+    padding-top: 20px;
   }
 
   &__title {
@@ -42,7 +43,7 @@
   }
 
   &__background {
-    --hero-background-start: scale(0.90909);
+    --hero-background-start: scale(0.9);
     --hero-background-end: scale(1);
 
     position: absolute;
@@ -99,12 +100,12 @@
       display: contents;
       max-width: none;
       padding-bottom: 0;
+      padding-top: 0;
     }
 
     &__title {
       order: 0;
       margin-bottom: 0;
-      margin-left: 8px;
     }
 
     &__visual {
@@ -167,7 +168,7 @@
     }
 
     &__image {
-      margin-top: -80px;
+      margin-top: -88px;
     }
 
     &__description {
@@ -175,6 +176,7 @@
       line-height: 135%;
       letter-spacing: -0.02em;
     }
+
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -204,5 +206,11 @@
   to {
     opacity: 1;
     transform: var(--hero-image-end);
+  }
+
+}
+@media (min-width: 1024px) {
+  .hero .participation-form__agreement {
+    margin-left: 0;
   }
 }

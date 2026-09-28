@@ -37,30 +37,47 @@
     justify-content: center;
   }
 
+  &--monthly {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
   @include vp-767 {
     margin: 0;
 
+    &--monthly {
+      margin-bottom: 20px;
+    }
+
     &__slider {
-      overflow: hidden;
       margin-inline: -$container-padding-mobile;
-      margin-bottom: 12px;
-      touch-action: pan-y;
+      margin-bottom: 20px;
     }
 
     &__list {
+      flex-direction: column;
       flex-wrap: nowrap;
-      gap: 0;
+      gap: 8px;
     }
 
     &__item {
-      flex-shrink: 0;
       width: 100%;
+      min-width: 0;
       height: auto;
     }
 
     &__title {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    &__participation .participation-form {
+      transform: translateY(-5px);
+      width: 100%;
+      justify-content: start;
+    }
+
+    &--monthly .participation-form__agreement {
+      margin-left: 0;
     }
   }
 }
-

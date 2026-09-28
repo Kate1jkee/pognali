@@ -46,6 +46,81 @@
         display: block;
     }
 
+    &__button {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+
+        justify-content: center;
+        text-align: center;
+        white-space: normal;
+
+        color: $color-dodger-blue;
+        background-color: $color-hawkes-blue;
+        transition: color 0.3s ease;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+
+            background: linear-gradient(
+            90deg,
+            $color-maya-blue 0%,
+            $color-cornflower-blue 100%
+            );
+
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 0.5s ease;
+        }
+
+        @include hover-focus {
+            opacity: 1;
+            color: $color-default-white;
+
+            &::before {
+            clip-path: inset(0 10% 0 0);
+            }
+        }
+
+        @include focus {
+            outline: 2px solid $color-dodger-blue;
+            outline-offset: 3px;
+        }
+
+        // Дополнительная специфичность сохраняет 100% заливку
+        // при одновременном наведении или фокусе.
+        &:active,
+        &:active:hover,
+        &.is-pressed,
+        &.is-pressed:hover,
+        &.focus-visible:focus:active,
+        &.focus-visible:focus.is-pressed {
+            opacity: 1;
+            color: $color-default-white;
+
+            &::before {
+            background: linear-gradient(
+                90deg,
+                $color-summer-sky 0%,
+                $color-neon-blue 100%
+            );
+
+            clip-path: inset(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+
+            &::before {
+            transition: none;
+            }
+        }
+        }
+
     @include vp-1023 {
         margin-top: 80px;
         margin-bottom: 0;
@@ -121,6 +196,8 @@
     }
 
     @include vp-767 {
+        margin-top: 95px;
+
         &__wrapper {
             margin-inline: -$container-padding-mobile;
         }
@@ -128,6 +205,7 @@
         &__title {
             font-size:  24px;
             line-height: 120%;
+            margin-bottom: 17px;
         }
 
         &__button {

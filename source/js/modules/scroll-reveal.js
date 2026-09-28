@@ -26,10 +26,18 @@ const initScrollReveal = () => {
         ? entry.rootBounds.height
         : document.documentElement.clientHeight;
 
+      const customThreshold = Number(
+          entry.target.dataset.revealThreshold
+      );
+
+      const revealThreshold = customThreshold > 0 && customThreshold <= 1
+        ? customThreshold
+        : 0.45;
+
       const requiredHeight = Math.min(
           entry.boundingClientRect.height,
           viewportHeight
-      ) * 0.45;
+      ) * revealThreshold;
 
       if (entry.intersectionRect.height < requiredHeight) {
         return;

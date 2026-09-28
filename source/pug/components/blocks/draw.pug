@@ -4,10 +4,10 @@ mixin draw(options)
       div(data-reveal)
         h2.draw__title(data-reveal-target="text")= options.title
 
-      .draw__slider(data-prizes-slider data-reveal)
+      .draw__slider
         ul.draw__list
           each group in options.groups
-            li.draw__item
+            li.draw__item(data-reveal)
               .draw__group(data-reveal-target="scale")
                 +prize-group(group)
 

@@ -6,45 +6,134 @@ const initPrizesSliders = () => {
   }
 
   const breakpoint = window.matchMedia('(max-width: 767px)');
+  const spaceBetween = 16;
 
-  const instances = Array.from(sliders).map((element) => {
-    return {
-      element,
-      swiper: null,
+  sliders.forEach((element) => {
+    const list = element.querySelector('.prize-group__list');
+
+    if (!list) {
+      return;
+    }
+
+    let swiper = null;
+    let frameId = null;
+    let previousSlides = [];
+
+    // Технические копии Swiper в расчёте не участвуют.
+    const getOriginalSlides = () => {
+      return Array.from(list.children).filter((slide) => {
+        return slide.classList.contains('prize-group__item')
+          && !slide.classList.contains('swiper-slide-duplicate');
+      });
     };
-  });
 
-  const updateSliders = () => {
-    instances.forEach((item) => {
-      if (breakpoint.matches && !item.swiper) {
-        const slides = item.element.querySelectorAll('.draw__item');
+    const destroySlider = () => {
+      if (swiper) {
+        swiper.destroy(true, true);
+        swiper = null;
+      }
 
-        if (!slides.length) {
-          return;
-        }
+      element.classList.remove('is-slider-active');
+    };
 
-        item.swiper = new window.Swiper(item.element, {
-          wrapperClass: 'draw__list',
-          slideClass: 'draw__item',
-          direction: 'horizontal',
-          slidesPerView: 1,
-          spaceBetween: 0,
-          loop: slides.length > 1,
-          speed: 500,
-          watchOverflow: true,
-          grabCursor: slides.length > 1,
+    const updateSlider = () => {
+      const slides = getOriginalSlides();
+
+      const slidesChanged = slides.length !== previousSlides.length
+        || slides.some((slide, index) => {
+          return slide !== previousSlides[index];
+        });
+
+      previousSlides = slides;
+
+      if (!breakpoint.matches) {
+        destroySlider();
+        return;
+      }
+
+      // offsetWidth не зависит от анимации scale у группы.
+      const cardsWidth = slides.reduce((total, slide) => {
+        return total + slide.offsetWidth;
+      }, 0);
+
+      const gapsWidth = Math.max(0, slides.length - 1) * spaceBetween;
+      const requiredWidth = cardsWidth + gapsWidth;
+      const availableWidth = element.clientWidth;
+
+      const needsSlider = slides.length > 1
+        && availableWidth > 0
+        && requiredWidth > availableWidth;
+
+      if (!needsSlider) {
+        destroySlider();
+        return;
+      }
+
+      // При изменении состава карточек пересоздаём технические копии.
+      if (swiper && slidesChanged) {
+        destroySlider();
+      }
+
+      if (swiper) {
+        swiper.update();
+        return;
+      }
+
+      element.classList.add('is-slider-active');
+
+      swiper = new window.Swiper(element, {
+        wrapperClass: 'prize-group__list',
+        slideClass: 'prize-group__item',
+        direction: 'horizontal',
+        slidesPerView: 'auto',
+        spaceBetween,
+        loop: true,
+        loopedSlides: slides.length,
+        speed: 500,
+        watchOverflow: false,
+        grabCursor: true,
+      });
+    };
+
+    // Следим за добавлением и удалением li внутри списка.
+    const mutationObserver = new MutationObserver(() => {
+      scheduleUpdate();
+    });
+
+    const runUpdate = () => {
+      // Не реагируем на копии, которые создаёт сам Swiper.
+      mutationObserver.disconnect();
+
+      try {
+        updateSlider();
+      } finally {
+        mutationObserver.observe(list, {
+          childList: true,
         });
       }
+    };
 
-      if (!breakpoint.matches && item.swiper) {
-        item.swiper.destroy(true, true);
-        item.swiper = null;
+    const scheduleUpdate = () => {
+      if (frameId !== null) {
+        return;
       }
-    });
-  };
 
-  updateSliders();
-  breakpoint.addListener(updateSliders);
+      frameId = window.requestAnimationFrame(() => {
+        frameId = null;
+        runUpdate();
+      });
+    };
+
+    runUpdate();
+
+    breakpoint.addListener(scheduleUpdate);
+    window.addEventListener('resize', scheduleUpdate);
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(scheduleUpdate);
+      resizeObserver.observe(element);
+    }
+  });
 };
 
 export {initPrizesSliders};

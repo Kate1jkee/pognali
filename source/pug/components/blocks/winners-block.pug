@@ -1,7 +1,7 @@
 mixin winners-block()
   section.winners-block
     .container
-      .winners-block__wrapper
+      .winners-block__wrapper(data-reveal data-reveal-threshold="0.5")
         .winners-block__background
           picture
             source(
@@ -14,13 +14,16 @@ mixin winners-block()
               alt=""
               aria-hidden="true"
             )
-        .winners-block__content
+        .winners-block__content(data-reveal-target="text")
           h2.winners-block__title
             span Узнайте,
             = " "
             span кто уже победил
 
-          a.winners-block__button.btn(href="winners.html")
+          a.winners-block__button.btn(
+            href="winners.html"
+            data-winners-link
+          )
             | Итоги розыгрыша
 
         .winners-block__visual

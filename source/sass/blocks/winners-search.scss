@@ -63,7 +63,8 @@
         outline: none;
     }
 
-    &__button {
+    &__button,
+    &__clear {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -110,13 +111,79 @@
         outline-offset: 2px;
     }
 
+    &__button[hidden],
+    &__clear[hidden] {
+        display: none;
+    }
+
+    &__clear {
+        position: relative;
+        color: $color-prize-blue;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: 30px;
+            height: 2px;
+            border-radius: 1px;
+            background-color: currentColor;
+            pointer-events: none;
+        }
+
+        &::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+
+    &.is-invalid &__clear {
+        color: $color-international-orange;
+    }
+
     @include vp-1023 {
         margin: 0 auto;
     }
 
     @include vp-767 {
+        padding: 0;
+        > form {
+            gap: 17px;
+        }
+
         &__title {
             font-size: 24px;
+        }
+
+        &__field {
+            min-height: 60px;
+        }
+
+        &__label input {
+            padding: 14px 24px;
+            line-height: 32px;
+        }
+
+        &__button,
+        &__clear {
+            width: 60px;
+        }
+
+        &__button img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        &__clear::before,
+        &__clear::after {
+            width: 24px;
         }
     }
 }

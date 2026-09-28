@@ -1,6 +1,6 @@
 .header {
-    padding-top: 53px;
-    padding-bottom: 40px;
+    padding-top: 63px;
+    padding-bottom: 30px;
     position: relative;
     z-index: 1;
 
@@ -16,6 +16,8 @@
     }
 
     @include vp-767 {
+        padding-bottom: 40px;
+
         &__logo img {
             width: 116px;
             height: 20px;

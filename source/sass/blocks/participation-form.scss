@@ -1,9 +1,9 @@
 .participation-form {
-  margin: 0 auto;
 
   &__agreement {
     display: flex;
     align-items: flex-start;
+    margin-left: 20px;
     gap: 12px;
     cursor: pointer;
   }
@@ -50,7 +50,8 @@
     justify-content: center;
     text-align: center;
     white-space: normal;
-
+    width: 327px;
+    padding: 15px;
     color: $color-dodger-blue;
     background-color: $color-hawkes-blue;
     transition: color 0.3s ease;
@@ -112,7 +113,7 @@
         color: $color-default-white;
 
         &::before {
-          clip-path: inset(0 20% 0 0);
+          clip-path: inset(0 8% 0 0);
         }
       }
     }
@@ -139,9 +140,14 @@
         transition: none;
       }
     }
+
+    &__button-text {
+      position: relative;
+    }
+
+    &__agreement {
+      margin-left: 0;
+    }
   }
 
-  &__button-text {
-    position: relative;
-  }
 }

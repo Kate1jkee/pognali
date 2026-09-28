@@ -80,6 +80,24 @@
 
     background-color: $color-prize-blue;
     border-radius: 20px;
+    gap: 12px;
+
+    &::after {
+      content: "";
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform $trans-default;
+    }
+
+    &[aria-expanded="true"]::after {
+      transform: translateY(2px) rotate(225deg);
+    }
   }
 
   &__filter {
@@ -209,8 +227,9 @@
   }
 
   &__scroll {
-    max-height: calc(44px + 13 * 47px);
+    max-height: var(--winners-scroll-height, none);
     overflow: auto;
+    scrollbar-gutter: stable;
   }
 
   &__table {
@@ -312,6 +331,7 @@
     &__filter {
       width: 325px;
       max-width: 100%;
+      margin: 0 auto 32px;
     }
 
     &__dialog &__options {
@@ -330,7 +350,7 @@
     }
 
     &__dialog &__date {
-      padding: 10px 20px;
+      padding: 12px 20px;
     }
 
     &__week {
@@ -360,6 +380,19 @@
     &__date {
       font-size: 16px;
       line-height: 20px;
+    }
+
+    &__heading {
+      gap: 10px;
+    }
+
+     &__title {
+      margin-bottom: 32px;
+    }
+
+    &__types {
+      gap: 15px;
+      margin-bottom: 28px;
     }
   }
 }

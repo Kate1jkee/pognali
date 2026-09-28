@@ -22,7 +22,14 @@ mixin prize-card(card)
       if card.count
         span.prize-card__count= card.count
 
-    h4.prize-card__title= card.title
+    h4.prize-card__title
+      if card.titleLines
+        each line, index in card.titleLines
+          if index > 0
+            br
+          = line
+      else
+        = card.title
 
     p.prize-card__description
       each line, index in card.textLines
