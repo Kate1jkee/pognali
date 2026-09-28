@@ -63,7 +63,7 @@
 
   &__nav {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
   }
 
   @include vp-1023 {
