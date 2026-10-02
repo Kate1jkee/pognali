@@ -186,9 +186,23 @@
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1140px) {
+    &--winners &__content {
+      max-width: 540px;
+      padding-bottom: 85px;
+    }
+
+    &--winners &__title {
+      max-width: 456px;
+      margin-bottom: 45px;
+    }
+
     &--winners &__background {
-      left: -612px;
+      left: -642px;
+    }
+
+    &--winners &__visual {
+      right: -70px;
     }
   }
 }

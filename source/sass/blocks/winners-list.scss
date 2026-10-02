@@ -220,6 +220,7 @@
     font-weight: 700;
     line-height: 1.2;
     color: $color-nobel;
+    letter-spacing: -0.02em;
   }
 
   &__dates {
@@ -277,6 +278,10 @@
     th:last-child,
     td:last-child {
       padding-right: 0;
+    }
+
+    tbody tr:first-child td {
+      padding-top: 17px;
     }
   }
 
@@ -405,7 +410,7 @@
     }
   }
 
-  @media (min-width: 320px) and (max-width: 375px) {
+  @media (min-width: 320px) and (max-width: 374px) {
     &__week {
       font-size: 18px;
       line-height: 1.2;
