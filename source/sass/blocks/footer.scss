@@ -1,6 +1,6 @@
 .footer {
   margin-bottom: 164px;
-  color: $color-fiord;
+  color: $color-default-black;
 
   &__wrapper {
     display: flex;
@@ -19,11 +19,11 @@
   &__link {
     font-size: 16px;
     line-height: 22px;
-    color: $color-fiord;
+    color: $color-default-black;
     transition: color $trans-default;
 
     @include hover-focus {
-      color: $color-nobel;
+      color: $color-default-black;
     }
 
     @include focus {
@@ -34,7 +34,7 @@
     &:active,
     &:hover:active,
     &.focus-visible:active {
-      color: $color-nero;
+      color: $color-default-black;
     }
   }
 

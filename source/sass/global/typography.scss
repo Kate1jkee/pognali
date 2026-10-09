@@ -4,7 +4,7 @@ h3,
 h4,
 p {
   margin: 0;
-  color: $color-nero;
+  color: $color-default-black;
 }
 
 h1,
@@ -18,7 +18,7 @@ h4 {
 h1 {
   font-size: 64px;
   line-height: 70px;
-  color: $color-dodger-blue;
+  color: $color-default-black;
 
   @include vp-1023 {
     color: $color-default-white;

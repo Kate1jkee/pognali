@@ -10,39 +10,6 @@ $color-transparent:                 rgba(255, 255, 255, 0);
 // Project palette
 // для нейминга цветов используем https://www.htmlcsscolor.com/hex/334482
 
-$color-alice-blue:                  #ecf6ff;
-$color-nero:                        #252525; // pressed-links
-$color-fiord:                       #535b62; // default-links
-$color-nobel:                       #989898; // hover-links
-$color-viking:                      #48abd3;
-$color-picton-blue:                 #4891d3; //
-$color-columbia-blue:               #b6e3fd; //
-$color-prize-blue:                  #498ae9;
-$color-limeade:                     #5faf2c; //
-$color-conifer:                     #a6f663; //
-$color-mint-tulip:                  #c6ebdd;
-$color-fog:                         #dfd2f0;
-$color-pale-slate:                  #c5c2c0;
-$color-quartz:                      #dadef6;
-$color-almond:                      #e8d5c5;
-$color-dairy-cream:                 #e7cca3;
-$color-lavender-blue:               #c5bcff;
-$color-classic-rose:                #fccce8;
-$color-pale-prim:                   #fef399;
-$color-pelorous:                    #2ca7af; //
-$color-pale-turquoise:              #a6f4ff; //
-$color-biloba-flower:               #b97bea;
-$color-apricot:                     #fec9b2;
-$color-international-orange:        #ff5200;
-$color-hawkes-blue:                 #d7e5fc; // default-button-background
-$color-dodger-blue:                 #0088fe; // default-button-color
-$color-cornflower-blue:             #5b80ff; // hover-button-background-1
-$color-maya-blue:                   #7ac5ff; // hover-button-background-2
-$color-neon-blue:                   #363de8; // pressed-button-background-1
-$color-summer-sky:                  #359ff1; // pressed-button-background-2
-$color-heather:                     #bac1c7; // block-button-color
-$color-snow:                        #fcfcfc; // block-button-background
-$color-pattens-blue:                #c3e3ff;
 $color-background-toggle:           #e3f2ff;
 
 
@@ -56,7 +23,7 @@ $black-to-right:                    linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0
 // переменная используемая в html для подключения скейлинга
 $fz-default:                        12px;
 
-$ff-main:                           "Manrope", "Arial", sans-serif;
+$ff-main: "Roboto", "Arial", sans-serif;
 
 // Animation
 // ---------------------------------
