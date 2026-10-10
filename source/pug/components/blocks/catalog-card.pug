@@ -1,0 +1,67 @@
+mixin catalog-card(card)
+  article.catalog-card
+    .catalog-card__image
+      img(
+        src=`img/content/${card.image}.png`
+        srcset=`img/content/${card.image}@2x.png 2x`
+        width="285"
+        height="285"
+        alt=card.name
+      )
+
+    .catalog-card__content
+      h3.catalog-card__name
+        span.catalog-card__status(
+          class=card.online ? "catalog-card__status--online" : "catalog-card__status--offline"
+        )
+          span.visually-hidden= card.online ? "В сети" : "Не в сети"
+        span= card.name
+
+      ul.catalog-card__tags(aria-label="Интересы")
+        each tag in card.tags
+          li.catalog-card__tag= "#" + tag
+
+      .catalog-card__actions
+        span.catalog-card__invite Позвать!
+
+        p.catalog-card__likes
+          span.catalog-card__like-icon
+            img(
+              src="img/content/icon_heart.svg"
+              alt=""
+            )
+          span.visually-hidden Количество отметок «Нравится»:
+          span= card.likes
+
+    .catalog-card__details
+      ul.catalog-card__countries(aria-label="Хочет посетить")
+        each country in card.countries
+          li.catalog-card__country
+            img(
+              src=`img/content/${country.flag}.png`
+              alt=""
+            )
+            span= country.name
+
+      .catalog-card__footer
+        ul.catalog-card__transport(aria-label="Предпочитаемый транспорт")
+          each transport in companionsTransport
+            - const isActive = card.transport.includes(transport.id)
+            li.catalog-card__transport-item(
+              class=isActive ? "catalog-card__transport-item--active" : null
+            )
+              img(
+                src=`img/content/${transport.icon}.svg`
+                width=transport.width
+                height=transport.height
+                alt=""
+              )
+              span.visually-hidden
+                = transport.name + (isActive ? " — выбран" : " — не выбран")
+
+        .catalog-card__level(
+          style=`--level: ${card.level}`
+          aria-label=`Уровень: ${card.level} из 100`
+        )
+          span.catalog-card__level-value(aria-hidden="true")= card.level
+          span.catalog-card__level-text(aria-hidden="true") level

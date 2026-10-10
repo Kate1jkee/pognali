@@ -1,0 +1,47 @@
+mixin country-filter()
+  section.country-filter(aria-labelledby="country-filter-title")
+    .country-filter__heading
+      .container
+        h1.country-filter__title#country-filter-title Попутчики
+
+    .country-filter__body
+      .container
+        .country-filter__wrapper
+          .country-filter__header
+            button.country-filter__toggle(
+              type="button"
+              aria-expanded="false"
+              aria-controls="country-filter-panel"
+            )
+              span Фильтрация по странам
+              span.country-filter__toggle-text Показать все
+
+            ul.country-filter__continents
+              each continent in filterContinents
+                li.country-filter__continent
+                  label.country-filter__continent-label
+                    input.country-filter__continent-input(
+                      type="checkbox"
+                      name="continents"
+                      value=continent.id
+                      checked=continent.id === "europe"
+                    )
+                    span.country-filter__continent-text= continent.name
+
+          .country-filter__panel#country-filter-panel(hidden)
+            ul.country-filter__groups
+              each group in filterCountryGroups
+                li.country-filter__group
+                  h3.country-filter__letter= group.letter
+
+                  ul.country-filter__countries
+                    each country in group.countries
+                      li.country-filter__country
+                        button.country-filter__country-button(
+                          type="button"
+                          data-country=country.id
+                          aria-pressed="false"
+                        )= country.name
+
+            button.country-filter__close(type="button")
+              span Свернуть

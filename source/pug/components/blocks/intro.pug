@@ -1,0 +1,29 @@
+mixin intro(title)
+  section.intro
+    .intro__background
+      img(
+        src="img/content/globe-back-desktop.png"
+        srcset="img/content/globe-back-desktop@2x.png 2x"
+        width="1440"
+        height="742"
+        alt=""
+      )
+
+    .container
+      .intro__wrapper
+        .intro__content
+          h1.intro__title= title
+
+          .intro__image
+            img(
+              src="img/content/traveller-illustration-desktop.png"
+              srcset="img/content/traveller-illustration-desktop@2x.png 2x"
+              width="431"
+              height="640"
+              alt=""
+            )
+
+        ol.intro__steps
+          each step in introSteps
+            li.intro__step
+              p.intro__step-text= step

@@ -1,0 +1,18 @@
+mixin directions()
+  section.directions(aria-labelledby="directions-title")
+    .container
+      .directions__wrapper
+        .directions__slider
+          ul.directions__list
+            each card in directionsCards
+              li.directions__item
+                +directions-card(card)
+
+        .directions__content
+          h2.directions__title#directions-title Направления
+
+          p.directions__description
+            | Мы не продаем туры и ничего не рекламируем. Люди сами пишут о странах, куда хотели бы отправиться и чем можно там заняться.
+
+          a.directions__link(href="catalog.html")
+            span Показать все

@@ -1,0 +1,53 @@
+mixin companions-card(card)
+  article.companions-card
+    .companions-card__image
+      img(
+        src=`img/content/${card.image}.png`
+        srcset=`img/content/${card.image}@2x.png 2x`
+        width="285"
+        height="285"
+        alt=card.name
+      )
+
+      .companions-card__level(
+        style=`--level: ${card.level}`
+        aria-label=`Уровень: ${card.level} из 100`
+      )
+        span.companions-card__level-value(aria-hidden="true")= card.level
+        span.companions-card__level-text(aria-hidden="true") level
+
+    .companions-card__content
+      ul.companions-card__countries(aria-label="Хочет посетить")
+        each country in card.countries
+          li.companions-card__country
+            img(
+              src=`img/content/${country.flag}.png`
+              srcset=`img/content/${country.flag}@2x.png 2x`
+              alt=country.name
+            )
+
+      h3.companions-card__name
+        span.companions-card__status(
+          class=card.online ? "companions-card__status--online" : "companions-card__status--offline"
+        )
+          span.visually-hidden= card.online ? "В сети" : "Не в сети"
+        span= card.name
+
+      ul.companions-card__tags(aria-label="Интересы")
+        each tag in card.tags
+          li.companions-card__tag= "#" + tag
+
+      ul.companions-card__transport(aria-label="Предпочитаемый транспорт")
+        each transport in companionsTransport
+          - const isActive = card.transport.includes(transport.id)
+          li.companions-card__transport-item(
+            class=isActive ? "companions-card__transport-item--active" : null
+          )
+            img(
+              src=`img/content/${transport.icon}.svg`
+              width=transport.width
+              height=transport.height
+              alt=""
+            )
+            span.visually-hidden
+              = transport.name + (isActive ? " — выбран" : " — не выбран")

@@ -1,0 +1,21 @@
+mixin companions()
+  section.companions(aria-labelledby="companions-title")
+    .container
+      .companions__wrapper
+        .companions__content
+          h2.companions__title#companions-title Попутчики
+
+          p.companions__description
+            | Все мы индивидуальны и у каждого свой взгляд на идеальный отдых. Одному нужен пляж и коктейль, а другому маршрут для хайкинга.
+
+          p.companions__text
+            | Теперь можно легко найти единомышленников!
+
+          a.companions__link(href="catalog.html")
+            span Показать всех
+
+        .companions__profiles
+          ul.companions__list
+            each card in companionsCards.slice(0, 2)
+              li.companions__item
+                +companions-card(card)

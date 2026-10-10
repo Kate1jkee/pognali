@@ -1,0 +1,15 @@
+.catalog-card {
+    display: flex;
+
+    &__tags {
+        display: flex;
+    }
+
+    &__transport {
+        display: flex;
+    }
+
+    &__actions {
+        display: flex;
+    }
+}

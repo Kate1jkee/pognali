@@ -1,0 +1,14 @@
+mixin catalog-filter-group(group)
+  details.catalog-filter__group(open=group.open)
+    summary.catalog-filter__heading= group.title
+
+    .catalog-filter__options
+      each option in group.options
+        label.catalog-filter__option
+          input.catalog-filter__checkbox(
+            type="checkbox"
+            name=group.name
+            value=option.value
+            checked=option.checked
+          )
+          span= option.label

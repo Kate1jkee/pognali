@@ -1,0 +1,39 @@
+mixin catalog-profiles()
+  section.catalog-profiles(aria-label="Поиск попутчиков")
+    .catalog-profiles__wrapper
+      .catalog-profiles__results
+        ul.catalog-profiles__list
+          each card in companionsCards
+            li.catalog-profiles__item
+              +catalog-card(card)
+
+        button.catalog-profiles__more(type="button")
+          span Показать еще
+
+        nav.catalog-profiles__pagination(
+          aria-label="Страницы списка попутчиков"
+        )
+          ul.catalog-profiles__pages
+            each page in [1, 2, 3, 4]
+              li.catalog-profiles__page
+                a.catalog-profiles__page-link(
+                  href="#"
+                  class=page === 1 ? "catalog-profiles__page-link--active" : null
+                  aria-current=page === 1 ? "page" : null
+                  aria-label=`Страница ${page}`
+                )= page
+
+          .catalog-profiles__arrows
+            a.catalog-profiles__arrow.catalog-profiles__arrow--prev(
+              href="#"
+              aria-label="Предыдущая страница"
+            )
+              span.catalog-profiles__arrow-icon(aria-hidden="true")
+
+            a.catalog-profiles__arrow.catalog-profiles__arrow--next(
+              href="#"
+              aria-label="Следующая страница"
+            )
+              span.catalog-profiles__arrow-icon(aria-hidden="true")
+
+      +catalog-filter()

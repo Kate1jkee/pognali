@@ -2,30 +2,24 @@ mixin footer(footerMods)
   footer.footer(class=footerMods)
     .container
       .footer__wrapper
-        .footer__info
-          .footer__logo
-            img(
-              src="img/svg/x5-logo.svg"
-              width="56"
-              height="40"
-              alt="X5"
-            )
+        a.footer__logo(href="index.html")
+          img(
+            src="img/content/logo_full.svg"
+            width="202"
+            height="50"
+            alt="Погнали — на главную"
+          )
 
-          p.footer__copyright 
-            | © 2021 2023 
-            br 
-            | ООО «Корпоративный центр ИКС 5»
-
-        nav.footer__nav(aria-label="Документы")
-          ul.footer__list
-            li.footer__item
-              a.footer__link(href="#")
-                | Политика конфиденциальности
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Пользовательское соглашение
-
-            li.footer__item
-              a.footer__link(href="#")
-                | Правила акции
+        ul.footer__socials(aria-label="Социальные сети")
+          each social in socials
+            li.footer__social-item
+              a.footer__social-link(
+                href=social.href
+                aria-label=social.name
+              )
+                img(
+                  src=`img/content/${social.icon}.svg`
+                  width="32"
+                  height="32"
+                  alt=""
+                )

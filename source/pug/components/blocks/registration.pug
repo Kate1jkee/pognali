@@ -1,0 +1,74 @@
+mixin registration()
+  section.registration(aria-labelledby="registration-title")
+    .registration__main
+      .container
+        .registration__wrapper
+          h2.registration__title#registration-title Заинтересовались?
+
+          p.registration__description
+            | Зарегистрируйтесь, это быстро и бесплатно!
+
+          p.registration__login
+            | Уже зарегистрированы? Тогда скорее
+            |
+            a.registration__login-link(href="#") авторизуйтесь.
+
+          form.registration__form(action="#" method="post" novalidate)
+            .registration__field
+              label.visually-hidden(for="registration-email") Электронная почта
+
+              input.registration__input#registration-email(
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                autocomplete="email"
+                required
+                aria-describedby="registration-error"
+              )
+
+              p.registration__error#registration-error(
+                aria-live="polite"
+              )
+
+            button.registration__submit(type="submit")
+              span Регистрация
+
+          p.registration__questions
+            | Остались вопросы? Мы с радостью на них ответим!
+
+          ul.registration__contacts
+            li.registration__contact
+              a.registration__contact-link(href="tel:88005558628")
+                span.registration__contact-icon
+                  img(
+                    src="img/content/icon_telephone.svg"
+                    width="18"
+                    height="18"
+                    alt=""
+                  )
+                span 8 800 555-86-28
+
+            li.registration__contact
+              a.registration__contact-link(href="#")
+                span.registration__contact-icon
+                  img(
+                    src="img/content/icon_mail.svg"
+                    width="16"
+                    height="14"
+                    alt=""
+                  )
+                span MAIL@HTMLACADEMY.RU
+
+    .registration__location
+      .container
+        .registration__location-wrapper
+          p.registration__address
+            span.registration__address-icon
+              //- Добавим иконку метки
+            span ул. Большая Конюшенная, 19/8
+
+          a.registration__route(href="#")
+            span Проложить маршрут
+
+    .registration__map
+      //карта с меткой

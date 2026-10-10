@@ -1,32 +1,51 @@
 mixin header(headerMods, currentUrl)
   header.header(class=headerMods)
     .container
-      if currentUrl === "index.html"
-        .header__logo
-          picture
-            source(
-              media="(max-width: 1023px)"
-              srcset="img/svg/plain-logo.svg"
-            )
+      .header__wrapper
+        if currentUrl === "index.html"
+          .header__logo
             img(
-              src="img/svg/color-logo.svg"
-              width="162"
-              height="28"
-              alt="Пакет"
+              src="img/content/logo_full.svg"
+              width="202"
+              height="50"
+              alt="Погнали"
             )
-      else
-        a.header__logo(
-          href="index.html"
-          aria-label="Пакет — на главную"
-        )
-          picture
-            source(
-              media="(max-width: 1023px)"
-              srcset="img/svg/plain-logo.svg"
-            )
+        else
+          a.header__logo(href="index.html")
             img(
-              src="img/svg/color-logo.svg"
-              width="162"
-              height="28"
-              alt="Пакет"
+              src="img/content/logo_full.svg"
+              width="202"
+              height="50"
+              alt="Погнали — на главную"
+            )
+
+        nav.header__nav(aria-label="Основная навигация")
+          ul.header__nav-list
+            li.header__nav-item
+              a.header__nav-link(href="#") О сервисе
+            li.header__nav-item
+              a.header__nav-link(href="#") Направления
+            li.header__nav-item
+              a.header__nav-link(href="catalog.html") Попутчики
+
+        .header__contacts
+          a.header__contact(
+            href="#"
+            aria-label="Позвонить"
+          )
+            img(
+              src="img/content/icon_call.svg"
+              width="18"
+              height="18"
+              alt=""
+            )
+          a.header__contact(
+            href="#"
+            aria-label="Написать письмо"
+          )
+            img(
+              src="img/content/icon_mail.svg"
+              width="16"
+              height="14"
+              alt=""
             )

@@ -1,23 +1,4 @@
-mixin hero(title, modifier)
-  section.hero(class=modifier ? `hero--${modifier}` : null)
-    .container
-      .hero__wrapper
-        .hero__content
-          h1.hero__title= title
-
-          block
-
-        .hero__visual
-          .hero__background(aria-hidden="true")
-
-          .hero__image
-            picture
-              source(
-                media="(max-width: 1023px)"
-                srcset="img/content/hero-image-mobile.png 1x, img/content/hero-image-mobile@2x.png 2x"
-              )
-              img(
-                src="img/content/hero-image-desktop.png"
-                srcset="img/content/hero-image-desktop@2x.png 2x"
-                alt=""
-              )
+mixin hero(title)
+  .hero
+    +intro(title)
+    +service()

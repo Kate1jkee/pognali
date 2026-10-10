@@ -1,0 +1,22 @@
+mixin service()
+  section.service(aria-labelledby="service-title")
+    .container
+      .service__wrapper
+        .service__content
+          h2.service__title#service-title О сервисе
+
+          p.service__description
+            | Любое путешествие веселее с попутчиками, которые на одной волне с тобой! Делитесь своими идеями путешествий и черпайте вдохновение в чужих.
+
+          p.service__text
+            | А если найдете кого-то близкого по духу — скорее зовите в совместный трип!
+
+          a.service__link(href="#")
+            span Подробнее
+
+        .service__image
+          img(
+            src="img/content/img_back.png"
+            srcset="img/content/img_back@2x.png 2x"
+            alt=""
+          )

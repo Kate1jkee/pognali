@@ -1,0 +1,30 @@
+mixin directions-card(card)
+  article.directions-card
+    .directions-card__content
+      h3.directions-card__title= card.name
+
+      p.directions-card__description= card.description
+
+      p.directions-card__travellers
+        img(
+          src="img/content/icon_user.svg"
+          width="14"
+          height="14"
+          alt=""
+        )
+        span.visually-hidden Количество попутчиков:
+        span= card.travellers
+
+    .directions-card__image
+      img(
+        src=`img/content/${card.image}.png`
+        srcset=`img/content/${card.image}@2x.png 2x`
+        alt=""
+      )
+
+    .directions-card__flag
+      img(
+        src=`img/content/${card.flag}.png`
+        srcset=`img/content/${card.flag}@2x.png 2x`
+        alt=""
+      )
