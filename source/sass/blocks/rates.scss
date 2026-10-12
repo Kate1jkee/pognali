@@ -2,4 +2,8 @@
     &__content {
         display: flex;
     }
+
+    &__title {
+        color: $color-direction-h;
+    }
 }

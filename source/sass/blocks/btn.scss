@@ -1,5 +1,7 @@
 .btn {
   display: inline-flex;
+  justify-content: space-between;
+  gap: 20px;
   align-items: center;
   width: fit-content;
   max-width: 100%;
@@ -10,17 +12,26 @@
   border-radius: 12px;
   text-decoration: none;
 
-  color: $color-default-black;
+  color: $color-catalina-blue;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 110%;
-  letter-spacing: -0.02em;
+  font-size: 24px;
+  line-height: 24px;
   
-  background-color: $color-default-white;
+  background-color: $color-pale-cornflower-blue;
   border: none;
   cursor: pointer;
 
   transition: opacity $trans-default;
+
+  &::after {
+    content: "";
+    flex-shrink: 0;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 10px solid currentColor;
+  }
 
   &:disabled {
     opacity: 0.5;

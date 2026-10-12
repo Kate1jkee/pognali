@@ -1,5 +1,26 @@
 .service {
+    background-color: $color-hero-background;
+
     &__wrapper {
         display: flex;
+    }
+
+    &__title {
+        color: $color-default-white;
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
+    }
+
+    &__description {
+        font-size: 24px;
+        line-height: 34px;
+        color: $color-default-white;
+    }
+
+    &__text {
+        font-weight: 200;
+        font-size: 22px;
+        line-height: 24px;
+        color: $color-default-white;
     }
 }

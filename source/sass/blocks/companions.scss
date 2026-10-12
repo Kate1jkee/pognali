@@ -6,4 +6,8 @@
     &__list {
         display: flex;
     }
+
+    &__title {
+        color: $color-direction-h;
+    }
 }

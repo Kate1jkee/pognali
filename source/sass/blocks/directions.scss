@@ -1,5 +1,44 @@
 .directions {
+    overflow-x: clip;
+
     &__wrapper {
         display: flex;
     }
+
+    &__title {
+        font-size: 75px;
+        color: $color-direction-h;
+    }
+
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__description {
+        font-size: 23px;
+        line-height: 33px;
+        color: $color-charcoal;
+    }
+
+    &__slider {
+        position: relative;
+        isolation: isolate;
+
+        &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: -100vw;
+        z-index: -1;
+        background-color: $color-solitude;
+        border-bottom-right-radius: 60px;
+        pointer-events: none;
+        }
+    }
+
 }

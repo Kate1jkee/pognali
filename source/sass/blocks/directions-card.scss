@@ -4,4 +4,25 @@
     &__travellers {
         display: flex;
     }
+
+    &__title {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 24px;
+        color: $color-default-black;
+    }
+
+    &__description {
+        font-size: 20px;
+        line-height: 20px;
+        color: $color-charcoal;
+        opacity: 0.3;
+    }
+
+    &__likes {
+        font-size: 20px;
+        line-height: 20px;
+        color: $color-midnight-express;
+        opacity: 0.3;
+    }
 }

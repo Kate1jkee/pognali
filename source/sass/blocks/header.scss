@@ -1,15 +1,48 @@
 .header {
+    position: relative;
+    z-index: 2;
+    padding: 40px 0;
+
+    &--home {
+        background-color: $color-chambray;
+    }
 
     &__wrapper {
         display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 24px;
+    }
+
+    &__logo {
+        flex-shrink: 0;
+    }
+
+    &__nav {
+        flex: 1;
+        min-width: 0;
     }
 
     &__nav-list {
         display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
 
     &__contacts {
         display: flex;
+        flex-shrink: 0;
+        gap: 8px;
     }
-    
+
+    &__nav-link {
+        font-size: 20px;
+        line-height: 20px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $color-default-white;
+    }
 }
