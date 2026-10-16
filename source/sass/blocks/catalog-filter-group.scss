@@ -1,0 +1,16 @@
+.catalog-filter-group {
+    &__heading {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 22px;
+        text-transform: uppercase;
+        color: $color-catalina-blue;
+    }
+
+    &__option {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 20px;
+        color: $color-default-black;
+    }
+}

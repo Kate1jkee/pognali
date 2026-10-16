@@ -1,4 +1,20 @@
 .footer {
+  position: relative;
+  isolation: isolate;
+  z-index: 3;
+  padding-bottom: 37px;
+  padding-top: 57px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 60px 60px 0 0;
+    background-color: $color-default-white;
+    pointer-events: none;
+  }
+
   &__wrapper {
     display: flex;
   }

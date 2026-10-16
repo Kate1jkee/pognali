@@ -1,4 +1,45 @@
 .registration {
+    &__main {
+        position: relative;
+        isolation: isolate;
+        z-index: 2;
+        padding: 100px 0;
+
+        &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: 0 0 60px 60px;
+        background-color: $color-blue-zodiac;
+        pointer-events: none;
+        }
+    }
+
+    &__location {
+        position: relative;
+        isolation: isolate;
+        z-index: 1;
+        padding: 50px 0;
+
+        &::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        border-radius: 0 0 60px 60px;
+        background-color: $color-jordy-blue;
+        pointer-events: none;
+        }
+    }
+
+    &__map {
+        position: relative;
+    }
+
     &__contacts {
         display: flex;
     }
@@ -7,5 +48,51 @@
         text-transform: none;
         font-variant-caps: normal;
         color: $color-default-white;
+    }
+
+    &__description,
+    &__login,
+    &__login-link {
+        font-weight: 300;
+        font-size: 28px;
+        line-height: 31px;
+        text-align: center;
+    }
+
+    &__description,
+    &__login {
+        color: $color-default-white;
+    }
+
+    &__login-link {
+        color: $color-pale-cornflower-blue;
+    }
+
+    &__questions {
+        font-weight: 300;
+        font-size: 28px;
+        line-height: 30px;
+        text-align: center;
+        letter-spacing: 0.01em;
+
+        color: $color-default-white;
+    }
+
+    &__contact-link {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 28px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $color-pattens-blue;
+    }
+
+    &__address {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 28px;
+        text-transform: uppercase;
+        color: $color-catalina-blue;
+
     }
 }

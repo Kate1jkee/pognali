@@ -30,7 +30,7 @@ mixin registration()
                 aria-live="polite"
               )
 
-            button.registration__submit(type="submit")
+            button.registration__submit.btn(type="submit")
               span Регистрация
 
           p.registration__questions
@@ -67,7 +67,7 @@ mixin registration()
               //- Добавим иконку метки
             span ул. Большая Конюшенная, 19/8
 
-          a.registration__route(href="#")
+          a.registration__route.btn(href="#")
             span Проложить маршрут
 
     .registration__map

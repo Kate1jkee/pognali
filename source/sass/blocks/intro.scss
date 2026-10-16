@@ -26,16 +26,41 @@
 
     &__steps {
         display: flex;
+        align-items: stretch;
         margin: 0;
         padding: 0;
         list-style: none;
+        counter-reset: intro-step;
     }
 
     &__step {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex: 1 1 0;
+        gap: 24px;
+        min-width: 0;
+        min-height: 107px;
+        padding: 30px 32px;
+        border-radius: 20px;
+        counter-increment: intro-step;
+
         font-weight: 700;
         font-size: 22px;
         line-height: 24px;
         color: $color-midnight-express;
+
+        &::after {
+            content: counter(intro-step);
+            flex-shrink: 0;
+            color: $color-default-white;
+        }
+
+        &__step-text {
+            min-width: 0;
+            margin: 0;
+            overflow-wrap: anywhere;
+        }
     }
 
     &__title {

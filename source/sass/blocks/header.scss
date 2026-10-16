@@ -7,6 +7,10 @@
         background-color: $color-chambray;
     }
 
+    &--catalog {
+        background-color: $color-direction-h;
+    }
+
     &__wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -19,8 +23,20 @@
     }
 
     &__nav {
+        display: flex;
+        flex: 1;
+        align-items: center;
         flex: 1;
         min-width: 0;
+        gap: 40px;
+
+        &::before {
+            content: "";
+            flex-shrink: 0;
+            width: 60px;
+            height: 2px;
+            background-color: $color-default-white;
+        }
     }
 
     &__nav-list {
@@ -34,8 +50,39 @@
 
     &__contacts {
         display: flex;
+        flex-wrap: wrap;
         flex-shrink: 0;
         gap: 8px;
+    }
+
+    &__contact {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 50px;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        border-radius: 50%;
+        color: $color-midnight-express;
+        background-color: $color-jordy-blue;
+        text-decoration: none;
+        transition: background-color $trans-default;
+
+        img {
+            display: block;
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        @include hover-focus {
+            background-color: $color-picton-blue;
+        }
+
+        &:active {
+            background-color: $color-pale-cornflower-blue;
+        }
     }
 
     &__nav-link {

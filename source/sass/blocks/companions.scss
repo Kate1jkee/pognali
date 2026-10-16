@@ -1,4 +1,6 @@
 .companions {
+    overflow-x: clip;
+    
     &__wrapper {
        display: flex; 
     }
@@ -9,5 +11,36 @@
 
     &__title {
         color: $color-direction-h;
+    }
+
+    &__description {
+        font-size: 24px;
+        line-height: 33px;
+        color: $color-direction-h;
+    }
+
+    &__text {
+        font-weight: 300;
+        font-size: 22px;
+        line-height: 24px;
+        color: $color-direction-h;
+    }
+
+    &__slider {
+        position: relative;
+        isolation: isolate;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: -100vw;
+            z-index: -1;
+            background-color: $color-blue-zodiac;
+            border-bottom-left-radius: 60px;
+            pointer-events: none;
+        }
     }
 }

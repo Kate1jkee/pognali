@@ -1,11 +1,11 @@
 mixin catalog-filter-group(group)
-  details.catalog-filter__group(open=group.open)
-    summary.catalog-filter__heading= group.title
+  details.catalog-filter-group(open=group.open)
+    summary.catalog-filter-group__heading= group.title
 
-    .catalog-filter__options
+    .catalog-filter-group__options
       each option in group.options
-        label.catalog-filter__option
-          input.catalog-filter__checkbox(
+        label.catalog-filter-group__option
+          input.catalog-filter-group__checkbox(
             type="checkbox"
             name=group.name
             value=option.value

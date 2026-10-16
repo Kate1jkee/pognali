@@ -12,4 +12,56 @@
     &__actions {
         display: flex;
     }
+
+    &__name {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 30px;
+        color: $color-catalina-blue;
+    }
+
+    &__tag {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        color: $color-default-black;
+    }
+
+    &__invite {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: $color-midnight-express;
+    }
+
+    &__like-number {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: $color-midnight-express;
+    }
+
+    &__country {
+        font-size: 20px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: $color-catalina-blue;
+    }
+
+    &__level-value {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 24px;
+        color: $color-catalina-blue;
+    }
+
+    &__level-text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        color: $color-default-black;
+        opacity: 0.4;
+    }
 }

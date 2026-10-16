@@ -31,7 +31,7 @@ mixin catalog-card(card)
               alt=""
             )
           span.visually-hidden Количество отметок «Нравится»:
-          span= card.likes
+          span.catalog-card__like-number= card.likes
 
     .catalog-card__details
       ul.catalog-card__countries(aria-label="Хочет посетить")

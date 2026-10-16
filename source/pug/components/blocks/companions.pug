@@ -11,11 +11,12 @@ mixin companions()
           p.companions__text
             | Теперь можно легко найти единомышленников!
 
-          a.companions__link(href="catalog.html")
+          a.companions__link.btn(href="catalog.html")
             span Показать всех
 
         .companions__profiles
-          ul.companions__list
-            each card in companionsCards.slice(0, 2)
-              li.companions__item
-                +companions-card(card)
+          .companions__slider
+            ul.companions__list
+              each card in companionsCards.slice(0, 2)
+                li.companions__item
+                  +companions-card(card)
