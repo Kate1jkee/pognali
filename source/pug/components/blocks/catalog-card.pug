@@ -37,11 +37,12 @@ mixin catalog-card(card)
       ul.catalog-card__countries(aria-label="Хочет посетить")
         each country in card.countries
           li.catalog-card__country
-            img(
-              src=`img/content/${country.flag}.png`
-              alt=""
-            )
-            span= country.name
+            span.catalog-card__flag
+              img(
+                src=`img/content/${country.flag}.png`
+                alt=""
+              )
+            span.catalog-card__country-name= country.name
 
       .catalog-card__footer
         ul.catalog-card__transport(aria-label="Предпочитаемый транспорт")
@@ -50,12 +51,7 @@ mixin catalog-card(card)
             li.catalog-card__transport-item(
               class=isActive ? "catalog-card__transport-item--active" : null
             )
-              img(
-                src=`img/content/${transport.icon}.svg`
-                width=transport.width
-                height=transport.height
-                alt=""
-              )
+              +icon(transport.icon, transport.width, transport.height)
               span.visually-hidden
                 = transport.name + (isActive ? " — выбран" : " — не выбран")
 

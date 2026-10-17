@@ -42,6 +42,57 @@
 
     &__contacts {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px 60px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__contact {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    &__contact-link {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 28px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $color-pattens-blue;
+        transition: color $trans-default;
+
+        @include hover-focus {
+            color: $color-pale-cornflower-blue;
+        }
+    }
+
+    &__contact-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 90px;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background-color: $color-registration-icon;
+
+        svg {
+            display: block;
+            flex-shrink: 0;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    &__contact-text {
+        min-width: 0;
+        overflow-wrap: anywhere;
     }
 
     &__title {
@@ -78,21 +129,130 @@
         color: $color-default-white;
     }
 
-    &__contact-link {
-        font-weight: 700;
-        font-size: 28px;
-        line-height: 28px;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: $color-pattens-blue;
-    }
-
     &__address {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        min-width: 0;
+
         font-weight: 700;
         font-size: 28px;
         line-height: 28px;
         text-transform: uppercase;
         color: $color-catalina-blue;
 
+    }
+
+    &__address-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 90px;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background-color: $color-registration-icon;
+        color: $color-pattens-blue;
+
+        svg {
+            display: block;
+            flex-shrink: 0;
+            width: 32px;
+            height: 42px;
+        }
+    }
+
+    &__address > span:last-child {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    &__map {
+        position: relative;
+        height: 584px;
+        margin-top: -60px;
+        overflow: hidden;
+        background-color: $color-solitude;
+    }
+
+    &__map-fallback {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__map-canvas {
+        position: absolute;
+        inset: 0;
+    }
+
+    &__form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 330px);
+        align-items: stretch;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        border-radius: 20px 0 0 20px;
+        background-color: $color-default-white;
+
+        > input {
+            flex: 1;
+            width: 100%;
+            min-width: 0;
+            min-height: 81px;
+            padding: 24px 36px;
+            border: 0;
+            border-radius: inherit;
+            background-color: transparent;
+            font: inherit;
+            font-size: 24px;
+            line-height: 30px;
+            font-weight: 700;
+            color: $color-charcoal;
+
+            &::placeholder {
+            color: rgba($color-charcoal, 0.3);
+            opacity: 1;
+            }
+
+            &:focus-visible {
+            outline: 3px solid $color-picton-blue;
+            outline-offset: -3px;
+            }
+
+            &[aria-invalid="true"] {
+            color: $color-salmon;
+            }
+        }
+    }
+
+    &__error {
+        &:empty {
+            display: none;
+        }
+
+        &:not(:empty) {
+            padding: 0 36px 12px;
+            color: $color-salmon;
+        }
+    }
+
+    &__submit {
+        width: 100%;
+        min-width: 0;
+        min-height: 81px;
+        padding: 24px 36px;
+        border-radius: 0 20px 20px 0;
+
+        > span {
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
     }
 }

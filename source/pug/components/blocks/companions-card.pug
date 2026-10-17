@@ -10,9 +10,26 @@ mixin companions-card(card)
       )
 
       .companions-card__level(
-        style=`--level: ${card.level}`
         aria-label=`Уровень: ${card.level} из 100`
       )
+        svg.companions-card__level-ring(
+          width="60"
+          height="60"
+          viewBox="0 0 60 60"
+          aria-hidden="true"
+        )
+          circle(
+            cx="30"
+            cy="30"
+            r="28"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            pathLength="100"
+            stroke-dasharray=`${card.level} 100`
+          )
+
         span.companions-card__level-value(aria-hidden="true")= card.level
         span.companions-card__level-text(aria-hidden="true") level
 
@@ -43,11 +60,6 @@ mixin companions-card(card)
           li.companions-card__transport-item(
             class=isActive ? "companions-card__transport-item--active" : null
           )
-            img(
-              src=`img/content/${transport.icon}.svg`
-              width=transport.width
-              height=transport.height
-              alt=""
-            )
+            +icon(transport.icon, transport.width, transport.height).companions-card__transport-icon
             span.visually-hidden
               = transport.name + (isActive ? " — выбран" : " — не выбран")

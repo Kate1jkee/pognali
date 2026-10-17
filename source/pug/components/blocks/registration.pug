@@ -17,7 +17,7 @@ mixin registration()
             .registration__field
               label.visually-hidden(for="registration-email") Электронная почта
 
-              input.registration__input#registration-email(
+              input#registration-email(
                 type="email"
                 name="email"
                 placeholder="E-mail"
@@ -40,35 +40,33 @@ mixin registration()
             li.registration__contact
               a.registration__contact-link(href="tel:88005558628")
                 span.registration__contact-icon
-                  img(
-                    src="img/content/icon_telephone.svg"
-                    width="18"
-                    height="18"
-                    alt=""
-                  )
-                span 8 800 555-86-28
+                  +icon("icon-number", 36, 34)
+                span.registration__contact-text 8 800 555-86-28
 
             li.registration__contact
               a.registration__contact-link(href="#")
                 span.registration__contact-icon
-                  img(
-                    src="img/content/icon_mail.svg"
-                    width="16"
-                    height="14"
-                    alt=""
-                  )
-                span MAIL@HTMLACADEMY.RU
+                  +icon("icon-email", 47, 50)
+                span.registration__contact-text MAIL@HTMLACADEMY.RU
 
     .registration__location
       .container
         .registration__location-wrapper
           p.registration__address
             span.registration__address-icon
-              //- Добавим иконку метки
+              +icon("icon-map", 32, 42)
             span ул. Большая Конюшенная, 19/8
 
           a.registration__route.btn(href="#")
             span Проложить маршрут
 
     .registration__map
-      //карта с меткой
+      img.registration__map-fallback(
+        src="img/content/map.png"
+        srcset="img/content/map@2x.png 2x"
+        width="1440"
+        height="584"
+        alt="Карта расположения офиса: Санкт-Петербург, улица Большая Конюшенная, 19/8"
+      )
+
+      .registration__map-canvas#registration-map(hidden)

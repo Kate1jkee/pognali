@@ -6,12 +6,7 @@ mixin directions-card(card)
       p.directions-card__description= card.description
 
       p.directions-card__travellers
-        img(
-          src="img/content/icon_user.svg"
-          width="14"
-          height="14"
-          alt=""
-        )
+        +icon("icon-user", 27, 24).directions-card__travellers-icon
         span.visually-hidden Количество попутчиков:
         span.directions-card__likes= card.travellers
 
