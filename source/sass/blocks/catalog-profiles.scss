@@ -1,4 +1,6 @@
 .catalog-profiles {
+    padding-bottom: 140px;
+
     &__list {
         display: flex;
         flex-direction: column;
@@ -27,5 +29,137 @@
 
     &__pages {
         display: flex;
+    }
+
+    &__more {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        width: 100%;
+        min-height: 50px;
+        margin: 40px 0;
+        padding: 10px 20px;
+        border: 0;
+        background-color: transparent;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        text-transform: uppercase;
+        color: $color-catalina-blue;
+        cursor: pointer;
+        transition: opacity $trans-default;
+
+        &::before {
+            flex: 0 0 26px;
+            width: 26px;
+            height: 26px;
+            background:
+                linear-gradient(currentColor, currentColor) center / 2px 100% no-repeat,
+                linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat;
+            content: "";
+        }
+
+        &:hover {
+            opacity: 0.6;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-catalina-blue;
+            outline-offset: 4px;
+        }
+    }
+
+    &__pagination {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 100px;
+        padding: 25px 30px;
+        border-radius: 20px;
+        background-color: $color-default-white;
+    }
+
+    &__pages {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 50px;
+        min-height: 50px;
+        padding: 10px;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        text-decoration: none;
+        color: $color-catalina-blue;
+        transition: background-color $trans-default;
+
+        &:hover {
+        background-color: $color-solitude;
+        }
+
+        &--active {
+        background-color: $color-picton-blue;
+
+        &:hover {
+            background-color: $color-picton-blue;
+        }
+        }
+
+        &:focus-visible {
+        outline: 2px solid $color-catalina-blue;
+        outline-offset: 3px;
+        }
+    }
+
+    &__arrows {
+        display: flex;
+        margin-left: auto;
+    }
+
+    &__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 50px;
+        color: $color-catalina-blue;
+        transition: opacity $trans-default;
+
+        &:hover {
+        opacity: 0.6;
+        }
+
+        &:focus-visible {
+        outline: 2px solid $color-catalina-blue;
+        outline-offset: 3px;
+        }
+    }
+
+    &__arrow-icon {
+        width: 0;
+        height: 0;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+    }
+
+    &__arrow--prev > &__arrow-icon {
+        border-right: 10px solid currentColor;
+    }
+
+    &__arrow--next > &__arrow-icon {
+        border-left: 10px solid currentColor;
     }
 }

@@ -24,6 +24,9 @@ mixin intro(title)
             )
 
         ol.intro__steps
-          each step in introSteps
-            li.intro__step(class=`intro__step--${step.modifier}`)
+          each step, index in introSteps
+            li.intro__step(
+              class=`intro__step--${step.modifier}`
+              style=`--step-delay: ${index * 450}ms`
+            )
               p.intro__step-text= step.text

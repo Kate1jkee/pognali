@@ -1,0 +1,32 @@
+mixin service-preview-card(card)
+  .service-preview-card
+    .service-preview-card__image
+      img(
+        src=`img/content/${card.image}.png`
+        srcset=`img/content/${card.image}@2x.png 2x`
+        width="285"
+        height="285"
+        alt=""
+      )
+
+    .service-preview-card__content
+      ul.service-preview-card__flags
+        each country in card.countries
+          li
+            img(
+              src=`img/content/${country.flag}.png`
+              srcset=`img/content/${country.flag}@2x.png 2x`
+              alt=""
+            )
+
+      p.service-preview-card__name= card.name
+
+      p.service-preview-card__tags
+        = card.tags.map((tag) => "#" + tag).join(" ")
+
+      .service-preview-card__actions
+        span.service-preview-card__invite Позвать!
+
+        span.service-preview-card__likes
+          +icon("icon-heart", 20, 20)
+          span= card.likes

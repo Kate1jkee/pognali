@@ -1,16 +1,102 @@
 .catalog-filter-group {
+    margin-bottom: 24px;
+
     &__heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        list-style: none;
+        cursor: pointer;
+
         font-weight: 500;
         font-size: 20px;
         line-height: 22px;
         text-transform: uppercase;
         color: $color-catalina-blue;
+
+        &::-webkit-details-marker {
+        display: none;
+        }
+
+        &::after {
+        flex-shrink: 0;
+        width: 0;
+        height: 0;
+        border-top: 5px solid currentColor;
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        content: "";
+        }
+    }
+
+    &[open] > &__heading {
+        margin-bottom: 20px;
+
+        &::after {
+        transform: rotate(180deg);
+        }
+    }
+
+
+    &__options {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
     }
 
     &__option {
+        position: relative;
+        display: flex;
+        align-items: center;
         font-weight: 400;
+        gap: 13px;
         font-size: 20px;
-        line-height: 20px;
+        line-height: 24px;
         color: $color-default-black;
+        cursor: pointer;
+
+        > input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip-path: inset(100%);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        > input:checked + .catalog-filter-group__check > svg {
+            opacity: 1;
+        }
+
+        > input:focus-visible + .catalog-filter-group__check {
+            outline: 2px solid $color-catalina-blue;
+            outline-offset: 3px;
+        }
+
+        > input:disabled ~ span {
+            opacity: 0.4;
+            cursor: default;
+        }
+    }
+
+    &__check {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 24px;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        background-color: $color-default-white;
+
+        > svg {
+            display: block;
+            opacity: 0;
+            transition: opacity $trans-default;
+        }
     }
 }

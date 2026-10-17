@@ -26,10 +26,7 @@ mixin catalog-card(card)
 
         p.catalog-card__likes
           span.catalog-card__like-icon
-            img(
-              src="img/content/icon_heart.svg"
-              alt=""
-            )
+            +icon("icon-heart", 20, 20)
           span.visually-hidden Количество отметок «Нравится»:
           span.catalog-card__like-number= card.likes
 
@@ -55,9 +52,19 @@ mixin catalog-card(card)
               span.visually-hidden
                 = transport.name + (isActive ? " — выбран" : " — не выбран")
 
-        .catalog-card__level(
-          style=`--level: ${card.level}`
-          aria-label=`Уровень: ${card.level} из 100`
-        )
+        .catalog-card__level(aria-label=`Уровень: ${card.level} из 100`)
+          svg(width="60" height="60" viewBox="0 0 60 60" aria-hidden="true")
+            circle(
+              cx="30"
+              cy="30"
+              r="28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              pathLength="100"
+              stroke-dasharray=`${card.level} 100`
+              transform="rotate(-90 30 30)"
+            )
           span.catalog-card__level-value(aria-hidden="true")= card.level
           span.catalog-card__level-text(aria-hidden="true") level

@@ -2,13 +2,18 @@ mixin catalog-filter-group(group)
   details.catalog-filter-group(open=group.open)
     summary.catalog-filter-group__heading= group.title
 
-    .catalog-filter-group__options
-      each option in group.options
-        label.catalog-filter-group__option
-          input.catalog-filter-group__checkbox(
-            type="checkbox"
-            name=group.name
-            value=option.value
-            checked=option.checked
-          )
-          span= option.label
+    if block
+      block
+    else
+      .catalog-filter-group__options
+        each option in group.options
+          label.catalog-filter-group__option
+            input(
+              type="checkbox"
+              name=group.name
+              value=option.value
+              checked=option.checked
+            )
+            span.catalog-filter-group__check
+              +icon("icon-check", 11, 12)
+            span= option.label

@@ -1,5 +1,8 @@
 mixin country-filter()
-  section.country-filter(aria-labelledby="country-filter-title")
+  section.country-filter(
+    aria-labelledby="country-filter-title"
+    data-country-filter
+  )
     .country-filter__heading
       .container
         h1.country-filter__title#country-filter-title Попутчики
@@ -12,15 +15,17 @@ mixin country-filter()
               type="button"
               aria-expanded="false"
               aria-controls="country-filter-panel"
+              data-country-filter-toggle
             )
-              span Фильтрация по странам
+              +icon("icon-burger", 23, 15)
+              span Фильтрация по странам:
               span.country-filter__toggle-text Показать все
 
             ul.country-filter__continents
               each continent in filterContinents
                 li.country-filter__continent
                   label.country-filter__continent-label
-                    input.country-filter__continent-input(
+                    input(
                       type="checkbox"
                       name="continents"
                       value=continent.id
@@ -28,7 +33,10 @@ mixin country-filter()
                     )
                     span.country-filter__continent-text= continent.name
 
-          .country-filter__panel#country-filter-panel(hidden)
+          .country-filter__panel#country-filter-panel(
+            hidden
+            data-country-filter-panel
+          )
             ul.country-filter__groups
               each group in filterCountryGroups
                 li.country-filter__group
@@ -43,5 +51,8 @@ mixin country-filter()
                           aria-pressed="false"
                         )= country.name
 
-            button.country-filter__close(type="button")
+            button.country-filter__close(
+              type="button"
+              data-country-filter-close
+            )
               span Свернуть

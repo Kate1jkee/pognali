@@ -1,34 +1,14 @@
 import {mobileVhFix} from './utils/mobile-vh-fix.js';
-import {initWinnersList} from './modules/winners-list.js';
-import {initParticipationForms} from './modules/participation-form.js';
-import {initPrizesSliders} from './modules/prizes-slider.js';
-import {initScrollReveal} from './modules/scroll-reveal.js';
-import {initWinnersLink} from './modules/winners-link.js';
+import {initCountryFilter} from './modules/country-filter.js';
+import {initDirectionsSlider} from './modules/directions-slider.js';
 
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
   mobileVhFix();
+  initCountryFilter();
+  initDirectionsSlider();
 
-  if (document.querySelector('[data-winners-toggle]')) {
-    initWinnersList();
-  }
-
-  if (document.querySelector('[data-participation-form]')) {
-    initParticipationForms();
-  }
-
-  if (document.querySelector('[data-prizes-slider]')) {
-    initPrizesSliders();
-  }
-
-  if (document.querySelector('[data-reveal]')) {
-    initScrollReveal();
-  }
-
-  if (document.querySelector('[data-winners-link]')) {
-    initWinnersLink();
-  }
 });
 // ---------------------------------
 

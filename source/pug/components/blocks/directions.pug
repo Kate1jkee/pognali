@@ -3,10 +3,11 @@ mixin directions()
     .container
       .directions__wrapper
         .directions__slider
-          ul.directions__list
-            each card in directionsCards
-              li.directions__item
-                +directions-card(card)
+          .directions__viewport(data-directions-slider)
+            ul.directions__list
+              each card in directionsCards
+                li.directions__item
+                  +directions-card(card)
 
         .directions__content
           h2.directions__title#directions-title Направления

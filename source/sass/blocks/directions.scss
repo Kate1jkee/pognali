@@ -52,4 +52,46 @@
         min-width: 0;
     }
 
+    &__viewport {
+        min-width: 0;
+    }
+
+    &__item {
+        min-width: 0;
+    }
+
+    &__viewport.is-active {
+        overflow: hidden;
+        touch-action: pan-x;
+        user-select: none;
+
+        img {
+            -webkit-user-drag: none;
+        }
+
+        // Плавное исчезновение карточек сверху и снизу.
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent,
+            #000 18%,
+            #000 82%,
+            transparent
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            transparent,
+            #000 18%,
+            #000 82%,
+            transparent
+        );
+
+        .directions__list {
+            gap: 0;
+        }
+
+        .directions__item {
+            height: auto;
+            flex-shrink: 0;
+        }
+    }
 }

@@ -7,39 +7,27 @@ mixin catalog-filter()
       each group in catalogFilterGroups
         +catalog-filter-group(group)
 
-      details.catalog-filter__group(open)
-        summary.catalog-filter__heading Транспорт
-
+      +catalog-filter-group({ title: "Транспорт", open: true })
         ul.catalog-filter__transport
           each transport in companionsTransport
             li.catalog-filter__transport-item
               label.catalog-filter__transport-label
-                input.catalog-filter__transport-input(
+                input(
                   type="checkbox"
                   name="transport"
                   value=transport.id
                   checked=transport.id !== "bicycle"
                 )
-
                 span.catalog-filter__transport-icon
-                  img(
-                    src=`img/content/${transport.icon}.svg`
-                    width=transport.width
-                    height=transport.height
-                    alt=""
-                  )
-
+                  +icon(transport.icon, transport.width, transport.height)
                 span.visually-hidden= transport.name
 
-      details.catalog-filter__group(open)
-        summary.catalog-filter__heading Левел
-
+      +catalog-filter-group({ title: "Левел", open: true })
         .catalog-filter__level
           .catalog-filter__level-fields
             label.catalog-filter__level-field
               span.visually-hidden Минимальный уровень
-
-              input.catalog-filter__level-input(
+              input(
                 type="number"
                 name="level-min"
                 min="0"
@@ -51,8 +39,7 @@ mixin catalog-filter()
 
             label.catalog-filter__level-field
               span.visually-hidden Максимальный уровень
-
-              input.catalog-filter__level-input(
+              input(
                 type="number"
                 name="level-max"
                 min="0"
@@ -62,8 +49,8 @@ mixin catalog-filter()
                 data-level-max
               )
 
-          .catalog-filter__range
-            input.catalog-filter__range-input(
+          .catalog-filter__range(style="--min: 30%; --max: 100%")
+            input(
               type="range"
               min="0"
               max="100"
@@ -73,7 +60,7 @@ mixin catalog-filter()
               data-range-min
             )
 
-            input.catalog-filter__range-input(
+            input(
               type="range"
               min="0"
               max="100"
