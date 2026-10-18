@@ -19,7 +19,28 @@ mixin country-filter()
             )
               +icon("icon-burger", 23, 15)
               span Фильтрация по странам:
-              span.country-filter__toggle-text Показать все
+              span.country-filter__mobile-indicator(aria-hidden="true")
+
+            ul.country-filter__continents
+              each continent in filterContinents
+                li.country-filter__continent
+                  label.country-filter__continent-label
+                    input(
+                      type="checkbox"
+                      name="continents"
+                      value=continent.id
+                      checked=continent.id === "europe"
+                      data-continent-checkbox
+                    )
+                    span.country-filter__continent-text= continent.name
+
+            button.country-filter__show(
+              type="button"
+              aria-expanded="false"
+              aria-controls="country-filter-panel"
+              data-country-filter-show
+            )
+              span(data-country-filter-show-text) Показать все
 
             ul.country-filter__continents
               each continent in filterContinents

@@ -162,4 +162,9 @@
     &__arrow--next > &__arrow-icon {
         border-left: 10px solid currentColor;
     }
+
+    &__item[hidden],
+    &__empty[hidden] {
+        display: none;
+    }
 }

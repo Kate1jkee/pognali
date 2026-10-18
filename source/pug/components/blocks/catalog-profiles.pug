@@ -4,8 +4,14 @@ mixin catalog-profiles()
       .catalog-profiles__results
         ul.catalog-profiles__list
           each card in companionsCards
-            li.catalog-profiles__item
+            li.catalog-profiles__item(
+              data-catalog-profile
+              data-continents=card.continents.join(" ")
+            )
               +catalog-card(card)
+
+            p.catalog-profiles__empty(data-catalog-empty hidden)
+              | По выбранным континентам попутчики не найдены.
 
         button.catalog-profiles__more(type="button")
           span Показать еще

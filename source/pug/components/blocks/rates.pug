@@ -21,6 +21,8 @@ mixin rates()
         button.rates__business(
           type="button"
           aria-haspopup="dialog"
+          aria-controls="business-rates-modal"
+          data-business-rates-open
         )
           span.rates__business-icon
             +icon("icon-business", 29, 28)

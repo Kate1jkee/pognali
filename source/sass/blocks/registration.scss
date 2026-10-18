@@ -175,7 +175,7 @@
         background-color: $color-solitude;
     }
 
-    &__map-fallback {
+    &__map > img {
         display: block;
         width: 100%;
         height: 100%;
@@ -186,6 +186,10 @@
     &__map-canvas {
         position: absolute;
         inset: 0;
+
+        &[hidden] {
+            display: none;
+        }
     }
 
     &__form {
@@ -228,6 +232,14 @@
 
             &[aria-invalid="true"] {
             color: $color-salmon;
+            }
+        }
+
+        &[aria-invalid="true"] {
+            color: $color-salmon;
+
+            &::placeholder {
+                color: $color-salmon;
             }
         }
     }

@@ -1,0 +1,28 @@
+mixin business-rates-modal()
+  -
+    const businessRates = [
+      { title: "Реклама у блоггера", price: "300 000 руб./пост" },
+      { title: "Накрутка подписчиков", price: "от 1 руб./шт." },
+      { title: "Лайки от ботов", price: "от 20 коп./лайк" },
+      { title: "Ваш продакт-плейсмент", price: "Индивидуально" }
+    ];
+
+  dialog.business-rates-modal#business-rates-modal(
+    aria-labelledby="business-rates-title"
+    data-business-rates-modal
+  )
+    .business-rates-modal__content
+      h2.business-rates-modal__title#business-rates-title
+        | Бизнес-тарифы
+
+      dl.business-rates-modal__list
+        each rate in businessRates
+          .business-rates-modal__item
+            dt= rate.title
+            dd= rate.price
+
+    button.business-rates-modal__close(
+      type="button"
+      data-business-rates-close
+      autofocus
+    ) Закрыть окно

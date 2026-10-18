@@ -1,6 +1,11 @@
 import {mobileVhFix} from './utils/mobile-vh-fix.js';
 import {initCountryFilter} from './modules/country-filter.js';
 import {initDirectionsSlider} from './modules/directions-slider.js';
+import {initCompanionsCards} from './modules/companions-cards.js';
+import {initBusinessRatesModal} from './modules/business-rates-modal.js';
+import {initRegistrationForm} from './modules/registration-form.js';
+import {initOfficeMap} from './modules/office-map.js';
+import {initLevelFilter} from './modules/level-filter.js';
 
 // ---------------------------------
 
@@ -8,6 +13,11 @@ window.addEventListener('DOMContentLoaded', () => {
   mobileVhFix();
   initCountryFilter();
   initDirectionsSlider();
+  initCompanionsCards();
+  initBusinessRatesModal();
+  initRegistrationForm();
+  initOfficeMap();
+  initLevelFilter();
 
 });
 // ---------------------------------

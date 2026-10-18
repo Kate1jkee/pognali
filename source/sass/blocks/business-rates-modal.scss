@@ -1,0 +1,117 @@
+.business-rates-modal {
+  width: calc(100% - 32px);
+  max-width: 750px;
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 30px;
+  background-color: $color-default-white;
+  color: $color-charcoal;
+  box-shadow: 0 4px 24px rgba($color-default-black, 0.15);
+
+  &::backdrop {
+    background-color: rgba($color-midnight-express, 0.2);
+  }
+
+  &__content {
+    padding: 60px;
+  }
+
+  &__title {
+    margin: 0 0 45px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    font-variant: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: $color-direction-h;
+  }
+
+  &__list {
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px 24px;
+    padding: 16px 0;
+    border-top: 1px solid rgba($color-default-black, 0.05);
+    font-size: 22px;
+    line-height: 28px;
+    overflow-wrap: anywhere;
+
+    &:last-child {
+      border-bottom: 1px solid rgba($color-default-black, 0.05);
+    }
+
+    > dt {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    > dd {
+      flex: 1 1 0;
+      min-width: 0;
+      margin: 0;
+      text-align: right;
+    }
+  }
+
+  &__close {
+    display: block;
+    width: 100%;
+    min-height: 107px;
+    padding: 24px;
+    border: 0;
+    background-color: rgba($color-solitude, 0.7);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: $color-catalina-blue;
+    cursor: pointer;
+    transition: background-color $trans-default;
+
+    &:hover {
+      background-color: $color-lavender;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-picton-blue;
+      outline-offset: -5px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__content {
+      padding: 32px 24px;
+    }
+
+    &__title {
+      margin-bottom: 28px;
+      font-size: 26px;
+      line-height: 30px;
+    }
+
+    &__item {
+      flex-direction: column;
+      gap: 6px;
+      font-size: 18px;
+      line-height: 24px;
+
+      > dd {
+        text-align: left;
+      }
+    }
+
+    &__close {
+      min-height: 80px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+}

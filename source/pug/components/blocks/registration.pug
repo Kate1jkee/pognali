@@ -13,7 +13,12 @@ mixin registration()
             |
             a.registration__login-link(href="#") авторизуйтесь.
 
-          form.registration__form(action="#" method="post" novalidate)
+          form.registration__form(
+            action="#"
+            method="post"
+            novalidate
+            data-registration-form
+          )
             .registration__field
               label.visually-hidden(for="registration-email") Электронная почта
 
@@ -24,10 +29,12 @@ mixin registration()
                 autocomplete="email"
                 required
                 aria-describedby="registration-error"
+                data-registration-email
               )
 
               p.registration__error#registration-error(
                 aria-live="polite"
+                data-registration-error
               )
 
             button.registration__submit.btn(type="submit")
@@ -38,7 +45,10 @@ mixin registration()
 
           ul.registration__contacts
             li.registration__contact
-              a.registration__contact-link(href="tel:88005558628")
+              a.registration__contact-link(
+                href="tel:+78005558628"
+                aria-label="Позвонить: 8 800 555-86-28"
+              )
                 span.registration__contact-icon
                   +icon("icon-number", 36, 34)
                 span.registration__contact-text 8 800 555-86-28
@@ -60,13 +70,25 @@ mixin registration()
           a.registration__route.btn(href="#")
             span Проложить маршрут
 
-    .registration__map
-      img.registration__map-fallback(
+    .registration__map(
+      data-office-map
+      data-map-key="d8c83788-b6de-4ac8-bbd6-887380951110"
+      data-map-address="Санкт-Петербург, Большая Конюшенная улица, 19/8"
+      data-map-latitude="59.938814"
+      data-map-longitude="30.323016"
+      data-map-zoom="16"
+    )
+      img(
         src="img/content/map.png"
         srcset="img/content/map@2x.png 2x"
         width="1440"
         height="584"
-        alt="Карта расположения офиса: Санкт-Петербург, улица Большая Конюшенная, 19/8"
+        alt="Карта расположения офиса: Санкт-Петербург, Большая Конюшенная улица, 19/8"
       )
 
-      .registration__map-canvas#registration-map(hidden)
+      .registration__map-canvas(
+        data-map-canvas
+        hidden
+        role="region"
+        aria-label="Интерактивная карта расположения офиса"
+      )

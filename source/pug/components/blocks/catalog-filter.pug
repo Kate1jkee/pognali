@@ -23,7 +23,7 @@ mixin catalog-filter()
                 span.visually-hidden= transport.name
 
       +catalog-filter-group({ title: "Левел", open: true })
-        .catalog-filter__level
+        .catalog-filter__level(data-level-filter)
           .catalog-filter__level-fields
             label.catalog-filter__level-field
               span.visually-hidden Минимальный уровень
@@ -49,7 +49,10 @@ mixin catalog-filter()
                 data-level-max
               )
 
-          .catalog-filter__range(style="--min: 30%; --max: 100%")
+          .catalog-filter__range(
+            style="--min: 30%; --max: 100%"
+            data-level-range
+          )
             input(
               type="range"
               min="0"
