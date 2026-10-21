@@ -14,11 +14,16 @@ mixin service()
           a.service__link.btn(href="#")
             span Подробнее
 
-        .service__image(aria-hidden="true")
-          .service__scene
-            .service__phone
-            .service__preview
-              each card in companionsCards.slice(0, 2)
-                +service-preview-card(card)
-
-            span.service__preview-invite Позвать!
+        .service__image
+          picture
+            source(
+              media="(max-width: 1023px)"
+              srcset="img/content/service-image-tablet.png 1x, img/content/service-image-tablet@2x.png 2x"
+            )
+            img(
+              src="img/content/service-image-desktop.png"
+              srcset="img/content/service-image-desktop@2x.png 2x"
+              width="654"
+              height="665"
+              alt=""
+            )

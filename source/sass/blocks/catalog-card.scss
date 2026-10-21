@@ -57,17 +57,18 @@
         width: 25px;
         height: 25px;
         color: $color-catalina-blue;
-        opacity: 0.15;
-
-        &--active {
-            opacity: 1;
-        }
+        
 
         > svg {
             display: block;
             flex-shrink: 0;
             max-width: 100%;
             max-height: 100%;
+            opacity: 0.15;
+        }
+
+        &--active > svg {
+            opacity: 1;
         }
     }
 
@@ -83,6 +84,19 @@
         font-size: 30px;
         line-height: 30px;
         color: $color-catalina-blue;
+
+        cursor: pointer;
+        transition: opacity $trans-default;
+
+        @media (hover: hover) {
+            &:hover {
+            opacity: 0.7;
+            }
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
     }
 
     &__tag {

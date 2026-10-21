@@ -1,26 +1,29 @@
 .service {
+    position: relative;
+    margin-top: -60px;
+    padding-top: 60px;
+    border-radius: 0 0 60px 60px;
     background-color: $color-hero-background;
+    z-index: 8;
 
     &__wrapper {
         display: flex;
-        align-items: center;
-        gap: 40px;
-        padding-top: 80px;
-        padding-bottom: 80px;
+        padding-top: 93px;
     }
 
     &__title {
         color: $color-default-white;
         text-box-trim: trim-both;
         text-box-edge: cap alphabetic;
-        margin: 0 0 30px;
+        margin: 0 0 19px;
     }
 
     &__description {
         font-size: 24px;
         line-height: 34px;
         color: $color-default-white;
-        margin: 0 0 40px;
+        margin: 0 0 58px;
+        padding-right: 10px;
     }
 
     &__text {
@@ -28,31 +31,30 @@
         font-size: 22px;
         line-height: 24px;
         color: $color-default-white;
-        margin: 0 0 60px;
+        margin: 0 0 137px;
+        padding-right: 140px;
     }
 
     &__content {
         flex: 1 1 0;
         min-width: 0;
+        margin-left: 14px;
     }
 
     &__image {
-        position: relative;
         flex: 1 1 0;
         min-width: 0;
-        height: 665px;
-        overflow: hidden;
-        pointer-events: none;
+        max-width: 654px;
+        margin-right: 11px;
 
-        &::before {
-            position: absolute;
-            top: 45%;
-            right: 0;
-            left: 0;
-            height: 210px;
-            border-radius: 20px;
-            background-color: $color-registration-icon;
-            content: "";
+        > picture {
+            display: block;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
         }
     }
 

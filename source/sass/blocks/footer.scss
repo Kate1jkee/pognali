@@ -18,6 +18,7 @@
 
   &__wrapper {
     display: flex;
+    gap: 369px;
   }
 
   &__socials {
@@ -52,11 +53,20 @@
       flex-shrink: 0;
       width: 32px;
       height: 32px;
+      opacity: 1;
+      transition: opacity $trans-default;
     }
 
     @include hover-focus {
       background-color: $color-picton-blue;
-      color: $color-default-white;
+    }
+
+    &:active {
+      background-color: $color-picton-blue;
+
+      > svg {
+        opacity: 0.3;
+      }
     }
   }
 }

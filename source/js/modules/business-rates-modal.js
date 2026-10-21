@@ -8,24 +8,51 @@ const initBusinessRatesModal = () => {
 
   const closeButton = modal.querySelector('[data-business-rates-close]');
 
-  let previousOverflow = '';
+  if (!closeButton) {
+    return;
+  }
+
+  const isOutside = (evt) => {
+    const rect = modal.getBoundingClientRect();
+
+    return evt.clientX < rect.left ||
+      evt.clientX > rect.right ||
+      evt.clientY < rect.top ||
+      evt.clientY > rect.bottom;
+  };
+
+  let pointerStartedOutside = false;
 
   openButton.addEventListener('click', () => {
-    if (modal.open) {
-      return;
+    if (!modal.open) {
+      modal.showModal();
     }
-
-    previousOverflow = document.documentElement.style.overflow;
-    modal.showModal();
-    document.documentElement.style.overflow = 'hidden';
   });
 
   closeButton.addEventListener('click', () => {
     modal.close();
   });
 
+  modal.addEventListener('pointerdown', (evt) => {
+    pointerStartedOutside = evt.target === modal && isOutside(evt);
+  });
+
+  modal.addEventListener('click', (evt) => {
+    if (pointerStartedOutside &&
+        evt.target === modal &&
+        isOutside(evt)) {
+      modal.close();
+    }
+
+    pointerStartedOutside = false;
+  });
+
+  modal.addEventListener('pointercancel', () => {
+    pointerStartedOutside = false;
+  });
+
   modal.addEventListener('close', () => {
-    document.documentElement.style.overflow = previousOverflow;
+    pointerStartedOutside = false;
     openButton.focus({preventScroll: true});
   });
 };

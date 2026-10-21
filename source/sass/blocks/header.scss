@@ -1,6 +1,6 @@
 .header {
     position: relative;
-    z-index: 2;
+    z-index: 10;
     padding: 40px 0;
 
     &--home {
@@ -64,32 +64,81 @@
         height: 50px;
         padding: 0;
         border-radius: 50%;
-        color: $color-midnight-express;
         background-color: $color-jordy-blue;
+        color: $color-midnight-express;
         text-decoration: none;
         transition: background-color $trans-default;
 
-        img {
+        > svg {
             display: block;
-            width: 18px;
-            height: 18px;
-            object-fit: contain;
+            flex-shrink: 0;
+            opacity: 1;
+            transition: opacity $trans-default;
         }
 
         @include hover-focus {
-            background-color: $color-picton-blue;
+            background-color: $color-curious-blue;
         }
 
         &:active {
-            background-color: $color-pale-cornflower-blue;
+            background-color: $color-curious-blue;
+
+            > svg {
+            opacity: 0.3;
+            }
         }
     }
 
     &__nav-link {
+        display: block;
+        overflow: hidden;
         font-size: 20px;
-        line-height: 20px;
+        line-height: 24px;
         text-transform: uppercase;
         text-decoration: none;
         color: $color-default-white;
+
+        @include hover-focus {
+            .header__nav-text {
+            transform: translateY(-100%);
+            }
+        }
+
+        &:active {
+            .header__nav-text {
+                color: $color-picton-blue;
+                opacity: 0.3;
+
+                &::after {
+                color: $color-picton-blue;
+                }
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-jordy-blue;
+            outline-offset: 5px;
+        }
+    }
+
+    &__nav-text {
+        position: relative;
+        display: block;
+        transition:
+            transform $trans-default,
+            color $trans-default,
+            opacity $trans-default;
+
+        &::after {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            color: $color-jordy-blue;
+            content: attr(data-hover);
+            transition:
+            color $trans-default,
+            opacity $trans-default;
+        }
     }
 }

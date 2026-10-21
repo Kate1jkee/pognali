@@ -11,7 +11,9 @@ mixin catalog-filter()
         ul.catalog-filter__transport
           each transport in companionsTransport
             li.catalog-filter__transport-item
-              label.catalog-filter__transport-label
+              label.catalog-filter__transport-label.tooltip(
+                data-tooltip=transport.name
+              )
                 input(
                   type="checkbox"
                   name="transport"

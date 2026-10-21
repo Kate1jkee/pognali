@@ -22,11 +22,16 @@ mixin header(headerMods, currentUrl)
         nav.header__nav(aria-label="Основная навигация")
           ul.header__nav-list
             li.header__nav-item
-              a.header__nav-link(href="#") О сервисе
+              a.header__nav-link(href="#")
+                span.header__nav-text(data-hover="О сервисе") О сервисе
+
             li.header__nav-item
-              a.header__nav-link(href="#") Направления
+              a.header__nav-link(href="#")
+                span.header__nav-text(data-hover="Направления") Направления
+
             li.header__nav-item
-              a.header__nav-link(href="catalog.html") Попутчики
+              a.header__nav-link(href="catalog.html")
+                span.header__nav-text(data-hover="Попутчики") Попутчики
 
         .header__contacts
           a.header__contact(

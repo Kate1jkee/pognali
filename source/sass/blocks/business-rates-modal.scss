@@ -22,9 +22,8 @@
   &__title {
     margin: 0 0 45px;
     font-weight: 700;
-    font-size: 36px;
-    line-height: 40px;
-    font-variant: normal;
+    font-size: 45px;
+    line-height: 45px;
     text-align: center;
     text-transform: uppercase;
     color: $color-direction-h;
@@ -42,6 +41,7 @@
     border-top: 1px solid rgba($color-default-black, 0.05);
     font-size: 22px;
     line-height: 28px;
+    color: $color-charcoal;
     overflow-wrap: anywhere;
 
     &:last-child {
@@ -51,6 +51,7 @@
     > dt {
       flex: 1 1 0;
       min-width: 0;
+      font-weight: 400;
     }
 
     > dd {
@@ -58,6 +59,7 @@
       min-width: 0;
       margin: 0;
       text-align: right;
+      font-weight: 300;
     }
   }
 
@@ -65,19 +67,29 @@
     display: block;
     width: 100%;
     min-height: 107px;
-    padding: 24px;
+    padding-top: 41px;
+    padding-bottom: 45px;
+    padding-left: 45px;
+    padding-right: 45px;
     border: 0;
-    background-color: rgba($color-solitude, 0.7);
+    background-color: $color-ghost-white;
     font-family: inherit;
     font-weight: 700;
     font-size: 24px;
-    line-height: 28px;
+    line-height: 26px;
     color: $color-catalina-blue;
     cursor: pointer;
-    transition: background-color $trans-default;
+    transition: 
+      background-color $trans-default,
+      color $trans-default;
 
-    &:hover {
-      background-color: $color-lavender;
+    @include hover-focus {
+      background-color: $color-solitude;
+    }
+
+    &:active {
+      background-color: $color-solitude;
+      color: rgba($color-catalina-blue, 0.3);
     }
 
     &:focus-visible {

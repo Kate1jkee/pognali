@@ -9,14 +9,18 @@ mixin rates()
             each item in ratesItems
               li.rates__item
                 span.rates__name= item.title
-                span.rates__price= item.price
 
-          .rates__image
-            img(
-              src="img/content/rates.png"
-              srcset="img/content/rates@2x.png 2x"
-              alt=""
-            )
+          .rates__details
+            ul.rates__prices
+              each item in ratesItems
+                li.rates__price= item.price
+
+            .rates__image
+              img(
+                src="img/content/rates.png"
+                srcset="img/content/rates@2x.png 2x"
+                alt=""
+              )
 
         button.rates__business(
           type="button"

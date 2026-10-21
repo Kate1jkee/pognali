@@ -1,16 +1,21 @@
 .directions {
+    position: relative;
+    z-index: 7;
+    margin-top: -60px;
     overflow-x: clip;
 
     &__wrapper {
+        position: relative;
+        isolation: isolate;
         display: grid;
         grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-        align-items: center;
-        gap: 60px;
+        gap: 113px;
     }
 
     &__title {
         font-size: 75px;
         color: $color-direction-h;
+        margin-bottom: 33px;
     }
 
 
@@ -27,33 +32,51 @@
         font-size: 23px;
         line-height: 33px;
         color: $color-charcoal;
+        margin-bottom: 155px;
     }
 
     &__slider {
-        position: relative;
-        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         min-width: 0;
+        padding-top: 183px;
+        padding-bottom: 170px;
 
         &::before {
-            content: "";
             position: absolute;
             top: 0;
-            right: 0;
             bottom: 0;
-            left: -100vw;
+            left: min(0px, calc((100% - 100vw) / 2));
+            width: calc(
+                (100% - 113px) * 1.4 / 2.4
+                - min(0px, (100% - 100vw) / 2)
+            );
             z-index: -1;
+            border-radius: 0 0 60px 60px;
             background-color: $color-solitude;
-            border-bottom-right-radius: 60px;
             pointer-events: none;
+            content: "";
         }
     }
 
     &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
         min-width: 0;
+        padding-top: 189px;
+        padding-bottom: 140px;
     }
 
     &__viewport {
+        width: 100%;
         min-width: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 2px;
+        padding-right: 69px;
     }
 
     &__item {
@@ -93,5 +116,26 @@
             height: auto;
             flex-shrink: 0;
         }
+
+        .directions-card {
+
+            transform: scaleX(0.976);
+            transform-origin: center;
+            transition: transform 600ms ease;
+            
+        }
+
+        .directions__item.swiper-slide-next {
+            z-index: 2;
+
+            > .directions-card {
+                transform: scaleX(1);
+            }
+        }
+    }
+
+    &__viewport.swiper {
+        padding-left: 14px;
+        padding-right: 69px;
     }
 }

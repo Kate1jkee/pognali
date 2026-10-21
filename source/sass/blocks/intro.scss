@@ -1,6 +1,8 @@
 .intro {
     position: relative;
     isolation: isolate;
+    padding-bottom: 122px;
+    z-index: 9;
 
     &__background {
         position: absolute;
@@ -9,6 +11,9 @@
         bottom: 0;
         left: 0;
         z-index: -1;
+        overflow: hidden;
+        border-radius: 0 0 60px 60px;
+        background-color: $color-chambray;
         pointer-events: none;
 
         img {
@@ -22,12 +27,15 @@
 
     &__content {
         display: flex;
+        gap: 143px;
     }
 
     &__steps {
+        position: relative;
+        z-index: 1;
         display: flex;
         align-items: stretch;
-        margin: 0;
+        margin: -230px 0 0;
         padding: 0;
         list-style: none;
         counter-reset: intro-step;
@@ -103,6 +111,20 @@
         font-size: 70px;
         line-height: 70px;
         color: $color-default-white;
+        margin-left: 14px;
+    }
+
+    &__image {
+        width: 431px;
+        max-width: 100%;
+        flex-shrink: 0;
+        margin-right: 215px;
+
+        > img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
     }
 
 }

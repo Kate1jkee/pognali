@@ -34,7 +34,9 @@ mixin catalog-card(card)
       ul.catalog-card__countries(aria-label="Хочет посетить")
         each country in card.countries
           li.catalog-card__country
-            span.catalog-card__flag
+            span.catalog-card__flag.tooltip(
+              data-tooltip=country.name
+            )
               img(
                 src=`img/content/${country.flag}.png`
                 alt=""
@@ -45,8 +47,9 @@ mixin catalog-card(card)
         ul.catalog-card__transport(aria-label="Предпочитаемый транспорт")
           each transport in companionsTransport
             - const isActive = card.transport.includes(transport.id)
-            li.catalog-card__transport-item(
+            li.catalog-card__transport-item.tooltip(
               class=isActive ? "catalog-card__transport-item--active" : null
+              data-tooltip=transport.name
             )
               +icon(transport.icon, transport.width, transport.height)
               span.visually-hidden

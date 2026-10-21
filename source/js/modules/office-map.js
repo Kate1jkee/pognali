@@ -68,12 +68,28 @@ const initOfficeMap = async () => {
       ],
     });
 
+    const pinLayout = ymaps.templateLayoutFactory.createClass(
+        '<div class="registration__map-pin">'
+        + '<svg xmlns="http://www.w3.org/2000/svg"'
+        + ' width="56" height="56" viewBox="0 0 56 56"'
+        + ' aria-hidden="true">'
+        + '<use href="{{ properties.pinHref }}"></use>'
+        + '</svg>'
+        + '</div>'
+    );
+
     const marker = new ymaps.Placemark(coordinates, {
+      pinHref: container.dataset.mapPin,
       hintContent: 'Офис «Погнали»',
       balloonContentHeader: 'Офис «Погнали»',
       balloonContentBody: address,
     }, {
-      preset: 'islands#darkBlueDotIcon',
+      iconLayout: pinLayout,
+      iconShape: {
+        type: 'Circle',
+        coordinates: [0, 0],
+        radius: 28,
+      },
     });
 
     map.geoObjects.add(marker);

@@ -3,16 +3,20 @@
     max-width: 100%;
     min-width: 0;
     border-radius: 21px;
-    transition: box-shadow $trans-default;
+    transition: 
+        box-shadow $trans-default,
+        transform $trans-default;
     background-color: $color-default-white;
 
     @media (min-width: 1024px) and (hover: hover) {
         &:hover {
+            transform: scale(1.03);
             box-shadow: 0 4px 24px rgba($color-default-white, 0.45);
         }
     }
 
     &.is-active {
+        transform: scale(1.03);
         box-shadow: 0 4px 24px rgba($color-default-white, 0.45);
     }
 
@@ -23,12 +27,20 @@
 
     @media (prefers-reduced-motion: reduce) {
         transition: none;
+
+        &:hover,
+        &.is-active {
+        transform: none;
+        }
     }
 
     &__image {
         position: relative;
         width: 100%;
         aspect-ratio: 1;
+        overflow: hidden;
+        border-radius: 21px 21px 0 0;
+        background-color: $color-solitude;
 
         > img {
             position: absolute;
@@ -38,8 +50,16 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            border-radius: 21px 21px 0 0;
         }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        margin-top: -20px;
+        padding: 0 20px 28px;
+        border-radius: 0 0 21px 21px;
+        background-color: $color-default-white;
     }
 
     &__countries {
@@ -48,7 +68,9 @@
         align-items: center;
         justify-content: center;
         gap: 12px 20px;
-        margin: 0;
+        position: relative;
+        top: -12px;
+        margin: 0 0 39px;
         padding: 0;
         list-style: none;
     }
@@ -69,6 +91,7 @@
 
     &__tags {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         list-style: none;
         
@@ -77,6 +100,9 @@
         line-height: 23px;
         text-align: center;
         color: $color-charcoal;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 24px;
     }
     
     &__transport {
@@ -97,9 +123,12 @@
         width: 25px;
         height: 25px;
         color: $color-catalina-blue;
-        opacity: 0.15;
+        
+        > svg {
+            opacity: 0.15;
+        }
 
-        &--active {
+        &--active > svg {
             opacity: 1;
         }
     }
@@ -117,6 +146,21 @@
         line-height: 22px;
         text-align: center;
         color: $color-catalina-blue;
+        margin-bottom: 23px;
+
+        cursor: pointer;
+        transition: opacity $trans-default;
+
+        @media (hover: hover) {
+            &:hover {
+            opacity: 0.7;
+            }
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
+        
     }
 
     &__status {
