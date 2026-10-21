@@ -9,6 +9,18 @@
 
     &--catalog {
         background-color: $color-direction-h;
+
+        .header__logo {
+            transition: opacity $trans-default;
+
+            @include hover-focus {
+            opacity: 0.7;
+            }
+
+            &:active {
+            opacity: 0.3;
+            }
+        }
     }
 
     &__wrapper {

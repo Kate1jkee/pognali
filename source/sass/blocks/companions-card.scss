@@ -15,6 +15,7 @@
         }
     }
 
+    &:active,
     &.is-active {
         transform: scale(1.03);
         box-shadow: 0 4px 24px rgba($color-default-white, 0.45);
@@ -29,6 +30,7 @@
         transition: none;
 
         &:hover,
+        &:active,
         &.is-active {
         transform: none;
         }

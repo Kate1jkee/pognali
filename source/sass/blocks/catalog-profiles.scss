@@ -27,10 +27,6 @@
         display: flex;
     }
 
-    &__pages {
-        display: flex;
-    }
-
     &__more {
         display: flex;
         align-items: center;
@@ -59,15 +55,19 @@
                 linear-gradient(currentColor, currentColor) center / 2px 100% no-repeat,
                 linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat;
             content: "";
+            transition: opacity $trans-default;
         }
 
-        &:hover {
-            opacity: 0.6;
+        @include hover-focus {
+            &::before {
+                opacity: 0.6;
+            }
         }
 
-        &:focus-visible {
-            outline: 2px solid $color-catalina-blue;
-            outline-offset: 4px;
+        &:active {
+            &::before {
+                opacity: 0.3;
+            }
         }
     }
 
@@ -91,6 +91,7 @@
         list-style: none;
     }
 
+
     &__page-link {
         display: flex;
         align-items: center;
@@ -104,23 +105,20 @@
         line-height: 24px;
         text-decoration: none;
         color: $color-catalina-blue;
-        transition: background-color $trans-default;
+        background-color: transparent;
+        opacity: 1;
+        transition:
+        background-color $trans-default,
+        opacity $trans-default;
 
-        &:hover {
-        background-color: $color-solitude;
+        @include hover-focus {
+            opacity: 0.6;
         }
 
-        &--active {
-        background-color: $color-picton-blue;
-
-        &:hover {
+        &:active,
+        &[aria-current="page"] {
             background-color: $color-picton-blue;
-        }
-        }
-
-        &:focus-visible {
-        outline: 2px solid $color-catalina-blue;
-        outline-offset: 3px;
+            opacity: 1;
         }
     }
 

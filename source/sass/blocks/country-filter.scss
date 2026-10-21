@@ -86,6 +86,20 @@
         list-style: none;
     }
 
+    &__continent {
+        transition: opacity $trans-default;
+
+        @include hover-focus {
+            opacity: 0.6;
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
+    }
+
+
+
     &__continent-label {
         position: relative;
         display: block;
@@ -212,7 +226,9 @@
         text-transform: uppercase;
         color: $color-direction-h;
         cursor: pointer;
-        transition: background-color $trans-default;
+        transition:
+            background-color $trans-default,
+            color $trans-default;
 
         &::before {
             flex: 0 0 22px;
@@ -225,13 +241,13 @@
             content: "";
         }
 
-        &:hover {
-            background-color: $color-lavender;
+        @include hover-focus {
+            background-color: $color-periwinkle;
         }
 
-        &:focus-visible {
-            outline: 2px solid $color-catalina-blue;
-            outline-offset: 4px;
+        &:active {
+            background-color: $color-periwinkle;
+            color: rgba($color-midnight-express, 0.3);
         }
     }
 

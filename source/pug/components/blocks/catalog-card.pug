@@ -24,9 +24,26 @@ mixin catalog-card(card)
       .catalog-card__actions
         span.catalog-card__invite Позвать!
 
-        p.catalog-card__likes
-          span.catalog-card__like-icon
-            +icon("icon-heart", 20, 20)
+        .catalog-card__likes
+          label.catalog-card__like
+            input(
+              type="checkbox"
+              aria-label=`Нравится профиль ${card.name}`
+            )
+            span.catalog-card__like-icon
+              +icon("icon-heart", 23, 20)
+
+              svg(
+                width="23"
+                height="20"
+                viewBox="0 0 23 20"
+                aria-hidden="true"
+              )
+                path(
+                  fill="currentColor"
+                  d="M11.5 19 2.2 9.7C-3.2 4.3 4.5-3 9.5 2.2L11.5 4.3 13.5 2.2C18.5-3 26.2 4.3 20.8 9.7Z"
+                )
+
           span.visually-hidden Количество отметок «Нравится»:
           span.catalog-card__like-number= card.likes
 

@@ -1,5 +1,16 @@
 .catalog-filter-group {
     margin-bottom: 24px;
+    > summary {
+        transition: opacity $trans-default;
+
+        @include hover-focus {
+            opacity: 0.6;
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
+    }
 
     &__heading {
         display: flex;
@@ -55,6 +66,15 @@
         line-height: 24px;
         color: $color-default-black;
         cursor: pointer;
+        transition: opacity $trans-default;
+
+        @include hover-focus {
+            opacity: 0.6;
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
 
         > input {
             position: absolute;

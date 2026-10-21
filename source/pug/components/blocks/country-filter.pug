@@ -42,18 +42,6 @@ mixin country-filter()
             )
               span(data-country-filter-show-text) Показать все
 
-            ul.country-filter__continents
-              each continent in filterContinents
-                li.country-filter__continent
-                  label.country-filter__continent-label
-                    input(
-                      type="checkbox"
-                      name="continents"
-                      value=continent.id
-                      checked=continent.id === "europe"
-                    )
-                    span.country-filter__continent-text= continent.name
-
           .country-filter__panel#country-filter-panel(
             hidden
             data-country-filter-panel

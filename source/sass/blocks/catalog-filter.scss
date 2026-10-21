@@ -113,12 +113,12 @@
   &__level-fields {
     position: relative;
     display: flex;
-    border: 1px solid rgba($color-catalina-blue, 0.2);
     border-radius: 4px;
     background-color: $color-default-white;
 
     &::after {
       position: absolute;
+      z-index: 3;
       top: 50%;
       left: 50%;
       width: 20px;
@@ -136,8 +136,14 @@
     flex: 1 1 0;
     min-width: 0;
 
-    & + & {
-      border-left: 1px solid rgba($color-catalina-blue, 0.2);
+    &:first-child > input {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &:last-child > input {
+      border-radius: 0 4px 4px 0;
+      margin-left: -1px;
+      width: calc(100% + 1px);
     }
 
     > input {
@@ -146,7 +152,6 @@
       min-width: 0;
       min-height: 44px;
       padding: 10px;
-      border: 0;
       border-radius: 4px;
       background-color: transparent;
       font-family: inherit;
@@ -157,6 +162,21 @@
       color: $color-catalina-blue;
       appearance: textfield;
       -moz-appearance: textfield;
+      position: relative;
+      border: 1px solid rgba($color-catalina-blue, 0.2);
+      transition: border-color $trans-default;
+
+      &:hover {
+        z-index: 1;
+        border-color: $color-rock-blue;
+      }
+
+      &:active,
+      &:focus {
+        z-index: 2;
+        border-color: $color-midnight-express;
+        outline: none;
+      }
 
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {
@@ -164,10 +184,6 @@
         appearance: none;
       }
 
-      &:focus-visible {
-        outline: 2px solid $color-catalina-blue;
-        outline-offset: -2px;
-      }
     }
   }
 
@@ -217,8 +233,8 @@
       }
 
       &::-webkit-slider-thumb {
-        width: 14px;
-        height: 14px;
+        width: 13px;
+        height: 13px;
         margin-top: -5.5px;
         border: 0;
         border-radius: 50%;
@@ -226,16 +242,28 @@
         appearance: none;
         pointer-events: auto;
         cursor: pointer;
+        transition: transform $trans-default;
       }
 
       &::-moz-range-thumb {
-        width: 14px;
-        height: 14px;
+        width: 13px;
+        height: 13px;
         border: 0;
         border-radius: 50%;
         background-color: $color-catalina-blue;
         pointer-events: auto;
         cursor: pointer;
+        transition: transform $trans-default;
+      }
+
+      &::-webkit-slider-thumb:hover,
+      &:active::-webkit-slider-thumb {
+        transform: scale(1.461538);
+      }
+
+      &::-moz-range-thumb:hover,
+      &:active::-moz-range-thumb {
+        transform: scale(1.461538);
       }
 
       &:focus-visible {
@@ -263,5 +291,19 @@
     text-transform: uppercase;
     color: $color-midnight-express;
     cursor: pointer;
+    transition:
+      filter $trans-default,
+      background-color $trans-default,
+      color $trans-default;
+
+    @include hover-focus {
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.14));
+    }
+
+    &:active {
+      filter: none;
+      background-color: $color-picton-blue;
+      color: rgba($color-midnight-express, 0.3);
+    }
   }
 }
