@@ -1,0 +1,499 @@
+.companion-card {
+  min-width: 0;
+  background-color: $color-default-white;
+  transition:
+    box-shadow $trans-default,
+    transform $trans-default;
+
+  @media (min-width: 1024px) and (hover: hover) {
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 24px rgba($color-default-white, 0.45);
+    }
+  }
+
+  &:active,
+  &.is-active {
+    transform: scale(1.03);
+    box-shadow: 0 4px 24px rgba($color-default-white, 0.45);
+  }
+
+  &:focus-visible {
+    outline: 3px solid $color-picton-blue;
+    outline-offset: 5px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover,
+    &:active,
+    &.is-active {
+      transform: none;
+    }
+  }
+
+  &__image {
+    position: relative;
+    overflow: hidden;
+    background-color: $color-solitude;
+
+    > img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__content,
+  &__details {
+    min-width: 0;
+  }
+
+  &__name {
+    font-weight: 700;
+    color: $color-catalina-blue;
+    cursor: pointer;
+    transition: opacity $trans-default;
+
+    @include hover-focus {
+      opacity: 0.7;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+  }
+
+  &__status {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 14px;
+    border-radius: 50%;
+    vertical-align: middle;
+
+    &--online {
+      background-color: $color-lawn-green;
+    }
+
+    &--offline {
+      background-color: $color-salmon;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__tag {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  &__countries {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__country {
+    min-width: 0;
+  }
+
+  &__flag {
+    display: block;
+    flex: 0 0 35px;
+    width: 35px;
+    height: 24px;
+
+    > img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  &__country-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &__transport {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__transport-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 25px;
+    width: 25px;
+    height: 25px;
+    color: $color-catalina-blue;
+
+    > svg {
+      display: block;
+      flex-shrink: 0;
+      max-width: 100%;
+      max-height: 100%;
+      opacity: 0.15;
+    }
+
+    &--active > svg {
+      opacity: 1;
+    }
+  }
+
+  &__level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+  }
+
+  &__level-ring {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: $color-picton-blue;
+    pointer-events: none;
+  }
+
+  &__level-value {
+    position: relative;
+    padding-bottom: 2px;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      content: "";
+    }
+  }
+
+  &__level-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__invite {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    min-height: 50px;
+    padding: 15px 26px;
+    border-radius: 25px;
+    background-color: $color-pale-cornflower-blue;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: $color-midnight-express;
+    overflow-wrap: anywhere;
+    transition:
+      background-color $trans-default,
+      color $trans-default;
+
+    @include hover-focus {
+      background-color: $color-picton-blue;
+    }
+
+    &:active {
+      background-color: $color-picton-blue;
+      color: rgba($color-catalina-blue, 0.3);
+    }
+  }
+
+  &__likes {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    margin: 0;
+  }
+
+  &__like {
+    position: relative;
+    display: block;
+    flex: 0 0 50px;
+    cursor: pointer;
+
+    > input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(100%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    > input:checked + .companion-card__like-icon {
+      background-color: $color-tutu;
+      color: $color-red-orange;
+
+      > svg:first-child {
+        display: none;
+      }
+
+      > svg:last-child {
+        display: block;
+        opacity: 1;
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover > .companion-card__like-icon {
+        background-color: $color-lavender;
+
+        > svg {
+          opacity: 0.5;
+        }
+      }
+
+      &:hover > input:checked + .companion-card__like-icon {
+        background-color: $color-remy;
+
+        > svg {
+          opacity: 1;
+        }
+      }
+    }
+
+    &:active > .companion-card__like-icon {
+      background-color: $color-lavender;
+
+      > svg {
+        opacity: 0.1;
+      }
+    }
+
+    &:active > input:checked + .companion-card__like-icon {
+      background-color: $color-remy;
+
+      > svg {
+        opacity: 0.3;
+      }
+    }
+
+    > input:focus-visible + .companion-card__like-icon {
+      outline: 2px solid $color-picton-blue;
+      outline-offset: 3px;
+    }
+  }
+
+  &__like-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: $color-direction-h;
+    transition:
+      background-color $trans-default,
+      color $trans-default;
+
+    > svg {
+      display: block;
+      flex-shrink: 0;
+      width: 23px;
+      height: 20px;
+      opacity: 0.3;
+      transition: opacity $trans-default;
+    }
+
+    > svg:last-child {
+      display: none;
+    }
+  }
+
+  &__like-number {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: $color-midnight-express;
+  }
+
+  // Карточка на главной странице.
+  &--preview {
+    width: 285px;
+    max-width: 100%;
+    border-radius: 21px;
+
+    .companion-card__image {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 21px 21px 0 0;
+    }
+
+    .companion-card__content {
+      position: relative;
+      z-index: 1;
+      margin-top: -20px;
+      padding: 0 20px 28px;
+      border-radius: 0 0 21px 21px;
+      background-color: $color-default-white;
+    }
+
+    .companion-card__countries {
+      position: relative;
+      top: -12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px 20px;
+      margin-bottom: 39px;
+    }
+
+    .companion-card__country {
+      flex: 0 0 35px;
+      width: 35px;
+      height: 24px;
+    }
+
+    .companion-card__name {
+      margin-bottom: 23px;
+      font-size: 24px;
+      line-height: 22px;
+      text-align: center;
+    }
+
+    .companion-card__tags {
+      justify-content: center;
+      margin-bottom: 24px;
+      text-align: center;
+      color: $color-charcoal;
+    }
+
+    .companion-card__transport {
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .companion-card__level {
+      position: absolute;
+      top: 20px;
+      left: 22px;
+      border-radius: 50%;
+      background-color: rgba($color-default-black, 0.6);
+      color: $color-default-white;
+    }
+
+    .companion-card__level-value {
+      min-width: 32px;
+      line-height: 26px;
+
+      &::after {
+        background-color: rgba($color-default-white, 0.3);
+      }
+    }
+  }
+
+  // Карточка на странице каталога.
+  &--catalog {
+    display: grid;
+    grid-template-columns: 285px minmax(0, 1fr) minmax(0, 1fr);
+    border-radius: 20px;
+    cursor: pointer;
+
+    .companion-card__image {
+      width: 285px;
+      height: 285px;
+    }
+
+    .companion-card__content,
+    .companion-card__details {
+      padding: 24px 16px;
+    }
+
+    .companion-card__name {
+      font-size: 30px;
+      line-height: 30px;
+    }
+
+    .companion-card__tags {
+      gap: 4px;
+      color: $color-default-black;
+    }
+
+    .companion-card__countries {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .companion-card__country {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 20px;
+      line-height: 20px;
+      text-transform: uppercase;
+      color: $color-catalina-blue;
+    }
+
+    .companion-card__transport {
+      gap: 7px;
+    }
+
+    .companion-card__level {
+      position: relative;
+    }
+
+    .companion-card__level-value {
+      min-width: 34px;
+      line-height: 24px;
+      color: $color-catalina-blue;
+
+      &::after {
+        background-color: rgba($color-default-black, 0.1);
+      }
+    }
+
+    .companion-card__level-text {
+      color: rgba($color-default-black, 0.4);
+    }
+  }
+}

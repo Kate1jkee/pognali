@@ -21,4 +21,4 @@ mixin companions()
             ul.companions__list
               each card in companionsCards.slice(0, 2)
                 li.companions__item
-                  +companions-card(card)
+                  +companion-card(card, "preview")

@@ -1,0 +1,134 @@
+mixin companion-card-level(card, variant)
+  .companion-card__level(
+    aria-label=`Уровень: ${card.level} из 100`
+  )
+    svg.companion-card__level-ring(
+      width="60"
+      height="60"
+      viewBox="0 0 60 60"
+      aria-hidden="true"
+    )
+      circle(
+        cx="30"
+        cy="30"
+        r="28"
+        fill="none"
+        stroke="currentColor"
+        stroke-width=variant === "preview" ? "4" : "3"
+        stroke-linecap="round"
+        pathLength="100"
+        stroke-dasharray=`${card.level} 100`
+        transform="rotate(-90 30 30)"
+      )
+
+    span.companion-card__level-value(aria-hidden="true")= card.level
+    span.companion-card__level-text(aria-hidden="true") level
+
+
+mixin companion-card-countries(card, variant)
+  ul.companion-card__countries(aria-label="Хочет посетить")
+    each country in card.countries
+      li.companion-card__country
+        span.companion-card__flag.tooltip(
+          data-tooltip=country.name
+        )
+          img(
+            src=`img/content/${country.flag}.png`
+            alt=variant === "preview" ? country.name : ""
+          )
+
+        if variant === "catalog"
+          span.companion-card__country-name= country.name
+
+
+mixin companion-card-transport(card)
+  ul.companion-card__transport(
+    aria-label="Предпочитаемый транспорт"
+  )
+    each transport in companionsTransport
+      - const isActive = card.transport.includes(transport.id)
+
+      li.companion-card__transport-item.tooltip(
+        class=isActive ? "companion-card__transport-item--active" : null
+        data-tooltip=transport.name
+      )
+        +icon(transport.icon, transport.width, transport.height)
+
+        span.visually-hidden
+          = transport.name + (isActive ? " — выбран" : " — не выбран")
+
+
+mixin companion-card-actions(card)
+  .companion-card__actions
+    span.companion-card__invite Позвать!
+
+    .companion-card__likes
+      label.companion-card__like
+        input(
+          type="checkbox"
+          aria-label=`Нравится профиль ${card.name}`
+        )
+
+        span.companion-card__like-icon
+          +icon("icon-heart", 23, 20)
+
+          svg(
+            width="23"
+            height="20"
+            viewBox="0 0 23 20"
+            aria-hidden="true"
+          )
+            path(
+              fill="currentColor"
+              d="M11.5 19 2.2 9.7C-3.2 4.3 4.5-3 9.5 2.2L11.5 4.3 13.5 2.2C18.5-3 26.2 4.3 20.8 9.7Z"
+            )
+
+      span.visually-hidden Количество отметок «Нравится»:
+      span.companion-card__like-number= card.likes
+
+
+mixin companion-card(card, variant = "preview")
+  article.companion-card(
+    class=`companion-card--${variant}`
+    data-companion-card=variant === "preview" ? true : null
+  )
+    .companion-card__image
+      img(
+        src=`img/content/${card.image}.png`
+        srcset=`img/content/${card.image}@2x.png 2x`
+        width="285"
+        height="285"
+        alt=card.name
+      )
+
+      if variant === "preview"
+        +companion-card-level(card, variant)
+
+    .companion-card__content
+      if variant === "preview"
+        +companion-card-countries(card, variant)
+
+      h3.companion-card__name
+        span.companion-card__status(
+          class=card.online ? "companion-card__status--online" : "companion-card__status--offline"
+        )
+          span.visually-hidden= card.online ? "В сети" : "Не в сети"
+
+        span= card.name
+
+      ul.companion-card__tags(aria-label="Интересы")
+        each tag in card.tags
+          li.companion-card__tag= "#" + tag
+
+      if variant === "preview"
+        +companion-card-transport(card)
+      else
+        +companion-card-actions(card)
+
+    if variant === "catalog"
+      .companion-card__details
+        +companion-card-countries(card, variant)
+
+        .companion-card__footer
+          +companion-card-transport(card)
+          +companion-card-level(card, variant)

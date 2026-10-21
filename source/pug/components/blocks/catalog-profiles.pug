@@ -8,7 +8,7 @@ mixin catalog-profiles()
               data-catalog-profile
               data-continents=card.continents.join(" ")
             )
-              +catalog-card(card)
+              +companion-card(card, "catalog")
 
         p.catalog-profiles__empty(data-catalog-empty hidden)
           | По выбранным континентам попутчики не найдены.
