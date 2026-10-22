@@ -435,33 +435,51 @@
   // Карточка на странице каталога.
   &--catalog {
     display: grid;
-    grid-template-columns: 285px minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: 285px minmax(0, 1fr) 280px;
+    min-height: 285px;
     border-radius: 20px;
     cursor: pointer;
 
     .companion-card__image {
       width: 285px;
       height: 285px;
+      border-radius: 20px 0 0 20px;
     }
 
-    .companion-card__content,
-    .companion-card__details {
-      padding: 24px 16px;
+    .companion-card__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 44px 24px 46px 34px;
     }
 
     .companion-card__name {
+      margin: 0 0 20px;
       font-size: 30px;
       line-height: 30px;
     }
 
     .companion-card__tags {
-      gap: 4px;
+      gap: 0 4px;
+      margin: 0 0 24px 28px;
       color: $color-default-black;
+    }
+
+    .companion-card__actions {
+      margin-top: auto;
+      margin-left: 20px;
+    }
+
+    .companion-card__details {
+      display: flex;
+      flex-direction: column;
+      padding: 48px 40px 40px 4px;
     }
 
     .companion-card__countries {
       flex-direction: column;
       gap: 12px;
+      margin-bottom: 24px;
     }
 
     .companion-card__country {
@@ -474,12 +492,21 @@
       color: $color-catalina-blue;
     }
 
+    .companion-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: auto;
+    }
+
     .companion-card__transport {
       gap: 7px;
     }
 
     .companion-card__level {
       position: relative;
+      flex-shrink: 0;
     }
 
     .companion-card__level-value {

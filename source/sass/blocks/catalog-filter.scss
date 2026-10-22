@@ -2,12 +2,18 @@
   flex: 0 0 285px;
   min-width: 0;
   background-color: $color-pattens-blue;
+  padding-left: 48px;
+  padding-top: 46px;
+  padding-right: 45px;
+  padding-bottom: 48px;
+  border-radius: 20px;
 
   &__title {
     font-weight: 700;
     font-size: 30px;
     line-height: 30px;
     color: $color-catalina-blue;
+    margin-bottom: 34px;
   }
 
   &__transport {
