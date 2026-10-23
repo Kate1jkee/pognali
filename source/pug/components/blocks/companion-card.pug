@@ -32,9 +32,13 @@ mixin companion-card-countries(card, variant)
         span.companion-card__flag.tooltip(
           data-tooltip=country.name
         )
-          img(
-            src=`img/content/${country.flag}.png`
-            alt=variant === "preview" ? country.name : ""
+          +img(
+            "content",
+            country.flag,
+            "png",
+            35,
+            24,
+            variant === "preview" ? country.name : ""
           )
 
         if variant === "catalog"
@@ -93,12 +97,8 @@ mixin companion-card(card, variant = "preview")
     data-companion-card=variant === "preview" ? true : null
   )
     .companion-card__image
-      img(
-        src=`img/content/${card.image}.png`
-        srcset=`img/content/${card.image}@2x.png 2x`
-        width="285"
-        height="285"
-        alt=card.name
+      +img(
+        "content", card.image, "png", 285, 285, card.name
       )
 
       if variant === "preview"

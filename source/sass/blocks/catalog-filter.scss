@@ -129,9 +129,14 @@
       left: 50%;
       width: 20px;
       height: 12px;
-      border-top: 5px solid $color-default-white;
-      border-bottom: 5px solid $color-default-white;
-      background-color: rgba($color-catalina-blue, 0.2);
+      background-color: $color-default-white;
+      background-image: linear-gradient(
+        rgba($color-catalina-blue, 0.2),
+        rgba($color-catalina-blue, 0.2)
+      );
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 2px;
       transform: translate(-50%, -50%);
       pointer-events: none;
       content: "";

@@ -1,22 +1,15 @@
 mixin service-preview-card(card)
   .service-preview-card
     .service-preview-card__image
-      img(
-        src=`img/content/${card.image}.png`
-        srcset=`img/content/${card.image}@2x.png 2x`
-        width="285"
-        height="285"
-        alt=""
+      +img(
+        "content", card.image, "png", 285, 285, ""
       )
-
     .service-preview-card__content
       ul.service-preview-card__flags
         each country in card.countries
           li
-            img(
-              src=`img/content/${country.flag}.png`
-              srcset=`img/content/${country.flag}@2x.png 2x`
-              alt=""
+            +img(
+              "content", country.flag, "png", null, null, ""
             )
 
       p.service-preview-card__name= card.name

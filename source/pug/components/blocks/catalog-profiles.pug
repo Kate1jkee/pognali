@@ -23,7 +23,8 @@ mixin catalog-profiles()
             each page in [1, 2, 3, 4]
               li.catalog-profiles__page
                 a.catalog-profiles__page-link(
-                  href="#"
+                  href=page === 1 ? null : "#"
+                  tabindex=page === 1 ? "-1" : null
                   class=page === 1 ? "catalog-profiles__page-link--active" : null
                   aria-current=page === 1 ? "page" : null
                   aria-label=`Страница ${page}`

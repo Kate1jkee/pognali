@@ -54,7 +54,7 @@ mixin registration()
                 span.registration__contact-text 8 800 555-86-28
 
             li.registration__contact
-              a.registration__contact-link(href="#")
+              a.registration__contact-link(href="mailto:mail@htmlacademy.ru")
                 span.registration__contact-icon
                   +icon("icon-email", 47, 50)
                 span.registration__contact-text MAIL@HTMLACADEMY.RU
@@ -79,12 +79,13 @@ mixin registration()
       data-map-zoom="16"
       data-map-pin="img/sprite.svg#icon-pin"
     )
-      img(
-        src="img/content/map.png"
-        srcset="img/content/map@2x.png 2x"
-        width="1440"
-        height="584"
-        alt="Карта расположения офиса: Санкт-Петербург, Большая Конюшенная улица, 19/8"
+      +img(
+        "content",
+        "map",
+        "png",
+        1440,
+        584,
+        "Карта расположения офиса: Санкт-Петербург, Большая Конюшенная улица, 19/8"
       )
 
       .registration__map-canvas(

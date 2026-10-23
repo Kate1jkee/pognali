@@ -20,10 +20,11 @@ mixin service()
               media="(max-width: 1023px)"
               srcset="img/content/service-image-tablet.png 1x, img/content/service-image-tablet@2x.png 2x"
             )
-            img(
-              src="img/content/service-image-desktop.png"
-              srcset="img/content/service-image-desktop@2x.png 2x"
-              width="654"
-              height="665"
-              alt=""
+            +img(
+              "content",
+              "service-image-desktop",
+              "png",
+              654,
+              665,
+              ""
             )

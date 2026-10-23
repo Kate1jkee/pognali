@@ -24,8 +24,23 @@
         line-height: 20px;
         font-variant: all-small-caps;
         color: $color-default-white;
+        margin-top: 0;
+        margin-bottom: 0;
         margin-left: 66px;
         margin-right: 66px;
+        position: relative;
+        width: fit-content;
+
+        &::after {
+            position: absolute;
+            right: 0;
+            bottom: -63px;
+            left: 0;
+            height: 6px;
+            border-radius: 3px;
+            background-color: $color-picton-blue;
+            content: "";
+        }
     }
 
     &__body {

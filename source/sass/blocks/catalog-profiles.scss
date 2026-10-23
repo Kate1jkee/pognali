@@ -92,6 +92,16 @@
         list-style: none;
     }
 
+    &__page {
+        cursor: default;
+    }
+
+    &__page-link[aria-current="page"] {
+        background-color: $color-picton-blue;
+        opacity: 1;
+        cursor: default;
+        pointer-events: none;
+    }
 
     &__page-link {
         display: flex;

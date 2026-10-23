@@ -1,13 +1,7 @@
 mixin intro(title)
   section.intro
     .intro__background
-      img(
-        src="img/content/hero-background-desktop.png"
-        srcset="img/content/hero-background-desktop@2x.png 2x"
-        width="1440"
-        height="742"
-        alt=""
-      )
+       +img("content", "hero-background-desktop", "png", 1440, 742, "")
 
     .container
       .intro__wrapper
@@ -16,8 +10,7 @@ mixin intro(title)
 
           .intro__image
             img(
-              src="img/content/traveller-desktop.png"
-              srcset="img/content/traveller-desktop@2x.png 2x"
+              src="img/content/traveller-desktop.svg"
               width="431"
               height="640"
               alt=""
