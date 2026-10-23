@@ -1,6 +1,7 @@
+// Переключает активное состояние карточек на тач-устройствах.
 const initCompanionsCards = () => {
   const cards = document.querySelectorAll('[data-companion-card]');
-  const breakpoint = window.matchMedia('(max-width: 1023px)');
+  const breakpoint = window.matchMedia('(pointer: coarse)');
 
   if (!cards.length) {
     return;
@@ -29,15 +30,28 @@ const initCompanionsCards = () => {
   };
 
   cards.forEach((card) => {
-    card.addEventListener('click', () => {
-      if (breakpoint.matches) {
-        toggleCard(card);
+    card.addEventListener('click', (evt) => {
+      if (!breakpoint.matches) {
+        return;
       }
+
+      const control = evt.target.closest(
+          'a, button, input, label, select, textarea, [tabindex]'
+      );
+
+      if (control && control !== card) {
+        return;
+      }
+
+      toggleCard(card);
     });
 
     card.addEventListener('keydown', (evt) => {
-      if (!breakpoint.matches ||
-          (evt.key !== 'Enter' && evt.key !== ' ')) {
+      if (!breakpoint.matches || evt.target !== card) {
+        return;
+      }
+
+      if (evt.key !== 'Enter' && evt.key !== ' ') {
         return;
       }
 

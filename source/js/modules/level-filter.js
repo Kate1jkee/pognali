@@ -1,3 +1,4 @@
+// Синхронизирует поля и ползунки диапазона уровня.
 const initLevelFilter = () => {
   const filters = document.querySelectorAll('[data-level-filter]');
 
@@ -16,20 +17,43 @@ const initLevelFilter = () => {
 
     let min = clamp(Number(minField.value));
     let max = Math.max(min, clamp(Number(maxField.value)));
+    let isSyncing = false;
 
-    const render = () => {
-      minField.value = String(min);
-      maxField.value = String(max);
+    const render = (notify = true) => {
+      const fields = [
+        {element: minField, value: String(min)},
+        {element: maxField, value: String(max)},
+        {element: minRange, value: String(min)},
+        {element: maxRange, value: String(max)}
+      ];
 
-      minRange.value = String(min);
-      maxRange.value = String(max);
+      const changed = fields.filter(({element, value}) => {
+        return element.value !== value;
+      });
+
+      fields.forEach(({element, value}) => {
+        element.value = value;
+      });
 
       track.style.setProperty('--min', `${min}%`);
       track.style.setProperty('--max', `${max}%`);
 
-      // При совпадении на 100 даём доступ к левому ползунку.
-      minRange.style.zIndex = min === 100 ? '2' : '1';
-      maxRange.style.zIndex = min === 100 ? '1' : '2';
+      // При совпадении на 100 оставляем доступ к левому ползунку.
+      filter.classList.toggle('is-min-on-top', min === 100);
+
+      if (!notify) {
+        return;
+      }
+
+      isSyncing = true;
+
+      try {
+        changed.forEach(({element}) => {
+          element.dispatchEvent(new Event('change', {bubbles: true}));
+        });
+      } finally {
+        isSyncing = false;
+      }
     };
 
     minRange.addEventListener('input', () => {
@@ -61,6 +85,10 @@ const initLevelFilter = () => {
       {field: maxField, isMin: false}
     ].forEach(({field, isMin}) => {
       field.addEventListener('change', () => {
+        if (isSyncing) {
+          return;
+        }
+
         commitField(field, isMin);
       });
 
@@ -76,7 +104,7 @@ const initLevelFilter = () => {
       });
     });
 
-    render();
+    render(false);
   });
 };
 

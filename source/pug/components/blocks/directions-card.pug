@@ -15,9 +15,8 @@ mixin directions-card(card)
         "content", card.image, "png", null, null, ""
       )
 
-    .directions-card__flag.tooltip(
-              data-tooltip=card.name
-            )
+    .directions-card__flag.tooltip
       +img(
         "content", card.flag, "png", null, null, ""
       )
+      span.tooltip__text(aria-hidden="true")= card.name

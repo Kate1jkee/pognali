@@ -5,7 +5,7 @@
     box-shadow $trans-default,
     transform $trans-default;
 
-  @media (min-width: 1024px) and (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       transform: scale(1.03);
       box-shadow: 0 4px 24px rgba($color-default-white, 0.45);

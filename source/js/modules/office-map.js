@@ -1,3 +1,4 @@
+// Загружает и инициализирует карту расположения офиса.
 const loadMapsApi = (key) => {
   if (window.ymaps) {
     return Promise.resolve(window.ymaps);

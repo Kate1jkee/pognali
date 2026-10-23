@@ -1,3 +1,4 @@
+// Проверяет электронную почту и показывает ошибки формы.
 const initRegistrationForm = () => {
   const form = document.querySelector('[data-registration-form]');
 

@@ -34,7 +34,6 @@ mixin companion-card-countries(card, variant)
       li.companion-card__country
         span.companion-card__flag.tooltip(
           tabindex="0"
-          data-tooltip=country.name
         )
           +img(
             "content",
@@ -44,6 +43,7 @@ mixin companion-card-countries(card, variant)
             24,
             variant === "preview" ? country.name : ""
           )
+          span.tooltip__text(aria-hidden="true")= country.name
 
         if variant === "catalog"
           span.companion-card__country-name= country.name
@@ -59,9 +59,9 @@ mixin companion-card-transport(card)
       li.companion-card__transport-item.tooltip(
         tabindex="0"
         class=isActive ? "companion-card__transport-item--active" : null
-        data-tooltip=transport.name
       )
         +icon(transport.icon, transport.width, transport.height)
+        span.tooltip__text(aria-hidden="true")= transport.name
 
         span.visually-hidden
           = transport.name + (isActive ? " — выбран" : " — не выбран")

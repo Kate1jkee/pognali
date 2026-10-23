@@ -1,3 +1,4 @@
+// Управляет открытием и закрытием модалки бизнес-тарифов.
 const initBusinessRatesModal = () => {
   const modal = document.querySelector('[data-business-rates-modal]');
   const openButton = document.querySelector('[data-business-rates-open]');

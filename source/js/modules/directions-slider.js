@@ -1,3 +1,4 @@
+// Инициализирует слайдер направлений и управляет автопрокруткой.
 const initDirectionsSlider = () => {
   const viewport = document.querySelector('[data-directions-slider]');
 
@@ -110,6 +111,22 @@ const initDirectionsSlider = () => {
     }
   };
 
+  viewport.addEventListener('focusin', () => {
+    if (slider && slider.autoplay) {
+      slider.autoplay.stop();
+    }
+  });
+
+  viewport.addEventListener('focusout', (evt) => {
+    // При переходе между элементами внутри слайдера не запускаем его.
+    if (evt.relatedTarget && viewport.contains(evt.relatedTarget)) {
+      return;
+    }
+
+    if (slider && slider.autoplay && !reducedMotion.matches) {
+      slider.autoplay.start();
+    }
+  });
   desktop.addEventListener('change', checkBreakpoint);
 
   reducedMotion.addEventListener('change', () => {

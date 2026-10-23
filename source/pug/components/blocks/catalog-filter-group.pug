@@ -10,7 +10,7 @@ mixin catalog-filter-group(group)
           label.catalog-filter-group__option
             input(
               type="checkbox"
-              name=group.name
+              name=group.name + "[]"
               value=option.value
               checked=option.checked
             )

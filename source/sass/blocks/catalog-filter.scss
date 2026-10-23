@@ -200,6 +200,26 @@
     }
   }
 
+  &__level {
+    [data-range-min] {
+      z-index: 1;
+    }
+
+    [data-range-max] {
+      z-index: 2;
+    }
+
+    &.is-min-on-top {
+      [data-range-min] {
+        z-index: 2;
+      }
+
+      [data-range-max] {
+        z-index: 1;
+      }
+    }
+  }
+
   &__range {
     position: relative;
     height: 20px;

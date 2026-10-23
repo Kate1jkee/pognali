@@ -27,7 +27,7 @@ mixin country-filter()
                   label.country-filter__continent-label
                     input(
                       type="checkbox"
-                      name="continents"
+                      name="continents[]"
                       value=continent.id
                       checked=continent.id === "europe"
                       data-continent-checkbox

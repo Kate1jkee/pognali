@@ -1,3 +1,4 @@
+// Управляет раскрытием фильтра стран и фильтрацией карточек.
 const initCountryFilter = () => {
   const filter = document.querySelector('[data-country-filter]');
 

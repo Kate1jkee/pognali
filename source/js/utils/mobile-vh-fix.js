@@ -1,3 +1,4 @@
+// Исправляет высоту экрана на мобильных устройствах.
 const mobileVhFix = () => {
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   const isIPad = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;

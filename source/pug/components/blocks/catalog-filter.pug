@@ -3,76 +3,76 @@ mixin catalog-filter()
     h2.catalog-filter__title#catalog-filter-title
       | Подберите идеального попутчика
 
-    form.catalog-filter__form(action="#")
-      each group in catalogFilterGroups
-        +catalog-filter-group(group)
+    .catalog-filter__form
+      form(action="#")
+        each group in catalogFilterGroups
+          +catalog-filter-group(group)
 
-      +catalog-filter-group({ title: "Транспорт", open: true })
-        ul.catalog-filter__transport
-          each transport in companionsTransport
-            li.catalog-filter__transport-item
-              label.catalog-filter__transport-label.tooltip(
-                data-tooltip=transport.name
-              )
+        +catalog-filter-group({ title: "Транспорт", open: true })
+          ul.catalog-filter__transport
+            each transport in companionsTransport
+              li.catalog-filter__transport-item
+                label.catalog-filter__transport-label.tooltip
+                  input(
+                    type="checkbox"
+                    name="transport[]"
+                    value=transport.id
+                    checked=transport.id !== "bicycle"
+                  )
+                  span.catalog-filter__transport-icon
+                    +icon(transport.icon, transport.width, transport.height)
+                    span.tooltip__text(aria-hidden="true")= transport.name
+                  span.visually-hidden= transport.name
+
+        +catalog-filter-group({ title: "Левел", open: true })
+          .catalog-filter__level(data-level-filter)
+            .catalog-filter__level-fields
+              label.catalog-filter__level-field
+                span.visually-hidden Минимальный уровень
                 input(
-                  type="checkbox"
-                  name="transport"
-                  value=transport.id
-                  checked=transport.id !== "bicycle"
+                  type="number"
+                  name="level-min"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="30"
+                  data-level-min
                 )
-                span.catalog-filter__transport-icon
-                  +icon(transport.icon, transport.width, transport.height)
-                span.visually-hidden= transport.name
 
-      +catalog-filter-group({ title: "Левел", open: true })
-        .catalog-filter__level(data-level-filter)
-          .catalog-filter__level-fields
-            label.catalog-filter__level-field
-              span.visually-hidden Минимальный уровень
+              label.catalog-filter__level-field
+                span.visually-hidden Максимальный уровень
+                input(
+                  type="number"
+                  name="level-max"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="100"
+                  data-level-max
+                )
+
+            .catalog-filter__range(
+              style="--min: 30%; --max: 100%"
+              data-level-range
+            )
               input(
-                type="number"
-                name="level-min"
+                type="range"
                 min="0"
                 max="100"
                 step="1"
                 value="30"
-                data-level-min
+                aria-label="Минимальный уровень"
+                data-range-min
               )
 
-            label.catalog-filter__level-field
-              span.visually-hidden Максимальный уровень
               input(
-                type="number"
-                name="level-max"
+                type="range"
                 min="0"
                 max="100"
                 step="1"
                 value="100"
-                data-level-max
+                aria-label="Максимальный уровень"
+                data-range-max
               )
 
-          .catalog-filter__range(
-            style="--min: 30%; --max: 100%"
-            data-level-range
-          )
-            input(
-              type="range"
-              min="0"
-              max="100"
-              step="1"
-              value="30"
-              aria-label="Минимальный уровень"
-              data-range-min
-            )
-
-            input(
-              type="range"
-              min="0"
-              max="100"
-              step="1"
-              value="100"
-              aria-label="Максимальный уровень"
-              data-range-max
-            )
-
-      button.catalog-filter__submit(type="button") Показать
+        button.catalog-filter__submit(type="button") Показать

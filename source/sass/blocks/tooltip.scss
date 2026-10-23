@@ -1,7 +1,7 @@
 .tooltip {
   position: relative;
 
-  &::after {
+  &__text {
     position: absolute;
     top: calc(100% + 12px);
     left: 50%;
@@ -24,7 +24,6 @@
     transition:
       opacity $trans-default,
       visibility $trans-default;
-    content: attr(data-tooltip);
   }
 
   &::before {
@@ -48,12 +47,21 @@
     content: "";
   }
 
-  &:hover,
+  @include hover {
+    z-index: 10;
+
+    &::before,
+    > .tooltip__text {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
   &:focus-within {
     z-index: 10;
 
     &::before,
-    &::after {
+    > .tooltip__text {
       opacity: 1;
       visibility: visible;
     }
