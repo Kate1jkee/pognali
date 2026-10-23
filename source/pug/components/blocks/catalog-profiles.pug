@@ -21,12 +21,15 @@ mixin catalog-profiles()
         )
           ul.catalog-profiles__pages
             each page in [1, 2, 3, 4]
-              li.catalog-profiles__page
+              if page === 1
+                span.catalog-profiles__page-link.catalog-profiles__page-link--active(
+                  aria-current="page"
+                )
+                  span.visually-hidden Страница
+                  = " " + page
+              else
                 a.catalog-profiles__page-link(
-                  href=page === 1 ? null : "#"
-                  tabindex=page === 1 ? "-1" : null
-                  class=page === 1 ? "catalog-profiles__page-link--active" : null
-                  aria-current=page === 1 ? "page" : null
+                  href="#"
                   aria-label=`Страница ${page}`
                 )= page
 
