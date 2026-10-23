@@ -1,12 +1,12 @@
 .intro {
     position: relative;
     isolation: isolate;
-    padding-bottom: 122px;
+    padding-bottom: 113px;
     z-index: 9;
 
     &__background {
         position: absolute;
-        top: -130px;
+        top: -100px;
         right: 0;
         bottom: 0;
         left: 0;
@@ -35,7 +35,7 @@
         z-index: 1;
         display: flex;
         align-items: stretch;
-        margin: -230px 0 0;
+        margin: -220px 0 0;
         padding: 0;
         list-style: none;
         counter-reset: intro-step;
@@ -56,7 +56,15 @@
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        flex: 1 1 0;
+        flex: 0 1 calc(25% + 45px);
+
+        &:first-child {
+        flex-basis: calc(25% + 15px);
+        }
+
+        &:last-child {
+        flex-basis: calc(25% - 15px);
+        }
         gap: 24px;
         min-width: 0;
         min-height: 107px;
@@ -82,6 +90,12 @@
 
         &:not(:last-child) {
             padding-right: 62px;
+        }
+
+        &:nth-child(3) {
+            .intro__step-text {
+                max-width: 180px;
+            }
         }
 
         &--picton-blue {
@@ -112,6 +126,7 @@
         line-height: 70px;
         color: $color-default-white;
         margin-left: 14px;
+        padding-top: 90px;
     }
 
     &__image {
@@ -119,6 +134,7 @@
         max-width: 100%;
         flex-shrink: 0;
         margin-right: 215px;
+        transform: translateY(3px);
 
         > img {
             display: block;

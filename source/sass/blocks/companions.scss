@@ -13,7 +13,7 @@
     &__content {
         flex: 1 1 0;
         min-width: 0;
-        padding-top: 158px;
+        padding-top: 143px;
         padding-left: 14px;
         padding-right: 20px;
     }
@@ -38,7 +38,9 @@
 
     &__title {
         color: $color-direction-h;
-        margin-bottom: 44px;
+        margin-bottom: 35px;
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
     }
 
     &__description {
@@ -82,5 +84,9 @@
     &__profiles {
         flex: 0 0 690px;
         min-width: 0;
+    }
+
+    &__link {
+        gap: 47px;
     }
 }

@@ -25,7 +25,7 @@ const loadMapsApi = (key) => {
   });
 };
 
-const initOfficeMap = async () => {
+const initOfficeMap = () => {
   const container = document.querySelector('[data-office-map]');
 
   if (!container) {
@@ -42,67 +42,68 @@ const initOfficeMap = async () => {
 
   let map;
 
-  try {
-    const ymaps = await loadMapsApi(key);
+  loadMapsApi(key)
+      .then((ymaps) => {
+        return new Promise((resolve) => {
+          ymaps.ready(() => {
+            resolve(ymaps);
+          });
+        });
+      })
+      .then((ymaps) => {
+        const coordinates = [
+          Number(container.dataset.mapLatitude),
+          Number(container.dataset.mapLongitude)
+        ];
 
-    await new Promise((resolve) => {
-      ymaps.ready(resolve);
-    });
+        canvas.hidden = false;
 
-    const coordinates = [
-        Number(container.dataset.mapLatitude),
-        Number(container.dataset.mapLongitude),
-    ];
+        map = new ymaps.Map(canvas, {
+          center: coordinates,
+          zoom: Number(container.dataset.mapZoom) || 16,
+          controls: ['zoomControl'],
+          behaviors: [
+            'drag',
+            'scrollZoom',
+            'dblClickZoom',
+            'multiTouch'
+          ],
+        });
 
-    canvas.hidden = false;
+        const pinLayout = ymaps.templateLayoutFactory.createClass(
+            '<div class="registration__map-pin">'
+            + '<svg xmlns="http://www.w3.org/2000/svg"'
+            + ' width="56" height="56" viewBox="0 0 56 56"'
+            + ' aria-hidden="true">'
+            + '<use href="{{ properties.pinHref }}"></use>'
+            + '</svg>'
+            + '</div>'
+        );
 
-    map = new ymaps.Map(canvas, {
-      center: coordinates,
-      zoom: Number(container.dataset.mapZoom) || 16,
-      controls: ['zoomControl'],
-      behaviors: [
-        'drag',
-        'scrollZoom',
-        'dblClickZoom',
-        'multiTouch',
-      ],
-    });
+        const marker = new ymaps.Placemark(coordinates, {
+          pinHref: container.dataset.mapPin,
+          hintContent: 'Офис «Погнали»',
+          balloonContentHeader: 'Офис «Погнали»',
+          balloonContentBody: address,
+        }, {
+          iconLayout: pinLayout,
+          iconShape: {
+            type: 'Circle',
+            coordinates: [0, 0],
+            radius: 28,
+          },
+        });
 
-    const pinLayout = ymaps.templateLayoutFactory.createClass(
-        '<div class="registration__map-pin">'
-        + '<svg xmlns="http://www.w3.org/2000/svg"'
-        + ' width="56" height="56" viewBox="0 0 56 56"'
-        + ' aria-hidden="true">'
-        + '<use href="{{ properties.pinHref }}"></use>'
-        + '</svg>'
-        + '</div>'
-    );
+        map.geoObjects.add(marker);
+      })
+      .catch(() => {
 
-    const marker = new ymaps.Placemark(coordinates, {
-      pinHref: container.dataset.mapPin,
-      hintContent: 'Офис «Погнали»',
-      balloonContentHeader: 'Офис «Погнали»',
-      balloonContentBody: address,
-    }, {
-      iconLayout: pinLayout,
-      iconShape: {
-        type: 'Circle',
-        coordinates: [0, 0],
-        radius: 28,
-      },
-    });
+        if (map) {
+          map.destroy();
+        }
 
-    map.geoObjects.add(marker);
-  } catch (error) {
-
-    console.error('Не удалось загрузить карту:', error);
-
-    if (map) {
-      map.destroy();
-    }
-
-    canvas.hidden = true;
-  }
+        canvas.hidden = true;
+      });
 };
 
 export {initOfficeMap};

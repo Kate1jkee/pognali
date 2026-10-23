@@ -32,17 +32,18 @@
         line-height: 24px;
         color: $color-default-white;
         margin: 0 0 137px;
-        padding-right: 140px;
+        padding-right: 130px;
     }
 
     &__content {
         flex: 1 1 0;
         min-width: 0;
         margin-left: 14px;
+        transform: translateY(-11px);
     }
 
     &__image {
-        flex: 1 1 0;
+        flex: 0 1 654px;
         min-width: 0;
         max-width: 654px;
         margin-right: 11px;

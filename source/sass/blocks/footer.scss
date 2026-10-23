@@ -18,7 +18,7 @@
 
   &__wrapper {
     display: flex;
-    gap: 369px;
+    gap: 365px;
   }
 
   &__socials {
@@ -68,5 +68,9 @@
         opacity: 0.3;
       }
     }
+  }
+
+  &--home {
+    margin-top: -125px;
   }
 }

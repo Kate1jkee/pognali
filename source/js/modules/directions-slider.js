@@ -22,7 +22,7 @@ const initDirectionsSlider = () => {
       return sum + slide.getBoundingClientRect().height;
     }, 0);
 
-    const gaps = Math.max(0, Math.min(slides.length, 3) - 1) * 12;
+    const gaps = Math.max(0, Math.min(slides.length, 3) - 1) * 10;
 
     viewport.style.height = `${Math.ceil(height + gaps)}px`;
     slider.update();
@@ -58,13 +58,13 @@ const initDirectionsSlider = () => {
     }, 0);
 
     viewport.style.height = `${Math.ceil(
-        height + Math.max(0, Math.min(slides.length, 3) - 1) * 12
+        height + Math.max(0, Math.min(slides.length, 3) - 1) * 10
     )}px`;
 
     slider = new window.Swiper(viewport, {
       direction: 'vertical',
       slidesPerView: 'auto',
-      spaceBetween: 12,
+      spaceBetween: 10,
       loop: true,
       loopedSlides: list.children.length,
       speed: reducedMotion.matches ? 0 : 600,
