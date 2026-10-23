@@ -1,6 +1,10 @@
 mixin companion-card-level(card, variant)
   .companion-card__level(
-    aria-label=`Уровень: ${card.level} из 100`
+    role="meter"
+    aria-label="Уровень попутчика"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow=card.level
   )
     svg.companion-card__level-ring(
       width="60"
@@ -16,8 +20,7 @@ mixin companion-card-level(card, variant)
         stroke="currentColor"
         stroke-width=variant === "preview" ? "4" : "3"
         stroke-linecap="round"
-        pathLength="100"
-        stroke-dasharray=`${card.level} 100`
+        stroke-dasharray=`${2 * Math.PI * 28 * card.level / 100} ${2 * Math.PI * 28}`
         transform="rotate(-90 30 30)"
       )
 
