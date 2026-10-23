@@ -21,7 +21,7 @@ mixin catalog-filter()
                   )
                   span.catalog-filter__transport-icon
                     +icon(transport.icon, transport.width, transport.height)
-                    span.tooltip__text(aria-hidden="true")= transport.name
+                  span.tooltip__text(aria-hidden="true")= transport.name
                   span.visually-hidden= transport.name
 
         +catalog-filter-group({ title: "Левел", open: true })

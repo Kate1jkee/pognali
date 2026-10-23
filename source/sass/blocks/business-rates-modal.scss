@@ -2,7 +2,10 @@
   width: calc(100% - 32px);
   max-width: 750px;
   max-height: calc(100dvh - 32px);
-  margin: auto;
+  position: fixed;
+  inset: auto 0 auto;
+  top: var(--modal-top, 16px);
+  margin: 0 auto;
   padding: 0;
   overflow-y: auto;
   border: 0;

@@ -13,6 +13,30 @@ const initBusinessRatesModal = () => {
     return;
   }
 
+  let pointerStartedOutside = false;
+
+  const updatePosition = () => {
+    if (!modal.open) {
+      return;
+    }
+
+    const section = openButton.closest('.rates');
+    const title = section && section.querySelector('.rates__title');
+
+    const desiredTop = title
+      ? title.getBoundingClientRect().top
+      : (window.innerHeight - modal.offsetHeight) / 2;
+
+    const maxTop = Math.max(
+        16,
+        window.innerHeight - modal.offsetHeight - 16
+    );
+
+    const top = Math.max(16, Math.min(desiredTop, maxTop));
+
+    modal.style.setProperty('--modal-top', `${top}px`);
+  };
+
   const isOutside = (evt) => {
     const rect = modal.getBoundingClientRect();
 
@@ -22,13 +46,14 @@ const initBusinessRatesModal = () => {
       evt.clientY > rect.bottom;
   };
 
-  let pointerStartedOutside = false;
-
   openButton.addEventListener('click', () => {
-    if (!modal.open) {
-      modal.showModal();
-      document.documentElement.classList.add('scroll-lock');
+    if (modal.open) {
+      return;
     }
+
+    document.documentElement.classList.add('scroll-lock');
+    modal.showModal();
+    updatePosition();
   });
 
   closeButton.addEventListener('click', () => {
@@ -55,9 +80,12 @@ const initBusinessRatesModal = () => {
 
   modal.addEventListener('close', () => {
     document.documentElement.classList.remove('scroll-lock');
+    modal.style.removeProperty('--modal-top');
     pointerStartedOutside = false;
     openButton.focus({preventScroll: true});
   });
+
+  window.addEventListener('resize', updatePosition);
 };
 
 export {initBusinessRatesModal};
