@@ -21,17 +21,18 @@ mixin catalog-profiles()
         )
           ul.catalog-profiles__pages
             each page in [1, 2, 3, 4]
-              if page === 1
-                span.catalog-profiles__page-link.catalog-profiles__page-link--active(
-                  aria-current="page"
-                )
-                  span.visually-hidden Страница
-                  = " " + page
-              else
-                a.catalog-profiles__page-link(
-                  href="#"
-                  aria-label=`Страница ${page}`
-                )= page
+              li.catalog-profiles__page
+                if page === 1
+                  span.catalog-profiles__page-link.catalog-profiles__page-link--active(
+                    aria-current="page"
+                  )
+                    span.visually-hidden Страница
+                    = " " + page
+                else
+                  a.catalog-profiles__page-link(
+                    href="#"
+                    aria-label=`Страница ${page}`
+                  )= page
 
           .catalog-profiles__arrows
             a.catalog-profiles__arrow.catalog-profiles__arrow--prev(
