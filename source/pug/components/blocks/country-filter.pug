@@ -40,7 +40,11 @@ mixin country-filter()
               aria-controls="country-filter-panel"
               data-country-filter-show
             )
-              span(data-country-filter-show-text) Показать все
+              span(
+                data-country-filter-show-text
+                data-text-open="Свернуть"
+                data-text-closed="Показать все"
+              ) Показать все
 
           .country-filter__panel#country-filter-panel(
             hidden

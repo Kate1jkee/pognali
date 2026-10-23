@@ -33,7 +33,9 @@ const initCountryFilter = () => {
     });
 
     if (showText) {
-      showText.textContent = isOpen ? 'Свернуть' : 'Показать все';
+      showText.textContent = isOpen
+        ? showText.dataset.textOpen
+        : showText.dataset.textClosed;
     }
   };
 

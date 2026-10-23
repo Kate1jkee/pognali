@@ -3,7 +3,7 @@
   isolation: isolate;
   z-index: 3;
   padding-bottom: 37px;
-  padding-top: 57px;
+  padding-top: 49px;
   margin-top: -60px;
 
   &::before {
@@ -72,5 +72,6 @@
 
   &--home {
     margin-top: -125px;
+    padding-top: 57px;
   }
 }

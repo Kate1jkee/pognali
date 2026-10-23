@@ -2,7 +2,7 @@
     &__heading {
         position: relative;
         isolation: isolate;
-        padding: 80px 0 60px;
+        padding: 140px 0 90px;
 
         &::before {
         content: "";
@@ -23,20 +23,18 @@
         font-size: 60px;
         line-height: 20px;
         font-variant: all-small-caps;
+        text-transform: uppercase;
         color: $color-default-white;
-        margin-top: 0;
-        margin-bottom: 0;
-        margin-left: 66px;
-        margin-right: 66px;
+        margin: 0 66px;
         position: relative;
         width: fit-content;
 
         &::after {
             position: absolute;
-            right: 0;
-            bottom: -63px;
+            right: 28px;
+            bottom: -95px;
             left: 0;
-            height: 6px;
+            height: 8px;
             border-radius: 3px;
             background-color: $color-picton-blue;
             content: "";
@@ -52,7 +50,7 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 24px 30px;
+        gap: 24px 5px;
         margin-left: 22px;
         margin-right: 22px;
     }
@@ -80,7 +78,7 @@
             flex-shrink: 0;
         }
 
-        &:hover {
+        @include hover {
             opacity: 0.6;
         }
 
@@ -98,7 +96,7 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 16px 30px;
+        gap: 16px 25px;
         min-width: 0;
         margin: 0;
         padding: 0;
@@ -145,12 +143,10 @@
             outline-offset: 5px;
         }
 
-        &:hover .country-filter__continent-text {
-            opacity: 0.6;
-        }
-
-        > input:checked + .country-filter__continent-text {
-            opacity: 1;
+        @include hover {
+            .country-filter__continent-text {
+                opacity: 0.6;
+            }
         }
     }
 
@@ -176,17 +172,102 @@
 
     &__groups {
         display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 50px 40px;
+        grid-template-columns: repeat(5, 210px);
+        gap: 10px 40px;
         margin: 0;
-        padding: 0;
+        padding: 0 60px 0 35px;
         list-style: none;
-        padding-left: 35px;
-        padding-right: 35px;
     }
 
     &__group {
         min-width: 0;
+
+        // Вертикальные отступы рядов
+        &:nth-child(n + 11):nth-child(-n + 15) {
+            margin-top: 30px;
+        }
+
+        &:nth-child(n + 16):nth-child(-n + 20) {
+            margin-top: 38px;
+        }
+
+        &:nth-child(n + 21) {
+            margin-top: 27px;
+        }
+
+        // Горизонтальные смещения списков по колонкам
+        &:nth-child(5n + 2) > .country-filter__countries {
+            left: 4px;
+        }
+
+        &:nth-child(5n + 3) > .country-filter__countries {
+            left: 8px;
+        }
+
+        &:nth-child(5n + 4) > .country-filter__countries {
+            left: 12px;
+        }
+
+        &:nth-child(5n + 5) > .country-filter__countries {
+            left: 16px;
+        }
+
+        // Индивидуальные поправки списков
+        &:nth-child(5) > .country-filter__countries {
+            left: 0;
+        }
+
+        &:nth-child(9),
+        &:nth-child(10),
+        &:nth-child(19),
+        &:nth-child(20) {
+            > .country-filter__countries {
+                left: 4px;
+            }
+        }
+
+        &:nth-child(14),
+        &:nth-child(15) {
+            > .country-filter__countries {
+                left: 6px;
+            }
+        }
+
+        &:nth-child(16) > .country-filter__countries {
+            left: 2px;
+        }
+
+        // Вертикальные смещения списков
+        &:nth-child(6),
+        &:nth-child(9),
+        &:nth-child(10),
+        &:nth-child(11),
+        &:nth-child(13),
+        &:nth-child(20) {
+            > .country-filter__countries {
+                top: 6px;
+            }
+        }
+
+        &:nth-child(n + 21):nth-child(-n + 25) {
+            > .country-filter__countries {
+                top: 10px;
+            }
+        }
+
+        // Горизонтальные смещения букв
+        &:nth-child(5),
+        &:nth-child(8),
+        &:nth-child(9),
+        &:nth-child(13),
+        &:nth-child(14),
+        &:nth-child(18),
+        &:nth-child(19),
+        &:nth-child(24) {
+            > .country-filter__letter {
+                transform: translateX(4px);
+            }
+        }
     }
 
     &__letter {
@@ -194,10 +275,15 @@
         font-weight: 700;
         font-size: 60px;
         line-height: 1;
+        font-variant-caps: normal;
         color: $color-direction-h;
+        position: relative;
+        top: 12px;
     }
 
     &__countries {
+        position: relative;
+        max-width: 190px;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -219,7 +305,7 @@
         cursor: pointer;
         transition: color $trans-default;
 
-        &:hover {
+        @include hover {
             color: $color-catalina-blue;
         }
 
@@ -227,16 +313,38 @@
             outline: 2px solid $color-catalina-blue;
             outline-offset: 3px;
         }
+
+        &[data-country="восточный-тимор"],
+        &[data-country="новая-зеландия"] {
+            max-width: 150px;
+            overflow-wrap: normal;
+        }
+        &[data-country="папуа-новая-гвинея"] {
+            max-width: none;
+            white-space: nowrap;
+        }
+
+        &[data-country="южный-судан"] {
+            max-width: 75px;
+            white-space: normal;
+            overflow-wrap: normal;
+        }
+
+        &[data-country="ямайка"],
+        &[data-country="япония"] {
+            position: relative;
+            left: -6px;
+        }
     }
 
     &__close {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 20px;
+        gap: 18px;
         width: 100%;
         min-height: 100px;
-        margin-top: 60px;
+        margin-top: 70px;
         padding: 25px;
         border: 0;
         border-radius: 20px;

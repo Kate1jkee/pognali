@@ -6,6 +6,11 @@ const initDirectionsSlider = () => {
   }
 
   const list = viewport.querySelector('.directions__list');
+
+  if (!list || typeof window.Swiper !== 'function') {
+    return;
+  }
+
   const slides = Array.from(list.children);
   const desktop = window.matchMedia('(min-width: 768px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');

@@ -10,6 +10,7 @@
   background-color: $color-default-white;
   color: $color-charcoal;
   box-shadow: 0 4px 24px rgba($color-default-black, 0.15);
+  overscroll-behavior: contain;
 
   &::backdrop {
     background-color: rgba($color-midnight-express, 0.2);

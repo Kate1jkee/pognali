@@ -231,6 +231,9 @@
     transition:
       background-color $trans-default,
       color $trans-default;
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
 
     @include hover-focus {
       background-color: $color-picton-blue;
@@ -245,7 +248,7 @@
   &__likes {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
     min-width: 0;
     margin: 0;
   }
@@ -461,6 +464,10 @@
       line-height: 30px;
     }
 
+    .companion-card__status {
+      margin-right: 19px;
+    }
+
     .companion-card__tags {
       gap: 0 4px;
       margin: 0 0 24px 28px;
@@ -497,8 +504,7 @@
     .companion-card__footer {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      gap: 50px;
       margin-top: auto;
     }
 

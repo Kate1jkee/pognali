@@ -26,6 +26,7 @@ const initBusinessRatesModal = () => {
   openButton.addEventListener('click', () => {
     if (!modal.open) {
       modal.showModal();
+      document.documentElement.classList.add('scroll-lock');
     }
   });
 
@@ -52,6 +53,7 @@ const initBusinessRatesModal = () => {
   });
 
   modal.addEventListener('close', () => {
+    document.documentElement.classList.remove('scroll-lock');
     pointerStartedOutside = false;
     openButton.focus({preventScroll: true});
   });

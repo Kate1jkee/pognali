@@ -5,27 +5,35 @@
     &__list {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 32px;
         margin: 0;
         padding: 0;
         list-style: none;
     }
 
+    &__item {
+      &:nth-child(1) .companion-card__tags {
+        max-width: 190px;
+      }
+
+      &:nth-child(2) .companion-card__tags {
+        max-width: 230px;
+      }
+
+      &:nth-child(4) .companion-card__tags {
+        max-width: 160px;
+      }
+    }
 
     &__wrapper {
         display: flex;
         align-items: flex-start;
-        gap: 40px;
+        gap: 84px;
     }
 
     &__results {
         flex: 1;
         min-width: 0;
-    }
-
-
-    &__pagination {
-        display: flex;
     }
 
     &__more {
@@ -35,8 +43,10 @@
         gap: 24px;
         width: 100%;
         min-height: 50px;
-        margin: 40px 0;
+        margin: 50px 0;
+        margin-bottom: 60px;
         padding: 10px 20px;
+        padding-right: 80px;
         border: 0;
         background-color: transparent;
         font-family: inherit;
@@ -80,6 +90,7 @@
         gap: 16px;
         min-height: 100px;
         padding: 25px 30px;
+        padding-right: 25px;
         border-radius: 20px;
         background-color: $color-default-white;
     }

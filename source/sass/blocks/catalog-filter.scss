@@ -9,11 +9,13 @@
   border-radius: 20px;
 
   &__title {
+    margin: 0 0 34px;
     font-weight: 700;
     font-size: 30px;
     line-height: 30px;
+    font-variant-caps: normal;
+    text-transform: none;
     color: $color-catalina-blue;
-    margin-bottom: 34px;
   }
 
   &__transport {
@@ -290,7 +292,7 @@
     justify-content: center;
     width: 100%;
     min-height: 50px;
-    margin-top: 32px;
+    margin-top: 36px;
     padding: 15px 20px;
     border: 0;
     border-radius: 25px;

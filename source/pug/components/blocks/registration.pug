@@ -13,32 +13,35 @@ mixin registration()
             |
           a.registration__login-link(href="#") авторизуйтесь.
 
-          form.registration__form(
-            action="#"
-            method="post"
-            novalidate
-            data-registration-form
-          )
-            .registration__field
-              label.visually-hidden(for="registration-email") Электронная почта
+          .registration__form
+            form(
+              action="#"
+              method="post"
+              novalidate
+              data-registration-form
+            )
+              .registration__field
+                label.visually-hidden(for="registration-email") Электронная почта
 
-              input#registration-email(
-                type="email"
-                name="email"
-                placeholder="E-mail"
-                autocomplete="email"
-                required
-                aria-describedby="registration-error"
-                data-registration-email
-              )
+                input#registration-email(
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
+                  autocomplete="email"
+                  required
+                  aria-describedby="registration-error"
+                  data-registration-email
+                )
 
-              p.registration__error#registration-error(
-                aria-live="polite"
-                data-registration-error
-              )
+                p.registration__error#registration-error(
+                  aria-live="polite"
+                  data-registration-error
+                  data-error-required="Введите электронную почту."
+                  data-error-invalid="Введите корректный адрес электронной почты."
+                )
 
-            button.registration__submit.btn(type="submit")
-              span Регистрация
+              button.registration__submit.btn(type="submit")
+                span Регистрация
 
           p.registration__questions
             | Остались вопросы? Мы с радостью на них ответим!

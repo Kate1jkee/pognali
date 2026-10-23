@@ -26,8 +26,8 @@ const initRegistrationForm = () => {
       email.setAttribute('aria-invalid', 'true');
 
       error.textContent = email.validity.valueMissing
-        ? 'Введите электронную почту.'
-        : 'Введите корректный адрес электронной почты.';
+        ? error.dataset.errorRequired
+        : error.dataset.errorInvalid;
 
       email.focus();
       return;

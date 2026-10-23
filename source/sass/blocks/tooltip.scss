@@ -58,4 +58,9 @@
       visibility: visible;
     }
   }
+
+  &:focus-visible {
+    outline: 2px solid $color-picton-blue;
+    outline-offset: 4px;
+  }
 }

@@ -33,6 +33,7 @@ mixin companion-card-countries(card, variant)
     each country in card.countries
       li.companion-card__country
         span.companion-card__flag.tooltip(
+          tabindex="0"
           data-tooltip=country.name
         )
           +img(
@@ -56,6 +57,7 @@ mixin companion-card-transport(card)
       - const isActive = card.transport.includes(transport.id)
 
       li.companion-card__transport-item.tooltip(
+        tabindex="0"
         class=isActive ? "companion-card__transport-item--active" : null
         data-tooltip=transport.name
       )
@@ -67,7 +69,7 @@ mixin companion-card-transport(card)
 
 mixin companion-card-actions(card)
   .companion-card__actions
-    span.companion-card__invite Позвать!
+    button.companion-card__invite(type="button") Позвать!
 
     .companion-card__likes
       label.companion-card__like

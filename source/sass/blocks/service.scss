@@ -16,6 +16,8 @@
         text-box-trim: trim-both;
         text-box-edge: cap alphabetic;
         margin: 0 0 19px;
+        text-transform: uppercase;
+        font-variant-caps: all-small-caps;
     }
 
     &__description {
