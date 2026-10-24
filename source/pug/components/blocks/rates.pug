@@ -5,11 +5,16 @@ mixin rates()
         h2.rates__title#rates-title Добавьте свой профиль
 
         .rates__content
-          ol.rates__list
-            each item in ratesItems
-              li.rates__item
-                span.rates__name= item.title
+          .rates__list-block
+            ol.rates__numbers(aria-hidden="true")
+              each item in ratesItems
+                li.rates__number
 
+            ol.rates__list
+              each item in ratesItems
+                li.rates__item
+                  span.rates__name
+                    span.rates__name-text= item.title
           .rates__details
             ul.rates__prices
               each item in ratesItems

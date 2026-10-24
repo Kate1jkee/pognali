@@ -13,7 +13,6 @@ $color-transparent:                 rgba(255, 255, 255, 0);
 $color-jordy-blue:                  #7ebaeb; 
 $color-midnight-express:            #161c35; 
 $color-picton-blue:                 #4d99d6; 
-$color-jordy-blue:                  #7ebaeb; 
 $color-pale-cornflower-blue:        #a8d2f4; 
 $color-pattens-blue:                #cce5fa; 
 $color-hero-background:             #272b3b; 
@@ -40,9 +39,9 @@ $color-red-orange:                  #f02323;
 $color-tutu:                        #f9eaea;
 $color-remy:                        #f9d8d8;
 $color-rock-blue:                   #959bb2;
-
-
-
+$color-very-light-grey:             #cccccc;
+$color-golden-dream:                #f3c72b;
+$color-neon-carrot:                 #ff8d30;
 
 // Gradient
 
@@ -86,8 +85,8 @@ $vp-1920:                           1920px;
 $container-max-width:               1440px;
 $container-padding-desktop:         60px;
 $container-padding-desktop-small:   40px;
-$container-padding-tablet:          24px;
-$container-padding-mobile:          24px;
+$container-padding-tablet:          40px;
+$container-padding-mobile:          25px;
 
 // Retina
 // ---------------------------------

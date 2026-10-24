@@ -1,5 +1,8 @@
 mixin catalog-filter-group(group)
-  details.catalog-filter-group(open=group.open)
+  details.catalog-filter-group(
+    open=group.open
+    data-catalog-filter-group
+  )
     summary.catalog-filter-group__heading= group.title
 
     if block

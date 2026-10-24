@@ -28,6 +28,10 @@ html {
   // https://transfonter.org/ - включите настройку https://prnt.sc/12rnt6g и переконвертируйте шрифт
 }
 
+html[data-header-menu-open] {
+  overflow: hidden;
+}
+
 body {
   width: 100%;
   height: 100%;

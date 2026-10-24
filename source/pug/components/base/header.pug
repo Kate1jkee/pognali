@@ -1,47 +1,73 @@
 mixin header(headerMods, currentUrl)
-  header.header(class=headerMods)
+  header.header(class=headerMods data-header)
     .container
-      .header__wrapper
-        if currentUrl === "index.html"
-          .header__logo
-            img(
-              src="img/content/logo-light.svg"
-              width="202"
-              height="50"
-              alt="Погнали"
-            )
-        else
-          a.header__logo(href="index.html")
-            img(
-              src="img/content/logo-light.svg"
-              width="202"
-              height="50"
-              alt="Погнали — на главную"
-            )
+      .header__wrapper(data-header-wrapper)
+        - const logoTag = currentUrl === "index.html" ? "div" : "a";
 
-        nav.header__nav(aria-label="Основная навигация")
-          ul.header__nav-list
-            li.header__nav-item
-              a.header__nav-link(href="#")
-                span.header__nav-text(data-hover="О сервисе") О сервисе
-
-            li.header__nav-item
-              a.header__nav-link(href="#")
-                span.header__nav-text(data-hover="Направления") Направления
-
-            li.header__nav-item
-              a.header__nav-link(href="catalog.html")
-                span.header__nav-text(data-hover="Попутчики") Попутчики
-
-        .header__contacts
-          a.header__contact(
-            href="#"
-            aria-label="Позвонить: 8 800 555-86-28"
+        #{logoTag}.header__logo(
+          href=logoTag === "a" ? "index.html" : null
+        )
+          img(
+            src="img/content/logo-light.svg"
+            width="202"
+            height="50"
+            alt="Погнали"
+            data-header-logo
+            data-logo-default="img/content/logo-light.svg"
+            data-logo-open="img/content/logo-dark-clipped.svg"
           )
-            +icon("icon-call", 18, 18)
 
-          a.header__contact(
-            href="#"
-            aria-label="Написать на mail@htmlacademy.ru"
-          )
-            +icon("icon-mail", 16, 14)
+        button.header__toggle(
+          type="button"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="header-menu"
+          data-header-toggle
+          data-label-open="Открыть меню"
+          data-label-close="Закрыть меню"
+        )
+          span.header__toggle-open
+            +icon("icon-main-nav", 25, 11)
+          span.header__toggle-close
+            +icon("icon-esc", 24, 22)
+
+        .header__menu#header-menu(data-header-menu)
+          nav.header__nav(aria-label="Основная навигация")
+            ul.header__nav-list
+              li.header__nav-item
+                a.header__nav-link(href="#")
+                  span.header__nav-text(data-hover="О сервисе") О сервисе
+
+              li.header__nav-item
+                a.header__nav-link(href="#")
+                  span.header__nav-text(data-hover="Направления") Направления
+
+              li.header__nav-item
+                a.header__nav-link(href="catalog.html")
+                  span.header__nav-text(data-hover="Попутчики") Попутчики
+
+          .header__contacts
+            a.header__contact(
+              href="tel:+78005558628"
+              aria-label="Позвонить: 8 800 555-86-28"
+            )
+              span.header__contact-icon
+                +icon("icon-call", 18, 18)
+              span.header__contact-text 8 800 555-86-28
+
+            a.header__contact(
+              href="#"
+              aria-label="Написать на mail@htmlacademy.ru"
+            )
+              span.header__contact-icon
+                +icon("icon-mail", 16, 14)
+              span.header__contact-text MAIL@HTMLACADEMY.RU
+
+          ul.header__socials(aria-label="Социальные сети")
+            each social in socials
+              li.header__social-item
+                a.header__social-link(
+                  href=social.href
+                  aria-label=social.name
+                )
+                  +icon(social.icon, 32, 32)

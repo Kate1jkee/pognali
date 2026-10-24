@@ -3,7 +3,7 @@ mixin catalog-filter()
     h2.catalog-filter__title#catalog-filter-title
       | Подберите идеального попутчика
 
-    .catalog-filter__form
+    .catalog-filter__form(data-catalog-filter-form)
       form(action="#")
         each group in catalogFilterGroups
           +catalog-filter-group(group)

@@ -74,4 +74,26 @@
     margin-top: -125px;
     padding-top: 57px;
   }
+
+  @include vp-1023 {
+    &__wrapper {
+      align-items: center;
+      gap: 85px;
+    }
+
+    &__logo {
+      flex: 0 0 166px;
+
+      img {
+        width: 166px;
+        height: 42px;
+        object-fit: contain;
+      }
+    }
+
+    &--home {
+      margin-top: -70px;
+      padding-top: 47px;
+    }
+  }
 }

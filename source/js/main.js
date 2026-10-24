@@ -22,6 +22,12 @@ import {initOfficeMap} from './modules/office-map.js';
 // Синхронизирует поля и ползунки диапазона уровня.
 import {initLevelFilter} from './modules/level-filter.js';
 
+// Управляет адаптивным меню и блокирует взаимодействие с фоном.
+import {initHeaderMenu} from './modules/header-menu.js';
+
+// Настраивает раскрытие групп фильтра для планшета.
+import {initCatalogFilter} from './modules/catalog-filter.js';
+
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -33,6 +39,8 @@ window.addEventListener('DOMContentLoaded', () => {
   initRegistrationForm();
   initOfficeMap();
   initLevelFilter();
+  initHeaderMenu();
+  initCatalogFilter();
 
 });
 // ---------------------------------

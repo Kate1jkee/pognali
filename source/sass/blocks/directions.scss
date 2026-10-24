@@ -21,6 +21,10 @@
         text-box-edge: cap alphabetic;
         text-transform: uppercase;
         font-variant-caps: all-small-caps;
+
+        @include vp-1023 {
+            font-size: 95px;
+        }
     }
 
 
@@ -38,6 +42,10 @@
         line-height: 33px;
         color: $color-charcoal;
         margin-bottom: 152px;
+
+        @include vp-1023 {
+            font-size: 24px;
+        }
     }
 
     &__slider {
@@ -173,6 +181,84 @@
         > span {
             min-width: 0;
             overflow-wrap: anywhere;
+        }
+    }
+
+    @include vp-1023 {
+        background-color: $color-solitude;
+        border-radius: 0 0 60px 60px;
+
+        &__wrapper {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 0;
+            padding: 109px 33px 100px;
+        }
+
+        &__content {
+            display: contents;
+        }
+
+        &__title {
+            grid-row: 1;
+            margin-bottom: 45px;
+        }
+
+        &__description {
+            grid-row: 2;
+            margin-bottom: 75px;
+            margin-left: 2px;
+        }
+
+        &__slider {
+            grid-row: 3;
+            width: calc(100% + 14px);
+            margin-left: -9px;
+            padding: 0;
+            margin-bottom: 90px;
+
+            &::before {
+                display: none;
+            }
+            
+        }
+
+        &__viewport,
+        &__viewport.swiper {
+            padding-right: 2px;
+            padding-left: 2px;
+        }
+
+        &__link {
+            grid-row: 4;
+            width: 100%;
+            min-height: 80px;
+            margin-left: 0;
+            padding: 33px 19px 25px 34px;
+        }
+
+        &__viewport.is-active {
+            .directions-card {
+                width: calc(100% - 16px);
+                margin-left: 9px;
+                margin-right: 7px;
+            }
+
+            .directions__item.swiper-slide-next > .directions-card {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        &__viewport.is-active {
+            .directions-card__flag {
+                transform: translate(50%, -6px);
+            }
+
+            .directions__item.swiper-slide-next .directions-card__flag {
+                transform: translate(calc(50% - 15px), -6px);
+            }
         }
     }
 }

@@ -87,4 +87,31 @@
         line-height: 24px;
         opacity: 0.3;
     }
+
+    @include vp-1023 {
+        grid-template-columns: minmax(0, 1fr) 185px;
+        min-height: 140px;
+
+        &__content {
+            padding: 28px 30px 20px;
+        }
+
+        &__title {
+            margin: 0 0 5px;
+        }
+
+        &__description {
+            margin: 0 0 16px;
+        }
+
+        &__travellers {
+            gap: 10px;
+            margin: 0;
+            margin-left: -5px;
+        }
+
+        &__flag {
+            right: 185px;
+        }
+    }
 }

@@ -132,7 +132,9 @@ mixin companion-card(card, variant = "preview")
 
     if variant === "catalog"
       .companion-card__details
-        +companion-card-countries(card, variant)
+        .companion-card__countries-block
+          span.companion-card__countries-caption хочет посетить:
+          +companion-card-countries(card, variant)
 
         .companion-card__footer
           +companion-card-transport(card)

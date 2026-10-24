@@ -43,6 +43,10 @@
         text-box-edge: cap alphabetic;
         text-transform: uppercase;
         font-variant-caps: all-small-caps;
+
+        @include vp-1023 {
+            color: $color-default-white;
+        }
     }
 
     &__description {
@@ -50,6 +54,11 @@
         line-height: 33px;
         color: $color-direction-h;
         margin-bottom: 53px;
+
+        @include vp-1023 {
+            line-height: 34px;
+            color: $color-default-white;
+        }
     }
 
     &__text {
@@ -58,6 +67,10 @@
         line-height: 24px;
         color: $color-direction-h;
         margin-bottom: 109px;
+
+        @include vp-1023 {
+            color: $color-default-white;
+        }
     }
 
     &__slider {
@@ -90,5 +103,87 @@
 
     &__link {
         gap: 47px;
+    }
+
+    @include vp-1023 {
+        background-color: $color-direction-h;
+        border-radius: 0 0 60px 60px;
+
+        &__wrapper {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 0;
+            padding-top: 123px;
+            padding-bottom: 69px;
+        }
+
+        &__content {
+            display: contents;
+        }
+
+        &__title {
+            grid-row: 1;
+            margin-bottom: 45px;
+            margin-left: -2px;
+        }
+
+        &__description {
+            grid-row: 2;
+            margin-right: 90px;
+            margin-bottom: 75px;
+            br {
+                display: none;
+            }
+        }
+
+        &__text {
+            grid-row: 3;
+            margin-bottom: 90px;
+            letter-spacing: -0.064em;
+        }
+
+        &__profiles {
+            grid-row: 4;
+            width: 100%;
+            margin-bottom: 79px;
+        }
+
+        &__slider {
+            height: auto;
+            padding: 0;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 115px;
+        }
+
+        &__item {
+            min-width: 0;
+
+            &:nth-child(even) {
+                margin-top: 0;
+            }
+
+            > .companion-card {
+                margin-inline: auto;
+            }
+        }
+
+        &__link {
+            grid-row: 5;
+            width: calc(100% - 73px);
+            max-width: 100%;
+            padding-right: 22px;
+            padding-left: 30px;
+            margin-left: 35px;
+            margin-right: 35px;
+    
+        }
     }
 }

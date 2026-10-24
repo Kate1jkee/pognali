@@ -187,4 +187,37 @@
     &__empty[hidden] {
         display: none;
     }
+
+    @include vp-1023 {
+        padding-top: 40px;
+        padding-bottom: 120px;
+
+        &__wrapper {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 40px;
+        }
+
+        &__results {
+            flex: none;
+            width: 100%;
+        }
+
+        &__list {
+            gap: 40px;
+        }
+
+        &__more {
+            margin: 40px 0;
+            padding-right: 20px;
+        }
+
+        &__pagination {
+            width: 100%;
+        }
+
+        &__item:nth-child(n) .companion-card__tags {
+            max-width: 230px;
+        }
+    }
 }

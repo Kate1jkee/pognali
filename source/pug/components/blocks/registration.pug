@@ -8,10 +8,9 @@ mixin registration()
           p.registration__description
             | Зарегистрируйтесь, это быстро и бесплатно!
 
-          p.registration__login
-            | Уже зарегистрированы? Тогда скорее
-            |
-          a.registration__login-link(href="#") авторизуйтесь.
+          .registration__login-row
+            p.registration__login Уже зарегистрированы? Тогда скорее
+            a.registration__login-link(href="#") авторизуйтесь.
 
           .registration__form
             form(
@@ -40,7 +39,10 @@ mixin registration()
                   data-error-invalid="Введите корректный адрес электронной почты."
                 )
 
-              button.registration__submit.btn(type="submit")
+              button.registration__submit.btn(
+                type="submit"
+                aria-label="Регистрация"
+              )
                 span Регистрация
 
           p.registration__questions
@@ -49,17 +51,17 @@ mixin registration()
           ul.registration__contacts
             li.registration__contact
               a.registration__contact-link(
-                href="#"
+                href="tel:+78005558628"
                 aria-label="Позвонить: 8 800 555-86-28"
               )
                 span.registration__contact-icon
-                  +icon("icon-number", 36, 34)
+                  +icon("icon-number", 36, 34).registration__phone-symbol
                 span.registration__contact-text 8 800 555-86-28
 
             li.registration__contact
               a.registration__contact-link(href="#")
                 span.registration__contact-icon
-                  +icon("icon-email", 47, 50)
+                  +icon("icon-email", 47, 50).registration__email-symbol
                 span.registration__contact-text MAIL@HTMLACADEMY.RU
 
     .registration__location
@@ -67,7 +69,7 @@ mixin registration()
         .registration__location-wrapper
           p.registration__address
             span.registration__address-icon
-              +icon("icon-map", 32, 42)
+              +icon("icon-map", 32, 42).registration__address-symbol
             span ул. Большая Конюшенная, 19/8
 
           a.registration__route.btn(href="#")
@@ -82,14 +84,20 @@ mixin registration()
       data-map-zoom="16"
       data-map-pin="img/sprite.svg#icon-pin"
     )
-      +img(
-        "content",
-        "map",
-        "png",
-        1440,
-        584,
-        "Карта расположения офиса: Санкт-Петербург, Большая Конюшенная улица, 19/8"
-      )
+      .registration__map-image
+        picture
+          source(
+            media="(max-width: 1023px)"
+            srcset="img/content/map-tablet.png 1x, img/content/map-tablet@2x.png 2x"
+          )
+          +img(
+            "content",
+            "map",
+            "png",
+            1440,
+            584,
+            "Карта расположения офиса: Санкт-Петербург, Большая Конюшенная улица, 19/8"
+          )
 
       .registration__map-canvas(
         data-map-canvas

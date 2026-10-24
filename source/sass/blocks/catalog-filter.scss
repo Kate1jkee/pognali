@@ -339,4 +339,65 @@
       color: rgba($color-midnight-express, 0.3);
     }
   }
+
+  @include vp-1023 {
+    order: -1;
+    flex: none;
+    width: 100%;
+    padding: 35px;
+    background-color: $color-pale-cornflower-blue;
+
+    &__title {
+      margin-bottom: 35px;
+    }
+
+    &__form {
+      padding-top: 35px;
+      border-top: 1px solid $color-golden-dream;
+
+      > form {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+
+    &__transport {
+      margin-left: 126px;
+    }
+
+    &__level {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 148px;
+      align-items: center;
+      gap: 50px;
+      margin-left: 126px;
+    }
+
+    &__level-fields {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    &__range {
+      grid-column: 1;
+      grid-row: 1;
+      margin-top: 0;
+    }
+
+    &__submit {
+      position: relative;
+      margin-top: 60px;
+
+      &::before {
+        position: absolute;
+        top: -36px;
+        right: 0;
+        left: 0;
+        height: 1px;
+        background-color: $color-golden-dream;
+        content: "";
+      }
+    }
+  }
 }

@@ -128,4 +128,48 @@
             transition: opacity $trans-default;
         }
     }
+
+    @include vp-1023 {
+        display: flow-root;
+        min-height: 44px;
+        margin-bottom: 0;
+
+        &:nth-child(2),
+        &:nth-child(4) {
+            margin-bottom: 0;
+        }
+
+        &__heading,
+        &[open] > &__heading {
+            float: left;
+            justify-content: flex-start;
+            gap: 0;
+            width: 126px;
+            margin-bottom: 0;
+            padding-top: 10px;
+            cursor: default;
+
+            &::after {
+                flex: none;
+                width: auto;
+                height: auto;
+                border: 0;
+                transform: none;
+                content: ":";
+            }
+        }
+
+        &__options {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: center;
+            gap: 15px;
+            min-height: 44px;
+            margin-left: 126px;
+        }
+
+        &__option {
+            gap: 12px;
+        }
+    }
 }

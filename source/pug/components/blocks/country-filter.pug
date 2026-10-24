@@ -51,11 +51,18 @@ mixin country-filter()
             data-country-filter-panel
           )
             ul.country-filter__groups
-              each group in filterCountryGroups
-                li.country-filter__group
-                  h2.country-filter__letter= group.letter
+              each group, index in filterCountryGroups
+                li.country-filter__group(data-country-group)
+                  h2.country-filter__letter
+                    button.country-filter__letter-button(
+                      type="button"
+                      data-country-letter
+                      aria-controls="country-letter-list-" + index
+                    )= group.letter
 
-                  ul.country-filter__countries
+                  ul.country-filter__countries(
+                    id="country-letter-list-" + index
+                  )
                     each country in group.countries
                       li.country-filter__country
                         button.country-filter__country-button(

@@ -119,6 +119,10 @@
         min-width: 0;
         margin: 0;
         overflow-wrap: anywhere;
+
+        @include vp-1023 {
+            font-size: 22px;
+        }
     }
 
     &__title {
@@ -129,6 +133,10 @@
         padding-top: 90px;
         text-transform: uppercase;
         font-variant-caps: all-small-caps;
+
+        @include vp-1023 {
+            font-size: 60px;
+        }
     }
 
     &__image {
@@ -138,10 +146,119 @@
         margin-right: 215px;
         transform: translateY(3px);
 
-        > img {
+        img {
             display: block;
             width: 100%;
             height: auto;
+        }
+    }
+
+    @include vp-1023 {
+        background-color: $color-hero-background;
+        padding-bottom: 0;
+
+        &__background {
+            top: -90px;
+            bottom: 200px;
+            border-radius: 0;
+        }
+
+        &__content {
+            position: relative;
+            display: block;
+            min-height: 737px;
+        }
+
+        &__title {
+            position: relative;
+            z-index: 1;
+            max-width: 433px;
+            margin-left: 14px;
+            padding-top: 68px;
+            font-size: 60px;
+            line-height: 70px;
+        }
+
+        &__image {
+            position: absolute;
+            top: 207px;
+            right: 6px;
+            width: 437px;
+            max-width: 100%;
+            margin-right: 0;
+            transform: none;
+        }
+
+        &__steps {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0;
+            margin-top: 0;
+        }
+
+        &__step {
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 8px;
+            min-height: 140px;
+            padding: 30px 32px 20px;
+            border-radius: 0;
+
+            &:first-child,
+            &:last-child {
+                flex-basis: auto;
+            }
+
+            &:not(:first-child) {
+                margin-left: 0;
+                box-shadow: none;
+            }
+
+            &:not(:last-child) {
+                padding-right: 32px;
+            }
+
+            // Левая карточка немного заходит под правую.
+            &:nth-child(odd) {
+                margin-right: -20px;
+                padding-right: 52px;
+            }
+
+            &:first-child {
+                border-top-left-radius: 20px;
+            }
+
+            &:nth-child(2) {
+                border-radius: 20px 20px 0 0;
+            }
+
+            &:nth-child(3) {
+                border-bottom-left-radius: 20px;
+            }
+
+            &:last-child {
+                border-radius: 0 0 20px 20px;
+            }
+
+            &::after {
+                font-size: 30px;
+                line-height: 30px;
+            }
+        }
+
+        &__step-text {
+            max-width: 220px;
+            font-size: 22px;
+            line-height: 24px;
+            letter-spacing: 0.06em;
+        }
+
+        &__step:first-child &__step-text {
+            max-width: 180px;
+        }
+
+        &__step:nth-child(3) &__step-text {
+            max-width: 200px;
         }
     }
 

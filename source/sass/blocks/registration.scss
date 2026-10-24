@@ -125,6 +125,10 @@
         margin-bottom: 35px;
         text-box-trim: trim-both;
         text-box-edge: cap alphabetic;
+
+        @include vp-1023 {
+            font-size: 75px;
+        }
     }
 
     &__description,
@@ -134,6 +138,11 @@
         font-size: 28px;
         line-height: 31px;
         text-align: center;
+
+        @include vp-1023 {
+            font-size: 24px;
+            line-height: 32px;
+        }
     }
 
     &__description,
@@ -153,6 +162,7 @@
         &:active {
             color: $color-spindle;
         }
+
     }
 
     &__questions {
@@ -164,6 +174,10 @@
 
         color: $color-default-white;
         margin-bottom: 42px;
+
+        @include vp-1023 {
+            font-size: 24px;
+        }
     }
 
     &__address {
@@ -213,12 +227,17 @@
         background-color: $color-solitude;
     }
 
-    &__map > img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
+    &__map-image {
+        position: absolute;
+        inset: 0;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
     }
 
     &__map-canvas {
@@ -405,6 +424,149 @@
             display: block;
             width: 100%;
             height: 100%;
+        }
+    }
+
+    &__login-row {
+        display: contents;
+    }
+
+    @include vp-1023 {
+        margin-top: -60px;
+        &__main {
+            padding: 140px 0 58px;
+
+            &::before {
+                background-color: $color-direction-h;
+            }
+        }
+
+        &__title {
+            text-transform: uppercase;
+            font-variant-caps: normal;
+            font-variant: all-small-caps;
+            margin-bottom: 40px;
+        }
+
+        &__login-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0 6px;
+            margin-bottom: 47px;
+        }
+
+        &__description,
+        &__login-row {
+            transform: translateX(-7px);
+        }
+
+        &__login-link {
+            margin-bottom: 23px;
+        }
+
+        &__form {
+            width: calc(100% - 72px);
+            margin-bottom: 77px;
+        }
+
+        &__field > input {
+            min-height: 80px;
+        }
+
+        &__submit {
+            flex: 0 0 80px;
+            justify-content: center;
+            width: 80px;
+            min-height: 80px;
+            padding: 24px;
+
+            > span {
+                display: none;
+            }
+        }
+
+        &__questions {
+            width: calc(100% - 64px);
+            margin-bottom: 25px;
+        }
+
+        &__contacts {
+            flex-direction: column;
+            align-items: flex-start;
+            align-self: center;
+            justify-content: flex-start;
+            gap: 0;
+            width: calc(100% - 64px);
+        }
+
+        &__contact:not(:first-child) {
+            left: 0;
+        }
+
+        &__contact-link {
+            gap: 25px;
+        }
+
+        &__contact-icon {
+            flex-basis: 68px;
+            width: 68px;
+            height: 68px;
+            transform: translate(4px, -1px);
+        }
+
+        &__location {
+            padding: 50px 0 85px;
+        }
+
+        &__location-wrapper {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 42px;
+            max-width: none;
+            margin: 0 32px;
+        }
+
+        &__address {
+            flex: none;
+            gap: 29px;
+        }
+
+        &__address-icon {
+            flex-basis: 68px;
+            width: 68px;
+            height: 68px;
+            transform: translate(3px, -2px);
+        }
+
+        &__route {
+            flex: none;
+            align-self: center;
+            width: calc(100% - 8px);
+            max-width: 100%;
+            min-height: 80px;
+            padding: 26px 15px 24px 33px;
+        }
+
+        &__contact-icon > &__phone-symbol {
+            width: 27.2px;
+            height: 25.69px;
+        }
+
+        &__contact-icon > &__email-symbol {
+            width: 35.51px;
+            height: 37.78px;
+        }
+
+        &__address-icon > &__address-symbol {
+            width: 31.73px;
+            height: 31.73px;
+        }
+
+        &__map {
+            height: 581px;
+            margin-top: -50px;
         }
     }
 }

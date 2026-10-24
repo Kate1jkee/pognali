@@ -9,12 +9,19 @@ mixin intro(title)
           h1.intro__title= title
 
           .intro__image
-            img(
-              src="img/content/traveller-desktop.svg"
-              width="431"
-              height="640"
-              alt=""
-            )
+            picture
+              source(
+                media="(max-width: 1023px)"
+                srcset="img/content/traveller-tablet.svg"
+                width="437"
+                height="530"
+              )
+              img(
+                src="img/content/traveller-desktop.svg"
+                width="431"
+                height="640"
+                alt=""
+              )
 
         ol.intro__steps
           each step, index in introSteps
