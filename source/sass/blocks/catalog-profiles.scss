@@ -23,6 +23,7 @@
       &:nth-child(4) .companion-card__tags {
         max-width: 160px;
       }
+
     }
 
     &__wrapper {
@@ -204,20 +205,32 @@
         }
 
         &__list {
-            gap: 40px;
+            gap: 39px;
         }
 
         &__more {
-            margin: 40px 0;
-            padding-right: 20px;
+            gap: 25px;
+            min-height: 50px;
+            margin: 34px 0 39px;
+            padding: 10px 0 10px 12px;
+            font-size: 20px;
+            line-height: 20px;
+
+            &::before {
+                flex: 0 0 26px;
+                width: 26px;
+                height: 26px;
+            }
+
+            > span {
+                transform: translateY(2px);
+            }
         }
 
         &__pagination {
             width: 100%;
-        }
-
-        &__item:nth-child(n) .companion-card__tags {
-            max-width: 230px;
+            min-height: 100px;
+            padding: 25px 18px 25px 28px;
         }
     }
 }

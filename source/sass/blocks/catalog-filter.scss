@@ -344,15 +344,17 @@
     order: -1;
     flex: none;
     width: 100%;
-    padding: 35px;
+    padding: 39px 36px 37px 34px;
     background-color: $color-pale-cornflower-blue;
 
     &__title {
-      margin-bottom: 35px;
+      margin-bottom: 38px;
+      font-size: 30px;
+      line-height: 30px;
     }
 
     &__form {
-      padding-top: 35px;
+      padding-top: 27px;
       border-top: 1px solid $color-golden-dream;
 
       > form {
@@ -364,13 +366,18 @@
 
     &__transport {
       margin-left: 126px;
+      gap: 1px;
+    }
+
+    &__transport-icon {
+      transform: translate(1px, -3px);
     }
 
     &__level {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 148px;
       align-items: center;
-      gap: 50px;
+      gap: 62px;
       margin-left: 126px;
     }
 
@@ -383,11 +390,19 @@
       grid-column: 1;
       grid-row: 1;
       margin-top: 0;
+      height: 13px;
+
+      > input {
+        height: 13px;
+      }
     }
 
     &__submit {
       position: relative;
-      margin-top: 60px;
+      min-height: 50px;
+      margin-top: 66px;
+      padding-top: 18px;
+      padding-bottom: 12px;
 
       &::before {
         position: absolute;

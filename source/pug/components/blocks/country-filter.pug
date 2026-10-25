@@ -46,6 +46,12 @@ mixin country-filter()
                 data-text-closed="Показать все"
               ) Показать все
 
+              span.country-filter__show-open
+                +icon("icon-point", 33.41, 6)
+
+              span.country-filter__show-close
+                +icon("icon-esc", 22, 22)
+
           .country-filter__panel#country-filter-panel(
             hidden
             data-country-filter-panel

@@ -1,5 +1,6 @@
 mixin catalog-filter-group(group)
   details.catalog-filter-group(
+    class=group.mod ? "catalog-filter-group--" + group.mod : null
     open=group.open
     data-catalog-filter-group
   )

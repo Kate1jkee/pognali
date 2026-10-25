@@ -161,6 +161,16 @@
             top: -90px;
             bottom: 200px;
             border-radius: 0;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: calc(50% - 561px);
+                width: 1440px;
+                max-width: none;
+                height: 906px;
+                object-fit: fill;
+            }
         }
 
         &__content {

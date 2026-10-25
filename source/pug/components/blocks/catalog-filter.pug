@@ -8,7 +8,7 @@ mixin catalog-filter()
         each group in catalogFilterGroups
           +catalog-filter-group(group)
 
-        +catalog-filter-group({ title: "Транспорт", open: true })
+        +catalog-filter-group({ title: "Транспорт", open: true, mod: "transport" })
           ul.catalog-filter__transport
             each transport in companionsTransport
               li.catalog-filter__transport-item
@@ -24,7 +24,7 @@ mixin catalog-filter()
                   span.tooltip__text(aria-hidden="true")= transport.name
                   span.visually-hidden= transport.name
 
-        +catalog-filter-group({ title: "Левел", open: true })
+        +catalog-filter-group({ title: "Левел", open: true, mod: "level" })
           .catalog-filter__level(data-level-filter)
             .catalog-filter__level-fields
               label.catalog-filter__level-field
