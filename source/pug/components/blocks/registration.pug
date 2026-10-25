@@ -6,10 +6,12 @@ mixin registration()
           h2.registration__title#registration-title Заинтересовались?
 
           p.registration__description
-            | Зарегистрируйтесь, это быстро и бесплатно!
+            | Зарегистрируйтесь, это быстро и&nbsp;бесплатно!
 
           .registration__login-row
-            p.registration__login Уже зарегистрированы? Тогда скорее
+            p.registration__login
+              span.registration__login-start Уже зарегистрированы?
+              |  Тогда скорее
             a.registration__login-link(href="#") авторизуйтесь.
 
           .registration__form
@@ -46,7 +48,9 @@ mixin registration()
                 span Регистрация
 
           p.registration__questions
-            | Остались вопросы? Мы с радостью на них ответим!
+            span.registration__questions-line Остались вопросы?
+            | 
+            span.registration__questions-line Мы с радостью на них ответим!
 
           ul.registration__contacts
             li.registration__contact
@@ -86,6 +90,11 @@ mixin registration()
     )
       .registration__map-image
         picture
+          source(
+            media="(max-width: 767px)"
+            srcset="img/content/map-mobile.png 1x, img/content/map-mobile@2x.png 2x"
+          )
+
           source(
             media="(max-width: 1023px)"
             srcset="img/content/map-tablet.png 1x, img/content/map-tablet@2x.png 2x"

@@ -11,9 +11,14 @@ mixin directions-card(card)
         span.directions-card__likes= card.travellers
 
     .directions-card__image
-      +img(
-        "content", card.image, "png", null, null, ""
-      )
+      picture
+        source(
+          media="(max-width: 767px)"
+          srcset=`img/content/${card.imageMobile}.png 1x, img/content/${card.imageMobile}@2x.png 2x`
+          width="270"
+          height="110"
+        )
+        +img("content", card.image, "png", null, null, "")
 
     .directions-card__flag.tooltip
       +img(

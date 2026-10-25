@@ -21,13 +21,13 @@
         overflow: hidden;
         border-radius: 0 20px 20px 0;
 
-        > img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
     }
 
@@ -71,6 +71,11 @@
         line-height: 24px;
         color: $color-default-black;
         margin-bottom: 4px;
+
+        @include vp-767 {
+            font-size: 21px;
+            line-height: 21px;
+        }
     }
 
     &__description {
@@ -79,6 +84,11 @@
         color: $color-charcoal;
         opacity: 0.3;
         margin-bottom: 20px;
+
+        @include vp-767 {
+            font-size: 16px;
+            line-height: 18px;
+        }
     }
 
     &__likes {
@@ -86,6 +96,10 @@
         font-size: 20px;
         line-height: 24px;
         opacity: 0.3;
+
+        @include vp-767 {
+            font-size: 16px;
+        }
     }
 
     @include vp-1023 {
@@ -112,6 +126,91 @@
 
         &__flag {
             right: 185px;
+        }
+    }
+
+    @include vp-767 {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba($color-default-black, 0.25);
+
+        pointer-events: none;
+        transition: none;
+        transform: none;
+
+        &__image {
+            grid-column: 1;
+            grid-row: 1;
+            height: 110px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        &__content {
+            position: relative;
+            z-index: 1;
+            grid-column: 1;
+            grid-row: 2;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-content: start;
+            align-items: center;
+            column-gap: 8px;
+            min-height: 93px;
+            margin-top: -5px;
+            padding: 25px 24px 18px;
+            border-radius: 10px;
+            background-color: $color-default-white;
+        }
+
+        &__title {
+            grid-column: 1;
+            grid-row: 1;
+            margin: 0;
+            font-size: 21px;
+            line-height: 24px;
+        }
+
+        &__description {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            margin: 3px 0 0;
+            font-size: 16px;
+            line-height: 18px;
+        }
+
+        &__travellers {
+            position: absolute;
+            top: 28px;
+            right: 17px;
+            display: flex;
+            align-items: center;
+            gap: 5.57px;
+            margin: 0;
+        }
+
+        &__travellers-icon {
+            width: 16px;
+            height: 15px;
+        }
+
+        &__likes {
+            font-size: 16px;
+            line-height: 18px;
+        }
+
+        &__flag {
+            top: 90px;
+            right: auto;
+            left: 25px;
+            z-index: 2;
+            width: 35px;
+            height: 24px;
+            transform: none;
+        }
+
+        .tooltip__text {
+            display: none;
         }
     }
 }

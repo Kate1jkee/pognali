@@ -545,7 +545,7 @@
             padding: 0 250px 0 0;
         }
 
-        // Сбрасываем десктопные поправки для отдельных букв.
+        // Сбрасываем десктопные правки для отдельных букв.
         &__groups > .country-filter__group:nth-child(n) {
             margin-top: 0;
 
@@ -570,7 +570,7 @@
             padding: 0 250px 0 0;
         }
 
-        // Пока показываем только список первой буквы.
+        // Показываем только список первой буквы.
         &__groups > .country-filter__group.is-active > .country-filter__countries {
             position: absolute;
             top: 0;
@@ -628,26 +628,233 @@
         }
     }
 
-    @media (max-width: 767px) {
+    @include vp-767 {
+        &__heading {
+            padding: 44px 0 9px;
+
+            &::before {
+            top: -50px;
+            border-radius: 0 0 20px 20px;
+            }
+        }
+
+        &__title {
+            top: 0;
+            margin: 0;
+            font-size: 36px;
+            line-height: 40px;
+
+            &::after {
+            right: auto;
+            bottom: -11px;
+            left: 0;
+            width: 172px;
+            height: 5px;
+            background-color: $color-default-white;
+            }
+        }
+
+        &__body {
+            margin-top: -20px;
+            padding-top: 41px;
+            padding-bottom: 18px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        &__wrapper {
+            padding: 0;
+        }
+
+        &__header {
+            position: relative;
+            z-index: 3;
+            display: block;
+            margin: 0;
+        }
+
         &__toggle {
-            justify-content: space-between;
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
             width: 100%;
-            padding: 16px 0;
+            max-width: none;
+            padding: 0;
             font-size: 16px;
-            line-height: 20px;
+            line-height: 18px;
+
+            > svg {
+                flex-shrink: 0;
+                width: 15px;
+                height: 10px;
+                margin-top: 4px;
+                margin-right: 12px;
+            }
+
+            > span:not(.country-filter__mobile-indicator) {
+                display: block;
+                min-width: 0;
+                white-space: nowrap;
+            }
         }
 
         &__mobile-indicator {
-            display: block;
+            display: flex;
+            flex: 0 0 18px;
+            align-items: center;
+            justify-content: center;
+            height: 18px;
             margin-left: auto;
 
             &::before {
-            content: "…";
+            content: none;
+            }
+
+            svg {
+            display: block;
+            }
+        }
+
+        &__mobile-open {
+            display: block;
+        }
+
+        &__mobile-close {
+            display: none;
+        }
+
+        &__show,
+        &__continents {
+            display: none;
+        }
+
+        &.is-open &__body {
+            padding-bottom: 0;
+        }
+
+        &.is-open &__toggle {
+            > span:not(.country-filter__mobile-indicator) {
+            max-width: 160px;
+            white-space: normal;
             }
         }
 
         &.is-open &__mobile-indicator::before {
-            content: "×";
+            content: none;
+        }
+
+        &.is-open &__mobile-open {
+            display: none;
+        }
+
+        &.is-open &__mobile-close {
+            display: block;
+            transform: translate(-3px, -2px);
+        }
+
+        &.is-open &__continents {
+            position: absolute;
+            top: 54px;
+            left: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        &__continent-text {
+            font-size: 16px;
+            line-height: 18px;
+        }
+
+        &__panel {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            padding: 134px 25px 28px;
+            border-radius: 0 0 20px 20px;
+            background-color: $color-lavender;
+        }
+
+        &__groups {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-template-rows: repeat(5, 41px) auto;
+            gap: 0;
+            width: 220px;
+            max-width: calc(100% - 25px);
+            min-height: 0;
+            margin: 0 0 0 25px;
+            padding: 0;
+        }
+
+        &__groups > .country-filter__group {
+            display: contents;
+
+            // Сбрасываем точечные планшетные смещения букв.
+            &:nth-child(n) > .country-filter__letter,
+            &:nth-child(n+16):nth-child(-n+20) > .country-filter__letter {
+            top: 0;
+            margin: 0;
+            transform: none;
+            translate: none;
+            background-color: $color-default-white;
+            color: $color-direction-h;
+            font-size: 14px;
+            line-height: 40px;
+            }
+        }
+
+        &__letter-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 41px;
+            border: 1px solid #cbced9;
+            font: inherit;
+            color: inherit;
+            margin-top: 3px;
+        }
+
+        &__groups > .country-filter__group.is-active {
+            > .country-filter__letter {
+                background-color: $color-direction-h;
+                color: $color-default-white;
+            }
+
+            > .country-filter__countries {
+                position: static;
+                grid-column: 1 / -1;
+                grid-row: 6;
+                display: block;
+                width: 130px;
+                max-width: 100%;
+                margin: 16px 0 0;
+                padding: 0;
+            }
+        }
+
+        &__country-button {
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        &__close {
+            gap: 10px;
+            min-height: 39px;
+            margin-top: 8px;
+            padding: 8px 15px;
+            padding-left: 24px;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.04em;
+
+            &::before {
+                flex-basis: 14px;
+                width: 14px;
+                height: 14px;
+            }
         }
     }
 }

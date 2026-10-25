@@ -233,4 +233,69 @@
             padding: 25px 18px 25px 28px;
         }
     }
+
+    @include vp-767 {
+        padding-top: 20px;
+        padding-bottom: 47px; 
+        
+        &__wrapper {
+            gap: 28px;
+        }
+
+        &__list {
+            gap: 10px;
+        }
+
+        &__more {
+            position: relative;
+            left: 4px;
+            gap: 16px;
+            min-height: 30px;
+            margin: 20px 0 18px;
+            padding: 0;
+            font-size: 17px;
+            line-height: 20px;
+
+            &::before {
+            flex: 0 0 18px;
+            width: 18px;
+            height: 18px;
+            }
+
+            > span {
+            transform: none;
+            }
+        }
+
+        &__pagination {
+            gap: 0;
+            min-height: 51px;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        &__pages {
+            display: none;
+        }
+
+        &__arrows {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        &__arrow {
+            flex: 1 1 50%;
+            width: auto;
+            height: 51px;
+
+            & + & {
+                border-left: 1px solid #edeff6;
+            }
+
+            &:focus-visible {
+                outline-offset: -3px;
+            }
+        }
+    }
 }

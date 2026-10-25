@@ -105,32 +105,42 @@
     }
   }  
 
-  @media (max-width: 767px) {
+  @include vp-767 {
     &__content {
-      padding: 32px 24px;
+      padding: 30px 24px;
     }
 
     &__title {
-      margin-bottom: 28px;
+      margin-bottom: 0;
       font-size: 26px;
-      line-height: 30px;
+      line-height: 45px;
+      text-box-trim: trim-both;
     }
 
     &__item {
       flex-direction: column;
+      align-items: start;
       gap: 6px;
-      font-size: 18px;
-      line-height: 24px;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 22px;
 
       > dd {
         text-align: left;
       }
+
+      > dt {
+        font-weight: 300;
+      }
     }
 
     &__close {
-      min-height: 80px;
-      font-size: 20px;
+      min-height: 59px;
+      padding: 21px;
+      font-weight: 700;
+      font-size: 16px;
       line-height: 24px;
+      text-transform: uppercase;
     }
   }
 }

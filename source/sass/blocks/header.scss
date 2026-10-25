@@ -14,11 +14,11 @@
             transition: opacity $trans-default;
 
             @include hover-focus {
-            opacity: 0.7;
+                opacity: 0.7;
             }
 
             &:active {
-            opacity: 0.3;
+                opacity: 0.3;
             }
         }
     }
@@ -32,13 +32,19 @@
 
     &__logo {
         flex-shrink: 0;
+
+        > img {
+            display: block;
+            width: 202px;
+            height: 50px;
+            object-fit: contain;
+        }
     }
 
     &__nav {
         display: flex;
         flex: 1;
         align-items: center;
-        flex: 1;
         min-width: 0;
         gap: 45px;
 
@@ -76,7 +82,7 @@
         height: 50px;
         padding: 0;
         border-radius: 50%;
-        background-color: $color-jordy-blue;
+        background-color: transparent;
         color: $color-midnight-express;
         text-decoration: none;
         transition: background-color $trans-default;
@@ -89,15 +95,65 @@
         }
 
         @include hover-focus {
-            background-color: $color-curious-blue;
+            background-color: transparent;
+
+            .header__contact-icon {
+                background-color: $color-curious-blue;
+            }
         }
 
         &:active {
-            background-color: $color-curious-blue;
+            background-color: transparent;
 
             > svg {
-            opacity: 0.3;
+                opacity: 0.3;
             }
+
+            .header__contact-icon {
+                background-color: $color-curious-blue;
+
+                svg {
+                    opacity: 0.3;
+                }
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-picton-blue;
+            outline-offset: 4px;
+        }
+    }
+
+    &__contact-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $color-jordy-blue;
+        transition: background-color $trans-default;
+
+        > svg {
+            display: block;
+            transition: opacity $trans-default;
+        }
+    }
+
+    &__phone-default {
+        display: flex;
+    }
+
+    &__phone-mobile {
+        display: none;
+    }
+
+    &__phone-default,
+    &__phone-mobile {
+        > svg {
+            display: block;
+            transition: opacity $trans-default;
         }
     }
 
@@ -112,7 +168,7 @@
 
         @include hover-focus {
             .header__nav-text {
-            transform: translateY(-100%);
+                transform: translateY(-100%);
             }
         }
 
@@ -122,7 +178,7 @@
                 opacity: 0.3;
 
                 &::after {
-                color: $color-picton-blue;
+                    color: $color-picton-blue;
                 }
             }
         }
@@ -149,8 +205,8 @@
             color: $color-jordy-blue;
             content: attr(data-hover);
             transition:
-            color $trans-default,
-            opacity $trans-default;
+                color $trans-default,
+                opacity $trans-default;
         }
     }
 
@@ -158,65 +214,10 @@
         display: contents;
     }
 
-    &__logo > img {
-        display: block;
-        width: 202px;
-        height: 50px;
-        object-fit: contain;
-    }
-
     &__toggle,
     &__socials,
     &__contact-text {
         display: none;
-    }
-
-    &__contact {
-        background-color: transparent;
-    }
-
-    &__contact-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: $color-jordy-blue;
-        transition: background-color $trans-default;
-
-        > svg {
-            display: block;
-            transition: opacity $trans-default;
-        }
-    }
-
-    &__contact {
-        @include hover-focus {
-            background-color: transparent;
-
-            .header__contact-icon {
-                background-color: $color-curious-blue;
-            }
-        }
-
-        &:active {
-            background-color: transparent;
-
-            .header__contact-icon {
-                background-color: $color-curious-blue;
-
-                > svg {
-                    opacity: 0.3;
-                }
-            }
-        }
-
-        &:focus-visible {
-            outline: 2px solid $color-picton-blue;
-            outline-offset: 4px;
-        }
     }
 
     @include vp-1023 {
@@ -309,6 +310,8 @@
                 overflow-y: auto;
                 overscroll-behavior: contain;
                 background-color: $color-default-white;
+                border-bottom: 20px solid $color-registration-icon;
+                border-radius: 0 0 22px 22px;
             }
 
             .header__logo > img {
@@ -393,6 +396,14 @@
                 color: $color-pale-cornflower-blue;
             }
 
+            .header__phone-default {
+                display: none;
+            }
+
+            .header__phone-mobile {
+                display: flex;
+            }
+
             .header__contact-text {
                 display: block;
                 min-width: 0;
@@ -436,5 +447,113 @@
                 }
             }
         }
+    }
+
+    @include vp-767 {
+        padding-top: 20px;
+        height: 70px;
+
+        &__wrapper {
+            grid-template-columns: minmax(0, 1fr) 40px;
+            min-height: 50px;
+        }
+
+        &__logo {
+            > img {
+                width: 96px;
+                height: 15px;
+            }
+        }
+
+        &__toggle {
+            grid-column: 2;
+            justify-self: end;
+        }
+
+        &__toggle-open {
+            transform: translate(-1px, 2px);
+        }
+
+        &.is-open {
+            .header__wrapper {
+                grid-template-columns: minmax(0, 1fr) 40px;
+                grid-template-rows: 50px auto;
+                padding: 10px 25px 10px;
+            }
+
+            .header__menu {
+                padding-top: 45px;
+            }
+
+            .header__nav-link {
+                font-size: 30px;
+                line-height: 40px;
+                text-box-trim: trim-both;
+            }
+
+            .header__contacts {
+                margin-top: 142px;
+                gap: 6px;
+            }
+
+            .header__contact {
+                gap: 16px;
+            }
+
+            .header__contact-text {
+                font-size: 16px;
+                line-height: 22px;
+            }
+
+            .header__socials {
+                margin-top: 24px;
+                gap: 5px;
+            }
+
+            .header__social-link > svg {
+                width: 23px;
+                height: 23px;
+            }
+
+            .header__toggle {
+                justify-content: end;
+            }
+        }
+
+        &--catalog {
+            height: 50px;
+            padding-top: 19px;
+        }
+
+        &--catalog:not(.is-open) {
+            .header__wrapper {
+                min-height: 15px;
+            }
+
+            .header__toggle {
+                width: 25px;
+                height: 15px;
+            }
+        }
+
+        &:not(.is-open) {
+            .header__toggle {
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .header__contacts {
+        flex: 0 0 108px;
+        width: 108px;
+        max-width: 108px;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+
+    .header__wrapper {
+        align-items: flex-start;
     }
 }

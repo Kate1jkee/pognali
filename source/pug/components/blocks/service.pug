@@ -6,7 +6,7 @@ mixin service()
           h2.service__title#service-title О сервисе
 
           p.service__description
-            | Любое путешествие веселее с попутчиками, которые на одной волне с тобой! Делитесь своими идеями путешествий и черпайте вдохновение в чужих.
+            | Любое путешествие веселее с&nbsp;попутчиками, которые на&nbsp;одной волне с&nbsp;тобой! Делитесь своими идеями путешествий и&nbsp;черпайте вдохновение в&nbsp;чужих.
 
           p.service__text
             | А если найдете кого-то близкого по 
@@ -17,6 +17,10 @@ mixin service()
 
         .service__image
           picture
+            source(
+              media="(max-width: 767px)"
+              srcset="img/content/service-image-mobile.png 1x, img/content/service-image-mobile@2x.png 2x"
+            )
             source(
               media="(max-width: 1023px)"
               srcset="img/content/service-image-tablet.png 1x, img/content/service-image-tablet@2x.png 2x"

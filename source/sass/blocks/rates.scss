@@ -12,6 +12,12 @@
     margin-left: -40px;
     text-transform: uppercase;
     font-variant-caps: all-small-caps;
+
+    @include vp-767 {
+      font-size: 37px;
+      line-height: 28px;
+      color: $color-hero-background;
+    }
   }
 
   &__content {
@@ -37,6 +43,11 @@
     gap: 24px;
     min-height: 80px;
     counter-increment: rates;
+
+    @include vp-767 {
+      font-size: 16px;
+      line-height: 16px;
+    }
 
     &::before {
       display: flex;
@@ -123,6 +134,12 @@
       font-size: 24px;
     }
 
+    @include vp-767 {
+      font-size: 16px;
+      line-height: 16px;
+
+    }
+
     &:first-child {
       margin-bottom: 14.4px;
       font-weight: 700;
@@ -133,6 +150,11 @@
 
       @include vp-1023 {
         font-size: 28px;
+      }
+
+      @include vp-767 {
+        font-size: 20px;
+        line-height: 16px;
       }
     }
 
@@ -172,7 +194,8 @@
     text-align: left;
     cursor: pointer;
     transition: opacity $trans-default;
-    transform: translateY(-10px);
+    transform: none;
+    margin-top: 10px;
 
     @include hover-focus {
       opacity: 0.7;
@@ -199,6 +222,12 @@
     font-size: 20px;
     line-height: 20px;
     color: $color-blue-zodiac;
+
+    @include vp-767 {
+      font-size: 16px;
+      line-height: 16px;
+      color: $color-hero-background;
+    }
   }
 
   &__list-block {
@@ -395,6 +424,146 @@
     &__details {
       position: relative;
       z-index: 1;
+    }
+  }
+
+  @include vp-767 {
+    margin-top: -30px;
+    padding: 66px 0 23px;
+    border-radius: 0 0 30px 30px;
+
+    &__title {
+      margin: 0 0 30px;
+      font-size: 37px;
+      line-height: 28px;
+      color: $color-hero-background;
+      text-align: center;
+    }
+
+    &__content {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__list-block {
+      display: block;
+      flex: none;
+      width: 100%;
+      padding: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__numbers {
+      display: none;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    &__item {
+      position: relative;
+      left: -3px;
+      flex-direction: row-reverse;
+      align-items: stretch;
+      gap: 10px;
+      min-height: 46px;
+
+      &::before {
+        display: flex;
+        flex: 0 0 37px;
+        align-self: center;
+        width: 37px;
+        height: 35px;
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+
+    &__name {
+      min-height: 46px;
+      padding: 12px 0;
+      border-top: 1px solid #e1e3e9;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &__item:last-child .rates__name {
+      border-bottom: 1px solid #e1e3e9;
+    }
+
+    &__name-text {
+      transform: none;
+    }
+
+    &__details {
+      flex: none;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      align-self: center;
+      gap: 12px;
+      width: calc(100% - 7px);
+      min-height: 113px;
+      margin-top: 37px;
+      padding: 15px;
+    }
+
+    &__prices {
+      flex: 1 1 0;
+      width: auto;
+      gap: 0;
+      margin: 0;
+    }
+
+    &__price {
+      font-size: 16px;
+      line-height: 20px;
+      text-align: left;
+
+      &:first-child {
+        margin-bottom: 22px;
+        font-size: 20px;
+        line-height: 16px;
+      }
+
+      &:not(:first-child) {
+        margin-right: 0;
+      }
+    }
+
+    &__image {
+      position: relative;
+      left: -3px;
+      flex: 0 0 81px;
+      width: 81px;
+    }
+
+    &__business {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 26px 0 0;
+      gap: 0;
+      transform: none;
+      text-align: center;
+    }
+
+    &__business-icon {
+      display: none;
+    }
+
+    &__modal {
+      font-size: 16px;
+      line-height: 20px;
+      color: $color-hero-background;
     }
   }
 }

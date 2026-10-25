@@ -11,6 +11,12 @@ mixin intro(title)
           .intro__image
             picture
               source(
+                media="(max-width: 767px)"
+                srcset="img/content/traveller-mobile.svg"
+                width="192"
+                height="255"
+              )
+              source(
                 media="(max-width: 1023px)"
                 srcset="img/content/traveller-tablet.svg"
                 width="437"

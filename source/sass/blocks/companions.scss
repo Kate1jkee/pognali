@@ -20,6 +20,7 @@
 
     &__list {
         display: flex;
+        flex-wrap: wrap;
         align-items: flex-start;
         gap: 30px;
         margin: 0;
@@ -47,6 +48,11 @@
         @include vp-1023 {
             color: $color-default-white;
         }
+
+        @include vp-767 {
+            font-size: 50px;
+            line-height: 24px;
+        }
     }
 
     &__description {
@@ -59,6 +65,12 @@
             line-height: 34px;
             color: $color-default-white;
         }
+
+        @include vp-767 {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+        }
     }
 
     &__text {
@@ -70,6 +82,11 @@
 
         @include vp-1023 {
             color: $color-default-white;
+        }
+
+        @include vp-767 {
+            font-size: 14px;
+            line-height: 22px;
         }
     }
 
@@ -103,6 +120,11 @@
 
     &__link {
         gap: 47px;
+
+        @include vp-767 {
+            font-size: 18px;
+            line-height: 18px;
+        }
     }
 
     @include vp-1023 {
@@ -185,5 +207,99 @@
             margin-right: 35px;
     
         }
+    }
+
+    @include vp-767 {
+        background-color: $color-hero-background;
+        border-radius: 0 0 30px 30px;
+
+        &__wrapper {
+            padding-top: 92px;
+            padding-bottom: 40px;
+        }
+
+        &__title {
+            margin: 0 0 15px;
+            font-size: 50px;
+            line-height: 1;
+            overflow-wrap: anywhere;
+        }
+
+        &__description {
+            margin-right: 0;
+            margin-bottom: 30px;
+            font-size: 14px;
+            line-height: 22px;
+        }
+
+        &__title,
+        &__description {
+            position: relative;
+            left: 2px;
+        }
+
+        &__text {
+            max-width: none; 
+            width: calc(100% + 15px);
+            margin-bottom: 39px;
+            font-size: 14px;
+            line-height: 22px;
+        }
+
+        &__profiles {
+            margin-bottom: 60px;
+        }
+
+        &__list {
+            grid-template-columns: minmax(0, 1fr);
+            justify-items: center;
+            gap: 44px;
+        }
+
+        &__item {
+            width: 270px;
+            max-width: 100%;
+        }
+
+        &__link {
+            width: 100%;
+            min-height: 60px;
+            margin: 0;
+            padding: 19px 24px;
+            border-radius: 10px;
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .companions__wrapper {
+        gap: 30px;
+    }
+
+    .companions__profiles {
+        flex: 0 1 55%;
+        min-width: 0;
+    }
+
+    .companions__slider {
+        padding-left: 24px;
+        padding-right: 0;
+    }
+
+    .companions__list {
+        flex-wrap: nowrap;
+        gap: 20px;
+    }
+
+    .companions__item {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .companions__title {
+        font-size: clamp(54px, 5.2vw, 75px);
+        overflow-wrap: anywhere;
     }
 }

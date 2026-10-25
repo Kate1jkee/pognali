@@ -11,6 +11,7 @@ const initHeaderMenu = () => {
   const menu = header.querySelector('[data-header-menu]');
   const logo = header.querySelector('[data-header-logo]');
   const breakpoint = window.matchMedia('(max-width: 1023px)');
+  const mobileBreakpoint = window.matchMedia('(max-width: 767px)');
 
   if (!wrapper || !toggle || !menu || !logo) {
     return;
@@ -18,6 +19,17 @@ const initHeaderMenu = () => {
 
   const background = Array.from(document.querySelectorAll('main, footer'));
   let previousInert = [];
+
+  const updateLogo = () => {
+    if (header.classList.contains('is-open')) {
+      logo.src = logo.dataset.logoOpen;
+      return;
+    }
+
+    logo.src = mobileBreakpoint.matches
+      ? logo.dataset.logoMobile || logo.dataset.logoDefault
+      : logo.dataset.logoDefault;
+  };
 
   const setOpen = (isOpen, restoreFocus = true) => {
     if (isOpen === header.classList.contains('is-open')) {
@@ -31,9 +43,7 @@ const initHeaderMenu = () => {
         isOpen ? toggle.dataset.labelClose : toggle.dataset.labelOpen
     );
 
-    logo.src = isOpen
-      ? logo.dataset.logoOpen
-      : logo.dataset.logoDefault;
+    updateLogo();
 
     if (isOpen) {
       previousInert = background.map((element) => element.inert);
@@ -46,6 +56,7 @@ const initHeaderMenu = () => {
       wrapper.setAttribute('role', 'dialog');
       wrapper.setAttribute('aria-modal', 'true');
       wrapper.setAttribute('aria-label', 'Меню');
+
       toggle.focus({preventScroll: true});
     } else {
       background.forEach((element, index) => {
@@ -88,6 +99,10 @@ const initHeaderMenu = () => {
         'a[href], button:not(:disabled), [tabindex="0"]'
     )).filter((element) => element.getClientRects().length);
 
+    if (!controls.length) {
+      return;
+    }
+
     const first = controls[0];
     const last = controls[controls.length - 1];
 
@@ -120,7 +135,13 @@ const initHeaderMenu = () => {
     if (!breakpoint.matches) {
       setOpen(false, false);
     }
+
+    updateLogo();
   });
+
+  mobileBreakpoint.addEventListener('change', updateLogo);
+
+  updateLogo();
 };
 
 export {initHeaderMenu};

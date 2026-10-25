@@ -3,12 +3,17 @@ mixin footer(footerMods)
     .container
       .footer__wrapper
         a.footer__logo(href="index.html")
-          img(
-            src="img/content/logo-dark.svg"
-            width="202"
-            height="50"
-            alt="Погнали — на главную"
-          )
+          picture
+            source(
+              media="(max-width: 767px)"
+              srcset="img/content/logo-dark-clipped.svg"
+            )
+            img(
+              src="img/content/logo-dark.svg"
+              width="202"
+              height="50"
+              alt="Погнали — на главную"
+            )
 
         ul.footer__socials(aria-label="Социальные сети")
           each social in socials

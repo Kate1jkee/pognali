@@ -137,5 +137,10 @@ mixin companion-card(card, variant = "preview")
           +companion-card-countries(card, variant)
 
         .companion-card__footer
-          +companion-card-transport(card)
-          +companion-card-level(card, variant)
+          .companion-card__transport-block
+            span.companion-card__transport-caption транспорт:
+            +companion-card-transport(card)
+
+          .companion-card__level-block
+            span.companion-card__level-caption левел:
+            +companion-card-level(card, variant)

@@ -9,7 +9,9 @@ const initCatalogFilter = () => {
   const groups = Array.from(
       form.querySelectorAll('[data-catalog-filter-group]')
   );
-  const breakpoint = window.matchMedia('(max-width: 1023px)');
+  const breakpoint = window.matchMedia(
+      '(min-width: 768px) and (max-width: 1023px)'
+  );
   const savedStates = new Map();
 
   const updateGroups = () => {

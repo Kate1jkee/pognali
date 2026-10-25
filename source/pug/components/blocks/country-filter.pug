@@ -20,6 +20,10 @@ mixin country-filter()
               +icon("icon-burger", 23, 15)
               span Фильтрация по странам:
               span.country-filter__mobile-indicator(aria-hidden="true")
+                span.country-filter__mobile-open
+                  +icon("icon-point", 18, 4)
+                span.country-filter__mobile-close
+                  +icon("icon-esc", 14, 14)
 
             ul.country-filter__continents
               each continent in filterContinents
