@@ -100,8 +100,8 @@
     }
 
     &:focus-visible {
-      outline: 3px solid $color-picton-blue;
-      outline-offset: -5px;
+      outline: 2px solid $color-picton-blue;
+      outline-offset: 3px;
     }
   }  
 

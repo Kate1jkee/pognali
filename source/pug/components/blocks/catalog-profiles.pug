@@ -2,6 +2,8 @@ mixin catalog-profiles()
   section.catalog-profiles(aria-label="Поиск попутчиков")
     .catalog-profiles__wrapper
       .catalog-profiles__results
+        h2.visually-hidden Найденные попутчики
+
         ul.catalog-profiles__list
           each card in companionsCards
             li.catalog-profiles__item(

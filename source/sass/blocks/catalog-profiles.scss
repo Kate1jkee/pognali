@@ -164,8 +164,8 @@
         }
 
         &:focus-visible {
-        outline: 2px solid $color-catalina-blue;
-        outline-offset: 3px;
+            outline: 2px solid $color-picton-blue;
+            outline-offset: 3px;
         }
     }
 
@@ -294,7 +294,8 @@
             }
 
             &:focus-visible {
-                outline-offset: -3px;
+                outline: 2px solid $color-picton-blue;
+                outline-offset: 3px;
             }
         }
     }

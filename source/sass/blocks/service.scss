@@ -306,7 +306,7 @@
 
     @media (min-width: 768px) and (max-width: 1023px) {
         .service__description {
-            max-width: clamp(380px, calc(50vw - 4px), 480px);
+            max-width: clamp(400px, calc(50vw - 4px), 480px);
         }
     }
 }

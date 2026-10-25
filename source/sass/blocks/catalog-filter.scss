@@ -306,8 +306,8 @@
       }
 
       &:focus-visible {
-        outline: 2px solid $color-catalina-blue;
-        outline-offset: 4px;
+        outline: 2px solid $color-picton-blue;
+        outline-offset: 3px;
       }
     }
   }
@@ -455,6 +455,13 @@
 
     &__transport-item {
       flex-basis: 32px;
+    }
+
+    &__transport-item:first-child {
+      .tooltip__text {
+          left: 0;
+          transform: none;
+      }
     }
 
     &__transport-icon {

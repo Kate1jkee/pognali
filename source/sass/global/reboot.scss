@@ -135,3 +135,17 @@ button,
 [type="submit"] {
   appearance: none;
 }
+
+a,
+button,
+summary,
+label,
+[role="button"] {
+    user-select: none;
+}
+
+// В полях сохраняем возможность выделять и копировать текст.
+input,
+textarea {
+    user-select: text;
+}

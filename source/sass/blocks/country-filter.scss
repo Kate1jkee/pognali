@@ -83,8 +83,8 @@
         }
 
         &:focus-visible {
-            outline: 2px solid $color-catalina-blue;
-            outline-offset: 5px;
+            outline: 2px solid $color-picton-blue;
+            outline-offset: 3px;
         }
     }
 
@@ -399,8 +399,8 @@
         cursor: pointer;
 
         &:focus-visible {
-            outline: 2px solid $color-catalina-blue;
-            outline-offset: 5px;
+            outline: 2px solid $color-picton-blue;
+            outline-offset: 3px;
         }
     }
 
@@ -447,8 +447,21 @@
         }
 
         &:focus-visible {
-            outline: 2px solid $color-catalina-blue;
-            outline-offset: 5px;
+            outline: 2px solid $color-picton-blue;
+            outline-offset: 3px;
+        }
+    }
+
+    &__show,
+    &__letter-button {
+        transition: opacity $trans-default;
+
+        @include hover {
+            opacity: 0.6;
+        }
+
+        &:active {
+            opacity: 0.3;
         }
     }
 

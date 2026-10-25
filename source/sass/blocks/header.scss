@@ -47,6 +47,7 @@
         align-items: center;
         min-width: 0;
         gap: 45px;
+        margin-top: 14px;
 
         &::before {
             content: "";
@@ -120,7 +121,7 @@
 
         &:focus-visible {
             outline: 2px solid $color-picton-blue;
-            outline-offset: 4px;
+            outline-offset: 3px;
         }
     }
 
@@ -184,8 +185,8 @@
         }
 
         &:focus-visible {
-            outline: 2px solid $color-jordy-blue;
-            outline-offset: 5px;
+            outline: 2px solid $color-picton-blue;
+            outline-offset: 3px;
         }
     }
 
@@ -218,6 +219,18 @@
     &__socials,
     &__contact-text {
         display: none;
+    }
+
+    &__toggle {
+        transition: opacity $trans-default;
+
+        @include hover {
+            opacity: 0.6;
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
     }
 
     @include vp-1023 {
@@ -258,7 +271,7 @@
 
             &:focus-visible {
                 outline: 2px solid $color-picton-blue;
-                outline-offset: 4px;
+                outline-offset: 3px;
             }
         }
 
@@ -468,6 +481,17 @@
         &__toggle {
             grid-column: 2;
             justify-self: end;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 44px;
+                height: 44px;
+                transform: translate(-50%, -50%);
+            }
         }
 
         &__toggle-open {
@@ -482,7 +506,7 @@
             }
 
             .header__menu {
-                padding-top: 45px;
+                padding-top: 32px;
             }
 
             .header__nav-link {

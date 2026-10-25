@@ -12,18 +12,19 @@ mixin intro(title)
             picture
               source(
                 media="(max-width: 767px)"
-                srcset="img/content/traveller-mobile.svg"
+                srcset="img/content/traveller-mobile.png 1x, img/content/traveller-mobile@2x.png 2x"
                 width="192"
                 height="255"
               )
               source(
                 media="(max-width: 1023px)"
-                srcset="img/content/traveller-tablet.svg"
+                srcset="img/content/traveller-tablet.png 1x, img/content/traveller-tablet@2x.png 2x"
                 width="437"
                 height="530"
               )
               img(
-                src="img/content/traveller-desktop.svg"
+                src="img/content/traveller-desktop.png"
+                srcset="img/content/traveller-desktop@2x.png 2x"
                 width="431"
                 height="640"
                 alt=""
