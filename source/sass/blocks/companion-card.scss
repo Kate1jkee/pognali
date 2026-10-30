@@ -38,7 +38,7 @@
     overflow: hidden;
     background-color: $color-solitude;
 
-    > img {
+    > picture > img {
       position: absolute;
       inset: 0;
       display: block;
@@ -464,14 +464,26 @@
       }
     }
 
+    @include vp-1023 {
+      .companion-card__content {
+        margin-top: 0;
+      }
+
+      .companion-card__countries {
+        margin-bottom: 5px;
+      }
+    }
+
     @include vp-767 {
       width: 270px;
       max-width: 100%;
       border-radius: 10px;
+      background-color: transparent;
 
       .companion-card__image {
         aspect-ratio: 1;
         border-radius: 10px 10px 0 0;
+        background-color: transparent;
       }
 
       .companion-card__content {
@@ -806,7 +818,7 @@
         height: 70px;
         border-radius: 50%;
 
-        > img {
+        > picture > img {
             transform: scale(1.3);
             transform-origin: center;
         }
@@ -1095,3 +1107,12 @@
         }
     }
 }
+
+@media (max-width: 767px) {
+  .companion-card--catalog[data-profile-id="rogovaya"] {
+    .companion-card__tags {
+      max-width: 190px;
+    }
+  }
+}
+

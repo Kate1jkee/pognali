@@ -20,10 +20,6 @@
         max-width: 230px;
       }
 
-      &:nth-child(4) .companion-card__tags {
-        max-width: 160px;
-      }
-
     }
 
     &__wrapper {
@@ -243,7 +239,7 @@
         }
 
         &__list {
-            gap: 10px;
+            gap: 6px;
         }
 
         &__more {

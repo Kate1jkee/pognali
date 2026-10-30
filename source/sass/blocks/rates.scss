@@ -1,7 +1,7 @@
 .rates {
   padding: 121px 0 65px;
   padding-top: 110px;
-  padding-bottom: 55px;
+  padding-bottom: 64px;
 
   &__title {
     margin-bottom: 93px;
@@ -194,7 +194,7 @@
     text-align: left;
     cursor: pointer;
     transition: opacity $trans-default;
-    transform: translateY(-10px);
+    margin-top: 20px;
 
     @include hover-focus {
       opacity: 0.7;
@@ -376,14 +376,14 @@
 
     &__business {
       gap: 20px;
-      margin: -10px 0 0;
+      margin: 20px 0 0;
       transform: none;
     }
 
     &__business-icon {
       width: 68px;
       height: 68px;
-      transform: translateY(-3px);
+      transform: none;
 
       > svg {
         display: block;
@@ -423,6 +423,40 @@
     &__details {
       position: relative;
       z-index: 1;
+    }
+
+    &__list-block::before {
+      display: none;
+    }
+
+    &__name {
+      padding: 16px 0;
+      border-top: 1px solid #e1e3e9;
+    }
+
+    &__item:last-child .rates__name {
+      border-bottom: 1px solid #e1e3e9;
+    }
+
+    &__numbers {
+      display: none;
+    }
+
+    &__list-block {
+      display: block;
+    }
+
+    &__item {
+      gap: 20px;
+
+      &::before {
+        display: flex;
+        flex: 0 0 68px;
+        width: 68px;
+        height: 68px;
+        font-size: 28px;
+        align-self: center;
+      }
     }
   }
 
@@ -564,5 +598,83 @@
       line-height: 20px;
       color: $color-hero-background;
     }
+  }
+}
+
+@media (min-width: 1024px) {
+  .rates__wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 585.38px;
+  }
+
+  .rates__title {
+    grid-column: 1 / -1;
+  }
+
+  .rates__content {
+    display: contents;
+  }
+
+  .rates__list-block {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+  }
+
+  .rates__details {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    align-self: start;
+  }
+
+  .rates__business {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+    align-self: start;
+    margin: 25px 0 0 15px;
+    transform: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rates__wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 198px;
+  }
+
+  .rates__title {
+    grid-column: 1 / -1;
+  }
+
+  .rates__content {
+    display: contents;
+  }
+
+  .rates__list-block {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+  }
+
+  .rates__details {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    align-self: start;
+  }
+
+  .rates__business {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+    align-self: start;
+    margin: 29px 0 0;
+    transform: none;
+  }
+
+  .rates__business-icon {
+    transform: none;
   }
 }

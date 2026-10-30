@@ -100,11 +100,19 @@ mixin companion-card(card, variant = "preview")
   article.companion-card(
     class=`companion-card--${variant}`
     data-companion-card=variant === "preview" ? true : null
+    data-profile-id=card.id
   )
     .companion-card__image
-      +img(
-        "content", card.image, "png", 285, 285, card.name
-      )
+      picture
+        if variant === "preview" && card.imageMobile
+          source(
+            media="(max-width: 767px)"
+            srcset=`img/content/${card.imageMobile}.png 1x, img/content/${card.imageMobile}@2x.png 2x`
+          )
+
+        +img(
+          "content", card.image, "png", 285, 285, card.name
+        )
 
       if variant === "preview"
         +companion-card-level(card, variant)
