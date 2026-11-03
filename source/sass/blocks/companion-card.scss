@@ -825,9 +825,7 @@
       }
 
       .companion-card__name {
-        position: relative;
-        left: -2px;
-        top: -2px;
+        position: static;
         display: block;
         grid-column: 2;
         grid-row: 1;
@@ -1108,11 +1106,169 @@
     }
 }
 
-@media (max-width: 767px) {
-  .companion-card--catalog[data-profile-id="rogovaya"] {
+@media (min-width: 1100px) and (max-width: 1439px) {
+  .companion-card--catalog {
+    grid-template-columns: 160px minmax(0, 1fr) 84px;
+
+    .companion-card__image,
+    .companion-card__content {
+      grid-row: 1;
+    }
+
+    .companion-card__content {
+      padding-right: 16px;
+    }
+
+    .companion-card__details {
+      display: contents;
+    }
+
+    .companion-card__countries-block {
+      display: block;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      padding: 24px;
+    }
+
+    .companion-card__countries {
+      margin-bottom: 0;
+    }
+
+    .companion-card__footer {
+      grid-column: 3;
+      grid-row: 1;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 12px;
+      margin-top: 0;
+      padding: 24px 24px 0 0;
+    }
+
+    .companion-card__transport {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 6px;
+    }
+  }
+
+  .catalog-profiles__item:nth-child(n)
+    .companion-card--catalog
     .companion-card__tags {
-      max-width: 190px;
+    max-width: none;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .catalog-profiles__item:nth-child(n)
+    .companion-card--catalog
+    .companion-card__tags {
+    max-width: none;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 767px) {
+  .companion-card--catalog {
+    grid-template-columns: 70px minmax(0, 1fr) 60px;
+
+    .companion-card__tags {
+      grid-column: 1 / 3;
+    }
+
+    .companion-card__footer {
+      display: flex;
+      grid-column: 3;
+      grid-row: 1 / 4;
+      flex-direction: column;
+      align-items: center;
+      align-self: start;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .companion-card__transport-block,
+    .companion-card__level-block {
+      display: contents;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .companion-card__transport-caption,
+    .companion-card__level-caption {
+      display: none;
+    }
+
+    .companion-card__transport {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 6px;
+      padding-top: 0;
+    }
+
+    .companion-card__transport-item {
+      flex-basis: 25px;
+      width: 25px;
+      height: 25px;
+      background-color: transparent;
+    }
+
+    .companion-card__level {
+      flex-basis: 60px;
+      width: 60px;
+      height: 60px;
+    }
+
+    .companion-card__level-text {
+      display: block;
+    }
+
+    .companion-card__name {
+      display: flex;
+      align-items: center;
+      align-self: start;
+      gap: 12px;
+      max-width: none;
+      white-space: nowrap;
+    }
+
+    .companion-card__status {
+      position: static;
+      order: 1;
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      margin: 0;
+    }
+
+    .companion-card__likes {
+      align-self: start;
+    }
+
+    .companion-card__countries {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 12px 24px;
     }
   }
 }
 
+@media (min-width: 800px) and (max-width: 1099px) {
+  .catalog-profiles__item:nth-child(n)
+    .companion-card--catalog
+    .companion-card__tags {
+    max-width: none;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .catalog-profiles__item:nth-child(n)
+    .companion-card--catalog[data-profile-id="rogovaya"]
+    .companion-card__tags {
+    max-width: 200px;
+  }
+}
